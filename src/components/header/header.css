@@ -1,4 +1,8 @@
-.text {
-    color: yellow;
-    font-size: 20px;
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.text { 
+    cursor: pointer;
 }
