@@ -9,7 +9,7 @@ function Header() {
   return (
     <div className='header p-4'>
         <a href='#' className='header__link pl-5 pr-5'>
-        <BurgerIcon type="primary" />
+        <BurgerIcon type="primary"  />
         <p className='text text_type_main-default pl-2 pr-2' > Конструктор</p>
         </a>
         <a href="#"  className='header__link ml-2 pl-5 pr-5'>
@@ -17,9 +17,9 @@ function Header() {
         <p className='text text_type_main-default text_color_inactive pr-2 pl-2' > Лента заказов</p>
         </a>
         <Logo/>
-        <a href="#" className='header__link'>
+        <a href="#" className='header__link pl-5 pr-5'>
         <ProfileIcon type="secondary" />
-        <p className='text text_type_main-default text_color_inactive' > Личный кабинет</p>
+        <p className='text text_type_main-default text_color_inactive pr-2 pl-2' > Личный кабинет</p>
         </a>
     </div>
    
