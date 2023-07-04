@@ -8,6 +8,7 @@ function Main() {
       <section className="menu-bar mt-10 ">
         <h1 className="text text_type_main-large">Соберите бургер</h1>
         <TabMenu />
+        <h2 className="text text_type_main-medium mt-10">Булки</h2>
         <Fillings/>
         
       </section>
