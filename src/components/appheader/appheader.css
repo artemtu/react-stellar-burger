@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: center;
+  justify-content:space-around;
   background-color:#1C1C21 ;
   outline: 1px solid red;
 }
@@ -18,3 +18,14 @@
     outline: 1px solid red;  
 }
 
+.test {
+  display: flex;
+}
+
+.lel{
+
+  display: flex;
+  justify-content: center;
+  margin-right: 180px;
+
+}
