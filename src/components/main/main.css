@@ -28,3 +28,8 @@
     outline: 1px solid red;
 
 }
+
+.kek {
+    height: 70vh;
+    overflow-y: scroll;
+}
