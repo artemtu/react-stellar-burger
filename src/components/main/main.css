@@ -22,7 +22,7 @@
   outline: 1px solid red;
 }
 
-.kek {
+.scroll {
   height: 70vh;
   overflow-y: scroll;
 }
