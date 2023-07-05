@@ -1,7 +1,7 @@
 import React from "react";
 import content from "./main.css";
 import { TabMenu } from "../tab/tab";
-import Fillings from "../fillings/fillings";
+import Fillings from "../burgerIngredients/burgerIngredients";
 function Main() {
   return (
     <main className="content">

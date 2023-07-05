@@ -1,6 +1,6 @@
 import styles from "./app.module.css";
 import { data } from "../../utils/data";
-import Header from "../header/header";
+import Header from "../appheader/appheader";
 import Main from "../main/main";
 
 

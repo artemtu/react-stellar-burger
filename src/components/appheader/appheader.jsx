@@ -1,5 +1,5 @@
 import React from 'react'
-import text from './header.css'
+import text from './appheader.css'
 import { Logo } from '@ya.praktikum/react-developer-burger-ui-components'
 import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components'
 import {ListIcon} from '@ya.praktikum/react-developer-burger-ui-components'

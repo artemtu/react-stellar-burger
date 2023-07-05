@@ -1,6 +1,6 @@
 import React from "react";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import price from './fillings.css'
+import price from './burgerIngredients.css'
 
 export const data = [
   {
@@ -65,17 +65,19 @@ export const data = [
 
 
 export function Fillings(props) {
-  const { image, nameZ, price } = props;
+  const { image, name, price } = props;
 
   return (
-    <div >
+    
+    <div>
+      
       <div>
-        <img className="pl-4" src={image} alt={nameZ} style={{ outline: '1px solid red' }} />
-        <div className="price">
+        <img className="pl-4 mt-6" src={image} alt={name} style={{ outline: '1px solid red' }} />
+        <div className="price mt-1 mb-1">
           <p className="text text_type_digits-default pr-2">{price}</p>
           <CurrencyIcon type="primary" />
         </div>
-        <p className="text text_type_main-default">{nameZ}</p>
+        <p className="text text_type_main-default">{name}</p>
       </div>
 
     </div>
@@ -89,7 +91,7 @@ export function ParentComponent() {
         <Fillings
           key={item._id}
           image={item.image}
-          nameZ={item.name}
+          name={item.name}
           price={item.price}
         />
       ))}
