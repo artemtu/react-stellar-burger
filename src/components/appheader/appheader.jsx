@@ -7,7 +7,7 @@ import { ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 function Header() {
   return (
-    <div className='header p-4'>
+    <header className='header p-4'>
         <a href='#' className='header__link pl-5 pr-5'>
         <BurgerIcon type="primary"  />
         <p className='text text_type_main-default pl-2 pr-2' > Конструктор</p>
@@ -21,7 +21,7 @@ function Header() {
         <ProfileIcon type="secondary" />
         <p className='text text_type_main-default text_color_inactive pr-2 pl-2' > Личный кабинет</p>
         </a>
-    </div>
+    </header>
    
 
   )
