@@ -25,7 +25,19 @@ function Main() {
       </section>
 
       {/* вторая часть страницы */}
-      <section className="constructor-bar"></section>
+      <section className="constructor-bar mt-10 ml-10">
+      <h1 className="text text_type_main-large">Соберите бургер</h1>
+        <TabMenu />
+        <div className="kek custom-scroll">
+        <h2 className="text text_type_main-medium mt-10">Булки</h2>
+        <Buns/>
+        <h2 className="text text_type_main-medium mt-10">Соусы</h2>
+        <Sauce/>
+        <h2 className="text text_type_main-medium mt-10">Начинки</h2>
+        <Fillings/>
+        </div>
+
+      </section>
     </main>
   );
 }
