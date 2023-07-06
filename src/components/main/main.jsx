@@ -29,7 +29,7 @@ function Main() {
       </section>
 
       {/* вторая часть страницы */}
-      <section className="burger-bar mt-25 ml-10">
+      <section className="burger-bar custom-scroll mt-25 ml-10">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
         <BunUpConstructor/>
         <Ingredients/>
