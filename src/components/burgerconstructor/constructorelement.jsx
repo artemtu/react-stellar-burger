@@ -1,5 +1,7 @@
 import React from 'react'
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components'
+import constructor__scroll from './constructorelement.css'
+
 
 
 
@@ -13,11 +15,44 @@ function Constructorelement() {
               price={200}
               thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
             />
+            <div className='constructor__scroll custom-scroll'>
+
             <ConstructorElement
               text="Краторная булка N-200i (верх)"
               price={50}
               thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
             />
+                       <ConstructorElement
+              text="Краторная булка N-200i (верх)"
+              price={50}
+              thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            />
+                       <ConstructorElement
+              text="Краторная булка N-200i (верх)"
+              price={50}
+              thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            />
+                       <ConstructorElement
+              text="Краторная булка N-200i (верх)"
+              price={50}
+              thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            />
+                       <ConstructorElement
+              text="Краторная булка N-200i (верх)"
+              price={50}
+              thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            />
+                       <ConstructorElement
+              text="Краторная булка N-200i (верх)"
+              price={50}
+              thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            />
+                       <ConstructorElement
+              text="Краторная булка N-200i (верх)"
+              price={50}
+              thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            />
+            </div>
             <ConstructorElement
               type="bottom"
               isLocked={true}
