@@ -5,8 +5,9 @@ import {Ingridients} from "../burgerIngredients/burgerIngredients";
 import {Buns} from "../burgerIngredients/buns/buns";
 import Sauce from "../burgerIngredients/sauces/sauces";
 import Fillings from "../burgerIngredients/fillings/fillings";
-import Bun from "../burgerconstructor/bun/bun";
-import Constructorelement from "../burgerconstructor/constructorelement";
+import BunUpConstructor from "../burgerconstructor/BunTopConstructor/BunTopConsctructor"; 
+import BunBottomConstructor from "../burgerconstructor/BunBottomConstructor/BunBottomConstructor";
+import Ingredients from "../burgerconstructor/Ingredients/Ingredients";
 
 
 function Main() {
@@ -28,8 +29,12 @@ function Main() {
       </section>
 
       {/* вторая часть страницы */}
-      <section className="burger-bar mt-25">
-        <Constructorelement/>
+      <section className="burger-bar mt-25 ml-10">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
+        <BunUpConstructor/>
+        <Ingredients/>
+        <BunBottomConstructor/>
+        </div>
 
       </section>
     </main>
