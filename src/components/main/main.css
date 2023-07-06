@@ -26,3 +26,9 @@
   height: 70vh;
   overflow-y: scroll;
 }
+
+.burger-bar{
+  display: flex;
+  outline: 1px solid red;
+
+}
