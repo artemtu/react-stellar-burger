@@ -10,6 +10,7 @@ import BunBottomConstructor from "../burgerconstructor/BunBottomConstructor/BunB
 import Ingredients from "../burgerconstructor/Ingredients/Ingredients";
 import { data } from "../../utils/data";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import Extraction from "../burgerconstructor/extraction/extraction";
 
 const ingredients = data.filter((item) => item.type !== "bun");
 
@@ -30,13 +31,13 @@ function Main() {
       </section>
 
       {/* вторая часть страницы */}
-      <section className="burger-bar custom-scroll mt-25 ml-10">
-      <div style={{ display: 'flex', flexDirection: 'column', outline:'1px solid red', gap:'10px'}} className='ml-4 mr-4'>
+      <section className="burger-bar mt-25 ml-10">
+      <div style={{ display: 'flex', flexDirection: 'column', outline:'1px solid red', gap:'10px', maxHeight: '60vh'}} className='ml-4 mr-4'>
         <BunUpConstructor/>
         <Ingredients/>
         <BunBottomConstructor/>
         </div>
-
+        <Extraction/>
       </section>
     </main>
   );

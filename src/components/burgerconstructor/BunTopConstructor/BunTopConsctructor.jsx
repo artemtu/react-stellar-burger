@@ -15,7 +15,7 @@ function BunUpConstructor() {
             <ConstructorElement
               type="top"
               isLocked={true}
-              text={bun.name + '(верх)'}
+              text={bun.name + ' (верх)'}
               price={bun.price}
               thumbnail={bun.image}
              

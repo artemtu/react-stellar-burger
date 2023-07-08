@@ -1,6 +1,7 @@
 import React from "react";
 import { data } from "../../../utils/data";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import ingredientZ from './ingredients.css'
 
 
 
@@ -9,9 +10,9 @@ const ingredients = data.filter((item) => item.type !== "bun");
 
 function Ingredients() {
   return (
-    <>
+    <div className="ingredientZ custom-scroll" style={{gap:'10px'}}>
       {ingredients.map((item) => (  
-        <div  >
+        <div>
           <DragIcon/>
 
           <ConstructorElement
@@ -24,13 +25,10 @@ function Ingredients() {
         </div>
       ))
 } 
-    </>
+    </div>
   );
 }
 
 export default Ingredients;
 
 
-// {filteredData.map(item => (
-//   <ConsructorItem  здесь item, тип не нужен>
-//   }
