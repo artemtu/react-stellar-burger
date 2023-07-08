@@ -32,7 +32,7 @@ function Main() {
 
       {/* вторая часть страницы */}
       <section className="burger-bar mt-25 ml-10">
-      <div style={{ display: 'flex', flexDirection: 'column', outline:'1px solid red', gap:'10px', maxHeight: '60vh'}} className='ml-4 mr-4'>
+      <div style={{ display: 'flex', flexDirection: 'column', gap:'10px', maxHeight: '60vh'}} className='ml-4 mr-4'>
         <BunUpConstructor/>
         <Ingredients/>
         <BunBottomConstructor/>

@@ -12,7 +12,7 @@ export function Ingridients(props) {
 
   return (
       <div>
-        <img className="pl-4 mt-6" src={image} alt={name} style={{ outline: '1px solid red' }} />
+        <img className="pl-4 mt-6" src={image} alt={name}  />
         <div className="price mt-1 mb-1">
           <p className="text text_type_digits-default pr-2">{price}</p>
           <CurrencyIcon type="primary" />
