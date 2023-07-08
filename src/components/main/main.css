@@ -8,15 +8,13 @@
 .menu-bar {
   display: flex;
   flex-direction: column;
+  width: 600px;
   /* outline: 1px solid red; */
 
 
 
 }
 
-.text {
-  /* outline: 1px solid red; */
-}
 
 .constructor-bar {
   display: flex;
