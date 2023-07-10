@@ -5,7 +5,7 @@ import { Ingridients } from "../burgerIngredients";
 
 const sauceArray = data.filter((item) => item.type === "sauce");
 
-export function Sauce() {
+export function Sauce(setIsModalOpen) {
   return (
     <div className="ingridient-container">
       {sauceArray.map((item) => (
@@ -14,6 +14,7 @@ export function Sauce() {
           image={item.image}
           name={item.name}
           price={item.price}
+          setIsModalOpen={setIsModalOpen}
         />
       ))}
     </div>

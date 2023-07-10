@@ -22,11 +22,11 @@ function Main({setIsModalOpen}) {
         <TabMenu />
         <div className="scroll custom-scroll">
         <h2 className="text text_type_main-medium mt-10">Булки</h2>
-        <Buns/>
+        <Buns setIsModalOpen={setIsModalOpen}/>
         <h2 className="text text_type_main-medium mt-10">Соусы</h2>
-        <Sauce/>
+        <Sauce setIsModalOpen={setIsModalOpen}/>
         <h2 className="text text_type_main-medium mt-10">Начинки</h2>
-        <Fillings/>
+        <Fillings setIsModalOpen={setIsModalOpen}/>
         </div>
       </section>
 
