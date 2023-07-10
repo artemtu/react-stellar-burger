@@ -5,15 +5,16 @@ import { Ingridients } from "../burgerIngredients";
 
 const bunsArray = data.filter((item) => item.type === "bun");
 
-export function Buns() {
+export function Buns({setIsModalOpen}) {
   return (
-    <div className="ingridient-container">
+    <div className="ingridient-container" >
       {bunsArray.map((item) => (
         <Ingridients
           key={item._id}
           image={item.image}
           name={item.name}
           price={item.price}
+          setIsModalOpen={setIsModalOpen}
         />
       ))}
     </div>

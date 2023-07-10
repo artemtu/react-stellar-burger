@@ -4,9 +4,13 @@ import ReactDOM from 'react-dom'
 
 const modalRoot = document.getElementById('react-modal')
 
-function Overlay() {
+function Overlay({setIsModalOpen}) {
+  const onClick = () =>{
+    setIsModalOpen(false)
+
+  }
   return ReactDOM.createPortal(
-    <div className={styles.overlay}></div>,
+    <div className={styles.overlay} onClick={onClick}></div>,
     modalRoot
   )
 }
