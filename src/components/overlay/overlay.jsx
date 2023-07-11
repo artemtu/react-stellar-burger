@@ -7,7 +7,6 @@ const modalRoot = document.getElementById('react-modal')
 function Overlay({setIsModalOpen}) {
   const onClick = () =>{
     setIsModalOpen(false)
-
   }
   return ReactDOM.createPortal(
     <div className={styles.overlay} onClick={onClick}></div>,
