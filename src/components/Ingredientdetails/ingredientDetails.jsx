@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './ingredientDetails.module.css'
 
 function ingredientDetails() {
   return (

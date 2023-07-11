@@ -3,9 +3,10 @@ import styles from './modal.module.css'
 import { createPortal } from 'react-dom'
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
+
 const modalRoot = document.getElementById('react-modal')
 
-function Modal() {
+function Modal({ingredientDetails}) {
     return createPortal(
     (
     <div className={styles.modal}>
@@ -13,8 +14,7 @@ function Modal() {
         <h2 className='text text_type_main-large'>Детали ингридиента</h2>
         <CloseIcon type="primary"/>
         </div>
-        
-
+        {ingredientDetails}
     </div>
   ), modalRoot
   )
