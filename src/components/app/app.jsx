@@ -9,6 +9,8 @@ import Overlay from "../overlay/overlay";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
   return (
     <div className={styles.app}>
       <Header />

@@ -9,17 +9,20 @@ import Orderdetails from './orderdetails/orderdetails'
 
 const modalRoot = document.getElementById('react-modal')
 
-function Modal() {
+function Modal({setIsModalOpen}) {
+  const OnClick = () => {
+    setIsModalOpen(false)
+  }
 
     return createPortal(
     (
     <div className={styles.modal}>
        <div className={`${styles.close}`}>
-        <button className={`${styles.close__button}`}> 
+        <button className={`${styles.close__button}`}  onClick={OnClick} > 
         <CloseIcon type="primary"/>
         </button>
        </div>
-        <Orderdetails/>
+        <IngredientDetails/>
     </div>
   ), modalRoot
   )
