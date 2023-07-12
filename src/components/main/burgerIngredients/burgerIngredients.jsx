@@ -1,7 +1,7 @@
 import React from "react";
 import { CurrencyIcon , Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import price from './burgerIngredients.css'
-import { data } from "../../utils/data";
+import { data } from "../../../utils/data";
 
 
 

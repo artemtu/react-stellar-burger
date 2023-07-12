@@ -1,18 +1,14 @@
 import React from "react";
-import { data } from "../../../utils/data";
+import { data } from "../../../../utils/data";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Ingridients } from "../burgerIngredients";
 
+const bunsArray = data.filter((item) => item.type === "bun");
 
-const fillingsArray = data.filter(item => item.type === "main");
-
-
-
-
-export function Fillings({setIsModalOpen}) {
+export function Buns({setIsModalOpen}) {
   return (
-    <div className="ingridient-container">
-      {fillingsArray.map(item => (
+    <div className="ingridient-container" >
+      {bunsArray.map((item) => (
         <Ingridients
           key={item._id}
           image={item.image}
@@ -24,5 +20,4 @@ export function Fillings({setIsModalOpen}) {
     </div>
   );
 }
-
-export default Fillings;
+export default Buns;

@@ -1,5 +1,5 @@
 import React from "react";
-import { data } from "../../../utils/data";
+import { data } from "../../../../utils/data";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Ingridients } from "../burgerIngredients";
 

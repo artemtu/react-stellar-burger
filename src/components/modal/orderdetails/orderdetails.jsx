@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './orderdetails.module.css'
-import orderImg from '../../images/doneorder-done.png'
+import orderImg from '../../../images/doneorder-done.png'
 
 
 
