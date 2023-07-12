@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 function IngredientDetails() {
   return (
     <div>
+         <h2 className='text text_type_main-large mt-10 ml-10 mr-10'>Детали ингридиента</h2>
         <div className={styles.picture}>
         <img src="https://code.s3.yandex.net/react/code/meat-01-large.png" alt=" " />
         <p className='text text_type_main-medium mt-4'>Биокотлета из Марсианской магнолии</p> 
