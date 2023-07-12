@@ -19,7 +19,7 @@ function Modal() {
         <CloseIcon type="primary"/>
         </button>
        </div>
-        <IngredientDetails/>
+        <Orderdetails/>
     </div>
   ), modalRoot
   )
