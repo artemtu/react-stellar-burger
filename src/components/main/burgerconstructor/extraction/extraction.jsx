@@ -2,9 +2,9 @@ import React from 'react'
 import { CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import extraction from './extraction.css'
 
-function Extraction({setIsModalOpen}) {
+function Extraction({setOrderModal}) {
   const onClick = () => {
-    setIsModalOpen(true);
+    setOrderModal(true);
   }
   return (
     <div className='extraction mr-4 mt-10'>

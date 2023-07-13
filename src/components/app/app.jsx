@@ -1,49 +1,48 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./app.module.css";
 import { data } from "../../utils/data";
 import Header from "../appheader/appheader";
 import Main from "../main/main";
 import Modal from "../modal/modal";
 import Overlay from "../overlay/overlay";
-
+import IngredientDetails from "../modal/Ingredientdetails/ingredientDetails";
+import Orderdetails from "../modal/orderdetails/orderdetails";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOrderModal, setOrderModal] = useState(false);
+  const [isIngredientModal, setIngredientModal] = useState(false);
 
+ function closeOrderModal() {
+  setOrderModal(false)
+}
 
   return (
     <div className={styles.app}>
       <Header />
-      <Main setIsModalOpen={setIsModalOpen}/>
-      {isModalOpen && (
+      <Main setOrderModal={setOrderModal} data={data}/>
+      {isOrderModal && (
         <>
-<Modal setIsModalOpen={setIsModalOpen}/>
-<Overlay setIsModalOpen={setIsModalOpen}/>
-
+          <Modal  handleClose={closeOrderModal}>
+            <Orderdetails/>
+          </Modal>
+            
         </>
       )}
+       {isIngredientModal && (
+        <>
+          <Modal>
+            <IngredientDetails/>
+          </Modal>
+            
+        </>
+      )}
+
+
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import styles from "./app.module.css";
 // import { data } from "../../utils/data";
