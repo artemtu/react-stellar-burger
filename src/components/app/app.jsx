@@ -20,7 +20,21 @@ function App() {
     setIngredientModal({ open: false });
   }
 
+  useEffect(() => {
+    const closeModalOnEscape = (event) => {
+      if (event.key === "Escape") {
+        closeOrderModal();
+      }
+    };
 
+    if (isOrderModal || isIngredientModal) {
+      document.addEventListener("keydown", closeModalOnEscape);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", closeModalOnEscape);
+    };
+  });
 
   return (
     <div className={styles.app}>
