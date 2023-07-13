@@ -17,8 +17,10 @@ import Extraction from "./burgerconstructor/extraction/extraction";
 
 // const ingredients = data.filter((item) => item.type !== "bun");
 
-function Main({setOrderModal,setIngredientModal, data }) {
+function Main({ setOrderModal, setIngredientModal, data }) {
   const bunsArray = data.filter((item) => item.type === "bun");
+  const fillingsArray = data.filter((item) => item.type === "main");
+  const sauceArray = data.filter((item) => item.type === "sauce");
   return (
     <main className="content">
       <section className="menu-bar mt-10">
@@ -26,11 +28,14 @@ function Main({setOrderModal,setIngredientModal, data }) {
         <TabMenu />
         <div className="scroll custom-scroll">
           <h2 className="text text_type_main-medium mt-10">Булки</h2>
-          <Buns data={bunsArray} setIngredientModal={setIngredientModal}/>
+          <Buns data={bunsArray} setIngredientModal={setIngredientModal} />
           <h2 className="text text_type_main-medium mt-10">Соусы</h2>
-          <Sauce  setIngredientModal={setIngredientModal}/>
+          <Sauce data={sauceArray} setIngredientModal={setIngredientModal} />
           <h2 className="text text_type_main-medium mt-10">Начинки</h2>
-          <Fillings setIngredientModal={setIngredientModal} />
+          <Fillings
+            data={fillingsArray}
+            setIngredientModal={setIngredientModal}
+          />
         </div>
       </section>
 

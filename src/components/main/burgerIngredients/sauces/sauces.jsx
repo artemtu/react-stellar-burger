@@ -3,13 +3,12 @@ import { data } from "../../../../utils/data";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Ingridients } from "../burgerIngredients";
 
-const sauceArray = data.filter((item) => item.type === "sauce");
-
-export function Sauce({setIngredientModal}) {
+export function Sauce({ setIngredientModal, data }) {
   return (
     <div className="ingridient-container">
-      {sauceArray.map((item) => (
+      {data.map((item) => (
         <Ingridients
+          id={item._id}
           key={item._id}
           image={item.image}
           name={item.name}
