@@ -14,12 +14,14 @@ function App() {
 
  function closeOrderModal() {
   setOrderModal(false)
+  setIngredientModal(false)
+
 }
 
   return (
     <div className={styles.app}>
       <Header />
-      <Main setOrderModal={setOrderModal} data={data}/>
+      <Main setOrderModal={setOrderModal} setIngredientModal={setIngredientModal} data={data}/>
       {isOrderModal && (
         <>
           <Modal  handleClose={closeOrderModal}>
@@ -30,7 +32,7 @@ function App() {
       )}
        {isIngredientModal && (
         <>
-          <Modal>
+          <Modal handleClose={closeOrderModal}>
             <IngredientDetails/>
           </Modal>
             

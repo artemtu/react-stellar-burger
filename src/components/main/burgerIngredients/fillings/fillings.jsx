@@ -9,7 +9,7 @@ const fillingsArray = data.filter(item => item.type === "main");
 
 
 
-export function Fillings({setIsModalOpen}) {
+export function Fillings({setIngredientModal}) {
   return (
     <div className="ingridient-container">
       {fillingsArray.map(item => (
@@ -18,7 +18,7 @@ export function Fillings({setIsModalOpen}) {
           image={item.image}
           name={item.name}
           price={item.price}
-          setIsModalOpen={setIsModalOpen}
+          setIngredientModal={setIngredientModal}
         />
       ))}
     </div>

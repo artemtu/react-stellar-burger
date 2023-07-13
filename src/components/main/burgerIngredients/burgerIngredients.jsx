@@ -7,9 +7,9 @@ import { data } from "../../../utils/data";
 
 
 
-export function Ingridients({ image, name, price, setIsModalOpen }) {
+export function Ingridients({ image, name, price, setIngredientModal }) {
   const onClick = () => {
-    setIsModalOpen(true);
+    setIngredientModal(true);
   }
   return (
     <div>

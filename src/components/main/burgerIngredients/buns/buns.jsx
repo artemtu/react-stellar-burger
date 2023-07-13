@@ -3,7 +3,8 @@ import { Ingridients } from "../burgerIngredients";
 
 
 
-export function Buns({data,setIsModalOpen}) {
+export function Buns({setIngredientModal,data}) {
+
   return (
     <div className="ingridient-container" >
       {data.map((item) => (
@@ -12,7 +13,7 @@ export function Buns({data,setIsModalOpen}) {
           image={item.image}
           name={item.name}
           price={item.price}
-          setIsModalOpen={setIsModalOpen}
+          setIngredientModal ={setIngredientModal}
         />
       ))}
     </div>
