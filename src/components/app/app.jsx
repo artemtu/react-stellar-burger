@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./app.module.css";
 import { data } from "../../utils/data";
 import Header from "../appheader/appheader";
@@ -10,36 +10,40 @@ import Orderdetails from "../modal/orderdetails/orderdetails";
 
 function App() {
   const [isOrderModal, setOrderModal] = useState(false);
-  const [isIngredientModal, setIngredientModal] = useState(false);
+  const [isIngredientModal, setIngredientModal] = useState({
+    open: false,
+    id: 1,
+  });
 
- function closeOrderModal() {
-  setOrderModal(false)
-  setIngredientModal(false)
+  function closeOrderModal() {
+    setOrderModal(false);
+    setIngredientModal({ open: false });
+  }
 
-}
+
 
   return (
     <div className={styles.app}>
       <Header />
-      <Main setOrderModal={setOrderModal} setIngredientModal={setIngredientModal} data={data}/>
+      <Main
+        setOrderModal={setOrderModal}
+        setIngredientModal={setIngredientModal}
+        data={data}
+      />
       {isOrderModal && (
         <>
-          <Modal  handleClose={closeOrderModal}>
-            <Orderdetails/>
+          <Modal handleClose={closeOrderModal}>
+            <Orderdetails />
           </Modal>
-            
         </>
       )}
-       {isIngredientModal && (
+      {isIngredientModal.open && (
         <>
           <Modal handleClose={closeOrderModal}>
-            <IngredientDetails/>
+            <IngredientDetails data={data} id={isIngredientModal.id} />
           </Modal>
-            
         </>
       )}
-
-
     </div>
   );
 }

@@ -1,19 +1,18 @@
 import React from "react";
-import { CurrencyIcon , Counter } from "@ya.praktikum/react-developer-burger-ui-components";
-import price from './burgerIngredients.css'
+import {
+  CurrencyIcon,
+  Counter,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import price from "./burgerIngredients.css";
 import { data } from "../../../utils/data";
 
-
-
-
-
-export function Ingridients({ image, name, price, setIngredientModal }) {
+export function Ingridients({ id, image, name, price, setIngredientModal }) {
   const onClick = () => {
-    setIngredientModal(true);
-  }
+    setIngredientModal({open:true, id})
+  };
   return (
     <div>
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: "relative" }}>
         <img className="pl-4 mt-6" src={image} alt={name} onClick={onClick} />
         <Counter count={1} size="default" extraClass="m-1" />
       </div>
@@ -25,6 +24,3 @@ export function Ingridients({ image, name, price, setIngredientModal }) {
     </div>
   );
 }
-
-
-
