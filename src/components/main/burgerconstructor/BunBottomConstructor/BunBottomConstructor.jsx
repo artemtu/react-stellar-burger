@@ -9,7 +9,7 @@ function BunBottomConstructor({ data }) {
     <div className="pl-6">
       {data.map((item) => (
         <ConstructorElement
-          key={item._id} // Добавьте ключ для каждого элемента в списке
+          key={item._id}
           type="bottom"
           isLocked={true}
           text={item.name + " (низ)"}
