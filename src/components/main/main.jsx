@@ -22,6 +22,7 @@ function Main({ setOrderModal, setIngredientModal, data }) {
   const fillingsArray = data.filter((item) => item.type === "main");
   const sauceArray = data.filter((item) => item.type === "sauce");
   const bun = data.filter((item) => item.name === "Краторная булка N-200i");
+  const ingredients = data.filter((item) => item.type !== "bun");
  
 
   return (
@@ -54,7 +55,7 @@ function Main({ setOrderModal, setIngredientModal, data }) {
           className="ml-4 mr-4"
         >
           <BunUpConstructor data={bun} />
-          <Ingredients />
+          <Ingredients data={ingredients}/>
           <BunBottomConstructor data={bun} />
         </div>
         <Extraction setOrderModal={setOrderModal} />

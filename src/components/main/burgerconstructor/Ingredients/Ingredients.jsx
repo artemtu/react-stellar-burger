@@ -1,17 +1,15 @@
 import React from "react";
-import { data } from "../../../../utils/data";
+
 import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import list from "./ingredients.css";
 
-const ingredients = data.filter((item) => item.type !== "bun");
-
-function Ingredients() {
+function Ingredients({ data }) {
   return (
     <div className="list custom-scroll" style={{ gap: "10px" }}>
-      {ingredients.map((item) => (
+      {data.map((item) => (
         <div>
           <DragIcon />
           <ConstructorElement
