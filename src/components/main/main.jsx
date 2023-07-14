@@ -1,19 +1,19 @@
 import React from "react";
 import content from "./main.css";
 import { TabMenu } from "../tab/tab";
-import { Ingridients } from "./burgerIngredients/burgerIngredients";
-import { Buns } from "./burgerIngredients/buns/buns";
-import Sauce from "./burgerIngredients/sauces/sauces";
-import Fillings from "./burgerIngredients/fillings/fillings";
-import BunUpConstructor from "./burgerconstructor/BunTopConstructor/BunTopConsctructor";
-import BunBottomConstructor from "./burgerconstructor/BunBottomConstructor/BunBottomConstructor";
-import Ingredients from "./burgerconstructor/Ingredients/Ingredients";
+import { Ingridients } from "./burger-ingredients/burgerIngredients";
+import { Buns } from "./burger-ingredients/buns/buns";
+import Sauce from "./burger-ingredients/sauces/sauces";
+import Fillings from "./burger-ingredients/fillings/fillings";
+import BunUpConstructor from "./burger-constructor/BunTopConstructor/BunTopConsctructor";
+import BunBottomConstructor from "./burger-constructor/BunBottomConstructor/BunBottomConstructor";
+import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 
 import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import Extraction from "./burgerconstructor/extraction/extraction";
+import Extraction from "./burger-constructor/extraction/extraction";
 
 // const ingredients = data.filter((item) => item.type !== "bun");
 
