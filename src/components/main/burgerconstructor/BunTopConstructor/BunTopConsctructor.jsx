@@ -1,33 +1,26 @@
-import React from 'react'
-import { ConstructorElement,DragIcon  } from '@ya.praktikum/react-developer-burger-ui-components'
-import { data } from '../../../../utils/data';
-
-
-const bun = data.find((item) => item._id === '60666c42cc7b410027a1a9b1');
-
-
-
-
-
-function BunUpConstructor() {
-        return (
-          <div  className='pl-6'>
-            <ConstructorElement
-              type="top"
-              isLocked={true}
-              text={bun.name + ' (верх)'}
-              price={bun.price}
-              thumbnail={bun.image}
-             
-            />
-          </div>
-
-        )}
-export default BunUpConstructor
+import React from "react";
+import {
+  ConstructorElement,
+  DragIcon,
+} from "@ya.praktikum/react-developer-burger-ui-components";
 
 
 
 
-
-
-
+function BunUpConstructor({ data }) {
+  return (
+    <div className="pl-6">
+      {data.map((item) => (
+        <ConstructorElement
+          type="top"
+          isLocked={true}
+          text={item.name + " (верх)"}
+          price={item.price}
+          thumbnail={item.image}
+          key={item._id}
+        />
+      ))}
+    </div>
+  );
+}
+export default BunUpConstructor;

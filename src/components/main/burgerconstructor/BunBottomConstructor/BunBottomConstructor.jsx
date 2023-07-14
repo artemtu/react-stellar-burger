@@ -4,19 +4,23 @@ import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-comp
 
 
 
-function BunBottomConstructor(bun) {
+function BunBottomConstructor({ data }) {
   return (
-    <div className='pl-6' >
-
-      <ConstructorElement
-        type="bottom"
-        isLocked={true}
-        text={bun.name + " (низ)"}
-        price={bun.price}
-        thumbnail={bun.image}
-      />
-      </div>
-      
+    <div className="pl-6">
+      {data.map((item) => (
+        <ConstructorElement
+          key={item._id} // Добавьте ключ для каждого элемента в списке
+          type="bottom"
+          isLocked={true}
+          text={item.name + " (низ)"}
+          price={item.price}
+          thumbnail={item.image}
+    
+        />
+      ))}
+    </div>
   );
 }
+
 export default BunBottomConstructor;
+

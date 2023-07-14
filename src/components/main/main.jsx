@@ -21,7 +21,9 @@ function Main({ setOrderModal, setIngredientModal, data }) {
   const bunsArray = data.filter((item) => item.type === "bun");
   const fillingsArray = data.filter((item) => item.type === "main");
   const sauceArray = data.filter((item) => item.type === "sauce");
-  const bun = data.find((item) => item._id === "60666c42cc7b410027a1a9b1");
+  const bun = data.filter((item) => item.name === "Краторная булка N-200i");
+ 
+
   return (
     <main className="content">
       <section className="menu-bar mt-10">
@@ -51,7 +53,7 @@ function Main({ setOrderModal, setIngredientModal, data }) {
           }}
           className="ml-4 mr-4"
         >
-          <BunUpConstructor />
+          <BunUpConstructor data={bun} />
           <Ingredients />
           <BunBottomConstructor data={bun} />
         </div>
