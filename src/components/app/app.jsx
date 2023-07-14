@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./app.module.css";
-import { data } from "../../utils/data";
 import Header from "../appheader/appheader";
 import Main from "../main/main";
 import Modal from "../modal/modal";
@@ -14,6 +13,38 @@ function App() {
     open: false,
     id: 1,
   });
+  const [data, setData] = useState([]);
+
+  const config = {
+    baseUrl: "https://norma.nomoreparties.space/api/ingredients",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const getData = () => {
+    return (
+      fetch(config.baseUrl)
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Ошибка: ${res.status}`);
+        })
+        .then((res) => {
+        setData(res.data)
+      })
+    )
+  }
+
+  useEffect(() => {
+      
+    getData()
+  
+  }, [])
+
+  console.log(data);
+
 
   function closeOrderModal() {
     setOrderModal(false);

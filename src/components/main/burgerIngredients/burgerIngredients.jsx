@@ -4,7 +4,7 @@ import {
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import price from "./burgerIngredients.css";
-import { data } from "../../../utils/data";
+
 
 export function Ingridients({ id, image, name, price, setIngredientModal }) {
   const onClick = () => {
