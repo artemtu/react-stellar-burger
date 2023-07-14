@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./app.module.css";
-import Header from "../appheader/appheader";
+import Header from "../app-header/appheader";
 import Main from "../main/main";
 import Modal from "../modal/modal";
 import Overlay from "../overlay/overlay";
