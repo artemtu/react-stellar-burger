@@ -9,7 +9,7 @@ const modalRoot = document.getElementById("react-modal");
 function Modal({handleClose, children}) {
   
   return createPortal(
-    <Overlay>
+    <Overlay handleClose={handleClose}>
       <div className={styles.modal}>
         <div className={`${styles.close}`}>
           <button className={`${styles.close__button}`} onClick={handleClose}>
