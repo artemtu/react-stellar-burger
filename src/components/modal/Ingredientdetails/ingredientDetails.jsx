@@ -44,8 +44,5 @@ function IngredientDetails({ data, id }) {
   );
 }
 
-IngredientDetails.propTypes = {
-  data: ingredientPropType.isRequired,
-  id: PropTypes.string.isRequired,
-};
+
 export default IngredientDetails;
