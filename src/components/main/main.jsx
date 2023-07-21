@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "./main.module.css";
 import { TabMenu } from "../tab/tab";
-import { Ingridients } from "./burger-ingredients/burgerIngredients";
-import { Buns } from "./burger-ingredients/buns/buns";
-import Sauce from "./burger-ingredients/sauces/sauces";
-import Fillings from "./burger-ingredients/fillings/fillings";
 import BunUpConstructor from "./burger-constructor/BunTopConstructor/BunTopConsctructor";
 import BunBottomConstructor from "./burger-constructor/BunBottomConstructor/BunBottomConstructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
+import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
 
 import {
   ConstructorElement,
@@ -32,11 +29,11 @@ function Main({ setOrderModal, setIngredientModal, data }) {
         <TabMenu />
         <div className={`${styles.scroll} custom-scroll`}>
           <h2 className="text text_type_main-medium mt-10">Булки</h2>
-          <Buns data={bunsArray} setIngredientModal={setIngredientModal} />
+          <IngredientList data={bunsArray} setIngredientModal={setIngredientModal} />
           <h2 className="text text_type_main-medium mt-10">Соусы</h2>
-          <Sauce data={sauceArray} setIngredientModal={setIngredientModal} />
+          <IngredientList data={sauceArray} setIngredientModal={setIngredientModal} />
           <h2 className="text text_type_main-medium mt-10">Начинки</h2>
-          <Fillings
+          <IngredientList
             data={fillingsArray}
             setIngredientModal={setIngredientModal}
           />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Ingridients } from "../burgerIngredients";
 
-export function Buns({ setIngredientModal, data }) {
+export function IngredientList({ setIngredientModal, data }) {
   return (
     <div className="ingridient-container">
       {data.map((item) => (
@@ -17,4 +17,4 @@ export function Buns({ setIngredientModal, data }) {
     </div>
   );
 }
-export default Buns;
+export default IngredientList;
