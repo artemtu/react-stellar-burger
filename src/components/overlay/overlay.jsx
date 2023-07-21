@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./overlay.module.css";
-import ReactDOM from "react-dom";
 
-const modalRoot = document.getElementById("react-modal");
 
 function Overlay({ children,handleClose}) {
   const handleOverlayClick = (event) => {
@@ -12,11 +10,10 @@ function Overlay({ children,handleClose}) {
     }
   };
 
-  return ReactDOM.createPortal(
+  return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
       {children}
-    </div>,
-    modalRoot
+    </div>
   );
 }
 
