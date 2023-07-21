@@ -53,21 +53,6 @@ function App() {
     setIngredientModal({ open: false });
   }
 
-  useEffect(() => {
-    const closeModalOnEscape = (event) => {
-      if (event.key === "Escape") {
-        closeOrderModal();
-      }
-    };
-
-    if (isOrderModal || isIngredientModal) {
-      document.addEventListener("keydown", closeModalOnEscape);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", closeModalOnEscape);
-    };
-  });
 
   return (
     <div className={styles.app}>
@@ -79,14 +64,14 @@ function App() {
       />
       {isOrderModal && (
         <>
-          <Modal handleClose={closeOrderModal}>
+          <Modal handleClose={closeOrderModal} closeOrderModal={closeOrderModal} isOrderModal={isOrderModal}  >
             <Orderdetails />
           </Modal>
         </>
       )}
       {isIngredientModal.open && (
         <>
-          <Modal handleClose={closeOrderModal}>
+          <Modal handleClose={closeOrderModal} isIngredientModal={isIngredientModal} closeOrderModal={closeOrderModal} >
             <IngredientDetails data={data} id={isIngredientModal.id} />
           </Modal>
         </>
