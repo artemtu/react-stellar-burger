@@ -63,18 +63,18 @@ function App() {
         data={data}
       />
       {isOrderModal && (
-        <>
+        
           <Modal handleClose={closeOrderModal} closeOrderModal={closeOrderModal} isOrderModal={isOrderModal}  >
             <Orderdetails />
           </Modal>
-        </>
+        
       )}
       {isIngredientModal.open && (
-        <>
+        
           <Modal handleClose={closeOrderModal} isIngredientModal={isIngredientModal} closeOrderModal={closeOrderModal} >
             <IngredientDetails data={data} id={isIngredientModal.id} />
           </Modal>
-        </>
+        
       )}
     </div>
   );
