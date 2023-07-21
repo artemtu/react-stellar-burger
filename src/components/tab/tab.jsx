@@ -1,11 +1,11 @@
 import React from "react";
-import tab from "./tab.css";
+import styles from "./tab.module.css";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export function TabMenu() {
   const [current, setCurrent] = React.useState("one");
   return (
-    <div className="mt-5" style={{ display: "flex" }}>
+    <div className={`${styles.tab} mt-5`}>
       <Tab value="one" active={current === "one"} onClick={setCurrent}>
         Булки
       </Tab>
@@ -20,3 +20,4 @@ export function TabMenu() {
 }
 
 export default TabMenu;
+
