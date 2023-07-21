@@ -45,7 +45,7 @@ function App() {
   
   }, [])
 
-  console.log(data);
+ 
 
 
   function closeModal() {
