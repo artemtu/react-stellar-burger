@@ -1,5 +1,5 @@
 import React from "react";
-import content from "./main.css";
+import styles from "./main.module.css";
 import { TabMenu } from "../tab/tab";
 import { Ingridients } from "./burger-ingredients/burgerIngredients";
 import { Buns } from "./burger-ingredients/buns/buns";
@@ -26,11 +26,11 @@ function Main({ setOrderModal, setIngredientModal, data }) {
  
 
   return (
-    <main className="content">
-      <section className="menu-bar mt-10">
+    <main className={`${styles.content}`}>
+      <section className={`${styles.menuBar} mt-10`}>
         <h1 className="text text_type_main-large">Соберите бургер</h1>
         <TabMenu />
-        <div className="scroll custom-scroll">
+        <div className={`${styles.scroll} custom-scroll`}>
           <h2 className="text text_type_main-medium mt-10">Булки</h2>
           <Buns data={bunsArray} setIngredientModal={setIngredientModal} />
           <h2 className="text text_type_main-medium mt-10">Соусы</h2>
@@ -44,16 +44,8 @@ function Main({ setOrderModal, setIngredientModal, data }) {
       </section>
 
       {/* вторая часть страницы */}
-      <section className="burger-bar mt-25 ml-10">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            maxHeight: "60vh",
-          }}
-          className="ml-4 mr-4"
-        >
+      <section className={`${styles.burgerBar} mt-25 ml-10`}>
+        <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={bun} />
           <Ingredients data={ingredients}/>
           <BunBottomConstructor data={bun} />
@@ -65,5 +57,3 @@ function Main({ setOrderModal, setIngredientModal, data }) {
 }
 
 export default Main;
-
-// {`${styles.header} p10`}

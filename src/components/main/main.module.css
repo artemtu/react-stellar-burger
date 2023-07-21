@@ -5,35 +5,31 @@
   /* outline: 1px solid red; */
 }
 
-.menu-bar {
+.menuBar {
   display: flex;
   flex-direction: column;
   width: 600px;
   /* outline: 1px solid red; */
-
-
-
 }
 
 
-.constructor-bar {
-  display: flex;
-  flex-direction: column;
-
-  /* outline: 1px solid red; */
-
-}
 
 .scroll {
   height: 70vh;
   overflow-y: scroll;
 }
 
-.burger-bar {
+.burgerBar {
   display: flex;
   flex-direction: column;
   /* outline: 1px solid red;   */
   max-height: 100vh;
+}
 
 
+.burgerBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 60vh;
 }
