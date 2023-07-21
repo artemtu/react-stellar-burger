@@ -5,10 +5,6 @@
   /* outline: 1px solid red; */
 }
 
-.text { 
-    cursor: pointer;
-     
-}
 
 .header__link{
     display: flex;
@@ -22,7 +18,7 @@
   display: flex;
 }
 
-.lel{
+.logo{
 
   display: flex;
   justify-content: center;

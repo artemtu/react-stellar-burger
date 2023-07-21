@@ -3,7 +3,6 @@ import styles from "./app.module.css";
 import Header from "../app-header/app-header";
 import Main from "../main/main";
 import Modal from "../modal/modal";
-import Overlay from "../overlay/overlay";
 import IngredientDetails from "../modal/Ingredientdetails/ingredientDetails";
 import Orderdetails from "../modal/orderdetails/orderdetails";
 

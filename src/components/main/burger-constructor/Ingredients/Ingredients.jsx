@@ -4,11 +4,11 @@ import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import list from "./ingredients.css";
+import styles from "./ingredients.module.css";
 
 function Ingredients({ data }) {
   return (
-    <div className="list custom-scroll" style={{ gap: "10px" }}>
+    <div className={`${styles.list} custom-scroll`} >
       {data.map((item) => (
         <div>
           <DragIcon />
@@ -26,3 +26,6 @@ function Ingredients({ data }) {
 }
 
 export default Ingredients;
+
+
+// {`${styles.header} p10`}
