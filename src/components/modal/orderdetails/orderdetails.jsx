@@ -6,7 +6,7 @@ import orderImg from '../../../images/doneorder-done.png'
 
 const modalRoot = document.getElementById('react-modal')
 
-export function Orderdetails() {
+export function OrderDetails() {
   return (
     <div className={styles.figures}>
       <span className= 'text text_type_digits-large mt-30'>1904191</span>
@@ -21,4 +21,4 @@ export function Orderdetails() {
 
 }
 
-export default Orderdetails
+export default OrderDetails

@@ -4,7 +4,7 @@ import Header from "../app-header/app-header";
 import Main from "../main/main";
 import Modal from "../modal/modal";
 import IngredientDetails from "../modal/Ingredientdetails/ingredientDetails";
-import Orderdetails from "../modal/orderdetails/orderdetails";
+import OrderDetails from "../modal/orderdetails/orderdetails";
 
 function App() {
   const [isOrderModal, setOrderModal] = useState(false);
@@ -65,7 +65,7 @@ function App() {
       {isOrderModal && (
         
           <Modal handleClose={closeModal} closeModal={closeModal} isOrderModal={isOrderModal}  >
-            <Orderdetails />
+            <OrderDetails />
           </Modal>
         
       )}
