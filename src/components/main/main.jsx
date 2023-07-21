@@ -26,7 +26,7 @@ function Main({ setOrderModal, setIngredientModal, data }) {
  
 
   return (
-    <main className="content">
+    <main className={`${styles.header}`}>
       <section className="menu-bar mt-10">
         <h1 className="text text_type_main-large">Соберите бургер</h1>
         <TabMenu />
@@ -65,3 +65,5 @@ function Main({ setOrderModal, setIngredientModal, data }) {
 }
 
 export default Main;
+
+// {`${styles.header} p10`}
