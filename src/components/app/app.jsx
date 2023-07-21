@@ -33,6 +33,9 @@ function App() {
         .then((res) => {
         setData(res.data)
       })
+      .catch((error) => {
+        console.error("Произошла ошибка при получении данных:", error);
+      })
     )
   }
 
