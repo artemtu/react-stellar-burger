@@ -48,7 +48,7 @@ function App() {
   console.log(data);
 
 
-  function closeOrderModal() {
+  function closeModal() {
     setOrderModal(false);
     setIngredientModal({ open: false });
   }
@@ -64,14 +64,14 @@ function App() {
       />
       {isOrderModal && (
         
-          <Modal handleClose={closeOrderModal} closeOrderModal={closeOrderModal} isOrderModal={isOrderModal}  >
+          <Modal handleClose={closeModal} closeModal={closeModal} isOrderModal={isOrderModal}  >
             <Orderdetails />
           </Modal>
         
       )}
       {isIngredientModal.open && (
         
-          <Modal handleClose={closeOrderModal} isIngredientModal={isIngredientModal} closeOrderModal={closeOrderModal} >
+          <Modal handleClose={closeModal} isIngredientModal={isIngredientModal} closeModal={closeModal} >
             <IngredientDetails data={data} id={isIngredientModal.id} />
           </Modal>
         
