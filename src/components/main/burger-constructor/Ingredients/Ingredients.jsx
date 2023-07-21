@@ -10,7 +10,7 @@ function Ingredients({ data }) {
   return (
     <div className={`${styles.list} custom-scroll`} >
       {data.map((item) => (
-        <div>
+        <div key={item._id}>
           <DragIcon />
           <ConstructorElement
             className="items"
