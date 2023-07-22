@@ -5,6 +5,9 @@ import Main from "../main/main";
 import Modal from "../modal/modal";
 import IngredientDetails from "../modal/Ingredientdetails/ingredientDetails";
 import OrderDetails from "../modal/orderdetails/orderdetails";
+import { fetchIngredients } from "../../store/actions/ingredientActions";
+import { GET_INGREDIENTS } from "../../store/actions/actions";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [isOrderModal, setOrderModal] = useState(false);
@@ -14,6 +17,12 @@ function App() {
   });
   const [data, setData] = useState([]);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, []);
+
   const config = {
     baseUrl: "https://norma.nomoreparties.space/api/ingredients",
     headers: {
@@ -22,37 +31,29 @@ function App() {
   };
 
   const getData = () => {
-    return (
-      fetch(config.baseUrl)
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Ошибка: ${res.status}`);
-        })
-        .then((res) => {
-        setData(res.data)
+    return fetch(config.baseUrl)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .then((res) => {
+        setData(res.data);
       })
       .catch((error) => {
         console.error("Произошла ошибка при получении данных:", error);
-      })
-    )
-  }
+      });
+  };
 
   useEffect(() => {
-      
-    getData()
-  
-  }, [])
-
- 
-
+    getData();
+  }, []);
 
   function closeModal() {
     setOrderModal(false);
     setIngredientModal({ open: false });
   }
-
 
   return (
     <div className={styles.app}>
@@ -63,18 +64,22 @@ function App() {
         data={data}
       />
       {isOrderModal && (
-        
-          <Modal handleClose={closeModal} closeModal={closeModal} isOrderModal={isOrderModal}  >
-            <OrderDetails />
-          </Modal>
-        
+        <Modal
+          handleClose={closeModal}
+          closeModal={closeModal}
+          isOrderModal={isOrderModal}
+        >
+          <OrderDetails />
+        </Modal>
       )}
       {isIngredientModal.open && (
-        
-          <Modal handleClose={closeModal} isIngredientModal={isIngredientModal} closeModal={closeModal} >
-            <IngredientDetails data={data} id={isIngredientModal.id} />
-          </Modal>
-        
+        <Modal
+          handleClose={closeModal}
+          isIngredientModal={isIngredientModal}
+          closeModal={closeModal}
+        >
+          <IngredientDetails data={data} id={isIngredientModal.id} />
+        </Modal>
       )}
     </div>
   );
