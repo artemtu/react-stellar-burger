@@ -7,6 +7,8 @@ import price from "./burgerIngredients.css";
 
 
 export function Ingridients({ id, image, name, price, setIngredientModal }) {
+  
+  
   const onClick = () => {
     setIngredientModal({open:true, id})
   };

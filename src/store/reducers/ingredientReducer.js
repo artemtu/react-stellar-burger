@@ -5,7 +5,8 @@ import { GET_INGREDIENTS } from "../actions/actions";
 
 // Начальное состояние вашего редьюсера
 const initialState = {
-  ingredients: [],
+  data: [],
+  isLoading:true,
 };
 
 
@@ -14,7 +15,8 @@ const ingredientReducer = (state = initialState, action) => {
     case GET_INGREDIENTS:
       return {
         ...state,
-        ingredients: action.payload,
+        data: action.payload,
+        isLoading:false,
       };
 
 

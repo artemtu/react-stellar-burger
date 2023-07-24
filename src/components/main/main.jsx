@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./main.module.css";
 import { TabMenu } from "../tab/tab";
 import BunUpConstructor from "./burger-constructor/BunTopConstructor/BunTopConsctructor";
 import BunBottomConstructor from "./burger-constructor/BunBottomConstructor/BunBottomConstructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchIngredients } from "../../store/actions/ingredientActions";
+
 
 import {
   ConstructorElement,
@@ -14,13 +17,28 @@ import Extraction from "./burger-constructor/extraction/extraction";
 
 // const ingredients = data.filter((item) => item.type !== "bun");
 
-function Main({ setOrderModal, setIngredientModal, data }) {
-  const bunsArray = data.filter((item) => item.type === "bun");
-  const fillingsArray = data.filter((item) => item.type === "main");
-  const sauceArray = data.filter((item) => item.type === "sauce");
-  const bun = data.filter((item) => item.name === "Краторная булка N-200i");
-  const ingredients = data.filter((item) => item.type !== "bun");
- 
+function Main({ setOrderModal, setIngredientModal }) {
+  const dispatch = useDispatch();
+
+  const selectIngredients = useSelector((state) => state.ingredients);
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, []);
+
+
+  if (selectIngredients.isLoading) {
+    return <span>загрузка</span>;
+  }
+
+  const bunsArray = selectIngredients.data.filter((item) => item.type === "bun");
+  const fillingsArray = selectIngredients.data.filter(
+    (item) => item.type === "main"
+  );
+  const sauceArray = selectIngredients.data.filter((item) => item.type === "sauce");
+  const bun = selectIngredients.data.filter(
+    (item) => item.name === "Краторная булка N-200i"
+  );
+  const ingredients = selectIngredients.data.filter((item) => item.type !== "bun");
 
   return (
     <main className={`${styles.content}`}>
@@ -29,9 +47,15 @@ function Main({ setOrderModal, setIngredientModal, data }) {
         <TabMenu />
         <div className={`${styles.scroll} custom-scroll`}>
           <h2 className="text text_type_main-medium mt-10">Булки</h2>
-          <IngredientList data={bunsArray} setIngredientModal={setIngredientModal} />
+          <IngredientList
+            data={bunsArray}
+            setIngredientModal={setIngredientModal}
+          />
           <h2 className="text text_type_main-medium mt-10">Соусы</h2>
-          <IngredientList data={sauceArray} setIngredientModal={setIngredientModal} />
+          <IngredientList
+            data={sauceArray}
+            setIngredientModal={setIngredientModal}
+          />
           <h2 className="text text_type_main-medium mt-10">Начинки</h2>
           <IngredientList
             data={fillingsArray}
@@ -44,7 +68,7 @@ function Main({ setOrderModal, setIngredientModal, data }) {
       <section className={`${styles.burgerBar} mt-25 ml-10`}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={bun} />
-          <Ingredients data={ingredients}/>
+          <Ingredients data={ingredients} />
           <BunBottomConstructor data={bun} />
         </div>
         <Extraction setOrderModal={setOrderModal} />

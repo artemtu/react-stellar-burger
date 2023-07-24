@@ -1,5 +1,6 @@
 import React from "react";
 import { Ingridients } from "../burgerIngredients";
+import { useSelector } from "react-redux";
 
 export function IngredientList({ setIngredientModal, data }) {
   return (
