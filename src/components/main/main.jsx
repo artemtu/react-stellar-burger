@@ -7,6 +7,14 @@ import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
+import { getIngredients } from "../../store/actions/constructorActions";
+
+
+
+
+
+
+
 
 
 import {
@@ -21,15 +29,36 @@ function Main({ setOrderModal, setIngredientModal }) {
   const dispatch = useDispatch();
 
   const selectIngredients = useSelector((state) => state.ingredients);
+  // useEffect(() => {
+  //   dispatch(fetchIngredients());
+  // }, []);
+
+
+  // useEffect(() => {
+  //   dispatch(getIngredients(bun, ingredients));
+  // }, []);
+
+  // if (selectIngredients.isLoading) {
+  //   return <span>загрузка</span>;
+  // }
   useEffect(() => {
-    dispatch(fetchIngredients());
-  }, []);
+    const fetchData = async () => {
+      await dispatch(fetchIngredients());
+    };
+
+    fetchData();
+  }, [dispatch]);
+ 
+  useEffect(() => {
+
+    if (selectIngredients.data.length > 0) {
+
+      dispatch(getIngredients(bun, ingredients));
+    }
+  }, [selectIngredients.data, dispatch]);
 
 
-  if (selectIngredients.isLoading) {
-    return <span>загрузка</span>;
-  }
-
+  
   const bunsArray = selectIngredients.data.filter((item) => item.type === "bun");
   const fillingsArray = selectIngredients.data.filter(
     (item) => item.type === "main"

@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "../Ingredientdetails/ingredientDetails.module.css";
-import { createPortal } from "react-dom";
-
 
 
 function IngredientDetails({ data, id }) {

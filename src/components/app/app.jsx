@@ -5,10 +5,9 @@ import Main from "../main/main";
 import Modal from "../modal/modal";
 import IngredientDetails from "../modal/Ingredientdetails/ingredientDetails";
 import OrderDetails from "../modal/orderdetails/orderdetails";
-import { fetchIngredients } from "../../store/actions/ingredientActions";
-import { GET_INGREDIENTS } from "../../store/actions/actions";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
+
+
 
 
 function App() {
