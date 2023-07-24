@@ -58,7 +58,7 @@ function Main({ setOrderModal, setIngredientModal }) {
   }, [selectIngredients.data, dispatch]);
 
 
-  
+
   const bunsArray = selectIngredients.data.filter((item) => item.type === "bun");
   const fillingsArray = selectIngredients.data.filter(
     (item) => item.type === "main"

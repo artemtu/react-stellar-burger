@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "../Ingredientdetails/ingredientDetails.module.css";
+import { useSelector } from "react-redux";
 
 
-function IngredientDetails({ data, id }) {
+function IngredientDetails({ id }) {
+  const data = useSelector((state) => state.ingredients.data);
   const ingredient = data.find((item) => item._id === id);;
   return (
+    
     <div>
       <h2 className="text text_type_main-large mt-10 ml-10 mr-10">
         Детали ингридиента

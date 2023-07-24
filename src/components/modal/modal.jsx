@@ -14,6 +14,7 @@ const modalRoot = document.getElementById("react-modal");
 
 function Modal({handleClose, children, closeModal, isOrderModal, isIngredientModal}) {
   
+  
   useEffect(() => {
     const closeModalOnEscape = (event) => {
       if (event.key === "Escape") {
