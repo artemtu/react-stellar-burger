@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { getIngredients } from "../../store/actions/constructorActions";
 import { getIngredientIds } from "../../store/actions/idIngredients";
+import { removeIngredient } from "../../store/actions/addRemove";
 
 
 import {
@@ -25,23 +26,6 @@ function Main({ setOrderModal, setIngredientModal }) {
   const selectIngredients = useSelector((state) => state.mainData);
 
 
-
-
-
-
-  // useEffect(() => {
-  //   dispatch(fetchIngredients());
-  // }, []);
-
-
-
-  // useEffect(() => {
-  //   dispatch(getIngredients(bun, ingredients));
-  // }, []);
-
-  // if (selectIngredients.isLoading) {
-  //   return <span>загрузка</span>;
-  // }
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(fetchIngredients());
@@ -51,15 +35,13 @@ function Main({ setOrderModal, setIngredientModal }) {
   }, [dispatch]);
  
   useEffect(() => {
-
     if (selectIngredients.data.length > 0) {
-
       dispatch(getIngredients(bun, ingredients));
-
-
     }
   }, [selectIngredients.data, dispatch]);
 
+
+  
   const constructorData = useSelector((state) => state.constructorBurger);
   const buns = constructorData.bun;
   const ingredintListFromConstructor = constructorData.ingredients;
@@ -67,18 +49,19 @@ function Main({ setOrderModal, setIngredientModal }) {
 
   useEffect(() => {
     if (buns && ingredintListFromConstructor.length > 0) {
-      // Объединяем айдишники булок и ингредиентов в один массив
       const allIngredientIds = [...bun, ...ingredients].map((item) => item._id);
-      // Диспатчим экшен для сохранения массива айдишников в хранилище
       dispatch(getIngredientIds(allIngredientIds));
     }
   }, [buns, ingredintListFromConstructor, dispatch]);
 
-
+  const ingredientToRemove = '643d69a5c3f7b9001cfa0941';
+  const isDataLoaded = selectIngredients.data.length > 0;
   
-
-  
-
+  useEffect(() => {
+    if (isDataLoaded) {
+      dispatch(removeIngredient(ingredientToRemove));
+    }
+  }, [dispatch, isDataLoaded, ingredientToRemove]);
 
 
   const bunsArray = selectIngredients.data.filter((item) => item.type === "bun");
