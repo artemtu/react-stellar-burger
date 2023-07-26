@@ -8,13 +8,7 @@ import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { getIngredients } from "../../store/actions/constructorActions";
-
-
-
-
-
-
-
+import { getIngredientIds } from "../../store/actions/idIngredients";
 
 
 import {
@@ -29,6 +23,12 @@ function Main({ setOrderModal, setIngredientModal }) {
   const dispatch = useDispatch();
 
   const selectIngredients = useSelector((state) => state.mainData);
+
+
+
+
+
+
   // useEffect(() => {
   //   dispatch(fetchIngredients());
   // }, []);
@@ -55,8 +55,29 @@ function Main({ setOrderModal, setIngredientModal }) {
     if (selectIngredients.data.length > 0) {
 
       dispatch(getIngredients(bun, ingredients));
+
+
     }
   }, [selectIngredients.data, dispatch]);
+
+  const constructorData = useSelector((state) => state.constructorBurger);
+  const buns = constructorData.bun;
+  const ingredintListFromConstructor = constructorData.ingredients;
+  
+
+  useEffect(() => {
+    if (buns && ingredintListFromConstructor.length > 0) {
+      // Объединяем айдишники булок и ингредиентов в один массив
+      const allIngredientIds = [...bun, ...ingredients].map((item) => item._id);
+      // Диспатчим экшен для сохранения массива айдишников в хранилище
+      dispatch(getIngredientIds(allIngredientIds));
+    }
+  }, [buns, ingredintListFromConstructor, dispatch]);
+
+
+  
+
+  
 
 
 
