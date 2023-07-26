@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 function IngredientDetails({ id }) {
-  const data = useSelector((state) => state.ingredients.data);
+  const data = useSelector((state) => state.mainData.data);
   const ingredient = data.find((item) => item._id === id);
 
   const dispatch = useDispatch();

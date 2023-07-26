@@ -28,10 +28,11 @@ import Extraction from "./burger-constructor/extraction/extraction";
 function Main({ setOrderModal, setIngredientModal }) {
   const dispatch = useDispatch();
 
-  const selectIngredients = useSelector((state) => state.ingredients);
+  const selectIngredients = useSelector((state) => state.mainData);
   // useEffect(() => {
   //   dispatch(fetchIngredients());
   // }, []);
+
 
 
   // useEffect(() => {
