@@ -9,6 +9,8 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 import { applyMiddleware } from "redux";
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 
 const store = createStore(
@@ -21,7 +23,9 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+    <DndProvider backend={HTML5Backend}>
       <App />
+      </DndProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

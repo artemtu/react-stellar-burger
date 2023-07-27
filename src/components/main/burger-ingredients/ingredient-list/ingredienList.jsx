@@ -1,8 +1,12 @@
 import React from "react";
 import { Ingridients } from "../burgerIngredients";
 import { useSelector } from "react-redux";
+import { useDrag } from "react-dnd";
 
 export function IngredientList({ setIngredientModal, data }) {
+
+
+
   return (
     <div className="ingridient-container">
       {data.map((item) => (

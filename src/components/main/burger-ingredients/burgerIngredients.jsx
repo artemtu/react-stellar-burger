@@ -1,4 +1,5 @@
 import React from "react";
+import { useDrag } from "react-dnd";
 import {
   CurrencyIcon,
   Counter,
@@ -8,12 +9,13 @@ import price from "./burgerIngredients.css";
 
 export function Ingridients({ id, image, name, price, setIngredientModal }) {
   
+
   
   const onClick = () => {
     setIngredientModal({open:true, id})
   };
   return (
-    <div>
+    <div >
       <div style={{ position: "relative"  }}>
         <img className="pl-4 mt-6" src={image} alt={name} onClick={onClick} />
         <Counter count={1} size="default" extraClass="m-1" />

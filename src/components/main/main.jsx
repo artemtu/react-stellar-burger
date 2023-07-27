@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./main.module.css";
 import { TabMenu } from "../tab/tab";
 import BunUpConstructor from "./burger-constructor/BunTopConstructor/BunTopConsctructor";
@@ -10,6 +10,8 @@ import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { getIngredients } from "../../store/actions/constructorActions";
 import { getIngredientIds } from "../../store/actions/idIngredients";
 import { removeIngredient } from "../../store/actions/addRemove";
+import { useDrag, useDrop } from "react-dnd";
+
 
 
 import {
@@ -41,10 +43,14 @@ function Main({ setOrderModal, setIngredientModal }) {
   }, [selectIngredients.data, dispatch]);
 
 
+
+
   
   const constructorData = useSelector((state) => state.constructorBurger);
   const buns = constructorData.bun;
   const ingredintListFromConstructor = constructorData.ingredients;
+
+
   
 
   useEffect(() => {
@@ -62,6 +68,11 @@ function Main({ setOrderModal, setIngredientModal }) {
       dispatch(removeIngredient(ingredientToRemove));
     }
   }, [dispatch, isDataLoaded, ingredientToRemove]);
+
+  const[draggedElements, setDraggedElements] = useState([])
+
+
+
 
 
   const bunsArray = selectIngredients.data.filter((item) => item.type === "bun");
@@ -89,6 +100,7 @@ function Main({ setOrderModal, setIngredientModal }) {
           <IngredientList
             data={sauceArray}
             setIngredientModal={setIngredientModal}
+            
           />
           <h2 className="text text_type_main-medium mt-10">Начинки</h2>
           <IngredientList
@@ -102,7 +114,7 @@ function Main({ setOrderModal, setIngredientModal }) {
       <section className={`${styles.burgerBar} mt-25 ml-10`}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={bun} />
-          <Ingredients data={ingredients} />
+          <Ingredients data={ingredients}  />
           <BunBottomConstructor data={bun} />
         </div>
         <Extraction setOrderModal={setOrderModal} />
