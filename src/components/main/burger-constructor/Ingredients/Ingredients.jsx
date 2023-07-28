@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
+import { useEffect } from "react";
+
 
 import {
   ConstructorElement,
@@ -11,10 +13,10 @@ import styles from "./ingredients.module.css";
 
 function Ingredients({ data }) {
   const dispatch = useDispatch();
-  
   const handleRemoveIngredient = (id) => {
     dispatch({ type: REMOVE_INGREDIENT, payload: id });
   };
+
   return (
     <div className={`${styles.list} custom-scroll`}>
       {data.map((item) => (

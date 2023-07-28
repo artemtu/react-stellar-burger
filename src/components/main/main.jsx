@@ -8,6 +8,7 @@ import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";
+import { REMOVE_INGREDIENT } from "../../store/actions/actions";
 
 import {
   ConstructorElement,
@@ -58,6 +59,10 @@ function Main({ setOrderModal, setIngredientModal }) {
       dispatch({ type: "ADD_INGREDIENT", payload: item });
     }
   };
+
+
+
+
 
   return (
     <main className={`${styles.content}`}>
