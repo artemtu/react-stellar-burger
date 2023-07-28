@@ -14,7 +14,7 @@ function Extraction({setOrderModal}) {
   const ingredients = ingredientsForPrice.ingredients || [];
 
   const totalPrice = React.useMemo(() => {
-    const bunPrice = buns.reduce((acc, item) => acc + (item.price  || 0), 0);
+    const bunPrice = buns.reduce((acc, item) => acc + (item.price * 2  || 0), 0);
     const ingredientsPrice = ingredients.reduce((acc, item) => acc + (item.price || 0), 0);
     return bunPrice + ingredientsPrice;
   }, [buns, ingredients]);
