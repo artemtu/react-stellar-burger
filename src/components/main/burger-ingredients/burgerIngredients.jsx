@@ -20,9 +20,6 @@ export function Ingridients({
 
   {
   const bunsInStore = useSelector((state) => state.constructorBurger.bun.length);
-  console.log(bunsInStore);
-
-
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredients",

@@ -36,7 +36,7 @@ const constructorReducer = (state = initialState, action) => {
       case REMOVE_INGREDIENT:
         return {
           ...state,
-          ingredients: state.ingredients.filter((ingredient) => ingredient._id !== action.payload)
+          ingredients: state.ingredients.filter((ingredient) => ingredient.id !== action.payload)
         };
     default:
       return state;

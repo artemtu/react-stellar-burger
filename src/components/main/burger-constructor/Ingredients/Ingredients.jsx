@@ -1,7 +1,7 @@
 import React from "react";
-import { useDrag } from "react-dnd";
-import { useDrop } from "react-dnd";
-import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
 
 import {
   ConstructorElement,
@@ -10,6 +10,11 @@ import {
 import styles from "./ingredients.module.css";
 
 function Ingredients({ data }) {
+  const dispatch = useDispatch();
+  
+  const handleRemoveIngredient = (id) => {
+    dispatch({ type: REMOVE_INGREDIENT, payload: id });
+  };
   return (
     <div className={`${styles.list} custom-scroll`}>
       {data.map((item) => (
@@ -21,6 +26,8 @@ function Ingredients({ data }) {
             text={item.name}
             price={item.price}
             thumbnail={item.image}
+            handleClose={() => handleRemoveIngredient(item.id)}
+            
           />
         </div>
       ))}
