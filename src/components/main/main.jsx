@@ -39,19 +39,25 @@ function Main({ setOrderModal, setIngredientModal }) {
     fetchData();
   }, [dispatch]);
 
-
-  const [{isOver}, dropRef] = useDrop({
+  const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
     drop: (item) => addIngredientsToConstructor(item),
-    collect:(monitor) => ({
+    collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   });
-  const addIngredientsToConstructor = (item) => {
-    console.log(item);
-  }
+  // const addIngredientsToConstructor = (item) => {
+  //   console.log(item);
+  // }
 
- 
+  const addIngredientsToConstructor = (item) => {
+    const { type } = item;
+    if (type === "bun") {
+      dispatch({ type: "ADD_BUN", payload: item });
+    } else {
+      dispatch({ type: "ADD_INGREDIENT", payload: item });
+    }
+  };
 
   return (
     <main className={`${styles.content}`}>

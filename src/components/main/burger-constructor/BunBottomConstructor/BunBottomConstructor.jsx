@@ -6,7 +6,7 @@ import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-comp
 
 function BunBottomConstructor({ data }) {
   return (
-    <div className="pl-6">
+    <div className="pl-6" key={data._id}>
       {data.map((item) => (
         <ConstructorElement
           key={item._id}

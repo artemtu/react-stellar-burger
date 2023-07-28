@@ -8,8 +8,9 @@ import {
 
 
 function BunUpConstructor({ data }) {
+  
   return (
-    <div className="pl-6">
+    <div className="pl-6" key={data._id}>
       {data.map((item) => (
         <ConstructorElement
           type="top"
