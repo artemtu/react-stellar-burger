@@ -6,10 +6,10 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import price from "./burgerIngredients.css";
 
-export function Ingridients({ id, image, name, price, setIngredientModal }) {
+export function Ingridients({ id, type, image, name, price, setIngredientModal }) {
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredients",
-    item: { id, image, name, price },
+    item: { id, image, name, price, type },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

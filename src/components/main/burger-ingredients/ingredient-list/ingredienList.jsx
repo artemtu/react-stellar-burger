@@ -16,6 +16,7 @@ export function IngredientList({ setIngredientModal, data }) {
           image={item.image}
           name={item.name}
           price={item.price}
+          type={item.type}
           setIngredientModal={setIngredientModal}
         />
       ))}
