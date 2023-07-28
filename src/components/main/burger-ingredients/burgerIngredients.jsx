@@ -6,17 +6,24 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import price from "./burgerIngredients.css";
 
-
 export function Ingridients({ id, image, name, price, setIngredientModal }) {
-  
+  const [{ isDragging }, dragRef] = useDrag({
+    type: "ingredients",
+    item: { id, image, name, price },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
 
-  
   const onClick = () => {
-    setIngredientModal({open:true, id})
+    setIngredientModal({ open: true, id });
   };
   return (
-    <div >
-      <div style={{ position: "relative"  }}>
+    <div
+      ref={dragRef}
+      style={{ border: isDragging ? "20px solid red" : "0px" }}
+    >
+      <div style={{ position: "relative" }}>
         <img className="pl-4 mt-6" src={image} alt={name} onClick={onClick} />
         <Counter count={1} size="default" extraClass="m-1" />
       </div>
@@ -28,3 +35,5 @@ export function Ingridients({ id, image, name, price, setIngredientModal }) {
     </div>
   );
 }
+
+export default Ingridients;

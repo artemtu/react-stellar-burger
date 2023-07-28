@@ -6,7 +6,7 @@ import { REMOVE_INGREDIENT } from "../actions/actions";
 
 // Начальное состояние вашего редьюсера
 const initialState = {
-  bun: null,
+  bun: [],
   ingredients: [],
 };
 
