@@ -8,6 +8,7 @@ function BunBottomConstructor({ data }) {
   return (
     <div className="pl-6" key={data._id}>
       {data.map((item) => (
+        <div key={item.id} >
         <ConstructorElement
           key={item._id}
           type="bottom"
@@ -17,6 +18,7 @@ function BunBottomConstructor({ data }) {
           thumbnail={item.image}
     
         />
+      </div>
       ))}
     </div>
   );

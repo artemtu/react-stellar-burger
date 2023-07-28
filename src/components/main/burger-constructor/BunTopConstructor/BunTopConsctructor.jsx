@@ -10,16 +10,18 @@ import {
 function BunUpConstructor({ data }) {
   
   return (
-    <div className="pl-6" key={data._id}>
+    <div className="pl-6">
       {data.map((item) => (
+        <div key={item.id} >
         <ConstructorElement
           type="top"
           isLocked={true}
           text={item.name + " (верх)"}
           price={item.price}
           thumbnail={item.image}
-          key={item._id}
+          key={item.id}
         />
+      </div>
       ))}
     </div>
   );
