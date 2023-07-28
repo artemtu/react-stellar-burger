@@ -15,25 +15,33 @@ export function Ingridients({
   name,
   price,
   setIngredientModal,
-}) {
+})
+
+
+  {
+  const bunsInStore = useSelector((state) => state.constructorBurger.bun.length);
+  console.log(bunsInStore);
+
+
+
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredients",
     item: { id, image, name, price, type },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
+    canDrag: () => {
+      if (type === "bun" && bunsInStore > 0) {
+        return false;
+      } else {
+        return true;
+      }}
+
   });
-  // const [count, setCount] = useState(0);
+  
+  
 
   const bunsIngredientsFromStore = useSelector((state) => state.constructorBurger);
-
-
-
-
-  // const isBun = bunsIngredientsFromStore.bun.some((item) => item.id === id);
-  // const isIngredient = bunsIngredientsFromStore.ingredients.some((item) => item.id === id);
-  // const count = isBun ? 2 : 0
-
 
   const bunCount = bunsIngredientsFromStore.bun.filter((item) => item.id === id).length * 2;
   const ingredientCount = bunsIngredientsFromStore.ingredients.filter((item) => item.id === id).length;

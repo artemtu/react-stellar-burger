@@ -10,6 +10,7 @@ import { ADD_INGREDIENT } from "../actions/actions";
 const initialState = {
   bun: [],
   ingredients: [],
+  isBunDragged: false,
 };
 
 
