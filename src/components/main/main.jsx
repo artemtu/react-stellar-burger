@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";
 import { REMOVE_INGREDIENT } from "../../store/actions/actions";
+import { getIngredientIds } from "../../store/actions/idIngredients";
 
 import {
   ConstructorElement,
@@ -59,6 +60,17 @@ function Main({ setOrderModal, setIngredientModal }) {
       dispatch({ type: "ADD_INGREDIENT", payload: item });
     }
   };
+
+  const buns = data.bun
+  const ingredintListFromConstructor = data.ingredients
+
+  useEffect(() => {
+      const allIngredientIds = [...buns, ...ingredintListFromConstructor].map((item) => item.id);
+      // console.log(allIngredientIds);
+      // id булки передается только один раз, а также он пока не удаляется (функционал замены булки)
+      dispatch(getIngredientIds(allIngredientIds));
+
+  });
 
 
   return (
