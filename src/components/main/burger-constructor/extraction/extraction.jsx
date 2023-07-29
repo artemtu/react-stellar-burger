@@ -4,6 +4,7 @@ import styles from './extraction.module.css'
 import { useSelector } from 'react-redux'
 import { useMemo } from 'react'
 import { useEffect } from 'react'
+import { useState } from 'react'
 
 function Extraction({setOrderModal}) {
   const onClick = () => {
@@ -19,13 +20,19 @@ function Extraction({setOrderModal}) {
     return bunPrice + ingredientsPrice;
   }, [buns, ingredients]);
 
+  const isButtonDisabled = ingredientsForPrice.bun.length === 0  && ingredientsForPrice.ingredients.length === 0;
+
+
+
+
+
  
   return (
     <div className={`${styles.extraction} mr-4 mt-10`}>
         <p className="text text_type_digits-medium pr-2">{totalPrice}</p>
         <CurrencyIcon/>
         <div className='ml-10'>
-        <Button htmlType="button" type="primary" size="large" extraClass="ml-2" onClick={onClick}>Оформить заказ</Button>
+        <Button htmlType="button" type="primary" size="large" extraClass="ml-2" onClick={onClick} disabled={isButtonDisabled}>Оформить заказ</Button>
         </div>
         
     </div>
