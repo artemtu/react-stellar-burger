@@ -23,10 +23,6 @@ function Extraction({setOrderModal}) {
   const isButtonDisabled = ingredientsForPrice.bun.length === 0  && ingredientsForPrice.ingredients.length === 0;
 
 
-
-
-
- 
   return (
     <div className={`${styles.extraction} mr-4 mt-10`}>
         <p className="text text_type_digits-medium pr-2">{totalPrice}</p>

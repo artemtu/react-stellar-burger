@@ -17,41 +17,6 @@ function App() {
     open: false,
     id: 1,
   });
-  // const [data, setData] = useState([]);
-
-
-  
-
-
-
-
-
-  // const config = {
-  //   baseUrl: "https://norma.nomoreparties.space/api/ingredients",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // };
-
-  // const getData = () => {
-  //   return fetch(config.baseUrl)
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       return Promise.reject(`Ошибка: ${res.status}`);
-  //     })
-  //     .then((res) => {
-  //       setData(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Произошла ошибка при получении данных:", error);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
 
   function closeModal() {
     setOrderModal(false);

@@ -4,6 +4,7 @@ import ingredientReducer from './ingredientReducer';
 import constructorReducer from './constructorReducer';
 import ingredientOpenReducer from './ingredientOpenReducer';
 import ingredientIdsReducer from './ingredientsIdsReducer';
+import orderDetailReducer from './orderDetailsReducer';
 
 // Используйте combineReducers для объединения всех ваших редьюсеров в один корневой редьюсер
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   constructorBurger: constructorReducer,
   ingredient: ingredientOpenReducer,
   ingredients: ingredientIdsReducer,
+  orderDetails: orderDetailReducer,
   
   // Добавьте другие редьюсеры здесь, если у вас их больше
 });
