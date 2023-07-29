@@ -61,9 +61,6 @@ function Main({ setOrderModal, setIngredientModal }) {
   };
 
 
-
-
-
   return (
     <main className={`${styles.content}`}>
       <section className={`${styles.menuBar} mt-10`}>

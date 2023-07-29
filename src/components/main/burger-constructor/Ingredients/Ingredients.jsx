@@ -13,18 +13,19 @@ import styles from "./ingredients.module.css";
 
 function Ingredients({ data }) {
   const dispatch = useDispatch();
+ 
   const handleRemoveIngredient = (id) => {
     dispatch({ type: REMOVE_INGREDIENT, payload: id });
   };
 
   return (
     <div className={`${styles.list} custom-scroll`}>
-      {data.map((item) => (
-        <div key={item.id} >
+      {data.map((item, index) => (
+        <div key={`${item.id}${index}`}>
           <DragIcon />
           <ConstructorElement
             className="items"
-            key={item._id}
+            key={`${item.id}${index}`}
             text={item.name}
             price={item.price}
             thumbnail={item.image}
