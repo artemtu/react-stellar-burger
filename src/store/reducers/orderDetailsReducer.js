@@ -1,7 +1,6 @@
 import { GET_ORDER_NUMBER } from "../actions/actions";
 
 const initialState = {
-  details: [],
 };
 
 const orderDetailReducer = (state = initialState, action) => {

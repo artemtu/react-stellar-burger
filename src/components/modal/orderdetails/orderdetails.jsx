@@ -1,25 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./orderdetails.module.css";
 import orderImg from "../../../images/doneorder-done.png";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getOrderNumber } from "../../../store/actions/orderNumber";
-import { useEffect } from "react";
-
-const modalRoot = document.getElementById("react-modal");
 
 export function OrderDetails() {
-  const ingredientsInStore = useSelector((state) => state.ingredients);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.constructorBurger);
+  const order = useSelector((state) => state.orderDetails.orderDetails);
 
+  const [orderNumber, setOrderNumber] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const buns = data.bun;
+      const ingredientsFromConstructor = data.ingredients;
+      const bunIds = buns.map((item) => item.id);
+      const ingredientIds = ingredientsFromConstructor.map((item) => item.id);
 
-  const orderNumber = useSelector((state) => state.orderDetails.orderDetails.order.number);
+      const allIngredientIds = {
+        ingredients: [...bunIds, ...ingredientIds],
+      };
 
+      const url = "https://norma.nomoreparties.space/api/orders";
 
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(allIngredientIds),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        dispatch(getOrderNumber(data));
+        setOrderNumber(data.order?.number);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
+  }, [data, dispatch]);
 
   return (
     <div className={styles.figures}>
-      <span className="text text_type_digits-large mt-30">{orderNumber}</span>
+      <span className="text text_type_digits-large mt-30">{orderNumber || 0}</span>
       <p className="text text_type_main-default mt-8">идентификатор заказа</p>
       <img src={orderImg} alt="заказ готов" className="mt-15" />
       <p className="mt-15 text text_type_main-small">

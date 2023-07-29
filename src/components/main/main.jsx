@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";
 import { REMOVE_INGREDIENT } from "../../store/actions/actions";
-import { getIngredientIds } from "../../store/actions/idIngredients";
 import { getOrderNumber } from "../../store/actions/orderNumber";
 
 import {
@@ -62,42 +61,14 @@ function Main({ setOrderModal, setIngredientModal }) {
     }
   };
 
-  const buns = data.bun
-  const ingredintListFromConstructor = data.ingredients
+ 
 
-  useEffect(() => {
-      const allIngredientIds = [...buns, ...ingredintListFromConstructor].map((item) => item.id);
-      // console.log(allIngredientIds);
-      // id булки передается только один раз, а также он пока не удаляется (функционал замены булки)
-      dispatch(getIngredientIds(allIngredientIds));
-
-  });
-
-  const url = "https://norma.nomoreparties.space/api/orders";
-
-  const dataToSend = {
-    ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
-  };
+  // const dataToSend = {
+  //   ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
+  // };
 
 
   
-  useEffect(() =>{
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataToSend),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(getOrderNumber(data));
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-
-  }, [])
 
 
   return (
