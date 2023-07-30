@@ -149,7 +149,7 @@ function Main({ setOrderModal, setIngredientModal }) {
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={data.bun} />
-          <Ingredients data={data.ingredients} key={data._constId} />
+          <Ingredients data={data.ingredients} key={data._constId} index={data.index} />
           <BunBottomConstructor data={data.bun} />
         </div>
         <Extraction setOrderModal={setOrderModal} />

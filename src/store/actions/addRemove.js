@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT, REMOVE_INGREDIENT } from "./actions";
+import { ADD_INGREDIENT, REMOVE_INGREDIENT, CHANGE_INGREDIENT } from "./actions";
 
 
 export const addIngredient = (ingredient) => {
@@ -15,4 +15,11 @@ export const addIngredient = (ingredient) => {
       payload: ingredientId,
     };
   };
+
+  export const changeIngredient = (ingredient) => {
+    return {
+      type: CHANGE_INGREDIENT,
+      payload:ingredient,
+    }
+  }
   

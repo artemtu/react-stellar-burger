@@ -1,6 +1,6 @@
 // Импортируйте необходимые action types
 // Замените "SET_INGREDIENTS" на ваш action type для получения списка ингредиентов
-import { GET_BURGER_CONSTRUCTOR_INGREDIENTS } from "../actions/actions";
+import { CHANGE_INGREDIENT, GET_BURGER_CONSTRUCTOR_INGREDIENTS } from "../actions/actions";
 import { REMOVE_INGREDIENT } from "../actions/actions";
 import { ADD_BUN } from "../actions/actions";
 import { ADD_INGREDIENT } from "../actions/actions";
@@ -39,6 +39,13 @@ const constructorReducer = (state = initialState, action) => {
           ...state,
           ingredients: state.ingredients.filter((ingredient)=> ingredient !== ingredientSelected)
         }
+        case CHANGE_INGREDIENT:
+          const {indexFrom, indexTo, ingredient} = action.payload;
+          state.ingredients.splice(indexFrom, 1);
+          state.ingredients.splice(indexTo,0, ingredient);
+          return {
+            ...state
+          }
     default:
       return state;
   }

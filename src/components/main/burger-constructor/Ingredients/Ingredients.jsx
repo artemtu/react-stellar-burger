@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
 import { useEffect } from "react";
-import { useDrag } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
+import { changeIngredient } from "../../../../store/actions/addRemove";
 
 import {
   ConstructorElement,
@@ -14,27 +15,34 @@ import styles from "./ingredients.module.css";
 function Ingredients({ data }) {
   const dispatch = useDispatch();
 
+
+  const handleRemoveIngredient = (_constId) => {
+    dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
+  };
+
+
+  return (
+    <div className={`${styles.list} custom-scroll`}>
+      {data.map((item, index) => (
+        <DraggableIngredient key={item._constId} data={item} index={index} onRemove={handleRemoveIngredient} />
+      ))}
+    </div>
+  );
+}
+
+function DraggableIngredient({ data, onRemove, index }) {
+  const dispatch = useDispatch();
+
   const ingredientsArray = useSelector((store) => store.constructorBurger.ingredients);
 
   const findIndex = (item) => {
     return ingredientsArray.indexOf(item);
   };
 
-  const handleRemoveIngredient = (_constId) => {
-    dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
-  };
+ 
 
-  return (
-    <div className={`${styles.list} custom-scroll`}>
-      {data.map((item) => (
-        <DraggableIngredient key={item._constId} data={item} onRemove={handleRemoveIngredient} />
-      ))}
-    </div>
-  );
-}
 
-function DraggableIngredient({ data, onRemove }) {
-  const dispatch = useDispatch();
+
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "sort",
@@ -44,8 +52,22 @@ function DraggableIngredient({ data, onRemove }) {
     }),
   });
 
+  const [, dropRef] = useDrop({
+    accept: 'sort',
+    hover({ ingredient }) {
+      if (ingredient._constId === data._constId) return;
+      dispatch(changeIngredient({
+        indexFrom: findIndex(ingredient),
+        indexTo: index,
+        ingredient: ingredient,
+      }));
+    },
+  });
+
+
+
   return (
-    <div ref={dragRef} style={{display:'flex', alignItems:'center'}}>
+    <div ref={node =>dragRef(dropRef(node))} style={{display:'flex', alignItems:'center'}}>
       <DragIcon />
       <ConstructorElement
         className="items"
