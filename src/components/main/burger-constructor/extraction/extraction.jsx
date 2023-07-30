@@ -2,9 +2,7 @@ import React from 'react'
 import { CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import styles from './extraction.module.css'
 import { useSelector } from 'react-redux'
-import { useMemo } from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+
 
 function Extraction({setOrderModal}) {
   const onClick = () => {
