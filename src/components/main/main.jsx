@@ -66,10 +66,7 @@ function Main({ setOrderModal, setIngredientModal }) {
   // const dataToSend = {
   //   ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
   // };
-
-
-  
-
+ 
 
   return (
     <main className={`${styles.content}`}>
@@ -99,7 +96,7 @@ function Main({ setOrderModal, setIngredientModal }) {
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={data.bun} />
-          <Ingredients data={data.ingredients}/>
+          <Ingredients data={data.ingredients} />
           <BunBottomConstructor data={data.bun} />
         </div>
         <Extraction setOrderModal={setOrderModal} />
