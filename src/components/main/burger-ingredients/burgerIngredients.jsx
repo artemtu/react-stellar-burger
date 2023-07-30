@@ -27,12 +27,6 @@ export function Ingridients({
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-    canDrag: () => {
-      if (type === "bun" && bunsInStore > 0) {
-        return false;
-      } else {
-        return true;
-      }}
 
   });
   

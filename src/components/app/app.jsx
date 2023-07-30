@@ -12,14 +12,18 @@ import { useSelector } from "react-redux";
 
 function App() {
 
-  const [isOrderModal, setOrderModal] = useState(false);
+  const [isOrderModal, setOrderModal] = useState({
+    open:false,
+    orderNumber: 0,
+  });
   const [isIngredientModal, setIngredientModal] = useState({
     open: false,
     id: 1,
+
   });
 
   function closeModal() {
-    setOrderModal(false);
+    setOrderModal({open:false});
     setIngredientModal({ open: false });
   }
 
@@ -31,13 +35,13 @@ function App() {
         setIngredientModal={setIngredientModal}
       
       />
-      {isOrderModal && (
+      {isOrderModal.open && (
         <Modal
           handleClose={closeModal}
           closeModal={closeModal}
           isOrderModal={isOrderModal}
         >
-          <OrderDetails />
+          <OrderDetails orderNumber={isOrderModal.orderNumber} />
         </Modal>
       )}
       {isIngredientModal.open && (

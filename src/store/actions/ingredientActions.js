@@ -1,7 +1,4 @@
-import { LogoutIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { GET_INGREDIENTS } from "./actions";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 
 export const getIngredients = (ingredients) => {
   return {
@@ -22,20 +19,3 @@ export const fetchIngredients = () => (dispatch) => {
       console.error("Произошла ошибка при получении данных:", error);
     });
 };
-
-// function MyComponent() {
-//     const dispatch = useDispatch();
-
-//     useEffect(() => {
-//       // Call the action to fetch ingredients
-//       dispatch(fetchIngredients());
-//     }, []);
-
-//     const ingredients = useSelector((state) => state.ingredients);
-
-//     console.log(ingredients);
-
-//     // Rest of your component code...
-//   }
-
-//   export default MyComponent;

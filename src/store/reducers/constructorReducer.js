@@ -26,7 +26,7 @@ const constructorReducer = (state = initialState, action) => {
       case ADD_BUN:
       return {
         ...state,
-        bun: [...state.bun, action.payload],
+        bun: [action.payload],
       };
     case ADD_INGREDIENT:
       return {
@@ -45,6 +45,7 @@ const constructorReducer = (state = initialState, action) => {
           state.ingredients.splice(indexTo,0, ingredient);
           return {
             ...state
+
           }
     default:
       return state;
