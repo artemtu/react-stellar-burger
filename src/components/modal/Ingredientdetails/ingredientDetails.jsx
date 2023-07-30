@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../Ingredientdetails/ingredientDetails.module.css";
 import { useSelector } from "react-redux";
 import { ingredientOpen,clearIngredientOpen } from "../../../store/actions/infoOpenIngredient";
-import ingredientOpenReducer from "../../../store/reducers/ingredientOpenReducer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -17,7 +16,7 @@ function IngredientDetails({ id }) {
       dispatch(ingredientOpen(ingredient));
     }
     return () => {
-      dispatch(clearIngredientOpen()); // Вызывайте экшен для очистки данных при закрытии модального окна
+      dispatch(clearIngredientOpen()); 
     };
   }, [dispatch, ingredient]);
 
