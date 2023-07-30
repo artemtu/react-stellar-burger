@@ -34,7 +34,7 @@ const constructorReducer = (state = initialState, action) => {
         ingredients: [...state.ingredients, action.payload],
       };
       case REMOVE_INGREDIENT:
-        const ingredientSelected = state.ingredients.find((ingredient) => ingredient.id === action.payload)
+        const ingredientSelected = state.ingredients.find((ingredient) => ingredient._constId === action.payload)
         return {
           ...state,
           ingredients: state.ingredients.filter((ingredient)=> ingredient !== ingredientSelected)

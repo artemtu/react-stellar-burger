@@ -10,6 +10,7 @@ import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";
 import { REMOVE_INGREDIENT } from "../../store/actions/actions";
 import { getOrderNumber } from "../../store/actions/orderNumber";
+import { v4 as uuidv4 } from 'uuid';
 
 import {
   ConstructorElement,
@@ -41,13 +42,32 @@ function Main({ setOrderModal, setIngredientModal }) {
     fetchData();
   }, [dispatch]);
 
+  // const [{ isOver }, dropRef] = useDrop({
+  //   accept: "ingredients",
+  //   drop: (item) => addIngredientsToConstructor(item),
+  //   collect: (monitor) => ({
+  //     isOver: !!monitor.isOver(),
+  //   }),
+  // });
+
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
-    drop: (item) => addIngredientsToConstructor(item),
+    drop: (data) => { // Use arrow function syntax for the drop callback
+      const newElement = { ...data, _constId: uuidv4() }; // Create a new element with the generated uuid
+      dispatch(addIngredientsToConstructor(newElement));
+    },
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOver: monitor.isOver(),
     }),
   });
+
+  
+  
+
+
+
+
+
   // const addIngredientsToConstructor = (item) => {
   //   console.log(item);
   // }
@@ -96,7 +116,7 @@ function Main({ setOrderModal, setIngredientModal }) {
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={data.bun} />
-          <Ingredients data={data.ingredients} />
+          <Ingredients data={data.ingredients} key={data._constId} />
           <BunBottomConstructor data={data.bun} />
         </div>
         <Extraction setOrderModal={setOrderModal} />

@@ -12,7 +12,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredients.module.css";
 
-function Ingredients({ data }) {
+function Ingredients({ data , _constId}) {
   const dispatch = useDispatch();
 
   const ingredientsArray = useSelector(store => store.constructorBurger.ingredients);
@@ -20,14 +20,16 @@ function Ingredients({ data }) {
     return ingredientsArray.indexOf(item);
   }
 
+
+
  
-  const handleRemoveIngredient = (id) => {
-    dispatch({ type: REMOVE_INGREDIENT, payload: id });
+  const handleRemoveIngredient = (_constId) => {
+    dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
   };
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "sort",
-    item: {ingredient: data},
+    item: {data:_constId},
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -45,18 +47,17 @@ function Ingredients({ data }) {
   // })
 
   return (
-    <div className={`${styles.list} custom-scroll`} >
-      {data.map((item, index) => (
-        
-        <div key={`${item.id}${index}`}ref={dragRef}>
+    <div className={`${styles.list} custom-scroll`}  >
+      {data.map((item, _constId) => (
+        <div key={_constId} ref={dragRef}>
           <DragIcon/>
           <ConstructorElement
             className="items"
-            key={`${item.id}${index}`}
+            key={_constId}
             text={item.name}
             price={item.price}
             thumbnail={item.image}
-            handleClose={() => handleRemoveIngredient(item.id)}
+            handleClose={() => handleRemoveIngredient(item._constId)}
             
           />
         </div>
