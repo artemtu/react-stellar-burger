@@ -10,9 +10,10 @@ import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";
 import { REMOVE_INGREDIENT } from "../../store/actions/actions";
 import { getOrderNumber } from "../../store/actions/orderNumber";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 
 import {
   ConstructorElement,
@@ -54,7 +55,8 @@ function Main({ setOrderModal, setIngredientModal }) {
 
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
-    drop: (data) => { // Use arrow function syntax for the drop callback
+    drop: (data) => {
+      // Use arrow function syntax for the drop callback
       const newElement = { ...data, _constId: uuidv4() }; // Create a new element with the generated uuid
       dispatch(addIngredientsToConstructor(newElement));
     },
@@ -62,13 +64,6 @@ function Main({ setOrderModal, setIngredientModal }) {
       isOver: monitor.isOver(),
     }),
   });
-
-  
-  
-
-
-
-
 
   // const addIngredientsToConstructor = (item) => {
   //   console.log(item);
@@ -83,56 +78,64 @@ function Main({ setOrderModal, setIngredientModal }) {
     }
   };
 
- 
-
   // const dataToSend = {
   //   ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
   // };
 
-  const [bunsRef, bunsInView] = useInView({ threshold: 0.5 });
-  const [sauceRef, sauceInView] = useInView({ threshold: 0.5 });
-  const [fillingsRef, fillingsInView] = useInView({ threshold: 0.5 });
+  const bunRef = useRef(null);
+  const mainRef = useRef(null);
+  const sauceRef = useRef(null);
 
-  useEffect(() => {
-    if (bunsInView) setCurrent("one");
-    else if (sauceInView) setCurrent("two");
-    else if (fillingsInView) setCurrent("three");
-  }, [bunsInView, sauceInView, fillingsInView]);
+  const [inViewBunRef, bunIsInView] = useInView({
+    threshold: 0,
+  });
+  const [inViewSauceRef, sauceIsInView] = useInView({
+    threshold: 0.99,
+  });
+  const [inViewMainRef, mainIsInView] = useInView({
+    threshold: 0.1,
+  });
 
   const [current, setCurrent] = useState("one");
- 
 
   return (
     <main className={`${styles.content}`}>
       <section className={`${styles.menuBar} mt-10`}>
         <h1 className="text text_type_main-large">Соберите бургер</h1>
         <div className={`${styles.tab} mt-5`}>
-      <Tab value="one" active={current === "one"} onClick={setCurrent}>
-        Булки
-      </Tab>
-      <Tab value="two" active={current === "two"} onClick={setCurrent}>
-        Соусы
-      </Tab>
-      <Tab value="three" active={current === "three"} onClick={setCurrent}>
-        Начинки
-      </Tab>
-    </div>
-        <div className={`${styles.scroll} custom-scroll`}>
-          <h2 className="text text_type_main-medium mt-10">Булки</h2>
+          <Tab value="one" active={bunIsInView} onClick={setCurrent}>
+            Булки
+          </Tab>
+          <Tab value="two" active={sauceIsInView} onClick={setCurrent}>
+            Соусы
+          </Tab>
+          <Tab value="three" active={mainIsInView} onClick={setCurrent}>
+            Начинки
+          </Tab>
+        </div>
+        <div className={`${styles.scroll} custom-scroll`} >
+          <div ref={bunRef}>
+          <h2 className="text text_type_main-medium mt-10" ref={inViewBunRef}>Булки</h2>
           <IngredientList
             data={bunsArray}
             setIngredientModal={setIngredientModal}
           />
-          <h2 className="text text_type_main-medium mt-10">Соусы</h2>
+          </div>
+          
+          <div ref={sauceRef}>
+          <h2 className="text text_type_main-medium mt-10" ref={inViewSauceRef}>Соусы</h2>
           <IngredientList
             data={sauceArray}
             setIngredientModal={setIngredientModal}
           />
-          <h2 className="text text_type_main-medium mt-10">Начинки</h2>
+          </div>
+          <div ref={mainRef}>
+          <h2 className="text text_type_main-medium mt-10" ref={inViewMainRef}>Начинки</h2>
           <IngredientList
             data={fillingsArray}
             setIngredientModal={setIngredientModal}
           />
+          </div>
         </div>
       </section>
 
