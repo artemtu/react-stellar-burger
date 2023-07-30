@@ -29,7 +29,7 @@ function Ingredients({ data , _constId}) {
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "sort",
-    item: {data:_constId},
+    item: {item:_constId},
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -47,9 +47,9 @@ function Ingredients({ data , _constId}) {
   // })
 
   return (
-    <div className={`${styles.list} custom-scroll`}  >
+    <div className={`${styles.list} custom-scroll`} ref={dragRef} >
       {data.map((item, _constId) => (
-        <div key={_constId} ref={dragRef}>
+        <div key={_constId} >
           <DragIcon/>
           <ConstructorElement
             className="items"

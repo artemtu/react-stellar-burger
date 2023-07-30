@@ -11,6 +11,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { REMOVE_INGREDIENT } from "../../store/actions/actions";
 import { getOrderNumber } from "../../store/actions/orderNumber";
 import { v4 as uuidv4 } from 'uuid';
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {
   ConstructorElement,
@@ -86,13 +87,24 @@ function Main({ setOrderModal, setIngredientModal }) {
   // const dataToSend = {
   //   ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
   // };
+  const [current, setCurrent] = React.useState("one");
  
 
   return (
     <main className={`${styles.content}`}>
       <section className={`${styles.menuBar} mt-10`}>
         <h1 className="text text_type_main-large">Соберите бургер</h1>
-        <TabMenu />
+        <div className={`${styles.tab} mt-5`}>
+      <Tab value="one" active={current === "one"} onClick={setCurrent}>
+        Булки
+      </Tab>
+      <Tab value="two" active={current === "two"} onClick={setCurrent}>
+        Соусы
+      </Tab>
+      <Tab value="three" active={current === "three"} onClick={setCurrent}>
+        Начинки
+      </Tab>
+    </div>
         <div className={`${styles.scroll} custom-scroll`}>
           <h2 className="text text_type_main-medium mt-10">Булки</h2>
           <IngredientList
