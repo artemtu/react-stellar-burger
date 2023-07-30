@@ -12,6 +12,7 @@ import { REMOVE_INGREDIENT } from "../../store/actions/actions";
 import { getOrderNumber } from "../../store/actions/orderNumber";
 import { v4 as uuidv4 } from 'uuid';
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useInView } from "react-intersection-observer";
 
 import {
   ConstructorElement,
@@ -87,7 +88,18 @@ function Main({ setOrderModal, setIngredientModal }) {
   // const dataToSend = {
   //   ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
   // };
-  const [current, setCurrent] = React.useState("one");
+
+  const [bunsRef, bunsInView] = useInView({ threshold: 0.5 });
+  const [sauceRef, sauceInView] = useInView({ threshold: 0.5 });
+  const [fillingsRef, fillingsInView] = useInView({ threshold: 0.5 });
+
+  useEffect(() => {
+    if (bunsInView) setCurrent("one");
+    else if (sauceInView) setCurrent("two");
+    else if (fillingsInView) setCurrent("three");
+  }, [bunsInView, sauceInView, fillingsInView]);
+
+  const [current, setCurrent] = useState("one");
  
 
   return (
