@@ -87,10 +87,10 @@ function Main({ setOrderModal, setIngredientModal }) {
   const sauceRef = useRef(null);
 
   const [inViewBunRef, bunIsInView] = useInView({
-    threshold: 0,
+    threshold: 0.9,
   });
   const [inViewSauceRef, sauceIsInView] = useInView({
-    threshold: 0.99,
+    threshold: 0.9,
   });
   const [inViewMainRef, mainIsInView] = useInView({
     threshold: 0.1,
@@ -115,26 +115,32 @@ function Main({ setOrderModal, setIngredientModal }) {
         </div>
         <div className={`${styles.scroll} custom-scroll`} >
           <div ref={bunRef}>
-          <h2 className="text text_type_main-medium mt-10" ref={inViewBunRef}>Булки</h2>
+            <div ref={inViewBunRef}>
+          <h2 className="text text_type_main-medium mt-10" >Булки</h2>
           <IngredientList
             data={bunsArray}
             setIngredientModal={setIngredientModal}
           />
+            </div>
           </div>
           
           <div ref={sauceRef}>
-          <h2 className="text text_type_main-medium mt-10" ref={inViewSauceRef}>Соусы</h2>
+            <div ref={inViewSauceRef}>
+          <h2 className="text text_type_main-medium mt-10" >Соусы</h2>
           <IngredientList
             data={sauceArray}
             setIngredientModal={setIngredientModal}
           />
+            </div>
           </div>
           <div ref={mainRef}>
-          <h2 className="text text_type_main-medium mt-10" ref={inViewMainRef}>Начинки</h2>
+            <div ref={inViewMainRef}>
+          <h2 className="text text_type_main-medium mt-10" >Начинки</h2>
           <IngredientList
             data={fillingsArray}
             setIngredientModal={setIngredientModal}
           />
+            </div>
           </div>
         </div>
       </section>
