@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./main.module.css";
-import { TabMenu } from "../tab/tab";
 import BunUpConstructor from "./burger-constructor/BunTopConstructor/BunTopConsctructor";
 import BunBottomConstructor from "./burger-constructor/BunBottomConstructor/BunBottomConstructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
@@ -8,8 +7,6 @@ import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";
-import { REMOVE_INGREDIENT } from "../../store/actions/actions";
-import { getOrderNumber } from "../../store/actions/orderNumber";
 import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
@@ -56,8 +53,7 @@ function Main({ setOrderModal, setIngredientModal }) {
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
     drop: (data) => {
-      // Use arrow function syntax for the drop callback
-      const newElement = { ...data, _constId: uuidv4() }; // Create a new element with the generated uuid
+      const newElement = { ...data, _constId: uuidv4() }; 
       dispatch(addIngredientsToConstructor(newElement));
     },
     collect: (monitor) => ({
