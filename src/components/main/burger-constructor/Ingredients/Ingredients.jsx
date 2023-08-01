@@ -71,7 +71,6 @@ function DraggableIngredient({ data, onRemove, index }) {
       <DragIcon />
       <ConstructorElement
         className="items"
-        key={data._constId}
         text={data.name}
         price={data.price}
         thumbnail={data.image}
