@@ -1,4 +1,5 @@
-
+import { config } from "../../components/api/api";
+import { checkResponse } from "../../components/api/api";
 
 export const getIngredients = (ingredients) => {
   return {
@@ -9,13 +10,14 @@ export const getIngredients = (ingredients) => {
 
 export const fetchIngredients = () => (dispatch) => {
   // Запрос к серверу для получения данных
-  fetch("https://norma.nomoreparties.space/api/ingredients")
-    .then((res) => res.json())
+  return fetch(`${config.baseUrl}/ingredients`,{
+    headers:config.headers,
+  })
+    .then(checkResponse)
     .then((data) => {
       // Сохраняем полученные данные в хранилище Redux
       dispatch(getIngredients(data));
-    })
-    .catch((error) => {
-      console.error("Произошла ошибка при получении данных:", error);
-    });
+    })  
 };
+
+
