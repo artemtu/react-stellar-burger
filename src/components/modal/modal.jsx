@@ -12,7 +12,7 @@ const modalRoot = document.getElementById("react-modal");
 
 
 
-function Modal({children, closeModal, isOrderModal, isIngredientModal}) {
+function Modal({children, closeModal}) {
   
   
   useEffect(() => {
@@ -21,11 +21,9 @@ function Modal({children, closeModal, isOrderModal, isIngredientModal}) {
         closeModal();
       }
     };
-
-    if (isOrderModal || isIngredientModal) {
-      document.addEventListener("keydown", closeModalOnEscape);
-    }
-
+  
+    document.addEventListener("keydown", closeModalOnEscape);
+  
     return () => {
       document.removeEventListener("keydown", closeModalOnEscape);
     };
