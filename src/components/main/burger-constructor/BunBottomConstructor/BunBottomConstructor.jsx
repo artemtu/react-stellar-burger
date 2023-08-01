@@ -10,7 +10,6 @@ function BunBottomConstructor({ data }) {
       {data.map((item) => (
         <div key={item.id} >
         <ConstructorElement
-          key={item._id}
           type="bottom"
           isLocked={true}
           text={item.name + " (низ)"}

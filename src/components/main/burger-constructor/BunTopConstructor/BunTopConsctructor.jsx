@@ -19,7 +19,6 @@ function BunUpConstructor({ data }) {
           text={item.name + " (верх)"}
           price={item.price}
           thumbnail={item.image}
-          key={item.id}
         />
       </div>
       ))}
