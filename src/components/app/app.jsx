@@ -38,14 +38,12 @@ function App() {
       {isOrderModal.open && (
         <Modal
           closeModal={closeModal}
-          isOrderModal={isOrderModal}
         >
           <OrderDetails orderNumber={isOrderModal.orderNumber} />
         </Modal>
       )}
       {isIngredientModal.open && (
         <Modal
-          isIngredientModal={isIngredientModal}
           closeModal={closeModal}
         >
           <IngredientDetails data={[]} id={isIngredientModal.id} />
