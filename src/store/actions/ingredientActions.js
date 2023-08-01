@@ -1,9 +1,10 @@
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
+import { GET_INGREDIENTS } from "./actions";
 
 export const getIngredients = (ingredients) => {
   return {
-    type: "GET_INGREDIENTS",
+    type: GET_INGREDIENTS,
     payload: ingredients.data,
   };
 };

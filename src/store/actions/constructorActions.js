@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const getIngredients = (bun, ingredients) => {
   return {
-    type: "GET_BURGER_CONSTRUCTOR_INGREDIENTS",
+    type: GET_BURGER_CONSTRUCTOR_INGREDIENTS,
     payload: {
       bun: bun,
       ingredients: ingredients,
