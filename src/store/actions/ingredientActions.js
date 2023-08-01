@@ -21,3 +21,23 @@ export const fetchIngredients = () => (dispatch) => {
 };
 
 
+
+
+
+export async function postOrder(order) {  
+  try {
+    const response = await fetch(`${config.baseUrl}/orders`, {
+      method: "POST",
+        headers:config.headers,
+      body: JSON.stringify(order),
+    });
+    
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}

@@ -5,6 +5,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./extraction.module.css";
 import { useSelector } from "react-redux";
+import { postOrder } from "../../../../store/actions/ingredientActions";
 
 
 
@@ -30,27 +31,29 @@ function Extraction({ setOrderModal }) {
     ingredientsForPrice.bun.length === 0 &&
     ingredientsForPrice.ingredients.length === 0;
     
-    async function postOrder(order) {
-      const url = "https://norma.nomoreparties.space/api/orders";
+    // async function postOrder(order) {
+    //   const url = "https://norma.nomoreparties.space/api/orders";
       
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(order),
-        });
+    //   try {
+    //     const response = await fetch(url, {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(order),
+    //     });
         
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
+    //     if (!response.ok) {
+    //       throw new Error("Network response was not ok");
+    //     }
+    //     const data = await response.json();
+    //     return data;
+    //   } catch (error) {
+    //     console.error("Error:", error);
+    //   }
+    // }
+
+
     const onClick = () => {
       const bunsIds = data.bun.map((item) => item.id);
       const ingredientsIds = data.ingredients.map((item) => item.id);
@@ -60,6 +63,8 @@ function Extraction({ setOrderModal }) {
       postOrder(allIngredientIds)
       .then((response) => setOrderModal({open:true, orderNumber:response.order.number}))
     };
+
+   
     
     return (
       <div className={`${styles.extraction} mr-4 mt-10`}>
