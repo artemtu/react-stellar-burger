@@ -4,5 +4,9 @@
     overflow-y: scroll;
     gap: 10px;
   
+}
 
+.constructor{
+    display: flex;
+    align-items: center;
 }

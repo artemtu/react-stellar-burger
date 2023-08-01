@@ -67,7 +67,7 @@ function DraggableIngredient({ data, onRemove, index }) {
 
 
   return (
-    <div ref={node =>dragRef(dropRef(node))} style={{display:'flex', alignItems:'center'}}>
+    <div ref={node =>dragRef(dropRef(node))} className={styles.constructor}>
       <DragIcon />
       <ConstructorElement
         className="items"
