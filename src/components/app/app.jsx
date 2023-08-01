@@ -37,7 +37,6 @@ function App() {
       />
       {isOrderModal.open && (
         <Modal
-          handleClose={closeModal}
           closeModal={closeModal}
           isOrderModal={isOrderModal}
         >
@@ -46,7 +45,6 @@ function App() {
       )}
       {isIngredientModal.open && (
         <Modal
-          handleClose={closeModal}
           isIngredientModal={isIngredientModal}
           closeModal={closeModal}
         >

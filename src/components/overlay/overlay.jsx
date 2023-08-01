@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./overlay.module.css";
 
 
-function Overlay({ children,handleClose}) {
+function Overlay({ children,closeModal}) {
   const handleOverlayClick = (event) => {
     if (event.target.classList.contains(styles.overlay)) {
       // console.log('я в оверлее');
-      handleClose()
+      closeModal()
     }
   };
 

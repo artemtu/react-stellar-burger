@@ -12,7 +12,7 @@ const modalRoot = document.getElementById("react-modal");
 
 
 
-function Modal({handleClose, children, closeModal, isOrderModal, isIngredientModal}) {
+function Modal({children, closeModal, isOrderModal, isIngredientModal}) {
   
   
   useEffect(() => {
@@ -33,10 +33,10 @@ function Modal({handleClose, children, closeModal, isOrderModal, isIngredientMod
 
   
   return ReactDOM.createPortal(
-    <Overlay handleClose={handleClose}>
+    <Overlay closeModal={closeModal}>
       <div className={styles.modal}>
         <div className={`${styles.close}`}>
-          <button className={`${styles.close__button}`} onClick={handleClose}>
+          <button className={`${styles.close__button}`} onClick={closeModal}>
             <CloseIcon type="primary" />
           </button>
         </div>
