@@ -54,7 +54,7 @@ function Main({ setOrderModal, setIngredientModal }) {
     accept: "ingredients",
     drop: (data) => {
       const newElement = { ...data, _constId: uuidv4() }; 
-      dispatch(addIngredientsToConstructor(newElement));
+      addIngredientsToConstructor(newElement);
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
