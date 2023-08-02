@@ -13,3 +13,11 @@
     position: relative;
   }
   
+
+  .dragging {
+    border: 20px solid red;
+  }
+  
+  .not-dragging {
+    border: 0;
+  }

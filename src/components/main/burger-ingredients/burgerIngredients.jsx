@@ -47,8 +47,7 @@ export function Ingridients({
   return (
     <div
       ref={dragRef}
-      style={{ border: isDragging ? "20px solid red" : "0px" }}
-   
+      className={isDragging ? styles.dragging : styles.notDragging}
     >
       <div className={styles.relatives}>
         <img className="pl-4 mt-6" src={image} alt={name} onClick={onClick} />
