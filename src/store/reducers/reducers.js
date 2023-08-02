@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import ingredientReducer from './ingredientReducer'; 
-import constructorReducer from './constructorReducer';
-import ingredientOpenReducer from './ingredientOpenReducer';
-import orderDetailReducer from './orderDetailsReducer';
+import ingredientReducer from './ingredient-reducer'; 
+import constructorReducer from './constructor-reducer';
+import ingredientOpenReducer from './ingredient-open-reducer';
+import orderDetailReducer from './order-details-reducer';
 
 
 const rootReducer = combineReducers({

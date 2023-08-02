@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
 import { useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { changeIngredient } from "../../../../store/actions/addRemove";
+import { changeIngredient } from "../../../../store/actions/add-remove";
 
 import {
   ConstructorElement,

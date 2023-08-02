@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './ingredient-details.module.css'
 import { useSelector } from "react-redux";
-import { ingredientOpen,clearIngredientOpen } from "../../../store/actions/infoOpenIngredient";
+import { ingredientOpen,clearIngredientOpen } from "../../../store/actions/info-open-ingredient";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
