@@ -41,6 +41,8 @@ function DraggableIngredient({ data, onRemove, index }) {
 
  
 
+ 
+
 
 
 

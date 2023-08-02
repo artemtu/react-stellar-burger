@@ -6,6 +6,7 @@ import Modal from "../modal/modal";
 import IngredientDetails from "../modal/ingredient-details/ingredient-details";
 import OrderDetails from "../modal/order-details/orderdetails";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 
 
@@ -72,3 +73,9 @@ export default App;
 // }
 
 // export default App;
+
+// App.propTypes = {
+//   setOrderModal: PropTypes.func,
+//   setIngredientModal: PropTypes.func,
+// };
+

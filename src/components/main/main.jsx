@@ -11,6 +11,8 @@ import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
+import PropTypes from "prop-types";
+
 
 import {
   ConstructorElement,
@@ -94,6 +96,11 @@ function Main({ setOrderModal, setIngredientModal }) {
 
   const [current, setCurrent] = useState("one");
 
+  Main.propTypes = { ...ingredientPropType };
+  IngredientList.propTypes = { ...ingredientPropType };
+
+
+
   return (
     <main className={`${styles.content}`}>
       <section className={`${styles.menuBar} mt-10`}>
@@ -154,4 +161,10 @@ function Main({ setOrderModal, setIngredientModal }) {
   );
 }
 
+
 export default Main;
+
+
+
+
+
