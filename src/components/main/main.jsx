@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./main.module.css";
-import BunUpConstructor from "./burger-constructor/BunTopConstructor/BunTopConsctructor";
-import BunBottomConstructor from "./burger-constructor/BunBottomConstructor/BunBottomConstructor";
+import BunUpConstructor from "./burger-constructor/bun-top-constructor/bun-top-consctructor";
+import BunBottomConstructor from "./burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
-import IngredientList from "./burger-ingredients/ingredient-list/ingredienList";
+import IngredientList from "./burger-ingredients/ingredient-list/ingredient-list";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/ingredientActions";
 import { useDrag, useDrop } from "react-dnd";

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Ingredientdetails/ingredientDetails.module.css";
+import styles from './ingredient-details.module.css'
 import { useSelector } from "react-redux";
 import { ingredientOpen,clearIngredientOpen } from "../../../store/actions/infoOpenIngredient";
 import { useEffect } from "react";

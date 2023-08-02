@@ -1,5 +1,5 @@
 import React from "react";
-import { Ingridients } from "../burgerIngredients";
+import { Ingridients } from "../burger-ingredients";
 import { useSelector } from "react-redux";
 import { useDrag } from "react-dnd";
 import styles from './ingredient-list.module.css'
