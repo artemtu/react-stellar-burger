@@ -1,12 +1,15 @@
-.ingridient-container {
+.ingridientContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: center;
 }
 
-
-.price {
+.prices {
     display: flex;
     justify-content: center;
-
-}
+  }
+  
+  .relatives {
+    position: relative;
+  }
+  

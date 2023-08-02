@@ -6,7 +6,9 @@ import {
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState } from "react";
-import price from "./burgerIngredients.css";
+import styles from './ingredient-list/ingredient-list.module.css'
+
+
 
 export function Ingridients({
   id,
@@ -46,12 +48,13 @@ export function Ingridients({
     <div
       ref={dragRef}
       style={{ border: isDragging ? "20px solid red" : "0px" }}
+   
     >
-      <div style={{ position: "relative" }}>
+      <div className={styles.relatives}>
         <img className="pl-4 mt-6" src={image} alt={name} onClick={onClick} />
         {totalCount > 0 && <Counter count={totalCount} size="default" extraClass="m-1" />}
       </div>
-      <div className="price mt-1 mb-1">
+      <div className={`${styles.prices} mt-1 mb-1`}>
         <p className="text text_type_digits-default pr-2">{price}</p>
         <CurrencyIcon type="primary" />
       </div>

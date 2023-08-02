@@ -10,7 +10,7 @@ import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import styles from "./ingredients.module.css";
+import styles from './ingredients.module.css'
 
 function Ingredients({ data }) {
   const dispatch = useDispatch();
