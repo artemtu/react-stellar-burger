@@ -19,6 +19,9 @@ export const fetchIngredients = () => (dispatch) => {
       // Сохраняем полученные данные в хранилище Redux
       dispatch(getIngredients(data));
     })  
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 
@@ -40,4 +43,5 @@ export async function postOrder(order) {
   } catch (error) {
     console.error("Error:", error);
   }
+  
 }
