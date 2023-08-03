@@ -70,9 +70,9 @@ function Main({ setOrderModal, setIngredientModal }) {
   const addIngredientsToConstructor = (item) => {
     const { type } = item;
     if (type === "bun") {
-      dispatch({ type: "ADD_BUN", payload: item });
+      dispatch({ type: ADD_BUN, payload: item });
     } else {
-      dispatch({ type: "ADD_INGREDIENT", payload: item });
+      dispatch({ type: ADD_INGREDIENT, payload: item });
     }
   };
 
