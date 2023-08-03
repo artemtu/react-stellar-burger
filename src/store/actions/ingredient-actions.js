@@ -27,16 +27,12 @@ export const fetchIngredients = () => (dispatch) => {
 };
 
 
-
-
 export const getOrderNumber = (number) => {
   return {
     type: GET_ORDER_NUMBER,
     payload: number,
   };
 };
-
-
 
 
 export const postOrder = (order, openModal) => (dispatch) => {
