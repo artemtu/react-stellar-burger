@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./overlay.module.css";
+import PropTypes from "prop-types";
 
 
 function Overlay({ children,closeModal}) {
@@ -15,6 +16,11 @@ function Overlay({ children,closeModal}) {
       {children}
     </div>
   );
+}
+
+Overlay.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
 }
 
 export default Overlay;

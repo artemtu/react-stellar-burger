@@ -3,6 +3,7 @@ import { Ingridients } from "../burger-ingredients";
 import { useSelector } from "react-redux";
 import { useDrag } from "react-dnd";
 import styles from './ingredient-list.module.css'
+import PropTypes from "prop-types";
 
 
 export function IngredientList({ setIngredientModal, data }) {
@@ -25,4 +26,9 @@ export function IngredientList({ setIngredientModal, data }) {
     </div>
   );
 }
+
+IngredientList.propTypes = {
+  data: PropTypes.array.isRequired,
+  setIngredientModal:PropTypes.func.isRequired , 
+};
 export default IngredientList;

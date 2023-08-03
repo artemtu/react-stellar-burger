@@ -1,6 +1,6 @@
 import React from "react";
 import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
-// import { data } from "../../../../utils/data";
+import PropTypes from "prop-types";
 
 
 
@@ -22,6 +22,11 @@ function BunBottomConstructor({ data }) {
     </div>
   );
 }
+
+BunBottomConstructor.propTypes = {
+  data: PropTypes.array.isRequired,
+};
+
 
 export default BunBottomConstructor;
 

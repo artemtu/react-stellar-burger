@@ -161,6 +161,11 @@ function Main({ openModal, setIngredientModal }) {
   );
 }
 
+Main.propTypes = {
+  openModal:PropTypes.func.isRequired , 
+  setIngredientModal:PropTypes.func.isRequired , 
+};
+
 
 export default Main;
 

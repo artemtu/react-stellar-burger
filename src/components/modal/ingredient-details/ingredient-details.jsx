@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { ingredientOpen,clearIngredientOpen } from "../../../store/actions/info-open-ingredient";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 function IngredientDetails({ id }) {
   const data = useSelector((state) => state.mainData.data);
@@ -55,5 +56,9 @@ function IngredientDetails({ id }) {
     </div>
   );
 }
+
+IngredientDetails.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default IngredientDetails;

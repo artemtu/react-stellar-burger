@@ -5,6 +5,7 @@ import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
 import { useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
+import PropTypes from "prop-types";
 
 import {
   ConstructorElement,
@@ -35,15 +36,7 @@ function DraggableIngredient({ data, onRemove, index }) {
 
   const ingredientsArray = useSelector((store) => store.constructorBurger.ingredients);
 
-  const findIndex = (item) => {
-    return ingredientsArray.indexOf(item);
-  };
-
- 
-
- 
-
-
+  const findIndex = (item) => ingredientsArray.indexOf(item);
 
 
   const [{ isDragging }, dragRef] = useDrag({
@@ -81,5 +74,10 @@ function DraggableIngredient({ data, onRemove, index }) {
     </div>
   );
 }
+
+Ingredients.propTypes = {
+  data: PropTypes.array.isRequired,
+};
+
 
 export default Ingredients;

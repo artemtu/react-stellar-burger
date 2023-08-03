@@ -5,10 +5,8 @@ import {
   CurrencyIcon,
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useState } from "react";
-import styles from './ingredient-list/ingredient-list.module.css'
-
-
+import styles from "./ingredient-list/ingredient-list.module.css";
+import PropTypes from "prop-types";
 
 export function Ingridients({
   id,
@@ -17,11 +15,8 @@ export function Ingridients({
   name,
   price,
   setIngredientModal,
-})
+}) {
 
-
-  {
-  const bunsInStore = useSelector((state) => state.constructorBurger.bun.length);
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredients",
@@ -29,17 +24,18 @@ export function Ingridients({
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-
   });
-  
-  
 
-  const bunsIngredientsFromStore = useSelector((state) => state.constructorBurger);
+  const bunsIngredientsFromStore = useSelector(
+    (state) => state.constructorBurger
+  );
 
-  const bunCount = bunsIngredientsFromStore.bun.filter((item) => item.id === id).length * 2;
-  const ingredientCount = bunsIngredientsFromStore.ingredients.filter((item) => item.id === id).length;
+  const bunCount =
+    bunsIngredientsFromStore.bun.filter((item) => item.id === id).length * 2;
+  const ingredientCount = bunsIngredientsFromStore.ingredients.filter(
+    (item) => item.id === id
+  ).length;
   const totalCount = bunCount + ingredientCount;
-
 
   const onClick = () => {
     setIngredientModal({ open: true, id });
@@ -51,7 +47,9 @@ export function Ingridients({
     >
       <div className={styles.relatives}>
         <img className="pl-4 mt-6" src={image} alt={name} onClick={onClick} />
-        {totalCount > 0 && <Counter count={totalCount} size="default" extraClass="m-1" />}
+        {totalCount > 0 && (
+          <Counter count={totalCount} size="default" extraClass="m-1" />
+        )}
       </div>
       <div className={`${styles.prices} mt-1 mb-1`}>
         <p className="text text_type_digits-default pr-2">{price}</p>
@@ -61,5 +59,14 @@ export function Ingridients({
     </div>
   );
 }
+
+Ingridients.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  setIngredientModal: PropTypes.func.isRequired,
+};
 
 export default Ingridients;

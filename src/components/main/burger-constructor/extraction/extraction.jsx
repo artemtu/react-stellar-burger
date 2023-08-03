@@ -6,6 +6,7 @@ import {
 import styles from "./extraction.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { postOrder } from "../../../../store/actions/post-order";
+import PropTypes from "prop-types";
 
 
 
@@ -63,6 +64,11 @@ function Extraction({ openModal }) {
     </div>
   );
 }
+
+Extraction.propTypes = {
+  openModal: PropTypes.func.isRequired,
+};
+
 
 
 export default Extraction;
