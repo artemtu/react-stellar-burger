@@ -12,6 +12,8 @@ import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import PropTypes from "prop-types";
+import { ADD_BUN } from "../../store/actions/actions";
+import { ADD_INGREDIENT } from "../../store/actions/actions";
 
 
 import {
