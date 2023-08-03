@@ -1,12 +1,12 @@
-import { GET_ORDER_NUMBER } from "./actions";
+// import { GET_ORDER_NUMBER } from "./actions";
 
 
-export const getOrderNumber = (number) => {
-    return {
-      type: GET_ORDER_NUMBER,
-      payload: number,
-    };
-  };
+// export const getOrderNumber = (number) => {
+//     return {
+//       type: GET_ORDER_NUMBER,
+//       payload: number,
+//     };
+//   };
   
 
   

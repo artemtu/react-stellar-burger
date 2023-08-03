@@ -4,12 +4,13 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./extraction.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postOrder } from "../../../../store/actions/ingredient-actions";
 
 
 
 function Extraction({ setOrderModal }) {
+  const dispatch = useDispatch();
 
   
   const data = useSelector((state) => state.constructorBurger);
@@ -38,12 +39,26 @@ function Extraction({ setOrderModal }) {
       const allIngredientIds = {
         ingredients: [...bunsIds, ...ingredientsIds],
       };
-      postOrder(allIngredientIds)
-      .then((response) => setOrderModal({open:true, orderNumber:response.order.number}))
-      .catch((error) => {
-        console.error(error);
-      });
-    };
+      dispatch(postOrder(allIngredientIds))
+      setOrderModal({open:true, orderNumber: orderDetails.order.number})
+};
+      
+
+    // postOrder(allIngredientIds)
+    // .then((response) => setOrderModal({open:true, orderNumber:response.order.number}))
+    // .catch((error) => {
+  
+
+    // const onClick = () => {
+    //   const one = {
+    //     "ingredients": ["643d69a5c3f7b9001cfa093c"]
+    //   };
+    //   dispatch(postOrder(one));
+    // }
+
+
+
+
 
    
     return (
