@@ -96,8 +96,6 @@ function Main({ setOrderModal, setIngredientModal }) {
 
   const [current, setCurrent] = useState("one");
 
-  Main.propTypes = { ...ingredientPropType };
-  IngredientList.propTypes = { ...ingredientPropType };
 
 
 
