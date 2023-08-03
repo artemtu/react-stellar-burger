@@ -62,6 +62,9 @@ function Extraction({ setOrderModal }) {
       };
       postOrder(allIngredientIds)
       .then((response) => setOrderModal({open:true, orderNumber:response.order.number}))
+      .catch((error) => {
+        console.error(error);
+      });
     };
 
    

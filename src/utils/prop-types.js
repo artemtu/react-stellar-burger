@@ -18,6 +18,10 @@ export const ingredientPropType = PropTypes.shape({
   id: PropTypes.string,
   data: PropTypes.array,
   index:PropTypes.number,
+  closeModal: PropTypes.func,
+  children: PropTypes.array
+  
+
 
 });
 
