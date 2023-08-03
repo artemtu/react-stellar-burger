@@ -9,7 +9,7 @@ import { postOrder } from "../../../../store/actions/ingredient-actions";
 
 
 
-function Extraction({ setOrderModal }) {
+function Extraction({ openModal }) {
   const dispatch = useDispatch();
 
   
@@ -39,26 +39,9 @@ function Extraction({ setOrderModal }) {
       const allIngredientIds = {
         ingredients: [...bunsIds, ...ingredientsIds],
       };
-      dispatch(postOrder(allIngredientIds))
-      setOrderModal({open:true, orderNumber: orderDetails.order.number})
+      dispatch(postOrder(allIngredientIds, openModal))
 };
       
-
-    // postOrder(allIngredientIds)
-    // .then((response) => setOrderModal({open:true, orderNumber:response.order.number}))
-    // .catch((error) => {
-  
-
-    // const onClick = () => {
-    //   const one = {
-    //     "ingredients": ["643d69a5c3f7b9001cfa093c"]
-    //   };
-    //   dispatch(postOrder(one));
-    // }
-
-
-
-
 
    
     return (

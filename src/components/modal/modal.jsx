@@ -21,7 +21,7 @@ function Modal({children, closeModal}) {
         closeModal();
       }
     };
-  
+      
     document.addEventListener("keydown", closeModalOnEscape);
   
     return () => {

@@ -5,7 +5,6 @@ import Main from "../main/main";
 import Modal from "../modal/modal";
 import IngredientDetails from "../modal/ingredient-details/ingredient-details";
 import OrderDetails from "../modal/order-details/orderdetails";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 
@@ -15,7 +14,6 @@ function App() {
 
   const [isOrderModal, setOrderModal] = useState({
     open:false,
-    orderNumber: 0,
   });
   const [isIngredientModal, setIngredientModal] = useState({
     open: false,
@@ -27,20 +25,25 @@ function App() {
     setOrderModal({open:false});
     setIngredientModal({ open: false });
   }
-
+  
+  function openModal() {
+    setOrderModal({open: true});
+  }
+  
   return (
     <div className={styles.app}>
       <Header />
       <Main
         setOrderModal={setOrderModal}
         setIngredientModal={setIngredientModal}
+        openModal={openModal}
       
       />
       {isOrderModal.open && (
         <Modal
           closeModal={closeModal}
         >
-          <OrderDetails orderNumber={isOrderModal.orderNumber} />
+          <OrderDetails/>
         </Modal>
       )}
       {isIngredientModal.open && (

@@ -1,13 +1,20 @@
 import styles from "./orderdetails.module.css";
 import orderImg from "../../../images/doneorder-done.png";
 import propTypes from 'prop-types'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getIngredients } from "../../../store/actions/ingredient-actions";
 
 
- function OrderDetails(props) {
-  
+
+ function OrderDetails() {
+
+  const orderNumber = useSelector((state) => state.orderDetails.orderDetails.order.number);
+
+
   return (
     <div className={styles.figures}>
-      <span className="text text_type_digits-large mt-30">{props.orderNumber || 0}</span>
+      <span className="text text_type_digits-large mt-30">{orderNumber}</span>
       <p className="text text_type_main-default mt-8">идентификатор заказа</p>
       <img src={orderImg} alt="заказ готов" className="mt-15" />
       <p className="mt-15 text text_type_main-small">

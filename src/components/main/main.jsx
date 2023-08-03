@@ -22,7 +22,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import Extraction from "./burger-constructor/extraction/extraction";
 
-function Main({ setOrderModal, setIngredientModal }) {
+function Main({ openModal, setIngredientModal }) {
   const dispatch = useDispatch();
 
   const selectIngredients = useSelector((state) => state.mainData);
@@ -155,7 +155,7 @@ function Main({ setOrderModal, setIngredientModal }) {
           <Ingredients data={data.ingredients} index={data.index} />
           <BunBottomConstructor data={data.bun} />
         </div>
-        <Extraction setOrderModal={setOrderModal} />
+        <Extraction openModal={openModal} />
       </section>
     </main>
   );
