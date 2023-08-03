@@ -5,7 +5,7 @@ import BunBottomConstructor from "./burger-constructor/bun-bottom-constructor/bu
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 import IngredientList from "./burger-ingredients/ingredient-list/ingredient-list";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIngredients } from "../../store/actions/ingredient-actions";
+import { fetchIngredients } from "../../store/actions/fetch-data";
 import { useDrag, useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";

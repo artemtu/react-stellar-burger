@@ -3,7 +3,7 @@ import orderImg from "../../../images/doneorder-done.png";
 import propTypes from 'prop-types'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getIngredients } from "../../../store/actions/ingredient-actions";
+import { getIngredients } from "../../../store/actions/post-order";
 
 
 

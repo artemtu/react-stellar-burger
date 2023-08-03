@@ -5,7 +5,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./extraction.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { postOrder } from "../../../../store/actions/ingredient-actions";
+import { postOrder } from "../../../../store/actions/post-order";
 
 
 
