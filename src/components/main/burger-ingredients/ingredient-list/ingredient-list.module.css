@@ -1,0 +1,23 @@
+.ingridientContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.prices {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .relatives {
+    position: relative;
+  }
+  
+
+  .dragging {
+    border: 20px solid red;
+  }
+  
+  .not-dragging {
+    border: 0;
+  }
