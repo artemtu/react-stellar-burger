@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../../pages/home/home";
 import Login from "../../pages/login/login";
 import Register from "../../pages/register/register";
+import ForgotPassword from "../../pages/forgot-password/forgot-password";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/forgot-password" component={ForgotPassword} />
 
 
     </Router>
