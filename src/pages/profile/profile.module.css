@@ -1,0 +1,33 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+}
+
+.textEnter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.LeftMenu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 52%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    justify-content: flex-start;
+    gap: 30px;
+    width: 250px;
+}
+
+
+

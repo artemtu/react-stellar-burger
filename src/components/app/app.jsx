@@ -13,6 +13,7 @@ import Register from "../../pages/register/register";
 import ForgotPassword from "../../pages/forgot-password/forgot-password";
 import ResetPassword from "../../pages/reset-password/reset-password";
 import NotFound404 from "../../pages/not-found-404/not-found-404";
+import Profile from "../../pages/profile/profile";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/reset-password" component={ResetPassword} />
+        <Route exact path="/profile" component={Profile} />
         <Route component={NotFound404} /> 
 
         </Switch>
