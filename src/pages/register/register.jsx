@@ -39,7 +39,7 @@ function Register() {
         </Button>
         <p className="text text_type_main-small text_color_inactive mt-20">
           {" "}
-          Уже зарегистрированы? <Link to="#">Войти </Link>{" "}
+          Уже зарегистрированы? <Link to="/login">Войти </Link>{" "}
         </p>
  
       </div>

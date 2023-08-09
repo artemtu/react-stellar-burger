@@ -38,11 +38,11 @@ function Login() {
         </Button>
         <p className="text text_type_main-small text_color_inactive mt-20">
           {" "}
-          Вы - новый пользователь? <Link to="#">Зарегистрироваться </Link>{" "}
+          Вы - новый пользователь? <Link to="/register">Зарегистрироваться </Link>{" "}
         </p>
         <p className="text text_type_main-small text_color_inactive mt-4">
           Забыли пароль?{" "}
-          <Link className="text text_type_main-small" to ='#'>
+          <Link className="text text_type_main-small" to ='/forgot-password'>
             Восстановить пароль
           </Link>
         </p>
