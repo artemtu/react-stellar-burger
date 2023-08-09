@@ -1,0 +1,17 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+}
+
+.textEnter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
