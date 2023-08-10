@@ -11,8 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/get-profile-info";
 
 
+
 function Profile() {
-  const [value, setValue] = React.useState();
+  const [name, setName] = React.useState();
+  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
   const dispatch = useDispatch();
   
 
@@ -20,9 +23,8 @@ function Profile() {
     dispatch(getUser());
   }, [dispatch]);
 
-  const infoProfile = useSelector((state) => state.profileInfo.profileInfo.user)
+  // const infoProfile = useSelector((state) => state.profileInfo.profileInfo.user);
  
-  
   return (
     <>
       <Header />
@@ -30,7 +32,7 @@ function Profile() {
         <Input
           type={"text"}
           placeholder={"Имя"}
-          value={infoProfile ? infoProfile.name : ""}
+          value={userData.name}
           name={"name"}
           error={false}
           errorText={"Ошибка"}
@@ -38,8 +40,8 @@ function Profile() {
           extraClass="mt-6"
           icon={'EditIcon'}
         />
-        <EmailInput extraClass="mt-6"   value={infoProfile ? infoProfile.email : ""}  icon={'EditIcon'} />
-        <PasswordInput value={value}  icon={'EditIcon'} extraClass="mt-6" />
+        <EmailInput extraClass="mt-6"   value={userData.email}  icon={'EditIcon'} />
+        <PasswordInput value={password}  icon={'EditIcon'} extraClass="mt-6" />
       </div>
       <div className={styles.LeftMenu}>
         <Link className='text text_type_main-medium text_color_active' style={{ textDecoration: 'none' ,color:'white' }}>Профиль</Link>
