@@ -7,11 +7,12 @@ import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { postUser } from "../../store/actions/register-user";
-import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
+import {useHistory} from "react-router-dom";
 
 function Register() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [name, setName] = React.useState();
   const [password, setPassword] = React.useState();
   const [email, setEmail] = React.useState();
@@ -23,8 +24,11 @@ function Register() {
       'name':name
     });
     dispatch(postUser(registation))
+    .then(registation => {
+      history.push('/login');
+    });
 
-  }
+  };
 
   return (
     <>
