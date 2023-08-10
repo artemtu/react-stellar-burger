@@ -2,7 +2,6 @@ import { LOGIN_USER } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 
-// const accessToken = localStorage.getItem("accessToken").replace("Bearer ", "");
 
 
 export const getUserLogin = (loginData) => {
@@ -30,11 +29,3 @@ export const getUserLogin = (loginData) => {
   
 
 
-
-//   fetch('https://norma.nomoreparties.space/api/auth/login', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(loginData),
-//   })
