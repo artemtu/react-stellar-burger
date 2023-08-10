@@ -5,6 +5,7 @@ import constructorReducer from './constructor-reducer';
 import ingredientOpenReducer from './ingredient-open-reducer';
 import orderDetailReducer from './order-details-reducer';
 import registerUserReducer from './register-user-reducer';
+import loginUserReducer from './login-user-reducer';
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   constructorBurger: constructorReducer,
   ingredient: ingredientOpenReducer,
   orderDetails: orderDetailReducer,
-  registerUser: registerUserReducer
+  registerUser: registerUserReducer,
+  loginUser: loginUserReducer,
   
 });
 

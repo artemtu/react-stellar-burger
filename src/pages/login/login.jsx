@@ -6,9 +6,29 @@ import styles from "./login.module.css";
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {useHistory} from "react-router-dom";
+import { postUserLogin } from "../../store/actions/login-user";
 
 function Login() {
-  const [value, setValue] = React.useState();
+  const dispatch = useDispatch();
+  const history = useHistory()
+  const [password, setPassword] = React.useState();
+  const [email, setEmail] = React.useState();
+
+  const onClick = () => {
+    const login = ({
+      'email': email,
+      'password':password,
+    });
+    dispatch(postUserLogin(login))    
+    .then(login => {
+      history.push('/profile');
+    });
+
+  };
+
+
 
   return (
     <>
@@ -19,12 +39,12 @@ function Login() {
         </h3>
         <EmailInput
           extraClass="mt-6"
-          value={value}
-          // onChange={onChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <PasswordInput
-          // onChange={onChange}
-          value={value}
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
           name={"password"}
           extraClass="mt-6"
         />
@@ -33,6 +53,7 @@ function Login() {
           type="primary"
           size="large"
           extraClass={`${styles.button} mt-6`}
+          onClick={onClick}
         >
           Войти
         </Button>

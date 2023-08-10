@@ -10,3 +10,7 @@ export const CHANGE_INGREDIENT = 'CHANGE_INGREDIENT'
 export const ADD_BUN = 'ADD_BUN'
 
 export const REGISTER_USER = 'REGISTER_USER'
+
+export const LOGIN_USER = 'LOGIN_USER'
+
+
