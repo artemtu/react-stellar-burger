@@ -11,11 +11,11 @@ export const getUserRegistration = (profileData) => {
 };
 
 
-export const postOrder = (order) => (dispatch) => {
+export const postUser = (registration) => (dispatch) => {
   return fetch(`${config.baseUrl}/auth/register`, {
     method: "POST",
     headers: config.headers,
-    body: JSON.stringify(order),
+    body: JSON.stringify(registration),
   }).then(checkResponse) 
     .then((data) => {
      dispatch(getUserRegistration(data));
