@@ -4,35 +4,43 @@ import { Logo } from "@ya.praktikum/react-developer-burger-ui-components";
 import { BurgerIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ListIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Link } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
   return (
     <header className={`${styles.header} p10`}>
       <div className={styles.test}>
-        <a href="#" className={`${styles.header__link} pl-5 pr-5`}>
-          <BurgerIcon type="primary" />
-          <p className="text_type_main-default pl-2 pr-2"> Конструктор</p>
-        </a>
-        <a href="#" className={`${styles.header__link} pl-5 pr-5`}>
+     
+        <Link to='/' className={`${styles.header__link} pl-5 pr-5`}>
+          <BurgerIcon type={location.pathname === '/' ? 'primary' : 'secondary'} />
+          <p className={`text_type_main-default ${location.pathname === '/' ? '' : 'text_color_inactive'} pr-2 pl-2`}> Конструктор</p>
+        </Link>
+
+
+        <Link href="#" className={`${styles.header__link} pl-5 pr-5`}>
           <ListIcon type="secondary" />
           <p className="text_type_main-default text_color_inactive pr-2 pl-2">
             {" "}
             Лента заказов
           </p>
-        </a>
+        </Link>
+
+        
       </div>
 
       <div className={styles.logo}>
         <Logo />
       </div>
 
-      <a href="#" className={`${styles.header__link} pl-5 pr-5`}>
-        <ProfileIcon type="secondary" />
-        <p className="text_type_main-default text_color_inactive pr-2 pl-2">
+      <Link to='/login' className={`${styles.header__link} pl-5 pr-5`}>
+        <ProfileIcon type={location.pathname === '/login' ? 'primary' : 'secondary'} />
+        <p className={`text_type_main-default ${location.pathname === '/login' ? '' : 'text_color_inactive'} pr-2 pl-2`}>
           {" "}
           Личный кабинет
         </p>
-      </a>
+      </Link>
     </header>
   );
 }
