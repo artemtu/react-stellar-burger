@@ -32,7 +32,7 @@ function Profile() {
         <Input
           type={"text"}
           placeholder={"Имя"}
-          value={userData.name}
+          value={name}
           name={"name"}
           error={false}
           errorText={"Ошибка"}
@@ -40,7 +40,7 @@ function Profile() {
           extraClass="mt-6"
           icon={'EditIcon'}
         />
-        <EmailInput extraClass="mt-6"   value={userData.email}  icon={'EditIcon'} />
+        <EmailInput extraClass="mt-6"   value={email}  icon={'EditIcon'} />
         <PasswordInput value={password}  icon={'EditIcon'} extraClass="mt-6" />
       </div>
       <div className={styles.LeftMenu}>
