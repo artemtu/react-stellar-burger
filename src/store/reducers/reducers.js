@@ -6,6 +6,7 @@ import ingredientOpenReducer from './ingredient-open-reducer';
 import orderDetailReducer from './order-details-reducer';
 import registerUserReducer from './register-user-reducer';
 import loginUserReducer from './login-user-reducer';
+import profileInfoReducer from './get-profile-info-reducer';
 
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   orderDetails: orderDetailReducer,
   registerUser: registerUserReducer,
   loginUser: loginUserReducer,
+  profileInfo: profileInfoReducer,
   
 });
 

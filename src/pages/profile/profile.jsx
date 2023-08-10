@@ -6,10 +6,23 @@ import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/actions/get-profile-info";
 
 
 function Profile() {
   const [value, setValue] = React.useState();
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+
+  const infoProfile = useSelector((state) => state.profileInfo.profileInfo.user)
+ 
+  
   return (
     <>
       <Header />
@@ -17,7 +30,7 @@ function Profile() {
         <Input
           type={"text"}
           placeholder={"Имя"}
-          value={value}
+          value={infoProfile ? infoProfile.name : ""}
           name={"name"}
           error={false}
           errorText={"Ошибка"}
@@ -25,7 +38,7 @@ function Profile() {
           extraClass="mt-6"
           icon={'EditIcon'}
         />
-        <EmailInput extraClass="mt-6" value={value}  icon={'EditIcon'} />
+        <EmailInput extraClass="mt-6"   value={infoProfile ? infoProfile.email : ""}  icon={'EditIcon'} />
         <PasswordInput value={value}  icon={'EditIcon'} extraClass="mt-6" />
       </div>
       <div className={styles.LeftMenu}>
