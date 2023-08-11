@@ -28,7 +28,7 @@ function ForgotPassword() {
         </Button>
         <p className="text text_type_main-small text_color_inactive mt-20">
           {" "}
-          Вспомнили пароль? <Link to="#">Войти </Link>{" "}
+          Вспомнили пароль? <Link to="/login">Войти </Link>{" "}
         </p>
  
       </div>
