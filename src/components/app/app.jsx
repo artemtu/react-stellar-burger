@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/register" element={<Register/>} />
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
         <Route exact path="/reset-password" element={<ResetPassword/>} />
-        <Route exact path="/profile" element={<onlyAuth component={<Profile/>} />} />
+        <Route exact path="/profile" element={<Profile/>} />
         <Route exact path="/profile/orders" element={<ProfileOrders/>} />
         <Route component={NotFound404} /> 
 

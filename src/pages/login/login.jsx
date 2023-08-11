@@ -12,7 +12,7 @@ import { postUserLogin } from "../../store/actions/login-user";
 
 function Login() {
   const dispatch = useDispatch();
-  const history = useNavigate()
+  const navigate = useNavigate()
   const [password, setPassword] = React.useState();
   const [email, setEmail] = React.useState();
 
@@ -23,7 +23,7 @@ function Login() {
     });
     dispatch(postUserLogin(login))    
     .then(login => {
-      history.push('/profile');
+      navigate('/profile');
     });
 
   };

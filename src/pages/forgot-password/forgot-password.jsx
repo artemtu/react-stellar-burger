@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = React.useState();
 
@@ -21,7 +21,7 @@ function ForgotPassword() {
     };
     dispatch(postResetPassword(resetPassword))
     .then((path)=>{
-      history.push(path);
+      navigate(path);
     })
   };
 

@@ -13,7 +13,7 @@ function ResetPassword() {
   const [value, setValue] = React.useState();
 
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [password, setPassword] = React.useState();
   const [token, setToken] = React.useState();
 
@@ -26,7 +26,7 @@ function ResetPassword() {
     // console.log(resetPassword);
     dispatch(postRefreshPassword(setPassword))
     .then((path)=>{
-      history.push(path);
+      navigate(path);
     })
   };
 
