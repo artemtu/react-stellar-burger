@@ -25,10 +25,9 @@ function ResetPassword() {
     });
     // console.log(resetPassword);
     dispatch(postRefreshPassword(setPassword))
-    // .then(setPassword => {
-    //   history.push('/login');
-    // });
-
+    .then((path)=>{
+      history.push(path);
+    })
   };
 
 

@@ -11,21 +11,19 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function ForgotPassword() {
-  const dispatch = useDispatch();
   const history = useHistory();
+  const dispatch = useDispatch();
   const [email, setEmail] = React.useState();
 
   const onClick = () => {
-    const resetPassword = ({
-      'email': email,
-    });
+    const resetPassword = {
+      email: email,
+    };
     dispatch(postResetPassword(resetPassword))
-    .then(resetPassword => {
-      history.push('/reset-password');
-    });
-
+    .then((path)=>{
+      history.push(path);
+    })
   };
-
 
   return (
     <>

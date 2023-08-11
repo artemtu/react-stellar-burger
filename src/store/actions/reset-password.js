@@ -21,6 +21,7 @@ export const resetPassword = (serverAnswer) => {
       .then(checkResponse)
       .then((data) => {
         dispatch(resetPassword(data));
+        return "/login";
       })
       .catch(console.error);
   };
