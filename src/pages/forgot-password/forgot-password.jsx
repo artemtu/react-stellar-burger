@@ -8,10 +8,10 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { postResetPassword } from "../../store/actions/forgot-password";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = React.useState();
 

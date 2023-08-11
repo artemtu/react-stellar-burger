@@ -11,6 +11,7 @@ import thunk from "redux-thunk";
 import { applyMiddleware } from "redux";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 const store = createStore(
@@ -22,11 +23,13 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     <Provider store={store}>
     <DndProvider backend={HTML5Backend}>
       <App />
       </DndProvider>
     </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

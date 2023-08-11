@@ -7,12 +7,12 @@ import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { postUserLogin } from "../../store/actions/login-user";
 
 function Login() {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useNavigate()
   const [password, setPassword] = React.useState();
   const [email, setEmail] = React.useState();
 
