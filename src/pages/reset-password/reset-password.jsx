@@ -7,24 +7,29 @@ import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { postRefreshPassword } from "../../store/actions/reset-password";
 
 function ResetPassword() {
   const [value, setValue] = React.useState();
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
+  const [token, setToken] = React.useState();
 
-  // const onClick = () => {
-  //   const resetPassword = ({
-  //     'email': email,
-  //   });
-  //   dispatch(postResetPassword(resetPassword))
-  //   .then(resetPassword => {
-  //     history.push('/reset-password');
-  //   });
 
-  // };
+  const onClick = () => {
+    const setPassword = ({
+      'password': password,
+      'token': token
+    });
+    // console.log(resetPassword);
+    dispatch(postRefreshPassword(setPassword))
+    // .then(setPassword => {
+    //   history.push('/login');
+    // });
+
+  };
 
 
 
@@ -36,22 +41,24 @@ function ResetPassword() {
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Восстановление пароля
         </h3>
-        <PasswordInput value={value} name={"password"} extraClass="mt-6" />
+        <PasswordInput value={password} name={"password"} extraClass="mt-6"  onChange={(e) => setPassword(e.target.value)} />
         <Input
           type={"text"}
           placeholder={"Введите код из письма"}
-          value={value}
+          value={token}
           name={"name"}
           error={false}
           errorText={"Ошибка"}
           size={"default"}
           extraClass="mt-6"
+          onChange={(e) => setToken(e.target.value)}
         />
         <Button
           htmlType="button"
           type="primary"
           size="large"
           extraClass={`${styles.button} mt-6`}
+          onClick={onClick}
         >
           Сохранить
         </Button>

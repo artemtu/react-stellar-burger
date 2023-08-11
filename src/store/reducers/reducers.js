@@ -8,6 +8,7 @@ import registerUserReducer from './register-user-reducer';
 import loginUserReducer from './login-user-reducer';
 import profileInfoReducer from './get-profile-info-reducer';
 import forgotPasswordReducer from './forgot-password-reducer';
+import resetPasswordReducer from './reset-password-reducer';
 
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   loginUser: loginUserReducer,
   profileInfo: profileInfoReducer,
   forgotPassword: forgotPasswordReducer,
+  resetPassword: resetPasswordReducer,
   
 });
 
