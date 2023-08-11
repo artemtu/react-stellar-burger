@@ -15,6 +15,8 @@ import ResetPassword from "../../pages/reset-password/reset-password";
 import NotFound404 from "../../pages/not-found-404/not-found-404";
 import Profile from "../../pages/profile/profile";
 import ProfileOrders from "../../pages/orders/orders";
+import {onlyAuth, OnlyUnAuth} from '../../protected-route/protected-route'
+
 
 
 
@@ -27,7 +29,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/reset-password" component={ResetPassword} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile" element={<onlyAuth component={Profile} />} />
         <Route exact path="/profile/orders" component={ProfileOrders} />
         <Route component={NotFound404} /> 
 
