@@ -6,9 +6,27 @@ import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
+import { postResetPassword } from "../../store/actions/forgot-password";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function ForgotPassword() {
-  const [value, setValue] = React.useState();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [email, setEmail] = React.useState();
+
+  const onClick = () => {
+    const resetPassword = ({
+      'email': email,
+    });
+    dispatch(postResetPassword(resetPassword))
+    .then(resetPassword => {
+      history.push('/reset-password');
+    });
+
+  };
+
+
   return (
     <>
       <Header />
@@ -17,12 +35,18 @@ function ForgotPassword() {
           Восстановление пароля
         </h3>
 
-        <EmailInput extraClass="mt-6" value={value} placeholder="Укажите e-mail " />
+        <EmailInput
+          extraClass="mt-6"
+          value={email}
+          placeholder="Укажите e-mail "
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <Button
           htmlType="button"
           type="primary"
           size="large"
           extraClass={`${styles.button} mt-6`}
+          onClick={onClick}
         >
           Восстановить
         </Button>
@@ -30,7 +54,6 @@ function ForgotPassword() {
           {" "}
           Вспомнили пароль? <Link to="/login">Войти </Link>{" "}
         </p>
- 
       </div>
     </>
   );

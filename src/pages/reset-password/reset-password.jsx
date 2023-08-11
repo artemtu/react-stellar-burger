@@ -5,9 +5,30 @@ import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-component
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function ResetPassword() {
   const [value, setValue] = React.useState();
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [email, setEmail] = React.useState();
+
+  // const onClick = () => {
+  //   const resetPassword = ({
+  //     'email': email,
+  //   });
+  //   dispatch(postResetPassword(resetPassword))
+  //   .then(resetPassword => {
+  //     history.push('/reset-password');
+  //   });
+
+  // };
+
+
+
+
   return (
     <>
       <Header />
