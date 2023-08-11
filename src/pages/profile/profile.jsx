@@ -45,7 +45,7 @@ function Profile() {
       </div>
       <div className={styles.LeftMenu}>
         <Link className='text text_type_main-medium text_color_active' style={{ textDecoration: 'none' ,color:'white' }}>Профиль</Link>
-        <Link className='text text_type_main-medium text_color_inactive' style={{ textDecoration: 'none' }}>История заказов</Link>
+        <Link className='text text_type_main-medium text_color_inactive' to='profile/orders' style={{ textDecoration: 'none' }}>История заказов</Link>
         <Link className='text text_type_main-medium text_color_inactive' style={{ textDecoration: 'none' }}>Выход</Link>
         <p className='text text_type_main-small'>В этом разделе вы можете изменить свои персональные данные</p>
       </div>
