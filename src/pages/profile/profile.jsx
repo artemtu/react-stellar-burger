@@ -10,9 +10,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/get-profile-info";
 
+import {useLocation} from "react-router-dom";
 
 
 function Profile() {
+  const location = useLocation();
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
@@ -44,7 +46,7 @@ function Profile() {
         <PasswordInput value={password}  icon={'EditIcon'} extraClass="mt-6" />
       </div>
       <div className={styles.LeftMenu}>
-        <Link className='text text_type_main-medium text_color_active' style={{ textDecoration: 'none' ,color:'white' }}>Профиль</Link>
+        <Link className={`text text_type_main-medium ${location.pathname === '/profile' ? '' : 'text_color_inactive'}`} style={{ textDecoration: 'none'}}>Профиль</Link>
         <Link className='text text_type_main-medium text_color_inactive' to='profile/orders' style={{ textDecoration: 'none' }}>История заказов</Link>
         <Link className='text text_type_main-medium text_color_inactive' style={{ textDecoration: 'none' }}>Выход</Link>
         <p className='text text_type_main-small'>В этом разделе вы можете изменить свои персональные данные</p>
