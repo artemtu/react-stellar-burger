@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/get-profile-info";
 import { Navigate } from "react-router-dom";
+import { getAuthUser } from "../../components/api/auth-user";
 
 import {useLocation} from "react-router-dom";
 
@@ -20,6 +21,21 @@ function Profile() {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    getAuthUser()
+    .then((data) =>{
+      console.log(data);
+      setName(data.user.name);
+      setEmail(data.user.email);
+    });
+
+  }, [name, email])
+
+
+
+
 
  
   return (
