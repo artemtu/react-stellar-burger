@@ -15,7 +15,7 @@ import ResetPassword from "../../pages/reset-password/reset-password";
 import NotFound404 from "../../pages/not-found-404/not-found-404";
 import Profile from "../../pages/profile/profile";
 import ProfileOrders from "../../pages/orders/orders";
-import {OnlyAuth, OnlyUnAuth} from '../../protected-route/protected-route'
+import {OnlyAuth, UnAuth} from '../../protected-route/protected-route'
 import { useSelector } from "react-redux";
 
 
@@ -32,9 +32,9 @@ function App() {
     <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/register" element={<UnAuth component={<Register/>} />} />
         <Route path="/forgot-password" element={<ForgotPassword/>} />
-        <Route path="/reset-password" element={<OnlyAuth element={<ResetPassword/>} />} />
+        <Route path="/reset-password" element={<OnlyAuth component={<ResetPassword/>} />} />
         <Route path="/profile" element={<OnlyAuth component={<Profile/>} />} />
         <Route path="/profile/orders" element={<OnlyAuth component={<ProfileOrders/>} />} />
         <Route path='*' element={<NotFound404/>} /> 
