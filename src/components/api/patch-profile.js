@@ -3,13 +3,14 @@ import { checkResponse } from "./api";
 
 const accessToken = localStorage.getItem("accessToken");
 
-export const getAuthUser = () => {
+export const patchAuthUser = (updateData) => {
   return fetch(`${config.baseUrl}/auth/user`, {
     method: "PATCH",
     headers: {
       ...config.headers,
       Authorization: accessToken,
     },
+    body: JSON.stringify(updateData),
   })
     .then(checkResponse)
     .then((data) => {

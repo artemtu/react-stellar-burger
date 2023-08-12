@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/get-profile-info";
 import { Navigate } from "react-router-dom";
 import { getAuthUser } from "../../components/api/auth-user";
+import { patchAuthUser } from "../../components/api/patch-profile";
 
 import {useLocation} from "react-router-dom";
 
@@ -32,6 +33,20 @@ function Profile() {
     });
   }, [])
 
+  const onClick = () => {
+    const updateUserData = {
+      email: email,
+      password: password,
+      name: name,
+    };
+  
+    patchAuthUser(updateUserData)
+      .then((data) => {
+        console.log(data);
+      })
+  };
+  
+
  
   return (
     <>
@@ -47,9 +62,10 @@ function Profile() {
           size={"default"}
           extraClass="mt-6"
           icon={'EditIcon'}
+          onChange={(e) => setName(e.target.value)}
         />
-        <EmailInput extraClass="mt-6"   value={email}  icon={'EditIcon'} />
-        <PasswordInput value={password}  icon={'EditIcon'} extraClass="mt-6" />
+        <EmailInput extraClass="mt-6"   value={email}  icon={'EditIcon'}  onChange={(e) => setEmail(e.target.value)} />
+        <PasswordInput value={password}  icon={'EditIcon'} extraClass="mt-6"   onChange={(e) => setPassword(e.target.value)}/>
        
 
       </div>
@@ -57,7 +73,7 @@ function Profile() {
         <Button htmlType="button" type="secondary" size="small">
   Отмена
 </Button>
-        <Button htmlType="button" type="primary" size="small" extraClass="ml-2">Сохранить</Button>
+        <Button htmlType="button" type="primary" size="small" extraClass="ml-2"  onClick={onClick}>Сохранить</Button>
 
       </div>
       <div className={styles.LeftMenu}>
