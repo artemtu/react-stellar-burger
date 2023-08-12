@@ -32,10 +32,6 @@ function Profile() {
     });
   }, [])
 
-
-
-
-
  
   return (
     <>
@@ -54,6 +50,15 @@ function Profile() {
         />
         <EmailInput extraClass="mt-6"   value={email}  icon={'EditIcon'} />
         <PasswordInput value={password}  icon={'EditIcon'} extraClass="mt-6" />
+       
+
+      </div>
+      <div className={styles.buttons}>
+        <Button htmlType="button" type="secondary" size="small">
+  Отмена
+</Button>
+        <Button htmlType="button" type="primary" size="small" extraClass="ml-2">Сохранить</Button>
+
       </div>
       <div className={styles.LeftMenu}>
         <Link className={`text text_type_main-medium ${location.pathname === '/profile' ? '' : 'text_color_inactive'}`}  style={{ textDecoration: 'none'}}>Профиль</Link>
