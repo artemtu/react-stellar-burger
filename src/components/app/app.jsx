@@ -30,13 +30,13 @@ function App() {
 
   return (
     <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path="/login" element={<Login/>} />
-        <Route exact path="/register" element={<Register/>} />
-        <Route exact path="/forgot-password" element={<ForgotPassword/>} />
-        <Route exact path="/reset-password" element={<OnlyAuth element={<ResetPassword/>} />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/forgot-password" element={<ForgotPassword/>} />
+        <Route path="/reset-password" element={<OnlyAuth element={<ResetPassword/>} />} />
         <Route path="/profile" element={<OnlyAuth component={<Profile/>} />} />
-        <Route exact path="/profile/orders" element={<OnlyAuth component={<ProfileOrders/>} />} />
+        <Route path="/profile/orders" element={<OnlyAuth component={<ProfileOrders/>} />} />
         <Route path='*' element={<NotFound404/>} /> 
 
     </Routes>

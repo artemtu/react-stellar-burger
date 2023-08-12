@@ -16,5 +16,5 @@ const Protected = ({component }) => {
   return component;
 };
 
-export const OnlyAuth = (props) => <Protected isAuthChecked={true || false} {...props} />;
+export const OnlyAuth = (props) => <Protected {...props} />;
 // export const OnlyUnAuth = (props) => <Protected onlyUnAuth={true} {...props} />;
