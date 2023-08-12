@@ -26,12 +26,11 @@ function Profile() {
   useEffect(() => {
     getAuthUser()
     .then((data) =>{
-      console.log(data);
+      // console.log(data);
       setName(data.user.name);
       setEmail(data.user.email);
     });
-
-  }, [name, email])
+  }, [])
 
 
 
