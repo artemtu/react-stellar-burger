@@ -6,9 +6,14 @@ import { ListIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import {useLocation} from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
   const location = useLocation();
+  const isAuthChecked = useSelector((state) => state.loginUser.isAuthChecked);
+  const profileOrLogin = isAuthChecked ? '/profile' : '/login';
+
+
   return (
     <header className={`${styles.header} p10`}>
       <div className={styles.test}>
@@ -34,7 +39,7 @@ function Header() {
         <Logo />
       </div>
 
-      <Link to='/login' className={`${styles.header__link} pl-5 pr-5`}>
+      <Link to={profileOrLogin} className={`${styles.header__link} pl-5 pr-5`}>
         <ProfileIcon type={location.pathname === '/login' ? 'primary' : 'secondary'} />
         <p className={`text_type_main-default ${location.pathname === '/login' ? '' : 'text_color_inactive'} pr-2 pl-2`}>
           {" "}
