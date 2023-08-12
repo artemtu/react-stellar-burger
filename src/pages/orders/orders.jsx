@@ -11,7 +11,7 @@ function ProfileOrders() {
     <Header/>
     <h1>Страница в разработке</h1>
     <div className={styles.LeftMenu}>
-        <Link className={`text text_type_main-medium ${location.pathname === '/orders' ? '' : 'text_color_inactive'}`} style={{ textDecoration: 'none' }} >Профиль</Link>
+        <Link className={`text text_type_main-medium ${location.pathname === '/orders' ? '' : 'text_color_inactive'}`} to='/profile' style={{ textDecoration: 'none' }} >Профиль</Link>
         <Link className={`text text_type_main-medium `}  style={{ textDecoration: 'none' }}>История заказов</Link>
         <Link className={`text text_type_main-medium ${location.pathname === '/orders' ? '' : 'text_color_inactive'}`} style={{ textDecoration: 'none' }}>Выход</Link>
         <p className='text text_type_main-small'>В этом разделе вы можете изменить свои персональные данные</p>
