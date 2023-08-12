@@ -23,6 +23,8 @@ import { useSelector } from "react-redux";
 
 
 function App() {
+
+  
   
 
 
@@ -33,8 +35,8 @@ function App() {
         <Route exact path="/register" element={<Register/>} />
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
         <Route exact path="/reset-password" element={<ResetPassword/>} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route exact path="/profile/orders" element={<ProfileOrders/>} />
+        <Route path="/profile" element={<OnlyAuth component={<Profile/>} />} />
+        <Route exact path="/profile/orders" element={<OnlyAuth component={<ProfileOrders/>} />} />
         <Route path='*' element={<NotFound404/>} /> 
 
     </Routes>

@@ -11,9 +11,10 @@ const Protected = ({component }) => {
   if (!isAuthChecked) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
+
   
   return component;
 };
 
-export const OnlyAuth = (props) => <Protected isAuthChecked={false} {...props} />;
+export const OnlyAuth = (props) => <Protected isAuthChecked={true || false} {...props} />;
 // export const OnlyUnAuth = (props) => <Protected onlyUnAuth={true} {...props} />;
