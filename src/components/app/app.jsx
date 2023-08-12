@@ -34,7 +34,7 @@ function App() {
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
         <Route exact path="/reset-password" element={<ResetPassword/>} />
         <Route path="/profile" element={<OnlyAuth component={<Profile />} />} />
-        <Route exact path="/profile/orders" element={<ProfileOrders/>} />
+        <Route exact path="/profile/orders" element={ <OnlyAuth component={<ProfileOrders/>} />} />
         <Route path='*' element={<NotFound404/>} /> 
 
     </Routes>

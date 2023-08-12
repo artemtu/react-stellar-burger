@@ -4,8 +4,7 @@ import React from "react";
 
 const Protected = ({ onlyUnAuth = false, component }) => {
   const isAuthChecked = useSelector((state) => state.loginUser.isAuthChecked);
-  console.log(isAuthChecked);
-  // const user = useSelector((state) => state.loginUser.loginUser.user);
+
   const location = useLocation();
 
 
