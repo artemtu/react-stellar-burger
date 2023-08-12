@@ -1,6 +1,7 @@
 import { LOGIN_USER } from "../actions/actions";
 
 const initialState = {
+  isAuthChecked: false,
 
 };
 
@@ -10,6 +11,8 @@ const loginUserReducer = (state = initialState, action) => {
       return {
         ...state,
         loginUser: action.payload,
+        isAuthChecked: true,
+
       };
     default:
       return state;

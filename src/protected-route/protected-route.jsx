@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import React from "react";
 
 const Protected = ({ onlyUnAuth = false, component }) => {
-  const isAuthChecked = useSelector((store) => store.user.isAuthChecked);
-  const user = useSelector((store) => store.user.user);
+  const isAuthChecked = useSelector((state) => state.loginUser.loginUser.success);
+  const user = useSelector((state) => state.loginUser.loginUser.user);
   const location = useLocation();
 
   if (!isAuthChecked) {

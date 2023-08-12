@@ -21,11 +21,6 @@ function Profile() {
   const dispatch = useDispatch();
   
 
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
-
-  // const infoProfile = useSelector((state) => state.profileInfo.profileInfo.user);
  
   return (
     <>
