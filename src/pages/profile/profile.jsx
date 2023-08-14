@@ -47,9 +47,7 @@ function Profile() {
     const setLogout = {
       token: localStorage.getItem("refreshToken"),
     };
-    dispatch(postLogout(setLogout)).then(() => {
-      navigate("/");
-    });
+    dispatch(postLogout(setLogout));
   };
 
   return (
