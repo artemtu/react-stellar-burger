@@ -17,6 +17,7 @@ import Profile from "../../pages/profile/profile";
 import ProfileOrders from "../../pages/orders/orders";
 import {OnlyAuth, UnAuth} from '../../protected-route/protected-route'
 import { useSelector } from "react-redux";
+import IngredientPage from "../../pages/ingredients/ingredients";
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/profile" element={<OnlyAuth component={<Profile/>} />} />
         <Route path="/profile/orders" element={<OnlyAuth component={<ProfileOrders/>} />} />
         <Route path="/logout" element={<OnlyAuth component={<Profile/>} />} />
+        <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path='*' element={<NotFound404/>} /> 
 
     </Routes>

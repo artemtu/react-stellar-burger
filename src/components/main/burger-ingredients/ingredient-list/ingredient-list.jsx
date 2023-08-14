@@ -2,13 +2,17 @@ import React from "react";
 import { Ingridients } from "../burger-ingredients";
 import { useSelector } from "react-redux";
 import { useDrag } from "react-dnd";
-import styles from './ingredient-list.module.css'
+import styles from "./ingredient-list.module.css";
 import PropTypes from "prop-types";
-
+import { useNavigate } from "react-router-dom";
 
 export function IngredientList({ setIngredientModal, data }) {
+  const navigate = useNavigate();
 
-
+  // const handleIngredientClick = (id) => {
+  //   navigate(`/ingredients/${id}`);
+  //   setIngredientModal(true);
+  // };
 
   return (
     <div className={styles.ingridientContainer}>
@@ -21,6 +25,7 @@ export function IngredientList({ setIngredientModal, data }) {
           price={item.price}
           type={item.type}
           setIngredientModal={setIngredientModal}
+          // onClick={() => handleIngredientClick(item._id)}
         />
       ))}
     </div>
@@ -29,6 +34,6 @@ export function IngredientList({ setIngredientModal, data }) {
 
 IngredientList.propTypes = {
   data: PropTypes.array.isRequired,
-  setIngredientModal:PropTypes.func.isRequired , 
+  setIngredientModal: PropTypes.func.isRequired,
 };
 export default IngredientList;

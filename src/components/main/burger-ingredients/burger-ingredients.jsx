@@ -7,6 +7,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredient-list/ingredient-list.module.css";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 export function Ingridients({
   id,
@@ -37,7 +38,9 @@ export function Ingridients({
   ).length;
   const totalCount = bunCount + ingredientCount;
 
+
   const onClick = () => {
+    window.history.pushState({}, "", `/ingredients/${id}`);
     setIngredientModal({ open: true, id });
   };
   return (
