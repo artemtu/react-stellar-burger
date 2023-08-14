@@ -15,6 +15,7 @@ export const LOGIN_USER = 'LOGIN_USER'
 export const GET_PROFILE_INFO = 'GET_PROFILE_INFO'
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 export const RESET_PASSWORD = 'RESET_PASSWORD'
+export const LOGOUT = 'LOGOUT'
 
 
 
