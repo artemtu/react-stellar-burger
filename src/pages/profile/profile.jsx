@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/actions/get-profile-info";
 import { Navigate } from "react-router-dom";
-import { getAuthUser } from "../../components/api/auth-user";
 import { patchAuthUser } from "../../components/api/patch-profile";
 import { postLogout } from "../../store/actions/logout";
 import { useNavigate } from "react-router-dom";
@@ -26,12 +25,11 @@ function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getAuthUser().then((data) => {
-      // console.log(data);
+    dispatch(getUser()).then((data) => {
       setName(data.user.name);
       setEmail(data.user.email);
     });
-  }, []);
+  }, [dispatch]);
 
   const onClick = () => {
     const updateUserData = {

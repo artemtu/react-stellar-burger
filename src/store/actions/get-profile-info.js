@@ -24,6 +24,7 @@ export const getUser = () => (dispatch) => {
     .then(checkResponse)
     .then((data) => {
       dispatch(getUserData(data))
+      return data
     })
     .catch(console.error);
   }

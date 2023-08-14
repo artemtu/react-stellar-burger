@@ -1,6 +1,7 @@
 import { LOGOUT } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
+import { setAuthChecked } from "./set-auth-checked";
 
 const refreshToken = localStorage.getItem("refreshToken");
 
@@ -24,6 +25,7 @@ export const postLogout = (logout) => (dispatch) => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       dispatch(postUserLogout(data));
+      dispatch(setAuthChecked(false));
     })
     .catch(console.error);
 };
