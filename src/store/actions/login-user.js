@@ -15,7 +15,6 @@ export const getUserLogin = (loginData) => {
     return fetch(`${config.baseUrl}/auth/login`, {
       method: "POST",
       headers: config.headers,
-    //   Authorization: `Bearer ${accessToken}`,
       body: JSON.stringify(login),
     })
       .then(checkResponse)

@@ -3,7 +3,6 @@ import { SET_AUTH_CHEKCED } from "../actions/actions";
 
 const initialState = {
   isAuthChecked: false,
-
 };
 
 const loginUserReducer = (state = initialState, action) => {
@@ -14,11 +13,11 @@ const loginUserReducer = (state = initialState, action) => {
         loginUser: action.payload,
         isAuthChecked: true,
       };
-      case SET_AUTH_CHEKCED:
-        return {
-          ...state,
-          isAuthChecked: action.payload,
-        }
+    case SET_AUTH_CHEKCED:
+      return {
+        ...state,
+        isAuthChecked: action.payload,
+      };
     default:
       return state;
   }

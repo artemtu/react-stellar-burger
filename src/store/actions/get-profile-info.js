@@ -1,8 +1,7 @@
 import { config } from "../../components/api/api";
-import {checkResponse} from "../../components/api/api";
+import { checkResponse } from "../../components/api/api";
 import { GET_PROFILE_INFO } from "./actions";
-
-const accessToken = localStorage.getItem("accessToken");
+import { fetchWithRefresh } from "./refreshToken";
 
 export const getUserData = (userInfo) => {
   return {
@@ -11,21 +10,20 @@ export const getUserData = (userInfo) => {
   };
 };
 
-
-
-export const getUser = () => (dispatch) => {
-    return fetch(`${config.baseUrl}/auth/user`, {
+export const getUser = () => {
+  return (dispatch) => {
+    return fetchWithRefresh("https://norma.nomoreparties.space/api/auth/user", {
       method: "GET",
       headers: {
-        ...config.headers,
-        Authorization: accessToken, 
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("accessToken"),
       },
-    })
-    .then(checkResponse)
-    .then((data) => {
-      dispatch(getUserData(data))
-      return data
-    })
-    .catch(console.error);
-  }
-  
+    }).then((res) => {
+      if (res.success) {
+        dispatch(getUserData(res));
+      } else {
+        return Promise.reject("Ошибка данных с сервера");
+      }
+    });
+  };
+};

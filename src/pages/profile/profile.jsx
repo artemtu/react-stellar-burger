@@ -25,9 +25,9 @@ function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getUser()).then((data) => {
-      setName(data.user.name);
-      setEmail(data.user.email);
+    dispatch(getUser()).then((res) => {
+      setName(res.user.name);
+      setEmail(res.user.email);
     });
   }, [dispatch]);
 
