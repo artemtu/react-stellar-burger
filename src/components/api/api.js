@@ -7,11 +7,5 @@ export const config = {
 };
 
 export function checkResponse(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return res.json();
-  //   .then((err) => {
-  //     Promise.reject(`Ошибка: ${err.status}`);
-  //   });
+  return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 }

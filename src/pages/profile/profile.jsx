@@ -23,13 +23,20 @@ function Profile() {
   const [password, setPassword] = React.useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const profileInfo = useSelector(
+    (state) => state.profileInfo.profileInfo.user
+  );
 
   useEffect(() => {
-    dispatch(getUser()).then((res) => {
-      setName(res.user.name);
-      setEmail(res.user.email);
-    });
+    dispatch(getUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (profileInfo) {
+      setName(profileInfo.name);
+      setEmail(profileInfo.email);
+    }
+  }, [profileInfo]);
 
   const onClick = () => {
     const updateUserData = {
