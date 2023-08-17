@@ -23,13 +23,15 @@ function Profile() {
   const [password, setPassword] = React.useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const profileInfo = useSelector(
-    (state) => state.profileInfo.profileInfo.user
-  );
 
+  
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
+  
+  const profileInfo = useSelector(
+    (state) => state.profileInfo.profileInfo.user
+  );
 
   useEffect(() => {
     if (profileInfo) {
