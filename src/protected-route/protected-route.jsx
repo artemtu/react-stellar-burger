@@ -14,12 +14,17 @@ const Protected = ({ UnAuth = true, component }) => {
     dispatch(checkUserAuth());
   }, [dispatch]);
 
+  if (!isAuthChecked) {
+    return null;
+  }
+
   if (UnAuth && !isAuthChecked) {
     return <Navigate to="/login" />;
   }
 
   if (!UnAuth && isAuthChecked) {
-    return <Navigate to="/" />;
+    const { from } = location.state || { from: { pathname: "/" } };
+    return <Navigate to={from} />;
   }
 
   return component;
@@ -27,4 +32,4 @@ const Protected = ({ UnAuth = true, component }) => {
 
 export const OnlyAuth = (props) => <Protected UnAuth={true} {...props} />;
 export const UnAuth = (props) => <Protected UnAuth={false} {...props} />;
-
+// export const OnlyUnAuth = (props) => <Protected onlyUnAuth={true} {...props} />;

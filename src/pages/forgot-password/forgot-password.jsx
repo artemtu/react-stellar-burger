@@ -20,8 +20,8 @@ function ForgotPassword() {
       email: email,
     };
     dispatch(postResetPassword(resetPassword))
-    .then((path)=>{
-      navigate(path);
+    .then(()=>{
+      navigate('/reset-password');
     })
   };
 
