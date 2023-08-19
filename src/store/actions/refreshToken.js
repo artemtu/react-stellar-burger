@@ -1,7 +1,8 @@
 import { checkResponse } from "../../components/api/api";
+import { config } from "../../components/api/api";
 
 export const refreshToken = () => {
-  return fetch("https://norma.nomoreparties.space/api/auth/token", {
+  return fetch(`${config.baseUrl}/auth/token`, {
     method: "POST",
     headers: {
       Accept: "application/json",

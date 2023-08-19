@@ -12,7 +12,7 @@ export const getUserData = (userInfo) => {
 
 export const getUser = () => {
   return (dispatch) => {
-    return fetchWithRefresh("https://norma.nomoreparties.space/api/auth/user", {
+    return fetchWithRefresh(`${config.baseUrl}/auth/user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
