@@ -15,7 +15,7 @@ function ForgotPassword() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = React.useState();
+  const [email, setEmail] = React.useState('');
 
   const onClick = () => {
     const resetPassword = {
