@@ -16,8 +16,8 @@ function ResetPassword() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [password, setPassword] = React.useState();
-  const [token, setToken] = React.useState();
+  const [password, setPassword] = React.useState('');
+  const [token, setToken] = React.useState('');
 
 
   const onClick = () => {
@@ -33,7 +33,7 @@ function ResetPassword() {
   };
 
   const statePasswordForgotten = useSelector(state => state.forgotPassword.isSuccess);
-  console.log(statePasswordForgotten);
+  // console.log(statePasswordForgotten);
 
   useEffect(() => {
     if (!statePasswordForgotten) {
