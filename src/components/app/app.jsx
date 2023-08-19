@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<UnAuth component={<Login/>} />} />
         <Route path="/register" element={<UnAuth component={<Register/>} />} />
-        <Route path="/forgot-password" element={<ForgotPassword/>} />
+        <Route path="/forgot-password" element={<UnAuth component={<ForgotPassword/>} />} />
         <Route path="/reset-password" element={<UnAuth component={<ResetPassword/>} />} />
         {/* <Route path="/reset-password"  element={<ResetPassword/>} /> */}
         <Route path="/profile" element={<OnlyAuth component={<Profile/>} />} />
