@@ -18,12 +18,23 @@ import ProfileOrders from "../../pages/orders/orders";
 import {OnlyAuth, UnAuth} from '../../protected-route/protected-route'
 import { useSelector } from "react-redux";
 import IngredientPage from "../../pages/ingredients/ingredients";
+import { useDispatch } from "react-redux";
+import { fetchIngredients } from "../../store/actions/fetch-data";
 
 
 
 
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchIngredients());
+    };
+
+    fetchData();
+  }, [dispatch]);
 
   
   
