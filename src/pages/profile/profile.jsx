@@ -18,9 +18,9 @@ import { useLocation } from "react-router-dom";
 
 function Profile() {
   const location = useLocation();
-  const [name, setName] = React.useState();
-  const [email, setEmail] = React.useState();
-  const [password, setPassword] = React.useState();
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
