@@ -9,7 +9,7 @@ import styles from "./ingredient-list/ingredient-list.module.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-export function Ingridients({
+export function Ingridients ({
   id,
   type,
   image,
@@ -71,5 +71,10 @@ Ingridients.propTypes = {
   price: PropTypes.number.isRequired,
   setIngredientModal: PropTypes.func.isRequired,
 };
+
+// type IngredientsProps = {
+//   id: string
+
+// }
 
 export default Ingridients;

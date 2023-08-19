@@ -1,7 +1,12 @@
 import { GET_PROFILE_INFO } from "../actions/actions";
 
 const initialState = {
-
+  profileInfo: {
+    user: {
+      name: "",
+      email: "",
+    },
+  },
 };
 
 const profileInfoReducer = (state = initialState, action) => {

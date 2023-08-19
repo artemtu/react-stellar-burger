@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postRefreshPassword } from "../../store/actions/reset-password";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function ResetPassword() {
   const [value, setValue] = React.useState();
@@ -29,6 +31,15 @@ function ResetPassword() {
       navigate(path);
     })
   };
+
+  const statePasswordForgotten = useSelector(state => state.forgotPassword.isSuccess);
+  console.log(statePasswordForgotten);
+
+  useEffect(() => {
+    if (!statePasswordForgotten) {
+      navigate('/forgot-password');
+    };
+  }, [statePasswordForgotten]);
 
 
 

@@ -9,8 +9,10 @@ import { Link } from "react-router-dom";
 import { postResetPassword } from "../../store/actions/forgot-password";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function ForgotPassword() {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = React.useState();
@@ -19,10 +21,10 @@ function ForgotPassword() {
     const resetPassword = {
       email: email,
     };
-    dispatch(postResetPassword(resetPassword))
-    .then(()=>{
-      navigate('/reset-password');
-    })
+    dispatch(postResetPassword(resetPassword));
+    dispatch().then(() => {
+      navigate("/reset-password", { replace: true });
+    });
   };
 
   return (
