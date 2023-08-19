@@ -38,13 +38,7 @@ function Main({ openModal, setIngredientModal }) {
     (item) => item.type === "sauce"
   );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchIngredients());
-    };
 
-    fetchData();
-  }, [dispatch]);
 
   // const [{ isOver }, dropRef] = useDrop({
   //   accept: "ingredients",
