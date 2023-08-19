@@ -1,6 +1,7 @@
 import { FORGOT_PASSWORD } from "../actions/actions";
 
 const initialState = {
+  isSuccess: false,
 
 };
 
@@ -10,6 +11,7 @@ const forgotPasswordReducer = (state = initialState, action) => {
       return {
         ...state,
         forgotPassword: action.payload,
+        isSuccess: true,
       };
     default:
       return state;

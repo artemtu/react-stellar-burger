@@ -21,8 +21,7 @@ function ForgotPassword() {
     const resetPassword = {
       email: email,
     };
-    dispatch(postResetPassword(resetPassword));
-    dispatch().then(() => {
+    dispatch(postResetPassword(resetPassword)).then(() => {
       navigate("/reset-password", { replace: true });
     });
   };
