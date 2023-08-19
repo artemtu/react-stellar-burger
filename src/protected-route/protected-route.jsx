@@ -9,17 +9,18 @@ const Protected = ({ UnAuth = true, component }) => {
   const dispatch = useDispatch();
   const isAuthChecked = useSelector((state) => state.loginUser.isAuthChecked);
   const location = useLocation();
+  const from = location.state?.from || "/";
 
   useEffect(() => {
     dispatch(checkUserAuth());
   }, [dispatch]);
 
   if (UnAuth && !isAuthChecked) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" state={{ from: location }} />;
   }
 
   if (!UnAuth && isAuthChecked) {
-    return <Navigate to="/profile" />;
+    return <Navigate to={from} />;
   }
 
   return component;
