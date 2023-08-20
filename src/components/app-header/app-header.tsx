@@ -7,10 +7,12 @@ import { ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 import { Link } from "react-router-dom";
 import {useLocation} from "react-router-dom";
 import { useSelector } from "react-redux";
+import { any } from "prop-types";
 
 function Header() {
   const location = useLocation();
-  const isAuthChecked = useSelector((state) => state.loginUser.isAuthChecked);
+  //@ts-ignore
+  const isAuthChecked = useSelector((state) => state.loginUser.isAuthChecked) 
   const profileOrLogin = isAuthChecked ? '/profile' : '/login';
 
 
