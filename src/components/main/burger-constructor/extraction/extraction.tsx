@@ -8,24 +8,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { postOrder } from "../../../../store/actions/post-order";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { IbunConstructor } from "../bun-bottom-constructor/bun-bottom-constructor";
 
-function Extraction({ openModal }) {
+export interface IopenModal {
+  openModal: openModalFunction;
+}
+
+type openModalFunction = () => void;
+
+function Extraction({ openModal }: IopenModal) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
 
+  //@ts-ignore
   const ingredientsForPrice = useSelector((state) => state.constructorBurger);
   const buns = ingredientsForPrice.bun || [];
   const ingredients = ingredientsForPrice.ingredients || [];
 
+  //@ts-ignore
   const isLoggedIn = useSelector((state) => state.loginUser.isAuthChecked);
   // console.log(isLoggedIn);
 
   const totalPrice = React.useMemo(() => {
-    const bunPrice = buns.reduce((acc, item) => acc + (item.price * 2 || 0), 0);
+    const bunPrice = buns.reduce(
+      (acc: number, item: IbunConstructor) => acc + (item.price * 2 || 0),
+      0
+    );
     const ingredientsPrice = ingredients.reduce(
-      (acc, item) => acc + (item.price || 0),
+      (acc: number, item: IbunConstructor) => acc + (item.price || 0),
       0
     );
     return bunPrice + ingredientsPrice;
@@ -36,8 +49,10 @@ function Extraction({ openModal }) {
     ingredientsForPrice.ingredients.length === 0;
 
   const onClick = () => {
-    const bunsIds = data.bun.map((item) => item.id);
-    const ingredientsIds = data.ingredients.map((item) => item.id);
+    const bunsIds = data.bun.map((item: IbunConstructor) => item.id);
+    const ingredientsIds = data.ingredients.map(
+      (item: IbunConstructor) => item.id
+    );
     const allIngredientIds = {
       ingredients: [...bunsIds, ...ingredientsIds],
     };
@@ -51,7 +66,7 @@ function Extraction({ openModal }) {
   return (
     <div className={`${styles.extraction} mr-4 mt-10`}>
       <p className="text text_type_digits-medium pr-2">{totalPrice}</p>
-      <CurrencyIcon />
+      <CurrencyIcon type="primary" />
       <div className="ml-10">
         <Button
           htmlType="button"
