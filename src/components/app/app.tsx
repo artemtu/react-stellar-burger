@@ -23,8 +23,6 @@ import { fetchIngredients } from "../../store/actions/fetch-data";
 
 
 
-
-
 function App() {
   const dispatch = useDispatch();
 
@@ -35,10 +33,6 @@ function App() {
 
     fetchData();
   }, [dispatch]);
-
-  
-  
-
 
   return (
     <Routes>
