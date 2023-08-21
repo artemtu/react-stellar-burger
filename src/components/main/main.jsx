@@ -39,15 +39,6 @@ function Main({ openModal, setIngredientModal }) {
   );
 
 
-
-  // const [{ isOver }, dropRef] = useDrop({
-  //   accept: "ingredients",
-  //   drop: (item) => addIngredientsToConstructor(item),
-  //   collect: (monitor) => ({
-  //     isOver: !!monitor.isOver(),
-  //   }),
-  // });
-
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
     drop: (data) => {
@@ -59,9 +50,6 @@ function Main({ openModal, setIngredientModal }) {
     }),
   });
 
-  // const addIngredientsToConstructor = (item) => {
-  //   console.log(item);
-  // }
 
   const addIngredientsToConstructor = (item) => {
     const { type } = item;
@@ -72,9 +60,7 @@ function Main({ openModal, setIngredientModal }) {
     }
   };
 
-  // const dataToSend = {
-  //   ingredients: ["643d69a5c3f7b9001cfa0943", "643d69a5c3f7b9001cfa0943"],
-  // };
+
 
   const bunRef = useRef(null);
   const mainRef = useRef(null);
