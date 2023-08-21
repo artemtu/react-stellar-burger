@@ -26,7 +26,7 @@ export interface IbunConstructorProps {
 
 export interface IbunConstructor {
   id: string;
-  _id: string,
+  _id: string;
   image: string;
   name: string;
   price: number;

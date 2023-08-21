@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { IbunConstructorProps } from "../../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
 import { IopenModal } from "../../burger-constructor/extraction/extraction";
 
-type IngredientListProps = IbunConstructorProps & {
+ type IngredientListProps = IbunConstructorProps & {
   setIngredientModal: React.Dispatch<React.SetStateAction<IngredientModalState>>;
 };
 
 type IngredientModalState = {
   open: boolean;
-  id: number;
+  id: string;
 };
 
 
