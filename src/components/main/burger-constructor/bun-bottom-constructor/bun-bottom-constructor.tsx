@@ -32,6 +32,7 @@ export interface IbunConstructor {
   price: number;
   type: string;
   constId: string;
+  _constId: string;
 }
 
 export default BunBottomConstructor;

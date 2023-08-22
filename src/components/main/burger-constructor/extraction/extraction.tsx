@@ -14,7 +14,7 @@ export interface IopenModal {
   openModal: openModalFunction;
 }
 
-type openModalFunction = () => void;
+export type openModalFunction = () => void;
 
 function Extraction({ openModal }: IopenModal) {
   const dispatch = useDispatch();

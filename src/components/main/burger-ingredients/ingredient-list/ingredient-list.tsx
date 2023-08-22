@@ -12,7 +12,7 @@ import { IopenModal } from "../../burger-constructor/extraction/extraction";
   setIngredientModal: React.Dispatch<React.SetStateAction<IngredientModalState>>;
 };
 
-type IngredientModalState = {
+export type IngredientModalState = {
   open: boolean;
   id: string;
 };

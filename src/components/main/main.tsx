@@ -14,7 +14,8 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
-
+import { openModalFunction } from "./burger-constructor/extraction/extraction";
+import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
 
 import {
   ConstructorElement,
@@ -22,27 +23,54 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import Extraction from "./burger-constructor/extraction/extraction";
 
-function Main({ openModal, setIngredientModal }) {
+export interface IModalFunctions {
+  openModal: openModalFunction;
+  setIngredientModal: React.Dispatch<
+    React.SetStateAction<IngredientModalState>
+  >;
+}
+
+export interface IingredientFullInfo {
+  _id: string;
+  name: string;
+  type: string;
+  proteins: number;
+  fat: number;
+  calories: number;
+  carbohydrates: number;
+  image: string;
+  image_large: string;
+  image_mobile: string;
+  __v: number;
+}
+
+interface IingredientWithId extends IingredientFullInfo {
+  _constId: string;
+}
+
+function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const dispatch = useDispatch();
 
+  //@ts-ignore
   const selectIngredients = useSelector((state) => state.mainData);
+
+  //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
 
   const bunsArray = selectIngredients.data.filter(
-    (item) => item.type === "bun"
+    (item: IingredientFullInfo) => item.type === "bun"
   );
   const fillingsArray = selectIngredients.data.filter(
-    (item) => item.type === "main"
+    (item: IingredientFullInfo) => item.type === "main"
   );
   const sauceArray = selectIngredients.data.filter(
-    (item) => item.type === "sauce"
+    (item: IingredientFullInfo) => item.type === "sauce"
   );
-
 
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
-    drop: (data) => {
-      const newElement = { ...data, _constId: uuidv4() }; 
+    drop: (data: object) => {
+      const newElement: IingredientWithId = { ...data as IingredientFullInfo, _constId: uuidv4() };
       addIngredientsToConstructor(newElement);
     },
     collect: (monitor) => ({
@@ -50,8 +78,7 @@ function Main({ openModal, setIngredientModal }) {
     }),
   });
 
-
-  const addIngredientsToConstructor = (item) => {
+  const addIngredientsToConstructor = (item: IingredientFullInfo) => {
     const { type } = item;
     if (type === "bun") {
       dispatch({ type: ADD_BUN, payload: item });
@@ -59,8 +86,6 @@ function Main({ openModal, setIngredientModal }) {
       dispatch({ type: ADD_INGREDIENT, payload: item });
     }
   };
-
-
 
   const bunRef = useRef(null);
   const mainRef = useRef(null);
@@ -78,9 +103,6 @@ function Main({ openModal, setIngredientModal }) {
 
   const [current, setCurrent] = useState("one");
 
-
-
-
   return (
     <main className={`${styles.content}`}>
       <section className={`${styles.menuBar} mt-10`}>
@@ -96,43 +118,43 @@ function Main({ openModal, setIngredientModal }) {
             Начинки
           </Tab>
         </div>
-        <div className={`${styles.scroll} custom-scroll`} >
+        <div className={`${styles.scroll} custom-scroll`}>
           <div ref={bunRef}>
             <div ref={inViewBunRef}>
-          <h2 className="text text_type_main-medium mt-10" >Булки</h2>
-          <IngredientList
-            data={bunsArray}
-            setIngredientModal={setIngredientModal}
-          />
+              <h2 className="text text_type_main-medium mt-10">Булки</h2>
+              <IngredientList
+                data={bunsArray}
+                setIngredientModal={setIngredientModal}
+              />
             </div>
           </div>
-          
+
           <div ref={sauceRef}>
             <div ref={inViewSauceRef}>
-          <h2 className="text text_type_main-medium mt-10" >Соусы</h2>
-          <IngredientList
-            data={sauceArray}
-            setIngredientModal={setIngredientModal}
-          />
+              <h2 className="text text_type_main-medium mt-10">Соусы</h2>
+              <IngredientList
+                data={sauceArray}
+                setIngredientModal={setIngredientModal}
+              />
             </div>
           </div>
           <div ref={mainRef}>
             <div ref={inViewMainRef}>
-          <h2 className="text text_type_main-medium mt-10" >Начинки</h2>
-          <IngredientList
-            data={fillingsArray}
-            setIngredientModal={setIngredientModal}
-          />
+              <h2 className="text text_type_main-medium mt-10">Начинки</h2>
+              <IngredientList
+                data={fillingsArray}
+                setIngredientModal={setIngredientModal}
+              />
             </div>
           </div>
-        </div>
+         </div>
       </section>
 
       {/* вторая часть страницы */}
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={data.bun} />
-          <Ingredients data={data.ingredients} index={data.index} />
+          <Ingredients data={data.ingredients} />
           <BunBottomConstructor data={data.bun} />
         </div>
         <Extraction openModal={openModal} />
@@ -141,15 +163,9 @@ function Main({ openModal, setIngredientModal }) {
   );
 }
 
-Main.propTypes = {
-  openModal:PropTypes.func.isRequired , 
-  setIngredientModal:PropTypes.func.isRequired , 
-};
-
+// Main.propTypes = {
+//   openModal: PropTypes.func.isRequired,
+//   setIngredientModal: PropTypes.func.isRequired,
+// };
 
 export default Main;
-
-
-
-
-
