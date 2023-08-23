@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 export interface IingredientDeatails {
-  id: string;
-  _id: string;
+  id?: number;
+  _id?: number;
 
 }
 

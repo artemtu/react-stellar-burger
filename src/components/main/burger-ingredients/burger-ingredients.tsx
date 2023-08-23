@@ -9,6 +9,7 @@ import styles from "./ingredient-list/ingredient-list.module.css";
 import PropTypes, { number } from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { IbunConstructorProps } from "../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
+import { IngredientModalState } from "./ingredient-list/ingredient-list";
 
 interface Iingredients {
   id: string;
@@ -17,7 +18,7 @@ interface Iingredients {
   name: string;
   price: number;
   setIngredientModal: React.Dispatch<
-    React.SetStateAction<{ open: boolean; id: string }>
+    React.SetStateAction<IngredientModalState>
   >;
 }
 
@@ -43,17 +44,18 @@ export function Ingridients({
   );
 
   const bunCount =
-    bunsIngredientsFromStore.bun.filter((item:Iingredients) => item.id === id).length * 2;
+    bunsIngredientsFromStore.bun.filter((item: Iingredients) => item.id === id)
+      .length * 2;
 
   const ingredientCount = bunsIngredientsFromStore.ingredients.filter(
-    (item:Iingredients) => item.id === id
+    (item: Iingredients) => item.id === id
   ).length;
 
   const totalCount = bunCount + ingredientCount;
 
   const onClick = () => {
     window.history.pushState({}, "", `/ingredients/${id}`);
-    setIngredientModal({ open: true, id });
+    setIngredientModal({ open: true, id: id as any });
   };
   return (
     <div

@@ -5,7 +5,7 @@ import Modal from "../../components/modal/modal";
 import IngredientDetails from "../../components/modal/ingredient-details/ingredient-details";
 import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
-import styles from './home.module.css'
+import styles from "./home.module.css";
 
 function Home() {
   const [isOrderModal, setOrderModal] = useState({
@@ -18,7 +18,7 @@ function Home() {
 
   function closeModal() {
     setOrderModal({ open: false });
-    setIngredientModal({ open: false });
+    setIngredientModal({ open: false, id: 1 });
   }
 
   function openModal() {
@@ -30,6 +30,7 @@ function Home() {
       <Header />
       <Main
         setOrderModal={setOrderModal}
+        //@ts-ignore
         setIngredientModal={setIngredientModal}
         openModal={openModal}
       />

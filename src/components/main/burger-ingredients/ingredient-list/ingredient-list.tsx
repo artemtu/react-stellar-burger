@@ -14,7 +14,7 @@ import { IopenModal } from "../../burger-constructor/extraction/extraction";
 
 export type IngredientModalState = {
   open: boolean;
-  id: string;
+  id?: number | null;
 };
 
 
