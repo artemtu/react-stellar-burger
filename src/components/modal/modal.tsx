@@ -9,28 +9,29 @@ import PropTypes from "prop-types";
 
 const modalRoot = document.getElementById("react-modal");
 
+export interface Imodal {
+  children: React.ReactNode;
+  closeModal: {
+    (): void;
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+  };
+}
 
-
-
-
-function Modal({children, closeModal}) {
-  
-  
+function Modal({ children, closeModal }: Imodal) {
   useEffect(() => {
-    const closeModalOnEscape = (event) => {
+    const closeModalOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closeModal();
       }
     };
-      
+
     document.addEventListener("keydown", closeModalOnEscape);
-  
+
     return () => {
       document.removeEventListener("keydown", closeModalOnEscape);
     };
   });
 
-  
   return ReactDOM.createPortal(
     <Overlay closeModal={closeModal}>
       <div className={styles.modal}>
@@ -42,13 +43,14 @@ function Modal({children, closeModal}) {
         {children}
       </div>
     </Overlay>,
+    //@ts-ignore
     modalRoot
   );
 }
 
-Modal.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
-}
+// Modal.propTypes = {
+//   closeModal: PropTypes.func.isRequired,
+//   children: PropTypes.element.isRequired,
+// }
 
 export default Modal;
