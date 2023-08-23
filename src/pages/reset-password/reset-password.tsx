@@ -27,11 +27,13 @@ function ResetPassword() {
     });
     // console.log(resetPassword);
     dispatch(postRefreshPassword(setPassword))
+    //@ts-ignore
     .then((path)=>{
       navigate(path);
     })
   };
 
+  //@ts-ignore
   const statePasswordForgotten = useSelector(state => state.forgotPassword.isSuccess);
   // console.log(statePasswordForgotten);
 
