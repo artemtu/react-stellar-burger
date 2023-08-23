@@ -1,16 +1,14 @@
 import styles from "./orderdetails.module.css";
 import orderImg from "../../../images/doneorder-done.png";
-import propTypes from 'prop-types'
+import propTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getIngredients } from "../../../store/actions/post-order";
 
-
-
- function OrderDetails() {
-
-  const orderNumber = useSelector((state) => state.orderDetails.orderDetails.order.number);
-
+function OrderDetails() {
+  const orderNumber = useSelector(
+    //@ts-ignore
+    (state) => state.orderDetails.orderDetails.order.number
+  );
 
   return (
     <div className={styles.figures}>
@@ -27,8 +25,8 @@ import { getIngredients } from "../../../store/actions/post-order";
   );
 }
 
-OrderDetails.propTypes = {
-  orderNumber: propTypes.number
-}
+// OrderDetails.propTypes = {
+//   orderNumber: propTypes.number
+// }
 
 export default OrderDetails;
