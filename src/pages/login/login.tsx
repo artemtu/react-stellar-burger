@@ -7,28 +7,26 @@ import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { postUserLogin } from "../../store/actions/login-user";
 
 function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const [password, setPassword] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const navigate = useNavigate();
+  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = React.useState("");
 
   const onClick = () => {
-    const login = ({
-      'email': email,
-      'password':password,
-    });
-    dispatch(postUserLogin(login))    
-    .then(login => {
-      navigate('/profile');
-    });
-
+    const login = {
+      email: email,
+      password: password,
+    };
+    dispatch(postUserLogin(login))
+      //@ts-ignore
+      .then((login) => {
+        navigate("/profile");
+      });
   };
-
-
 
   return (
     <>
@@ -59,11 +57,12 @@ function Login() {
         </Button>
         <p className="text text_type_main-small text_color_inactive mt-20">
           {" "}
-          Вы - новый пользователь? <Link to="/register">Зарегистрироваться </Link>{" "}
+          Вы - новый пользователь?{" "}
+          <Link to="/register">Зарегистрироваться </Link>{" "}
         </p>
         <p className="text text_type_main-small text_color_inactive mt-4">
           Забыли пароль?{" "}
-          <Link className="text text_type_main-small" to ='/forgot-password'>
+          <Link className="text text_type_main-small" to="/forgot-password">
             Восстановить пароль
           </Link>
         </p>
