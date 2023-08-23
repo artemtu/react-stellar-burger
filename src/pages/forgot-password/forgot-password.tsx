@@ -21,6 +21,7 @@ function ForgotPassword() {
     const resetPassword = {
       email: email,
     };
+    //@ts-ignore
     dispatch(postResetPassword(resetPassword)).then(() => {
       navigate("/reset-password", { replace: true });
     });
