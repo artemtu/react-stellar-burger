@@ -33,7 +33,7 @@ function Register() {
 
   return (
     <>
-      <Header />
+  
       <div className={styles.register}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Регистрация

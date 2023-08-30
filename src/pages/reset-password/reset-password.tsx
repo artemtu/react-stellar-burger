@@ -49,7 +49,6 @@ function ResetPassword() {
 
   return (
     <>
-      <Header />
       <form className={styles.reset} onSubmit={onClick}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Восстановление пароля

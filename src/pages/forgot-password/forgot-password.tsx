@@ -31,7 +31,6 @@ function ForgotPassword() {
 
   return (
     <>
-      <Header />
       <form className={styles.forgot} onSubmit={onClick}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Восстановление пароля

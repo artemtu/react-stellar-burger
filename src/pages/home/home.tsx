@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <div className={styles.app}>
-      <Header />
+
       <Main
         setOrderModal={setOrderModal}
         //@ts-ignore

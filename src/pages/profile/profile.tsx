@@ -62,7 +62,7 @@ function Profile() {
 
   return (
     <>
-      <Header />
+  
       <div className={styles.profile}>
         <Input
           type={"text"}

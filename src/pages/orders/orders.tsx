@@ -8,7 +8,6 @@ function ProfileOrders() {
     const location = useLocation();
   return (
     <>
-    <Header/>
     <h1>Страница в разработке</h1>
     <div className={styles.LeftMenu}>
         <Link className={`text text_type_main-medium ${location.pathname === '/orders' ? '' : 'text_color_inactive'}`} to='/profile' style={{ textDecoration: 'none' }} >Профиль</Link>

@@ -31,7 +31,6 @@ function Login() {
 
   return (
     <>
-      <Header />
       <form className={styles.login} onSubmit={onClick}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Вход
