@@ -6,6 +6,6 @@ export const config = {
   },
 };
 
-export function checkResponse(res) {
+export function checkResponse<T>(res: Response) {
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 }
