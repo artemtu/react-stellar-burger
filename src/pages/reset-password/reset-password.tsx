@@ -20,7 +20,8 @@ function ResetPassword() {
   const [token, setToken] = React.useState('');
 
 
-  const onClick = () => {
+  const onClick = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const setPassword = ({
       'password': password,
       'token': token
@@ -49,7 +50,7 @@ function ResetPassword() {
   return (
     <>
       <Header />
-      <div className={styles.reset}>
+      <form className={styles.reset} onSubmit={onClick}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Восстановление пароля
         </h3>
@@ -66,11 +67,11 @@ function ResetPassword() {
           onChange={(e) => setToken(e.target.value)}
         />
         <Button
-          htmlType="button"
+          htmlType="submit"
           type="primary"
           size="large"
           extraClass={`${styles.button} mt-6`}
-          onClick={onClick}
+         
         >
           Сохранить
         </Button>
@@ -79,7 +80,7 @@ function ResetPassword() {
           Вспомнили пароль? <Link to="#">Войти </Link>{" "}
         </p>
  
-      </div>
+      </form>
     </>
   );
 }
