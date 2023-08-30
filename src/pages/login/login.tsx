@@ -16,7 +16,8 @@ function Login() {
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
 
-  const onClick = () => {
+  const onClick = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const login = {
       email: email,
       password: password,
@@ -31,10 +32,11 @@ function Login() {
   return (
     <>
       <Header />
-      <div className={styles.login}>
+      <form className={styles.login} onSubmit={onClick}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Вход
         </h3>
+
         <EmailInput
           extraClass="mt-6"
           value={email}
@@ -46,13 +48,7 @@ function Login() {
           name={"password"}
           extraClass="mt-6"
         />
-        <Button
-          htmlType="button"
-          type="primary"
-          size="large"
-          extraClass={`${styles.button} mt-6`}
-          onClick={onClick}
-        >
+        <Button type="primary" size="large" extraClass="mt-6" htmlType="submit">
           Войти
         </Button>
         <p className="text text_type_main-small text_color_inactive mt-20">
@@ -66,7 +62,7 @@ function Login() {
             Восстановить пароль
           </Link>
         </p>
-      </div>
+      </form>
     </>
   );
 }
