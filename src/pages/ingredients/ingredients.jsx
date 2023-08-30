@@ -15,7 +15,6 @@ function IngredientPage() {
 
   return (
     <>
-      <Header />
       <div className={styles.page}>
         {ingredient ? <IngredientDetails id={id} /> : <p>Loading...</p>}
       </div>

@@ -5,8 +5,17 @@ import { useDispatch } from "react-redux";
 import { checkUserAuth } from "../store/actions/check-user-auth";
 import { useEffect } from "react";
 
-const Protected = ({ UnAuth = true, component }) => {
+type TProtectedRoute = {
+  readonly UnAuth: boolean;
+  readonly component: JSX.Element;
+};
+
+const Protected = ({
+  UnAuth = true,
+  component,
+}: TProtectedRoute): JSX.Element => {
   const dispatch = useDispatch();
+  //@ts-ignore
   const isAuthChecked = useSelector((state) => state.loginUser.isAuthChecked);
   const location = useLocation();
   const from = location.state?.from || "/";
@@ -26,6 +35,6 @@ const Protected = ({ UnAuth = true, component }) => {
   return component;
 };
 
-export const OnlyAuth = (props) => <Protected UnAuth={true} {...props} />;
-export const UnAuth = (props) => <Protected UnAuth={false} {...props} />;
+export const OnlyAuth = (props: any) => <Protected UnAuth={true} {...props} />;
+export const UnAuth = (props: any) => <Protected UnAuth={false} {...props} />;
 // export const OnlyUnAuth = (props) => <Protected onlyUnAuth={true} {...props} />;

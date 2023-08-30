@@ -6,19 +6,30 @@ import {
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredient-list/ingredient-list.module.css";
-import PropTypes from "prop-types";
+import PropTypes, { number } from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { IbunConstructorProps } from "../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
+import { IngredientModalState } from "./ingredient-list/ingredient-list";
 
-export function Ingridients ({
+interface Iingredients {
+  id: string;
+  type: string;
+  image: string;
+  name: string;
+  price: number;
+  setIngredientModal: React.Dispatch<
+    React.SetStateAction<IngredientModalState>
+  >;
+}
+
+export function Ingridients({
   id,
   type,
   image,
   name,
   price,
   setIngredientModal,
-}) {
-
-
+}: Iingredients) {
   const [{ isDragging }, dragRef] = useDrag({
     type: "ingredients",
     item: { id, image, name, price, type },
@@ -28,20 +39,23 @@ export function Ingridients ({
   });
 
   const bunsIngredientsFromStore = useSelector(
+    //@ts-ignore
     (state) => state.constructorBurger
   );
 
   const bunCount =
-    bunsIngredientsFromStore.bun.filter((item) => item.id === id).length * 2;
-  const ingredientCount = bunsIngredientsFromStore.ingredients.filter(
-    (item) => item.id === id
-  ).length;
-  const totalCount = bunCount + ingredientCount;
+    bunsIngredientsFromStore.bun.filter((item: Iingredients) => item.id === id)
+      .length * 2;
 
+  const ingredientCount = bunsIngredientsFromStore.ingredients.filter(
+    (item: Iingredients) => item.id === id
+  ).length;
+
+  const totalCount = bunCount + ingredientCount;
 
   const onClick = () => {
     window.history.pushState({}, "", `/ingredients/${id}`);
-    setIngredientModal({ open: true, id });
+    setIngredientModal({ open: true, id: id as any });
   };
   return (
     <div
@@ -63,14 +77,14 @@ export function Ingridients ({
   );
 }
 
-Ingridients.propTypes = {
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  setIngredientModal: PropTypes.func.isRequired,
-};
+// Ingridients.propTypes = {
+//   id: PropTypes.string.isRequired,
+//   type: PropTypes.string.isRequired,
+//   image: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   price: PropTypes.number.isRequired,
+//   setIngredientModal: PropTypes.func.isRequired,
+// };
 
 // type IngredientsProps = {
 //   id: string

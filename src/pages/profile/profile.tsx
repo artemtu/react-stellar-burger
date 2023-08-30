@@ -30,6 +30,7 @@ function Profile() {
   }, [dispatch]);
   
   const profileInfo = useSelector(
+    //@ts-ignore
     (state) => state.profileInfo.profileInfo.user
   );
 
@@ -61,7 +62,7 @@ function Profile() {
 
   return (
     <>
-      <Header />
+  
       <div className={styles.profile}>
         <Input
           type={"text"}
@@ -78,7 +79,7 @@ function Profile() {
         <EmailInput
           extraClass="mt-6"
           value={email}
-          icon={"EditIcon"}
+          // icon={"EditIcon"}
           onChange={(e) => setEmail(e.target.value)}
         />
         <PasswordInput
@@ -108,6 +109,7 @@ function Profile() {
             location.pathname === "/profile" ? "" : "text_color_inactive"
           }`}
           style={{ textDecoration: "none" }}
+          to='/profile'
         >
           Профиль
         </Link>
@@ -122,6 +124,7 @@ function Profile() {
           className="text text_type_main-medium text_color_inactive"
           style={{ textDecoration: "none" }}
           onClick={logOut}
+          to='/logout'
         >
           Выход
         </Link>

@@ -1,14 +1,24 @@
 import React from "react";
-import styles from './ingredient-details.module.css'
+import styles from "./ingredient-details.module.css";
 import { useSelector } from "react-redux";
-import { ingredientOpen,clearIngredientOpen } from "../../../store/actions/info-open-ingredient";
+import {
+  ingredientOpen,
+  clearIngredientOpen,
+} from "../../../store/actions/info-open-ingredient";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-function IngredientDetails({ id }) {
+export interface IingredientDeatails {
+  id?: number;
+  _id?: number;
+
+}
+
+function IngredientDetails({ id }: IingredientDeatails) {
+  //@ts-ignore
   const data = useSelector((state) => state.mainData.data);
-  const ingredient = data.find((item) => item._id === id);
+  const ingredient = data.find((item:IingredientDeatails) => item._id === id);
 
   const dispatch = useDispatch();
 
@@ -17,10 +27,9 @@ function IngredientDetails({ id }) {
       dispatch(ingredientOpen(ingredient));
     }
     return () => {
-      dispatch(clearIngredientOpen()); 
+      dispatch(clearIngredientOpen());
     };
   }, [dispatch, ingredient]);
-
 
   return (
     <div>
@@ -57,8 +66,8 @@ function IngredientDetails({ id }) {
   );
 }
 
-IngredientDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-};
+// IngredientDetails.propTypes = {
+//   id: PropTypes.string.isRequired,
+// };
 
 export default IngredientDetails;

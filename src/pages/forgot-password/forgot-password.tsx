@@ -15,12 +15,15 @@ function ForgotPassword() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState("");
 
-  const onClick = () => {
+  const onClick = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     const resetPassword = {
       email: email,
     };
+    //@ts-ignore
     dispatch(postResetPassword(resetPassword)).then(() => {
       navigate("/reset-password", { replace: true });
     });
@@ -28,8 +31,7 @@ function ForgotPassword() {
 
   return (
     <>
-      <Header />
-      <div className={styles.forgot}>
+      <form className={styles.forgot} onSubmit={onClick}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Восстановление пароля
         </h3>
@@ -41,11 +43,10 @@ function ForgotPassword() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <Button
-          htmlType="button"
+          htmlType="submit"
           type="primary"
           size="large"
           extraClass={`${styles.button} mt-6`}
-          onClick={onClick}
         >
           Восстановить
         </Button>
@@ -53,7 +54,7 @@ function ForgotPassword() {
           {" "}
           Вспомнили пароль? <Link to="/login">Войти </Link>{" "}
         </p>
-      </div>
+      </form>
     </>
   );
 }

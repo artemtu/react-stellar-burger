@@ -12,10 +12,10 @@ import {useNavigate} from "react-router-dom";
 
 function Register() {
   const dispatch = useDispatch();
-  const history = useNavigate()
-  const [name, setName] = React.useState();
-  const [password, setPassword] = React.useState();
-  const [email, setEmail] = React.useState();
+  const navigate = useNavigate()
+  const [name, setName] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
   const onClick = () => {
     const registation = ({
@@ -24,15 +24,16 @@ function Register() {
       'name':name
     });
     dispatch(postUser(registation))
+    //@ts-ignore
     .then(registation => {
-      history.push('/login');
+      navigate('/login');
     });
 
   };
 
   return (
     <>
-      <Header />
+  
       <div className={styles.register}>
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Регистрация

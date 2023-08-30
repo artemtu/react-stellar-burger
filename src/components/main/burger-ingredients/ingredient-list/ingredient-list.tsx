@@ -5,8 +5,20 @@ import { useDrag } from "react-dnd";
 import styles from "./ingredient-list.module.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { IbunConstructorProps } from "../../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
+import { IopenModal } from "../../burger-constructor/extraction/extraction";
 
-export function IngredientList({ setIngredientModal, data }) {
+ type IngredientListProps = IbunConstructorProps & {
+  setIngredientModal: React.Dispatch<React.SetStateAction<IngredientModalState>>;
+};
+
+export type IngredientModalState = {
+  open: boolean;
+  id?: number | null;
+};
+
+
+export function IngredientList({ setIngredientModal, data } : IngredientListProps) {
   const navigate = useNavigate();
 
   // const handleIngredientClick = (id) => {
@@ -32,8 +44,8 @@ export function IngredientList({ setIngredientModal, data }) {
   );
 }
 
-IngredientList.propTypes = {
-  data: PropTypes.array.isRequired,
-  setIngredientModal: PropTypes.func.isRequired,
-};
+// IngredientList.propTypes = {
+//   data: PropTypes.array.isRequired,
+//   setIngredientModal: PropTypes.func.isRequired,
+// };
 export default IngredientList;
