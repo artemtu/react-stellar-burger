@@ -94,3 +94,11 @@ export interface IgetUserLogin {
     }>;
   };
 }
+
+export interface IpostUserLogout {
+  type: typeof LOGOUT;
+  payload: {
+    message: string;
+    success: boolean;
+  };
+}
