@@ -1,28 +1,13 @@
 import { GET_INGREDIENTS } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
+import { IgetIngredients } from "../types";
 
-export interface IData {
-  data: Array<{
-    _id: string;
-    name: string;
-    type: string;
-    proteins: number;
-    fat: number;
-    carbohydrates: number;
-    calories: number;
-    price: number;
-    image: string;
-    image_mobile: string;
-    image_large: string;
-    isLoading: boolean;
-  }>;
-}
-
-export const getIngredients = (ingredients: IData) => {
+export const getIngredients = (data: IgetIngredients) => {
   return {
     type: GET_INGREDIENTS,
-    payload: ingredients.data,
+    //@ts-ignore
+    payload: data.data,
   };
 };
 

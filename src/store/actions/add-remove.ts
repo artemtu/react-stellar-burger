@@ -3,7 +3,7 @@ import {
   REMOVE_INGREDIENT,
   CHANGE_INGREDIENT,
 } from "./actions";
-import { IData } from "./fetch-data";
+import { IData } from "../types";
 
 export const addIngredient = (ingredient: IData) => {
   return {

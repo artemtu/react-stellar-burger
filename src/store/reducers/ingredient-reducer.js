@@ -2,13 +2,11 @@
 // Замените "SET_INGREDIENTS" на ваш action type для получения списка ингредиентов
 import { GET_INGREDIENTS } from "../actions/actions";
 
-
 // Начальное состояние вашего редьюсера
 const initialState = {
   data: [],
-  isLoading:true,
+  isLoading: true,
 };
-
 
 const ingredientReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,9 +14,8 @@ const ingredientReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
-        isLoading:false,
+        isLoading: false,
       };
-
 
     default:
       return state;
