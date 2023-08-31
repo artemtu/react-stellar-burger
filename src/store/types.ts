@@ -57,3 +57,10 @@ export interface IchangeIngredient {
   type: typeof CHANGE_INGREDIENT;
   payload: IData;
 }
+
+export interface IgetNewPassword {
+  type: typeof FORGOT_PASSWORD;
+  payload: {
+    passwordData: string;
+  };
+}

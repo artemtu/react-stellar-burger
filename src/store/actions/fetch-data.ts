@@ -22,7 +22,6 @@ export const fetchIngredients = () => (dispatch) => {
     .then((data) => {
       // Сохраняем полученные данные в хранилище Redux
       dispatch(getIngredients(data));
-      console.log(data);
     })
     .catch((error) => {
       console.error(error);

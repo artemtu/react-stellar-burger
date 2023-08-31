@@ -2,12 +2,9 @@ import { FORGOT_PASSWORD } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { useNavigate } from "react-router-dom";
+import { IgetNewPassword } from "../types";
 
-interface IPasswordData {
-  email: string;
-}
-
-export const getNewPassword = (passwordData: IPasswordData) => {
+export const getNewPassword = (passwordData: IgetNewPassword) => {
   return {
     type: FORGOT_PASSWORD,
     payload: passwordData,
