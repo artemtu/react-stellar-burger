@@ -19,6 +19,7 @@ import {
 } from "./actions/actions";
 
 export interface IData {
+  success: boolean;
   data: Array<{
     _id: string;
     name: string;

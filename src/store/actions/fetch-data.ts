@@ -2,6 +2,7 @@ import { GET_INGREDIENTS } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { IgetIngredients } from "../types";
+import { IData } from "../types";
 
 export const getIngredients = (data: IgetIngredients) => {
   return {
@@ -21,6 +22,7 @@ export const fetchIngredients = () => (dispatch) => {
     .then((data) => {
       // Сохраняем полученные данные в хранилище Redux
       dispatch(getIngredients(data));
+      console.log(data);
     })
     .catch((error) => {
       console.error(error);
