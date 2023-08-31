@@ -3,23 +3,25 @@ import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 
 export interface IData {
-  _id: string;
-  name: string;
-  type: string;
-  proteins: number;
-  fat: number;
-  carbohydrates: number;
-  calories: number;
-  price: number;
-  image: string;
-  image_mobile: string;
-  image_large: string;
+  data: Array<{
+    _id: string;
+    name: string;
+    type: string;
+    proteins: number;
+    fat: number;
+    carbohydrates: number;
+    calories: number;
+    price: number;
+    image: string;
+    image_mobile: string;
+    image_large: string;
+  }>;
 }
 
 export const getIngredients = (ingredients: IData) => {
   return {
-    type: typeof GET_INGREDIENTS,
-    payload: ingredients,
+    type: GET_INGREDIENTS,
+    payload: ingredients.data,
   };
 };
 
