@@ -72,3 +72,12 @@ export interface IgetUserData {
     name: string;
   };
 }
+
+export interface IingredientOpen {
+  type: typeof GET_INFO_OPEN_INGREDIENT_MODAL;
+  payload: IData;
+}
+
+export interface IclearIngredientOpen {
+  type: typeof CLEAR_INGREDIENT_OPEN;
+}
