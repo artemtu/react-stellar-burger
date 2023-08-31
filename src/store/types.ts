@@ -81,3 +81,16 @@ export interface IingredientOpen {
 export interface IclearIngredientOpen {
   type: typeof CLEAR_INGREDIENT_OPEN;
 }
+
+export interface IgetUserLogin {
+  type: typeof LOGIN_USER;
+  payload: {
+    success: boolean;
+    accessToken: string;
+    refreshToken: string;
+    user: Array<{
+      email: string;
+      name: string;
+    }>;
+  };
+}
