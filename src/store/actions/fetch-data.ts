@@ -15,6 +15,7 @@ export interface IData {
     image: string;
     image_mobile: string;
     image_large: string;
+    isLoading: boolean;
   }>;
 }
 
