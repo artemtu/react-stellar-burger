@@ -64,3 +64,11 @@ export interface IgetNewPassword {
     passwordData: string;
   };
 }
+
+export interface IgetUserData {
+  type: typeof GET_PROFILE_INFO;
+  payload: {
+    email: string;
+    name: string;
+  };
+}

@@ -2,6 +2,7 @@ import { setAuthChecked } from './set-auth-checked';
 import { getUser } from './get-profile-info';
 
 
+
 export const checkUserAuth = () => {
   return (dispatch) => {
     if (localStorage.getItem("accessToken")) {
