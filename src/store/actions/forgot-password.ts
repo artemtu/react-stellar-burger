@@ -3,13 +3,18 @@ import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { useNavigate } from "react-router-dom";
 
-export const getNewPassword = (passwordData) => {
+interface IPasswordData {
+  email: string;
+}
+
+export const getNewPassword = (passwordData: IPasswordData) => {
   return {
     type: FORGOT_PASSWORD,
     payload: passwordData,
   };
 };
 
+//@ts-ignore
 export const postResetPassword = (email) => (dispatch) => {
   // const navigate = useNavigate();
   return fetch(`${config.baseUrl}/password-reset`, {
