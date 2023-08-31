@@ -56,6 +56,7 @@ function Extraction({ openModal }: IopenModal) {
     const allIngredientIds = {
       ingredients: [...bunsIds, ...ingredientsIds],
     };
+
     if (isLoggedIn) {
       dispatch(postOrder(allIngredientIds, openModal));
     } else {
