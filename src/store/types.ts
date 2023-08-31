@@ -20,20 +20,18 @@ import {
 
 export interface IData {
   data: Array<{
-    data: Array<{
-      _id: string;
-      name: string;
-      type: string;
-      proteins: number;
-      fat: number;
-      carbohydrates: number;
-      calories: number;
-      price: number;
-      image: string;
-      image_mobile: string;
-      image_large: string;
-      isLoading: boolean;
-    }>;
+    _id: string;
+    name: string;
+    type: string;
+    proteins: number;
+    fat: number;
+    carbohydrates: number;
+    calories: number;
+    price: number;
+    image: string;
+    image_mobile: string;
+    image_large: string;
+    isLoading: boolean;
   }>;
 }
 
