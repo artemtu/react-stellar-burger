@@ -4,25 +4,26 @@ import {
   CHANGE_INGREDIENT,
 } from "./actions";
 import { IData } from "../types";
+import { IaddIngredient, IremoveIngredient, IchangeIngredient } from "../types";
 
-export const addIngredient = (ingredient: IData) => {
+export const addIngredient = (ingredient: IaddIngredient) => {
   return {
-    type: typeof ADD_INGREDIENT,
+    type: ADD_INGREDIENT,
     payload: ingredient,
   };
 };
 
 // Экшен для удаления ингредиента по его ID
-export const removeIngredient = (ingredientId: string) => {
+export const removeIngredient = (ingredientId: IremoveIngredient) => {
   return {
-    type: typeof REMOVE_INGREDIENT,
+    type: REMOVE_INGREDIENT,
     payload: ingredientId,
   };
 };
 
-export const changeIngredient = (ingredient: IData) => {
+export const changeIngredient = (ingredient: IchangeIngredient) => {
   return {
-    type: typeof CHANGE_INGREDIENT,
+    type: CHANGE_INGREDIENT,
     payload: ingredient,
   };
 };

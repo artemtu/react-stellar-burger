@@ -39,3 +39,20 @@ export interface IgetIngredients {
   type: typeof GET_INGREDIENTS;
   payload: IData;
 }
+
+export interface IaddIngredient {
+  type: typeof ADD_INGREDIENT;
+  payload: IData;
+}
+
+export interface IremoveIngredient {
+  type: typeof REMOVE_INGREDIENT;
+  payload: {
+    ingredientId: string;
+  };
+}
+
+export interface IchangeIngredient {
+  type: typeof CHANGE_INGREDIENT;
+  payload: IData;
+}
