@@ -122,3 +122,11 @@ export interface IgetUserRegistration {
     }>;
   };
 }
+
+export interface IresetPassword {
+  type: typeof RESET_PASSWORD;
+  payload: {
+    success: boolean;
+    message: string;
+  };
+}
