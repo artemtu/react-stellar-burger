@@ -130,3 +130,10 @@ export interface IresetPassword {
     message: string;
   };
 }
+
+export interface IsetAuthChecked {
+  type: typeof SET_AUTH_CHEKCED;
+  payload: {
+    value: boolean;
+  };
+}
