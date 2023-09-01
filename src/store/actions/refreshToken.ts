@@ -14,12 +14,12 @@ export const refreshToken = () => {
   }).then(checkResponse);
 };
 
-export const fetchWithRefresh = async (url, options) => {
+export const fetchWithRefresh = async (url: string, options: any) => {
   try {
     const res = await fetch(url, options);
     return await checkResponse(res);
   } catch (err) {
-    if (err.message === "jwt expired") {
+    if ((err as Error).message === "jwt expired") {
       const refreshData = await refreshToken();
       if (!refreshData.success) {
         return Promise.reject(refreshData);
@@ -34,10 +34,3 @@ export const fetchWithRefresh = async (url, options) => {
     }
   }
 };
-
-// export const fetchWithRefresh = async (url, options) => {
-
-//     const res = await fetch(url, options);
-//     return await checkResponse(res);
-
-// }
