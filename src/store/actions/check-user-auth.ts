@@ -1,13 +1,12 @@
-import { setAuthChecked } from './set-auth-checked';
-import { getUser } from './get-profile-info';
-
-
+import { setAuthChecked } from "./set-auth-checked";
+import { getUser } from "./get-profile-info";
 
 export const checkUserAuth = () => {
+  //@ts-ignore
   return (dispatch) => {
     if (localStorage.getItem("accessToken")) {
       dispatch(getUser())
-        .catch((error) => {
+        .catch((error: Error) => {
           localStorage.removeItem("accessToken");
           localStorage.removeItem("refreshToken");
         })
