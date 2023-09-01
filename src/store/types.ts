@@ -109,3 +109,16 @@ export interface IgetOrderNumber {
     number: string;
   };
 }
+
+export interface IgetUserRegistration {
+  type: typeof REGISTER_USER;
+  payload: {
+    success: boolean;
+    accessToken: string;
+    refreshToken: string;
+    user: Array<{
+      email: string;
+      name: string;
+    }>;
+  };
+}
