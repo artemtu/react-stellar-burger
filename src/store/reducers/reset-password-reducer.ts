@@ -1,10 +1,10 @@
 import { RESET_PASSWORD } from "../actions/actions";
+import { ActionTypes } from "../types";
 
-const initialState = {
+const initialState = {};
 
-};
-
-const resetPasswordReducer = (state = initialState, action) => {
+const resetPasswordReducer = (state = initialState, action: ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case RESET_PASSWORD:
       return {
