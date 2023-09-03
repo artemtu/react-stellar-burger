@@ -1,11 +1,13 @@
 import { LOGIN_USER } from "../actions/actions";
 import { SET_AUTH_CHEKCED } from "../actions/actions";
+import { ActionTypes } from "../types";
 
 const initialState = {
   isAuthChecked: false,
 };
 
-const loginUserReducer = (state = initialState, action) => {
+const loginUserReducer = (state = initialState, action: ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case LOGIN_USER:
       return {
