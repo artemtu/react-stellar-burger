@@ -1,11 +1,12 @@
 import { FORGOT_PASSWORD } from "../actions/actions";
+import { ActionTypes } from "../types";
 
 const initialState = {
   isSuccess: false,
-
 };
 
-const forgotPasswordReducer = (state = initialState, action) => {
+const forgotPasswordReducer = (state = initialState, action: ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case FORGOT_PASSWORD:
       return {
