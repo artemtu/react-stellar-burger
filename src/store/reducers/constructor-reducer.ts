@@ -1,9 +1,14 @@
 // Импортируйте необходимые action types
 // Замените "SET_INGREDIENTS" на ваш action type для получения списка ингредиентов
-import { CHANGE_INGREDIENT, GET_BURGER_CONSTRUCTOR_INGREDIENTS } from "../actions/actions";
+import {
+  CHANGE_INGREDIENT,
+  GET_BURGER_CONSTRUCTOR_INGREDIENTS,
+} from "../actions/actions";
 import { REMOVE_INGREDIENT } from "../actions/actions";
 import { ADD_BUN } from "../actions/actions";
 import { ADD_INGREDIENT } from "../actions/actions";
+ import { ActionTypes } from "../types";
+
 
 
 // Начальное состояние вашего редьюсера
@@ -14,18 +19,22 @@ const initialState = {
 };
 
 
-const constructorReducer = (state = initialState, action) => {
+const constructorReducer = (state = initialState, action:ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case GET_BURGER_CONSTRUCTOR_INGREDIENTS:
       return {
         ...state,
+        //@ts-ignore
         bun: action.payload.bun,
+        //@ts-ignore
         ingredients: action.payload.ingredients,
-        isLoading:false,
+        isLoading: false,
       };
-      case ADD_BUN:
+    case ADD_BUN:
       return {
         ...state,
+        //@ts-ignore
         bun: [action.payload],
       };
     case ADD_INGREDIENT:
@@ -33,20 +42,26 @@ const constructorReducer = (state = initialState, action) => {
         ...state,
         ingredients: [...state.ingredients, action.payload],
       };
-      case REMOVE_INGREDIENT:
-        const ingredientSelected = state.ingredients.find((ingredient) => ingredient._constId === action.payload)
-        return {
-          ...state,
-          ingredients: state.ingredients.filter((ingredient)=> ingredient !== ingredientSelected)
-        }
-        case CHANGE_INGREDIENT:
-          const {indexFrom, indexTo, ingredient} = action.payload;
-          state.ingredients.splice(indexFrom, 1);
-          state.ingredients.splice(indexTo,0, ingredient);
-          return {
-            ...state
-
-          }
+    case REMOVE_INGREDIENT:
+      const ingredientSelected = state.ingredients.find(
+        //@ts-ignore
+        (ingredient) => ingredient._constId === action.payload
+      );
+      return {
+        ...state,
+        ingredients: state.ingredients.filter(
+          (ingredient) => ingredient !== ingredientSelected
+        ),
+      };
+    case CHANGE_INGREDIENT:
+      //@ts-ignore
+      const { indexFrom, indexTo, ingredient } = action.payload;
+      state.ingredients.splice(indexFrom, 1);
+      //@ts-ignore
+      state.ingredients.splice(indexTo, 0, ingredient);
+      return {
+        ...state,
+      };
     default:
       return state;
   }

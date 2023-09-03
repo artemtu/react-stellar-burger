@@ -18,7 +18,7 @@ interface Ingredient {
   isBunDragged: boolean;
 }
 
-interface BurgerConstructorPayload {
+export interface BurgerConstructorPayload {
   bun: Ingredient[];
   ingredients: Ingredient[];
 }
