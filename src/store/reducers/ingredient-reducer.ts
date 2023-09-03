@@ -1,14 +1,14 @@
-// Импортируйте необходимые action types
-// Замените "SET_INGREDIENTS" на ваш action type для получения списка ингредиентов
 import { GET_INGREDIENTS } from "../actions/actions";
+import { ActionTypes } from "../types";
 
-// Начальное состояние вашего редьюсера
+// Начальное состояние редьюсера
 const initialState = {
   data: [],
   isLoading: true,
 };
 
-const ingredientReducer = (state = initialState, action) => {
+const ingredientReducer = (state = initialState, action: ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case GET_INGREDIENTS:
       return {
