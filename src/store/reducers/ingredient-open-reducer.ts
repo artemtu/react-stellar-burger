@@ -1,10 +1,15 @@
-import { GET_INFO_OPEN_INGREDIENT_MODAL, CLEAR_INGREDIENT_OPEN } from "../actions/actions";
+import {
+  GET_INFO_OPEN_INGREDIENT_MODAL,
+  CLEAR_INGREDIENT_OPEN,
+} from "../actions/actions";
+import { ActionTypes } from "../types";
 
 const initialState = {
   ingredient: [],
 };
 
-const ingredientOpenReducer = (state = initialState, action) => {
+const ingredientOpenReducer = (state = initialState, action: ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case GET_INFO_OPEN_INGREDIENT_MODAL:
       return {
