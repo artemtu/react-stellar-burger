@@ -1,10 +1,10 @@
 import { REGISTER_USER } from "../actions/actions";
+import { ActionTypes } from "../types";
 
-const initialState = {
+const initialState = {};
 
-};
-
-const registerUserReducer = (state = initialState, action) => {
+const registerUserReducer = (state = initialState, action: ActionTypes) => {
+  //@ts-ignore
   switch (action.type) {
     case REGISTER_USER:
       return {
