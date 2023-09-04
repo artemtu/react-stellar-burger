@@ -4,7 +4,6 @@ import BunUpConstructor from "./burger-constructor/bun-top-constructor/bun-top-c
 import BunBottomConstructor from "./burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 import IngredientList from "./burger-ingredients/ingredient-list/ingredient-list";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import { useDrag, useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
@@ -16,6 +15,9 @@ import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
 import { openModalFunction } from "./burger-constructor/extraction/extraction";
 import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
+import { useAppDispatch, useAppSelector } from "../../store/types";
+import { RootState } from "../../store/reducers/reducers";
+import { useSelector } from "react-redux";
 
 import {
   ConstructorElement,
@@ -49,20 +51,21 @@ interface IingredientWithId extends IingredientFullInfo {
 }
 
 function Main({ openModal, setIngredientModal }: IModalFunctions) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  //@ts-ignore
-  const selectIngredients = useSelector((state) => state.mainData);
+  const selectIngredients = useAppSelector((state) => state.mainData);
 
   //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
-
+  //@ts-ignore
   const bunsArray = selectIngredients.data.filter(
     (item: IingredientFullInfo) => item.type === "bun"
   );
+    //@ts-ignore
   const fillingsArray = selectIngredients.data.filter(
     (item: IingredientFullInfo) => item.type === "main"
   );
+    //@ts-ignore
   const sauceArray = selectIngredients.data.filter(
     (item: IingredientFullInfo) => item.type === "sauce"
   );
@@ -70,7 +73,10 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
     drop: (data: object) => {
-      const newElement: IingredientWithId = { ...data as IingredientFullInfo, _constId: uuidv4() };
+      const newElement: IingredientWithId = {
+        ...(data as IingredientFullInfo),
+        _constId: uuidv4(),
+      };
       addIngredientsToConstructor(newElement);
     },
     collect: (monitor) => ({
@@ -147,7 +153,7 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
               />
             </div>
           </div>
-         </div>
+        </div>
       </section>
 
       {/* вторая часть страницы */}

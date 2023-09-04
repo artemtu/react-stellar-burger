@@ -16,7 +16,6 @@ import NotFound404 from "../../pages/not-found-404/not-found-404";
 import Profile from "../../pages/profile/profile";
 import ProfileOrders from "../../pages/orders/orders";
 import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
-import { useSelector } from "react-redux";
 import IngredientPage from "../../pages/ingredients/ingredients";
 import { useAppDispatch } from "../../store/types";
 import { fetchIngredients } from "../../store/actions/fetch-data";

@@ -1,5 +1,4 @@
-// Импортируйте необходимые action types
-// Замените "SET_INGREDIENTS" на ваш action type для получения списка ингредиентов
+
 import {
   CHANGE_INGREDIENT,
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
@@ -13,7 +12,6 @@ import { ADD_INGREDIENT } from "../actions/actions";
 
 interface IIngredient {
   _constId: string;
-  // ...другие свойства
 }
 
 // Тип для начального состояния
@@ -25,7 +23,7 @@ interface IConstructorState {
 
 
 
-// Начальное состояние вашего редьюсера
+// Начальное состояние  редьюсера
 const initialState = {
   bun: [],
   ingredients: [],

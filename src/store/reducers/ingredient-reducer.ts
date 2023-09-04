@@ -15,7 +15,6 @@ const initialState: IngredientState = {
 };
 
 const ingredientReducer = (state = initialState, action: IgetIngredients) => {
-
   switch (action.type) {
     case GET_INGREDIENTS:
       return {

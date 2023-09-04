@@ -3,7 +3,7 @@ import { GET_BURGER_CONSTRUCTOR_INGREDIENTS } from "./actions";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-interface Ingredient {
+export interface Ingredient {
   _id: string;
   name: string;
   type: string;
