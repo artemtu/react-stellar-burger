@@ -12,12 +12,14 @@ import { applyMiddleware } from "redux";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BrowserRouter as Router } from "react-router-dom";
+import { RootState } from "./store/reducers/reducers";
 
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
 
 
 

@@ -17,8 +17,17 @@ import {
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
   GET_INGREDIENTS,
 } from "./actions/actions";
+import { RootState } from "./reducers/reducers";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import { BurgerConstructorPayload } from "./actions/constructor-actions";
+
+//@ts-ignore
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+
 
 export interface IData {
   success: boolean;
@@ -140,12 +149,10 @@ export interface IsetAuthChecked {
   };
 }
 
-
 export interface IburgerIngredients {
   type: typeof GET_BURGER_CONSTRUCTOR_INGREDIENTS;
   payload: IData;
 }
-
 
 export type ActionTypes =
   | IgetIngredients
