@@ -19,6 +19,7 @@ import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
 import IngredientPage from "../../pages/ingredients/ingredients";
 import { useAppDispatch } from "../../store/types";
 import { fetchIngredients } from "../../store/actions/fetch-data";
+import Feed from "../../pages/feed/feed";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -54,6 +55,7 @@ function App() {
         />
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
+        <Route path="/feed" element={<Feed />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
     </>
