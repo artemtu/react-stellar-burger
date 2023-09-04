@@ -11,6 +11,20 @@ import { ADD_INGREDIENT } from "../actions/actions";
 
 
 
+interface IIngredient {
+  _constId: string;
+  // ...другие свойства
+}
+
+// Тип для начального состояния
+interface IConstructorState {
+  bun: IIngredient[];
+  ingredients: IIngredient[];
+  isBunDragged: boolean;
+}
+
+
+
 // Начальное состояние вашего редьюсера
 const initialState = {
   bun: [],
@@ -19,7 +33,7 @@ const initialState = {
 };
 
 
-const constructorReducer = (state = initialState, action:ActionTypes) => {
+const constructorReducer = (state:IConstructorState = initialState, action:ActionTypes) => {
   //@ts-ignore
   switch (action.type) {
     case GET_BURGER_CONSTRUCTOR_INGREDIENTS:

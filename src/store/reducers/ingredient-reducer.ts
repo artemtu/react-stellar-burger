@@ -1,14 +1,21 @@
 import { GET_INGREDIENTS } from "../actions/actions";
-import { ActionTypes } from "../types";
+import { IgetIngredients } from "../types";
+import { IData } from "../types";
 
+type IngredientType = IData;
+
+interface IngredientState {
+  data: IngredientType[];
+  isLoading: boolean;
+}
 // Начальное состояние редьюсера
-const initialState = {
+const initialState: IngredientState = {
   data: [],
   isLoading: true,
 };
 
-const ingredientReducer = (state = initialState, action: ActionTypes) => {
-  //@ts-ignore
+const ingredientReducer = (state = initialState, action: IgetIngredients) => {
+
   switch (action.type) {
     case GET_INGREDIENTS:
       return {
