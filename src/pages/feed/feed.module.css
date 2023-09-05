@@ -69,3 +69,11 @@
 .orderIsReady{
     color: #00CCCC;
 }
+
+
+.readynWork {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+

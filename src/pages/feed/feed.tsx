@@ -183,12 +183,23 @@ function Feed() {
 
 
       <section className="ml-15">
-        <div>
+        <div className={styles.readynWork}>
+        <div className="mr-9 mb-15">
             <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>
             <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340300</p>
             <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0345500</p>
             <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340880</p>
             <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340060</p>
+        </div>
+
+        <div>
+            <h3 className="text text_type_main-medium mt-6 mb-6">В работе:</h3>
+            <p className= {`${styles} text text_type_digits-default mb-2`}>0340300</p>
+            <p className= {`${styles} text text_type_digits-default mb-2`}>0345500</p>
+            <p className= {`${styles} text text_type_digits-default mb-2`}>0340880</p>
+            <p className= {`${styles} text text_type_digits-default mb-2`}>0340060</p>
+        </div>
+
         </div>
 
 
