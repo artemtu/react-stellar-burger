@@ -16,9 +16,18 @@ function FeedPage() {
   );
 
   return (
+    <>
     <div className={styles.container}>
       <p className="text text_type_digits-default"> #03402304</p>
+      <p className="text text_type_main-medium mt-10">Death Star Starship Main Burger</p>
+      <p className={`${styles.textColor} text text_type_main-medium mt-3`}>Выполнен</p>
+      <p className= "text text_type_main-medium mt-15">Состав:</p>
     </div>
+
+    <div>
+      
+    </div>
+    </>
   );
 }
 
