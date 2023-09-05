@@ -28,7 +28,7 @@ function Feed() {
         <p className="text text_type_main-medium mt-6">
           Death Star Starship Main Burger
         </p>
-        <div className={styles.container}>
+        <div className={`${styles.container} mt-6`}>
           <div className={styles.ingredients}>
             <img
               src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
@@ -36,7 +36,7 @@ function Feed() {
               className={styles.kek}
             />
           </div>
-          <div className={styles.totalPrice}>
+          <div className={`${styles.totalPrice} mt-6`}>
           <p className="text text_type_digits-default mr-2">4800</p>
           <CurrencyIcon type="primary" />
           </div>
