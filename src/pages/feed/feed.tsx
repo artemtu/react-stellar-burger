@@ -29,17 +29,29 @@ function Feed() {
           Death Star Starship Main Burger
         </p>
         <div className={`${styles.container} mt-6`}>
+            <div className={styles.test}>
           <div className={styles.ingredients}>
             <img
               src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
               alt=""
-              className={styles.kek}
+              className={styles.ingredientPosition}
             />
           </div>
-          <div className={`${styles.totalPrice} mt-6`}>
-          <p className="text text_type_digits-default mr-2">4800</p>
-          <CurrencyIcon type="primary" />
+          <div className={styles.orderWrap}>
+            <img
+              src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+              alt=""
+              className={styles.ingredientPosition}
+            />
           </div>
+
+            </div>
+
+          <div className={`${styles.totalPrice} mt-6`}>
+            <p className="text text_type_digits-default mr-2">4800</p>
+            <CurrencyIcon type="primary" />
+          </div>
+
         </div>
       </div>
     </section>

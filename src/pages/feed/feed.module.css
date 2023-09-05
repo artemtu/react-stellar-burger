@@ -19,26 +19,42 @@
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-.ingredients{
-    display: flex;
-    position: relative;
-    border-radius: 50%;
-    border: 2px solid red;
-    max-width: 80px;
-    max-height: 90px;
+.ingredients {
+  display: flex;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid red;
+  max-width: 80px;
+  max-height: 90px;
 }
 
-.kek {
-    position: relative;
-    left: -30px
+.ingredientPosition {
+  position: relative;
+  left: -30px;
 }
-
 
 .totalPrice {
-    display: flex;
+  display: flex;
+  justify-content: flex-end;
 }
 
+.orderWrap {
+  display: flex;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid red;
+  max-width: 80px;
+  max-height: 90px;
+  margin-left: -18px;
+
+
+}
+
+
+.test {
+    display: flex;
+}
