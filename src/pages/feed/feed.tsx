@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./feed.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
+import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 function Feed() {
   const today = new Date();
@@ -34,9 +35,11 @@ function Feed() {
               alt=""
               className={styles.kek}
             />
-            
           </div>
-          
+          <div className={styles.totalPrice}>
+          <p className="text text_type_digits-default mr-2">4800</p>
+          <CurrencyIcon type="primary" />
+          </div>
         </div>
       </div>
     </section>

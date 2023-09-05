@@ -20,6 +20,7 @@
 
 .container {
     display: flex;
+    justify-content: space-between;
 }
 
 .ingredients{
@@ -36,4 +37,8 @@
     left: -30px
 }
 
+
+.totalPrice {
+    display: flex;
+}
 
