@@ -17,7 +17,7 @@ function Feed() {
   return (
     <section className={`${styles.content} mt-10`}>
       <h1 className="text text_type_main-large">Лента заказов</h1>
-      <div className={`${styles.scroll} custom-scroll mt-6`}>
+      <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
         <div className={`${styles.numberDate} mt-6`}>
           <p className="text text_type_digits-default"> #03402304</p>
           <FormattedDate
