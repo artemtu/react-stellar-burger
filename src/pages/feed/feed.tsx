@@ -16,7 +16,7 @@ function Feed() {
 
   return (
 
-      <section className={`${styles.content} mt-10`}>
+      <section className={`${styles.content} mt-10 mr-30`}>
         <h1 className="text text_type_main-large">Лента заказов</h1>
         <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
           <div className={`${styles.numberDate} mt-6`}>
@@ -201,6 +201,17 @@ function Feed() {
         </div>
 
         </div>
+
+        <div className="mb-15">
+        <p  className="text text_type_main-medium">Выполнено за все время:</p>
+        <p className="text text_type_digits-large">28 999</p>
+        </div>
+
+        <div >
+        <p  className="text text_type_main-medium">Выполнено за сегодня:</p>
+        <p className="text text_type_digits-large">777</p>
+        </div>
+
 
 
 
