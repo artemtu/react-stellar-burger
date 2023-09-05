@@ -27,9 +27,11 @@
   display: flex;
   position: relative;
   border-radius: 50%;
-  border: 2px solid red;
+  border: 2px solid rgb(128, 0, 255);
   max-width: 80px;
   max-height: 90px;
+  background-color: black;
+
 }
 
 .ingredientPosition {
@@ -46,15 +48,14 @@
   display: flex;
   position: relative;
   border-radius: 50%;
-  border: 2px solid red;
+  border: 2px solid rgb(128, 0, 255);
   max-width: 80px;
   max-height: 90px;
   margin-left: -18px;
-
+  background-color: black;
 
 }
 
-
 .test {
-    display: flex;
+  display: flex;
 }
