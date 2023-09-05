@@ -64,3 +64,8 @@
   height: 70vh;
   overflow-y: scroll;
 }
+
+
+.orderIsReady{
+    color: #00CCCC;
+}

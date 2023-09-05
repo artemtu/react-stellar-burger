@@ -15,7 +15,7 @@ function Feed() {
   );
 
   return (
-    <>
+
       <section className={`${styles.content} mt-10`}>
         <h1 className="text text_type_main-large">Лента заказов</h1>
         <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
@@ -178,11 +178,30 @@ function Feed() {
             </div>
           </div>
         </div>
-      </section>
-      {/* вторая часть страницы */}
 
-      <section></section>
-    </>
+        {/* вторая часть страницы */}
+
+
+      <section className="ml-15">
+        <div>
+            <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>
+            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340300</p>
+            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0345500</p>
+            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340880</p>
+            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340060</p>
+        </div>
+
+
+
+
+
+      </section>
+
+
+
+
+
+      </section> // конец все страницы (контента)
   );
 }
 
