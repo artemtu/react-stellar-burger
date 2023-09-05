@@ -20,6 +20,7 @@ import IngredientPage from "../../pages/ingredients/ingredients";
 import { useAppDispatch } from "../../store/types";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
+import FeedPage from "../../pages/feed-id/feed-id";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -56,6 +57,7 @@ function App() {
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path="/feed" element={<Feed />} />
+        <Route path="/feedId" element={<FeedPage />} /> 
         <Route path="*" element={<NotFound404 />} />
       </Routes>
     </>
