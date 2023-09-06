@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./feed.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { fetchFeed } from "../../store/actions/feed";
+import { useDispatch } from "react-redux";
 
 function Feed() {
   const today = new Date();
@@ -13,6 +15,15 @@ function Feed() {
     today.getMinutes() - 1,
     0
   );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //@ts-ignore
+    dispatch(fetchFeed());
+  }, []);
+
+  
 
   return (
 
@@ -203,13 +214,13 @@ function Feed() {
         </div>
 
         <div className="mb-15">
-        <p  className="text text_type_main-medium">Выполнено за все время:</p>
-        <p className="text text_type_digits-large">28 999</p>
+          <p className="text text_type_main-medium">Выполнено за все время:</p>
+          <p className="text text_type_digits-large">28 999</p>
         </div>
 
-        <div >
-        <p  className="text text_type_main-medium">Выполнено за сегодня:</p>
-        <p className="text text_type_digits-large">777</p>
+        <div>
+          <p className="text text_type_main-medium">Выполнено за сегодня:</p>
+          <p className="text text_type_digits-large">777</p>
         </div>
 
 
