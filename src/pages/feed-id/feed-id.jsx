@@ -3,6 +3,7 @@ import Header from "../../components/app-header/app-header";
 import styles from "./feed-id.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 function FeedPage() {
   const today = new Date();
@@ -17,16 +18,57 @@ function FeedPage() {
 
   return (
     <>
-    <div className={styles.container}>
-      <p className="text text_type_digits-default"> #03402304</p>
-      <p className="text text_type_main-medium mt-10">Death Star Starship Main Burger</p>
-      <p className={`${styles.textColor} text text_type_main-medium mt-3`}>Выполнен</p>
-      <p className= "text text_type_main-medium mt-15">Состав:</p>
-    </div>
+      <div className={styles.container}>
+        <p className="text text_type_digits-default"> #03402304</p>
+        <p className="text text_type_main-medium mt-10">
+          Death Star Starship Main Burger
+        </p>
+        <p className={`${styles.textColor} text text_type_main-medium mt-3`}>
+          Выполнен
+        </p>
+        <p className="text text_type_main-medium mt-15">Состав:</p>
+        <div className={`${styles.scroll} custom-scroll mt-6`}>
+          <div className={styles.ingredient}>
+            <img
+              src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+              alt=""
+            />
+            <div className={styles.price}>
+              <p className="text text_type_main-small mr-30">
+                Краторная булка N-200i
+              </p>
+              <p className="text text_type_digits-default mr-2">2 x 988</p>
+              <CurrencyIcon type="primary" />
+            </div>
+          </div>
 
-    <div>
-      
-    </div>
+          <div className={styles.ingredient}>
+            <img
+              src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+              alt=""
+            />
+            <div className={styles.price}>
+              <p className="text text_type_main-small mr-30">
+                Краторная булка N-200i
+              </p>
+              <p className="text text_type_digits-default mr-2">2 x 988</p>
+              <CurrencyIcon type="primary" />
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.totalContainer}>
+          <FormattedDate
+            date={yesterday}
+            className="text text_type_main-default text_color_inactive"
+          />
+          <div className={styles.totalPrice}>
+          <p className="text text_type_digits-default mr-2">500</p>
+          <CurrencyIcon type="primary" />
+
+          </div>
+        </div>
+      </div>
     </>
   );
 }

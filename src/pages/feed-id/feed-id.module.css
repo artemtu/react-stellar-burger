@@ -8,3 +8,34 @@
 .textColor {
     color: #00CCCC;
 }
+
+
+.scroll {
+    height: 30vh;
+    overflow-y: scroll;
+    padding-right: 24px;
+  }
+
+.ingredient {
+    display: flex;
+    flex-direction: row;
+}
+
+.price{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+
+.totalContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.totalPrice{
+    display: flex;
+    flex-direction: row;
+    padding-right: 34px;
+}
+  
