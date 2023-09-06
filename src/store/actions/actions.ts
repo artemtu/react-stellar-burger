@@ -19,4 +19,7 @@ export const LOGOUT: 'LOGOUT' = 'LOGOUT'
 export const SET_AUTH_CHEKCED:'SET_AUTH_CHEKCED' = 'SET_AUTH_CHEKCED'
 
 
+export const GET_FEED : 'GET_FEED' = 'GET_FEED'
+
+
 

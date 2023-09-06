@@ -4,6 +4,8 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { fetchFeed } from "../../store/actions/feed";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Feed() {
   const today = new Date();
@@ -17,224 +19,246 @@ function Feed() {
   );
 
   const dispatch = useDispatch();
+  const [totalOrdersAll, setTotalOrders] = React.useState("");
+  const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
 
   useEffect(() => {
     //@ts-ignore
     dispatch(fetchFeed());
   }, []);
 
-  
+  //@ts-ignore
+  const totalOrders = useSelector((state) => state.getFeed.getFeed);
+
+  useEffect(() => {
+    if (totalOrders) {
+      //@ts-ignore
+      setTotalOrders(totalOrders.total);
+      //@ts-ignore
+      setTotalOrdersToday(totalOrders.totalToday);
+    }
+  }, [totalOrders]);
 
   return (
-
-      <section className={`${styles.content} mt-10 mr-30`}>
-        <h1 className="text text_type_main-large">Лента заказов</h1>
-        <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
-          <div className={`${styles.numberDate} mt-6`}>
-            <p className="text text_type_digits-default"> #03402304</p>
-            <FormattedDate
-              date={yesterday}
-              className="text text_type_main-default text_color_inactive"
-            />
-          </div>
-          <p className="text text_type_main-medium mt-6">
-            Death Star Starship Main Burger
-          </p>
-          <div className={`${styles.container} mt-6`}>
-            <div className={styles.test}>
-              <div className={styles.ingredients}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={`${styles.orderWrap} `}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
+    <section className={`${styles.content} mt-10 mr-30`}>
+      <h1 className="text text_type_main-large">Лента заказов</h1>
+      <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
+        <div className={`${styles.numberDate} mt-6`}>
+          <p className="text text_type_digits-default"> #03402304</p>
+          <FormattedDate
+            date={yesterday}
+            className="text text_type_main-default text_color_inactive"
+          />
+        </div>
+        <p className="text text_type_main-medium mt-6">
+          Death Star Starship Main Burger
+        </p>
+        <div className={`${styles.container} mt-6`}>
+          <div className={styles.test}>
+            <div className={styles.ingredients}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
             </div>
-
-            <div className={`${styles.totalPrice} mt-6`}>
-              <p className="text text_type_digits-default mr-2">480440</p>
-              <CurrencyIcon type="primary" />
+            <div className={`${styles.orderWrap} `}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
             </div>
           </div>
 
-          <div className={`${styles.numberDate} mt-6`}>
-            <p className="text text_type_digits-default"> #034dsfsdf4</p>
-            <FormattedDate
-              date={yesterday}
-              className="text text_type_main-default text_color_inactive"
-            />
-          </div>
-          <p className="text text_type_main-medium mt-6">LolBurger</p>
-          <div className={`${styles.container} mt-6`}>
-            <div className={styles.test}>
-              <div className={styles.ingredients}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-            </div>
-
-            <div className={`${styles.totalPrice} mt-6`}>
-              <p className="text text_type_digits-default mr-2">4800</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </div>
-          <div className={`${styles.numberDate} mt-6`}>
-            <p className="text text_type_digits-default"> #03402304</p>
-            <FormattedDate
-              date={yesterday}
-              className="text text_type_main-default text_color_inactive"
-            />
-          </div>
-          <p className="text text_type_main-medium mt-6">
-            Death Star Starship Main Burger
-          </p>
-          <div className={`${styles.container} mt-6`}>
-            <div className={styles.test}>
-              <div className={styles.ingredients}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-            </div>
-
-            <div className={`${styles.totalPrice} mt-6`}>
-              <p className="text text_type_digits-default mr-2">4800</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </div>
-
-          <div className={`${styles.numberDate} mt-6`}>
-            <p className="text text_type_digits-default"> #03402304</p>
-            <FormattedDate
-              date={yesterday}
-              className="text text_type_main-default text_color_inactive"
-            />
-          </div>
-          <p className="text text_type_main-medium mt-6">Kekburger</p>
-          <div className={`${styles.container} mt-6`}>
-            <div className={styles.test}>
-              <div className={styles.ingredients}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-              <div className={styles.orderWrap}>
-                <img
-                  src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
-              </div>
-            </div>
-
-            <div className={`${styles.totalPrice} mt-6`}>
-              <p className="text text_type_digits-default mr-2">5400</p>
-              <CurrencyIcon type="primary" />
-            </div>
+          <div className={`${styles.totalPrice} mt-6`}>
+            <p className="text text_type_digits-default mr-2">480440</p>
+            <CurrencyIcon type="primary" />
           </div>
         </div>
 
-        {/* вторая часть страницы */}
+        <div className={`${styles.numberDate} mt-6`}>
+          <p className="text text_type_digits-default"> #034dsfsdf4</p>
+          <FormattedDate
+            date={yesterday}
+            className="text text_type_main-default text_color_inactive"
+          />
+        </div>
+        <p className="text text_type_main-medium mt-6">LolBurger</p>
+        <div className={`${styles.container} mt-6`}>
+          <div className={styles.test}>
+            <div className={styles.ingredients}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+          </div>
 
+          <div className={`${styles.totalPrice} mt-6`}>
+            <p className="text text_type_digits-default mr-2">4800</p>
+            <CurrencyIcon type="primary" />
+          </div>
+        </div>
+        <div className={`${styles.numberDate} mt-6`}>
+          <p className="text text_type_digits-default"> #03402304</p>
+          <FormattedDate
+            date={yesterday}
+            className="text text_type_main-default text_color_inactive"
+          />
+        </div>
+        <p className="text text_type_main-medium mt-6">
+          Death Star Starship Main Burger
+        </p>
+        <div className={`${styles.container} mt-6`}>
+          <div className={styles.test}>
+            <div className={styles.ingredients}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+          </div>
+
+          <div className={`${styles.totalPrice} mt-6`}>
+            <p className="text text_type_digits-default mr-2">4800</p>
+            <CurrencyIcon type="primary" />
+          </div>
+        </div>
+
+        <div className={`${styles.numberDate} mt-6`}>
+          <p className="text text_type_digits-default"> #03402304</p>
+          <FormattedDate
+            date={yesterday}
+            className="text text_type_main-default text_color_inactive"
+          />
+        </div>
+        <p className="text text_type_main-medium mt-6">Kekburger</p>
+        <div className={`${styles.container} mt-6`}>
+          <div className={styles.test}>
+            <div className={styles.ingredients}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+            <div className={styles.orderWrap}>
+              <img
+                src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+                alt=""
+                className={styles.ingredientPosition}
+              />
+            </div>
+          </div>
+
+          <div className={`${styles.totalPrice} mt-6`}>
+            <p className="text text_type_digits-default mr-2">5400</p>
+            <CurrencyIcon type="primary" />
+          </div>
+        </div>
+      </div>
+
+      {/* вторая часть страницы */}
 
       <section className="ml-15">
         <div className={styles.readynWork}>
-        <div className="mr-9 mb-15">
+          <div className="mr-9 mb-15">
             <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>
-            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340300</p>
-            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0345500</p>
-            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340880</p>
-            <p className= {`${styles.orderIsReady} text text_type_digits-default mb-2`}>0340060</p>
-        </div>
+            <p
+              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
+            >
+              0340300
+            </p>
+            <p
+              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
+            >
+              0345500
+            </p>
+            <p
+              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
+            >
+              0340880
+            </p>
+            <p
+              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
+            >
+              0340060
+            </p>
+          </div>
 
-        <div>
+          <div>
             <h3 className="text text_type_main-medium mt-6 mb-6">В работе:</h3>
-            <p className= {`${styles} text text_type_digits-default mb-2`}>0340300</p>
-            <p className= {`${styles} text text_type_digits-default mb-2`}>0345500</p>
-            <p className= {`${styles} text text_type_digits-default mb-2`}>0340880</p>
-            <p className= {`${styles} text text_type_digits-default mb-2`}>0340060</p>
-        </div>
-
+            <p className={`${styles} text text_type_digits-default mb-2`}>
+              0340300
+            </p>
+            <p className={`${styles} text text_type_digits-default mb-2`}>
+              0345500
+            </p>
+            <p className={`${styles} text text_type_digits-default mb-2`}>
+              0340880
+            </p>
+            <p className={`${styles} text text_type_digits-default mb-2`}>
+              0340060
+            </p>
+          </div>
         </div>
 
         <div className="mb-15">
           <p className="text text_type_main-medium">Выполнено за все время:</p>
-          <p className="text text_type_digits-large">28 999</p>
+          <p className="text text_type_digits-large">{totalOrdersAll}</p>
         </div>
 
         <div>
           <p className="text text_type_main-medium">Выполнено за сегодня:</p>
-          <p className="text text_type_digits-large">777</p>
+          <p className="text text_type_digits-large">{totalOrdersToday}</p>
         </div>
-
-
-
-
-
-
       </section>
-
-
-
-
-
-      </section> // конец все страницы (контента)
+    </section> // конец все страницы (контента)
   );
 }
 
