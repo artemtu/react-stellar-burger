@@ -39,6 +39,18 @@ function Feed() {
     }
   }, [totalOrders]);
 
+  //@ts-ignore
+  const isReady = useSelector((state) => state.getFeed.getFeed.orders);
+
+
+  const done = isReady
+    //@ts-ignore
+    .filter((item) => item.status === "done")
+      //@ts-ignore
+    .map((item) => item.number);
+
+
+
   return (
     <section className={`${styles.content} mt-10 mr-30`}>
       <h1 className="text text_type_main-large">Лента заказов</h1>
@@ -209,26 +221,16 @@ function Feed() {
         <div className={styles.readynWork}>
           <div className="mr-9 mb-15">
             <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>
-            <p
-              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
-            >
-              0340300
-            </p>
-            <p
-              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
-            >
-              0345500
-            </p>
-            <p
-              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
-            >
-              0340880
-            </p>
-            <p
-              className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
-            >
-              0340060
-            </p>
+            <div className={`${styles.containerReady} custom-scroll`}>
+              {done.map((item:any, index:any) => (
+                <p
+                  key={index}
+                  className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
+                >
+                  {item}
+                </p>
+              ))}
+            </div>
           </div>
 
           <div>

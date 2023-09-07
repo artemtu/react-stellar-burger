@@ -65,6 +65,14 @@
   overflow-y: scroll;
 }
 
+.containerReady{
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  overflow-y: scroll;
+  width:120px
+
+}
 
 .orderIsReady{
     color: #00CCCC;
