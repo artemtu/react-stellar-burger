@@ -54,6 +54,8 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const dispatch = useAppDispatch();
 
   const selectIngredients = useAppSelector((state) => state.mainData);
+  console.log(selectIngredients);
+  
 
   //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
