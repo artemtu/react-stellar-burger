@@ -21,6 +21,7 @@ function Feed() {
   const dispatch = useDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
+  const [orderIsReady, setOrderIsReady] = React.useState([]);
 
   useEffect(() => {
     //@ts-ignore
@@ -40,15 +41,21 @@ function Feed() {
   }, [totalOrders]);
 
   //@ts-ignore
-  const isReady = useSelector((state) => state.getFeed.getFeed.orders);
+  const isReady = useSelector((state) => state.getFeed.getFeed)
+    // .filter((item) => item.status === "done")
+    // .map((item) => item.number);
 
 
-  const done = isReady
-    //@ts-ignore
-    .filter((item) => item.status === "done")
-      //@ts-ignore
-    .map((item) => item.number);
 
+    
+    
+    useEffect(() => {
+      if (isReady) {
+        //@ts-ignore
+        setOrderIsReady(isReady.orders.filter((item) => item.status === "done").map((item) => item.number))
+      }
+    }, [isReady]);
+    
 
 
   return (
@@ -222,13 +229,8 @@ function Feed() {
           <div className="mr-9 mb-15">
             <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>
             <div className={`${styles.containerReady} custom-scroll`}>
-              {done.map((item:any, index:any) => (
-                <p
-                  key={index}
-                  className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
-                >
-                  {item}
-                </p>
+              {orderIsReady.map((item, index) => (
+                <p className={`${styles.orderIsReady} text text_type_digits-default mb-2`} key={index}>{item}</p>
               ))}
             </div>
           </div>
