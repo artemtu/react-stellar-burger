@@ -22,6 +22,7 @@ function Feed() {
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
   const [orderIsReady, setOrderIsReady] = React.useState([]);
+  const [orderIsPending, setOrderIsPending] = React.useState([]);
 
   useEffect(() => {
     //@ts-ignore
@@ -41,22 +42,40 @@ function Feed() {
   }, [totalOrders]);
 
   //@ts-ignore
-  const isReady = useSelector((state) => state.getFeed.getFeed)
-    // .filter((item) => item.status === "done")
-    // .map((item) => item.number);
+  const isReady = useSelector((state) => state.getFeed.getFeed);
+  // .filter((item) => item.status === "done")
+  // .map((item) => item.number);
 
+  // pending
 
+  //@ts-ignore
+  const isPending = useSelector((state) => state.getFeed.getFeed);
 
-    
-    
-    useEffect(() => {
-      if (isReady) {
-        //@ts-ignore
-        setOrderIsReady(isReady.orders.filter((item) => item.status === "done").map((item) => item.number))
-      }
-    }, [isReady]);
-    
+  useEffect(() => {
+    if (isPending) {
+      //@ts-ignore
+      setOrderIsPending(
+        isPending.orders
+          //@ts-ignore
+          .filter((item) => item.status === "pending")
+          //@ts-ignore
+          .map((item) => item.number)
+      );
+    }
+  }, [isPending]);
 
+  useEffect(() => {
+    if (isReady) {
+      //@ts-ignore
+      setOrderIsReady(
+        isReady.orders
+          //@ts-ignore
+          .filter((item) => item.status === "done")
+          //@ts-ignore
+          .map((item) => item.number)
+      );
+    }
+  }, [isReady]);
 
   return (
     <section className={`${styles.content} mt-10 mr-30`}>
@@ -230,25 +249,25 @@ function Feed() {
             <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>
             <div className={`${styles.containerReady} custom-scroll`}>
               {orderIsReady.map((item, index) => (
-                <p className={`${styles.orderIsReady} text text_type_digits-default mb-2`} key={index}>{item}</p>
+                <p
+                  className={`${styles.orderIsReady} text text_type_digits-default mb-2`}
+                  key={index}
+                >
+                  {item}
+                </p>
               ))}
             </div>
           </div>
 
           <div>
             <h3 className="text text_type_main-medium mt-6 mb-6">В работе:</h3>
-            <p className={`${styles} text text_type_digits-default mb-2`}>
-              0340300
-            </p>
-            <p className={`${styles} text text_type_digits-default mb-2`}>
-              0345500
-            </p>
-            <p className={`${styles} text text_type_digits-default mb-2`}>
-              0340880
-            </p>
-            <p className={`${styles} text text_type_digits-default mb-2`}>
-              0340060
-            </p>
+            <div className={`${styles.containerReady} custom-scroll`}>
+              {orderIsPending.map((item, index) => (
+                <p className="text text_type_digits-default mb-2" key={index}>
+                  {item}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
 
