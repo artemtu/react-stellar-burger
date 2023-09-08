@@ -4,9 +4,8 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useMemo } from "react";
-import ImagesIngredients from "./testImages";
 
-function LineIngredients() {
+function ImagesIngredients() {
   const [data, setData] = useState([]);
 
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
@@ -32,8 +31,6 @@ function LineIngredients() {
 
   const ids = data.map((item) => item.ingredients);
 
-
-
   // const orderIngredients = useMemo(() => {
   //     if (!AllIngredients) {
   //       return [];
@@ -58,29 +55,19 @@ function LineIngredients() {
   // console.log(AllIngredients);
 
   return (
-    <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
-      {data.map((item, index) => (
-        <div key={index}>
-          <div className={`${styles.numberDate} mt-6`}>
-            <p className="text text_type_digits-default">{item.number}</p>
-            <div className="text text_type_main-default text_color_inactive">
-              <FormattedDate date={new Date(item.createdAt)} />
-            </div>
-          </div>
-          <p className="text text_type_main-medium mt-6">{item.name}</p>
-          <div className={`${styles.container} mt-6`}>
-          <ImagesIngredients/>
-
-
-            <div className={`${styles.totalPrice} mt-6`}>
-              <p className="text text_type_digits-default mr-2">111</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </div>
+    <div className={styles.test}>
+      {databaseItems.map((item, index) => (
+        <div className={`${styles.ingredients}`}>
+          <img
+            key={index}
+            src={item.image_mobile}
+            alt=""
+            className={styles.ingredientPosition}
+          />
         </div>
       ))}
     </div>
   );
 }
 
-export default LineIngredients;
+export default ImagesIngredients;
