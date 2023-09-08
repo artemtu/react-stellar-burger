@@ -69,16 +69,16 @@ function LineIngredients() {
           <p className="text text_type_main-medium mt-6">{item.name}</p>
           <div className={`${styles.container} mt-6`}>
             <div className={styles.test}>
-              <div className={styles.ingredients}>
                 {databaseItems.map((item, index) => (
+              <div className={`${styles.ingredients}`}>
                   <img
                     key={index}
                     src={item.image_mobile}
                     alt=""
                     className={styles.ingredientPosition}
                   />
-                ))}
               </div>
+                ))}
             </div>
             <div className={`${styles.totalPrice} mt-6`}>
               <p className="text text_type_digits-default mr-2">111</p>
