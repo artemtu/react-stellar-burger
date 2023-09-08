@@ -6,7 +6,7 @@ import { fetchFeed } from "../../store/actions/feed";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import LineIngredients from "../../components/test/test";
+import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 
 function Feed() {
   const today = new Date();
@@ -112,13 +112,8 @@ function Feed() {
     <section className={`${styles.content} mt-10 mr-30`}>
       <h1 className="text text_type_main-large">Лента заказов</h1>
       
-      <LineIngredients/>
-    
-
-        
-       
-
-
+      <IngredientsLine/>
+  
       {/* вторая часть страницы */}
 
       <section className="ml-15">

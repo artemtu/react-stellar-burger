@@ -1,12 +1,11 @@
-import styles from "./test.module.css";
+import styles from "./ingredient-line.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useMemo } from "react";
-import ImagesIngredients from "./testImages";
+import ImagesIngredients from "../images-line/images-line";
 
-function LineIngredients() {
+function IngredientsLine() {
   const [data, setData] = useState([]);
 
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
@@ -18,44 +17,16 @@ function LineIngredients() {
     }
   }, [ingredients]);
 
-  // useMemo(()=>{
-  //     const id = data.map((item) => item.ingredients)
-  //     const orderIngredients = id.map((ingredientId) => {
-  //     AllIngredients.filter((ingredient) => ingredient._id === ingredientId)
-  //     });
-  //     console.log(orderIngredients);
-
-  //     // const images = orderIngredients.map((ingredient) => ingredient.image);
-  //     // return { ...id, images };
-
-  // });
+  const newAllIngredients = AllIngredients.reduce((acc, item) => {
+    acc[item._id] = item.image_mobile;
+    return acc;
+  }, {});
 
   const ids = data.map((item) => item.ingredients);
 
-
-
-  // const orderIngredients = useMemo(() => {
-  //     if (!AllIngredients) {
-  //       return [];
-  //     }
-  //     return ids.map(
-  //       (item) => AllIngredients.filter((ingredient) => ingredient._id === item)[0]
-  //     );
-  //   }, [ids, AllIngredients]);
-
-  const databaseItems = [
-    {
-      image_mobile: "https://code.s3.yandex.net/react/code/sauce-02-mobile.png",
-    },
-    {
-      image_mobile: "https://code.s3.yandex.net/react/code/meat-04-mobile.png",
-    },
-    {
-      image_mobile: "https://code.s3.yandex.net/react/code/meat-04-mobile.png",
-    },
-  ];
-
-  // console.log(AllIngredients);
+  const newData = ids.map((idArray) => {
+    return idArray.map((id) => newAllIngredients[id]);
+  });
 
   return (
     <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
@@ -69,8 +40,7 @@ function LineIngredients() {
           </div>
           <p className="text text_type_main-medium mt-6">{item.name}</p>
           <div className={`${styles.container} mt-6`}>
-          <ImagesIngredients/>
-
+            <ImagesIngredients images={newData[index]} />
 
             <div className={`${styles.totalPrice} mt-6`}>
               <p className="text text_type_digits-default mr-2">111</p>
@@ -83,4 +53,4 @@ function LineIngredients() {
   );
 }
 
-export default LineIngredients;
+export default IngredientsLine;
