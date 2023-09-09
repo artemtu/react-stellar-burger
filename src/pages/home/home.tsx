@@ -17,15 +17,11 @@ function Home() {
     id: 1,
   });
 
-  const [isFeedModal, setIsFeedModal] = useState({
-    open: false,
-    id: 1,
-  });
+
 
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
-    setIsFeedModal({ open: false, id: 1 });
   }
 
   function openModal() {
@@ -51,11 +47,6 @@ function Home() {
         </Modal>
       )}
 
-      {isFeedModal.open && (
-        <Modal closeModal={closeModal}>
-          <FeedPage id={isFeedModal.id} />
-        </Modal>
-      )}
     </div>
   );
 }
