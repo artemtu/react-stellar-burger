@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 
 function Feed() {
-
   const dispatch = useDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
@@ -77,37 +76,30 @@ function Feed() {
       //@ts-ignore
       setOrderNumber(
         orderNum.orders
-          //@ts-ignore
-          // .map((item) => item.number)
+        //@ts-ignore
+        // .map((item) => item.number)
       );
     }
   }, [orderNum]);
 
-
-  
-
   //@ts-ignore
   // const test = orderNum.forEach(item => {
   //   const name = item.name
-  //   console.log(name);  
+  //   console.log(name);
   // });
 
   // console.log(test);
-  
-  
-
-
 
   return (
-
     <section className={`${styles.content} mt-10 mr-30`}>
-      <h1 className="text text_type_main-large">Лента заказов</h1>
-      
-      <IngredientsLine/>
-  
+      <div className={styles.menuBar}>
+        <h1 className="text text_type_main-large">Лента заказов</h1>
+        <IngredientsLine />
+      </div>
+
       {/* вторая часть страницы */}
 
-      <section className="ml-15">
+      <section className={`${styles.testik}`}>
         <div className={styles.readynWork}>
           <div className="mr-9 mb-15">
             <h3 className="text text_type_main-medium mt-6 mb-6">Готовы:</h3>

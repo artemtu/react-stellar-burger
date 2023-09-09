@@ -85,3 +85,11 @@
     width: 400px;
 }
 
+
+.testik {
+  display: flex;
+  flex-direction: column;
+  margin-left: 150px;
+  /* outline: 1px solid red;   */
+  max-height: 100vh;
+}
