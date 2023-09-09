@@ -28,6 +28,15 @@ function IngredientsLine() {
     return idArray.map((id) => newAllIngredients[id]);
   });
 
+  const priceForIngredient = AllIngredients.reduce((acc, item) => {
+    acc[item._id] = item.price;
+    return acc;
+  }, {});
+
+  const priceForOrder = ids.map((idArray) => {
+    return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
+  });
+
   return (
     <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
       {data.map((item, index) => (
@@ -43,7 +52,9 @@ function IngredientsLine() {
             <ImagesIngredients images={newData[index]} />
 
             <div className={`${styles.totalPrice} mt-6`}>
-              <p className="text text_type_digits-default mr-2">111</p>
+              <p className="text text_type_digits-default mr-2">
+                {priceForOrder[index]}
+              </p>
               <CurrencyIcon type="primary" />
             </div>
           </div>
