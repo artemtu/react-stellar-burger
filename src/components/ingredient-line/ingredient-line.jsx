@@ -4,9 +4,11 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ImagesIngredients from "../images-line/images-line";
+import { useNavigate } from "react-router-dom";
 
 function IngredientsLine() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
   const AllIngredients = useSelector((state) => state.mainData.data);
@@ -38,16 +40,16 @@ function IngredientsLine() {
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
-  const onClick = () => {
-    // console.log('kek');
-    // window.history.pushState({}, "", `/feed/${id}`);
-    // setIsFeedModal({ open: true, id});
+
+
+  const handleOrderClick = (orderId) => {
+    navigate(`/feed/${orderId}`);
   };
 
   return (
-    <div className={`${styles.scroll} custom-scroll mt-6 pr-2`} onClick={onClick}>
+    <div className={`${styles.scroll} custom-scroll mt-6 pr-2`} >
       {data.map((item, index) => (
-        <div key={index} className={styles.containerStyle}>
+        <div key={index} className={styles.containerStyle} onClick={() => handleOrderClick(item._id)}>
           <div className={`${styles.numberDate} mt-6`}>
             <p className="text text_type_digits-default mt-3 ml-3">{item.number}</p>
             <div className="text text_type_main-default text_color_inactive mt-3 mr-3">

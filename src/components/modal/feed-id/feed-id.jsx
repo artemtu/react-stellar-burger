@@ -5,8 +5,10 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-function FeedPage({id}) {
+function FeedPage() {
+  const {_id} = useParams();
 
 
 
