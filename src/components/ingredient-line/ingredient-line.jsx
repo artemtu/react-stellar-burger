@@ -40,14 +40,14 @@ function IngredientsLine() {
   return (
     <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
       {data.map((item, index) => (
-        <div key={index}>
+        <div key={index} className={styles.containerStyle}>
           <div className={`${styles.numberDate} mt-6`}>
-            <p className="text text_type_digits-default">{item.number}</p>
-            <div className="text text_type_main-default text_color_inactive">
+            <p className="text text_type_digits-default mt-3 ml-3">{item.number}</p>
+            <div className="text text_type_main-default text_color_inactive mt-3 mr-3">
               <FormattedDate date={new Date(item.createdAt)} />
             </div>
           </div>
-          <p className="text text_type_main-medium mt-6">{item.name}</p>
+          <p className="text text_type_main-medium mt-6 ml-3">{item.name}</p>
           <div className={`${styles.container} mt-6`}>
             <ImagesIngredients images={newData[index]} />
 
