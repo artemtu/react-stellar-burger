@@ -6,6 +6,7 @@ import IngredientDetails from "../../components/modal/ingredient-details/ingredi
 import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
+import FeedPage from "../../components/modal/feed-id/feed-id";
 
 function Home() {
   const [isOrderModal, setOrderModal] = useState({
@@ -16,9 +17,15 @@ function Home() {
     id: 1,
   });
 
+  const [isFeedModal, setIsFeedModal] = useState({
+    open: false,
+    id: 1,
+  });
+
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
+    setIsFeedModal({ open: false, id: 1 });
   }
 
   function openModal() {
@@ -27,7 +34,6 @@ function Home() {
 
   return (
     <div className={styles.app}>
-
       <Main
         setOrderModal={setOrderModal}
         //@ts-ignore
@@ -42,6 +48,12 @@ function Home() {
       {isIngredientModal.open && (
         <Modal closeModal={closeModal}>
           <IngredientDetails id={isIngredientModal.id} />
+        </Modal>
+      )}
+
+      {isFeedModal.open && (
+        <Modal closeModal={closeModal}>
+          <FeedPage id={isFeedModal.id} />
         </Modal>
       )}
     </div>

@@ -11,6 +11,7 @@ function IngredientsLine() {
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
   const AllIngredients = useSelector((state) => state.mainData.data);
 
+
   useEffect(() => {
     if (ingredients) {
       setData(ingredients);
@@ -37,8 +38,14 @@ function IngredientsLine() {
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
+  const onClick = () => {
+    // console.log('kek');
+    // window.history.pushState({}, "", `/feed/${id}`);
+    // setIsFeedModal({ open: true, id});
+  };
+
   return (
-    <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
+    <div className={`${styles.scroll} custom-scroll mt-6 pr-2`} onClick={onClick}>
       {data.map((item, index) => (
         <div key={index} className={styles.containerStyle}>
           <div className={`${styles.numberDate} mt-6`}>

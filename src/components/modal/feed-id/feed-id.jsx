@@ -4,8 +4,13 @@ import styles from "./feed-id.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useSelector } from "react-redux";
 
-function FeedPage(id) {
+function FeedPage({id}) {
+
+
+
+
   const today = new Date();
   const yesterday = new Date(
     today.getFullYear(),
@@ -16,9 +21,11 @@ function FeedPage(id) {
     0
   );
 
+ // orderNumber, name, status,  image, name , quantitym price for one, total price
+
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} >
         <p className="text text_type_digits-default"> 03402304</p>
         <p className="text text_type_main-medium mt-10">
           Death Star Starship Main Burger

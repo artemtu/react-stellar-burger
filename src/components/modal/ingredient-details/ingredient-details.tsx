@@ -16,6 +16,7 @@ export interface IingredientDeatails {
 }
 
 function IngredientDetails({ id }: IingredientDeatails) {
+  
   //@ts-ignore
   const data = useSelector((state) => state.mainData.data);
   const ingredient = data.find((item:IingredientDeatails) => item._id === id);
