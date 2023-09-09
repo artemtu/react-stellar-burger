@@ -9,15 +9,6 @@ import { useSelector } from "react-redux";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 
 function Feed() {
-  const today = new Date();
-  const yesterday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 1,
-    today.getHours(),
-    today.getMinutes() - 1,
-    0
-  );
 
   const dispatch = useDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
