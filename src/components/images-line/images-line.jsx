@@ -9,16 +9,22 @@ function ImagesIngredients({images}) {
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
   const AllIngredients = useSelector((state) => state.mainData.data);
 
+  const displayedImages = images ? images.slice(0, 5) : [];
+  const hiddenCount = images ? images.length - 5 : 0;
+
   return (
     <div className={styles.test}>
-      {images &&
-        images.map((item, index) => (
-          <div key={index} className={styles.ingredients}>
-            <img src={item} alt="" className={styles.ingredientPosition} />
-          </div>
-        ))}
+      {displayedImages.map((item, index) => (
+        <div key={index} className={styles.ingredients}>
+          <img src={item} alt="" className={styles.ingredientPosition} />
+        </div>
+      ))}
+      {hiddenCount > 0 && (
+          <div className={styles.additionalIngredients}>+{hiddenCount}</div>
+      )}
     </div>
   );
 }
 
 export default ImagesIngredients;
+

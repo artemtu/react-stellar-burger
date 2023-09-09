@@ -88,4 +88,12 @@
       width: 400px;
   }
   
+
+  .additionalIngredients {
+    position: relative;
+    left: -50px;
+    top:30px;
+    color: white;
+    font-weight: bold;
+  }
   
