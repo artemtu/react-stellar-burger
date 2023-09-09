@@ -20,7 +20,7 @@ import IngredientPage from "../../pages/ingredients/ingredients";
 import { useAppDispatch } from "../../store/types";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
-import FeedPage from "../../pages/feed-id/feed-id";
+import FeedPage from "../modal/feed-id/feed-id";
 
 function App() {
   const dispatch = useAppDispatch();
