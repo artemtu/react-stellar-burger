@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../app-header/app-header";
 import styles from "./feed-id.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -8,10 +8,11 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 function FeedPage() {
-  const {_id} = useParams();
+  const { id } = useParams();
+  const [data, setData] = useState([]);
 
-
-
+  const orders = useSelector((state) => state.getFeed.getFeed.orders);
+  const thisOrder = orders.find((item) => item._id === id);
 
   const today = new Date();
   const yesterday = new Date(
@@ -23,15 +24,13 @@ function FeedPage() {
     0
   );
 
- // orderNumber, name, status,  image, name , quantitym price for one, total price
+  // orderNumber, name, status,  image, name , quantitym price for one, total price
 
   return (
     <>
-      <div className={styles.container} >
-        <p className="text text_type_digits-default"> 03402304</p>
-        <p className="text text_type_main-medium mt-10">
-          Death Star Starship Main Burger
-        </p>
+      <div className={styles.container}>
+        <p className="text text_type_digits-default"> {thisOrder.number}</p>
+        <p className="text text_type_main-medium mt-10">{thisOrder.name}</p>
         <p className={`${styles.textColor} text text_type_main-medium mt-3`}>
           Выполнен
         </p>
@@ -50,31 +49,16 @@ function FeedPage() {
               <CurrencyIcon type="primary" />
             </div>
           </div>
-
-          <div className={styles.ingredient}>
-            <img
-              src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-              alt=""
-            />
-            <div className={styles.price}>
-              <p className="text text_type_main-small mr-30">
-                Краторная булка N-200i
-              </p>
-              <p className="text text_type_digits-default mr-2">2 x 988</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </div>
         </div>
 
         <div className={styles.totalContainer}>
           <FormattedDate
-            date={yesterday}
+            date={new Date(thisOrder.createdAt)}
             className="text text_type_main-default text_color_inactive"
           />
           <div className={styles.totalPrice}>
-          <p className="text text_type_digits-default mr-2">500</p>
-          <CurrencyIcon type="primary" />
-
+            <p className="text text_type_digits-default mr-2">500</p>
+            <CurrencyIcon type="primary" />
           </div>
         </div>
       </div>
