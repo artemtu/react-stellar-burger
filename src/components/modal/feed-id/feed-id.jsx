@@ -59,17 +59,17 @@ function FeedPage() {
         <div className={`${styles.scroll} custom-scroll mt-6`}>
           {test.map((item, index) => (
             <div className={styles.ingredient}>
-              <div className={styles.сircle}>
-                <img
-                  src={item.image}
-                  alt=""
-                  className={styles.ingredientPosition}
-                />
+              <div className={styles.nameContainer}>
+                <div className={styles.сircle}>
+                  <img
+                    src={item.image}
+                    alt=""
+                    className={styles.ingredientPosition}
+                  />
+                </div>
+                <p className="text text_type_main-small mt-8 ml-5">{item.name}</p>
               </div>
               <div className={styles.price}>
-                <p className="text text_type_main-small mr-30 ml-5">
-                  {item.name}
-                </p>
                 <p className="text text_type_digits-default mr-2">
                   {item.count} x {item.price}
                 </p>

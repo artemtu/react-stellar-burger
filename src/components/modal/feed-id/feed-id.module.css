@@ -22,14 +22,19 @@
 
 .ingredient {
     display: flex;
-   min-width: 400px;
-   
+   justify-content: space-between
+
     /* position: relative;
     border-radius: 50%;
     border: 2px solid rgb(128, 0, 255); 
     max-width: 100px;
     max-height: 90px;
      background-color: black;   */
+}
+
+.kek {
+    display: flex;
+
 }
 
 .сircle {
@@ -43,6 +48,12 @@
 
 }
 
+.nameContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+}
 
   
 .ingredientPosition {
@@ -53,14 +64,17 @@
 
 .price{
     display: flex;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 16px;
+    justify-content: flex-end;
+    margin-left: 20px;
 }
 
 .totalContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 25px;
 }
 
 .totalPrice{
