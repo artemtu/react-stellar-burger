@@ -47,16 +47,13 @@ function FeedPage() {
     .map((item) => item.count * item.price)
     .reduce((acc, val) => acc + val, 0);
 
-    console.log(thisOrder);
-
-
   return (
     <>
       <div className={styles.container}>
         <p className="text text_type_digits-default"> {thisOrder.number}</p>
         <p className="text text_type_main-medium mt-10">{thisOrder.name}</p>
         <p className={`${styles.textColor} text text_type_main-medium mt-3`}>
-         {thisOrder.status}
+          {thisOrder.status}
         </p>
         <p className="text text_type_main-medium mt-15">Состав:</p>
         <div className={`${styles.scroll} custom-scroll mt-6`}>
