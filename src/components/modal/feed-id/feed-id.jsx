@@ -60,13 +60,15 @@ function FeedPage() {
         <div className={`${styles.scroll} custom-scroll mt-6`}>
           {imagesInOrder.map((item, index) => (
           <div className={styles.ingredient}>
+            <div className={styles.сircle}>
             <img
               src={item}
               alt=""
               className={styles.ingredientPosition}
             />
+            </div>
             <div className={styles.price}>
-              <p className="text text_type_main-small mr-30">
+              <p className="text text_type_main-small mr-30 ml-5">
                 Краторная булка N-200i
               </p>
               <p className="text text_type_digits-default mr-2">2 x 988</p>
