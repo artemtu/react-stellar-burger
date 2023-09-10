@@ -43,19 +43,9 @@ function FeedPage() {
     return acc;
   }, []);
 
-  console.log(test);
-
-  // console.log(ingredientNameInOrder);
-
-  // const newData = lel.map((idArray) => {
-  //   return idArray.map((id) => imagesFromStore[id]);
-  // });
-
-  // const newData = lel.map((idArray) => {
-  //   return idArray.map((id) => imagesFromStore[id]);
-  // });
-
-  // orderNumber, name, status,  image, name , quantitym price for one, total price
+  const totalSum = test
+    .map((item) => item.count * item.price)
+    .reduce((acc, val) => acc + val, 0);
 
   return (
     <>
@@ -95,7 +85,7 @@ function FeedPage() {
             className="text text_type_main-default text_color_inactive"
           />
           <div className={styles.totalPrice}>
-            <p className="text text_type_digits-default mr-2">500</p>
+            <p className="text text_type_digits-default mr-2">{totalSum}</p>
             <CurrencyIcon type="primary" />
           </div>
         </div>
