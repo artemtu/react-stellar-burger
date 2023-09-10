@@ -50,7 +50,7 @@ function FeedPage() {
   return (
     <>
       <div className={styles.container}>
-        <p className="text text_type_digits-default"> {thisOrder.number}</p>
+        <p className="text text_type_digits-default"> {'#' + thisOrder.number}</p>
         <p className="text text_type_main-medium mt-10">{thisOrder.name}</p>
         <p className={`${styles.textColor} text text_type_main-medium mt-3`}>
           {thisOrder.status}
