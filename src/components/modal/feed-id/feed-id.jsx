@@ -10,62 +10,43 @@ import { useParams } from "react-router-dom";
 function FeedPage() {
   const { id } = useParams();
 
-
   const orders = useSelector((state) => state.getFeed.getFeed.orders);
   const thisOrder = orders.find((item) => item._id === id);
   const AllIngredients = useSelector((state) => state.mainData.data);
 
-  const imagesFromStore = AllIngredients.reduce((acc, item) => {
-    acc[item._id] = item.image_mobile;
+  const countById = thisOrder.ingredients.reduce((acc, id) => {
+    acc[id] = (acc[id] || 0) + 1;
     return acc;
   }, {});
 
-  const ingredientName = AllIngredients.reduce((acc, item) => {
-    acc[item._id] = item.name;
-    return acc;
-  }, {});
-
-  // const ingredientsData = AllIngredients.reduce((acc, item) => {
-  //   acc[item._id] = {
-  //     image: item.image_mobile,
-  //     name: item.name
-  //   };
-  //   return acc;
-  // }, {});
-
-  // console.log(ingredientsData)
-
-  const ingredientsData = AllIngredients.map(item => ({
+  const ingredientsData = AllIngredients.map((item) => ({
     id: item._id,
     image: item.image_mobile,
     name: item.name,
-    price: item.price
+    price: item.price,
   }));
 
-  console.log(ingredientsData)
+  const idsInOrder = thisOrder.ingredients;
 
+  const test = idsInOrder.reduce((acc, id) => {
+    const foundIngredient = ingredientsData.find((item) => item.id === id);
 
+    const existingIngredient = acc.find((item) => item.id === id);
+    if (existingIngredient) {
+      existingIngredient.count += 1;
+    } else {
+      acc.push({
+        ...foundIngredient,
+        count: countById[id],
+      });
+    }
+    return acc;
+  }, []);
 
-
-  const idsInOrder = thisOrder.ingredients
-
-  const imagesInOrder = idsInOrder.map((id) => imagesFromStore[id]);
-
-  const ingredientNameInOrder = idsInOrder.map((id) => ingredientName[id]);
-
-  const test = idsInOrder.map(id => {
-    return ingredientsData.find(item => item.id === id);
-  });
-
-
-
+  console.log(test);
 
   // console.log(ingredientNameInOrder);
 
-
-
-
-
   // const newData = lel.map((idArray) => {
   //   return idArray.map((id) => imagesFromStore[id]);
   // });
@@ -73,12 +54,6 @@ function FeedPage() {
   // const newData = lel.map((idArray) => {
   //   return idArray.map((id) => imagesFromStore[id]);
   // });
-
-
-
-
-
-
 
   // orderNumber, name, status,  image, name , quantitym price for one, total price
 
@@ -93,21 +68,24 @@ function FeedPage() {
         <p className="text text_type_main-medium mt-15">Состав:</p>
         <div className={`${styles.scroll} custom-scroll mt-6`}>
           {test.map((item, index) => (
-          <div className={styles.ingredient}>
-            <div className={styles.сircle}>
-            <img
-              src={item.image}
-              alt=""
-              className={styles.ingredientPosition}
-            />
+            <div className={styles.ingredient}>
+              <div className={styles.сircle}>
+                <img
+                  src={item.image}
+                  alt=""
+                  className={styles.ingredientPosition}
+                />
+              </div>
+              <div className={styles.price}>
+                <p className="text text_type_main-small mr-30 ml-5">
+                  {item.name}
+                </p>
+                <p className="text text_type_digits-default mr-2">
+                  {item.count} x {item.price}
+                </p>
+                <CurrencyIcon type="primary" />
+              </div>
             </div>
-            <div className={styles.price}>
-              <p className="text text_type_main-small mr-30 ml-5">{item.name}
-              </p>
-              <p className="text text_type_digits-default mr-2">2 x {item.price}</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </div>
           ))}
         </div>
 
