@@ -20,13 +20,47 @@ function FeedPage() {
     return acc;
   }, {});
 
-  console.log(imagesFromStore);
+  const ingredientName = AllIngredients.reduce((acc, item) => {
+    acc[item._id] = item.name;
+    return acc;
+  }, {});
+
+  // const ingredientsData = AllIngredients.reduce((acc, item) => {
+  //   acc[item._id] = {
+  //     image: item.image_mobile,
+  //     name: item.name
+  //   };
+  //   return acc;
+  // }, {});
+
+  // console.log(ingredientsData)
+
+  const ingredientsData = AllIngredients.map(item => ({
+    id: item._id,
+    image: item.image_mobile,
+    name: item.name,
+    price: item.price
+  }));
+
+  console.log(ingredientsData)
+
 
 
 
   const idsInOrder = thisOrder.ingredients
 
   const imagesInOrder = idsInOrder.map((id) => imagesFromStore[id]);
+
+  const ingredientNameInOrder = idsInOrder.map((id) => ingredientName[id]);
+
+  const test = idsInOrder.map(id => {
+    return ingredientsData.find(item => item.id === id);
+  });
+
+
+
+
+  // console.log(ingredientNameInOrder);
 
 
 
@@ -58,20 +92,19 @@ function FeedPage() {
         </p>
         <p className="text text_type_main-medium mt-15">Состав:</p>
         <div className={`${styles.scroll} custom-scroll mt-6`}>
-          {imagesInOrder.map((item, index) => (
+          {test.map((item, index) => (
           <div className={styles.ingredient}>
             <div className={styles.сircle}>
             <img
-              src={item}
+              src={item.image}
               alt=""
               className={styles.ingredientPosition}
             />
             </div>
             <div className={styles.price}>
-              <p className="text text_type_main-small mr-30 ml-5">
-                Краторная булка N-200i
+              <p className="text text_type_main-small mr-30 ml-5">{item.name}
               </p>
-              <p className="text text_type_digits-default mr-2">2 x 988</p>
+              <p className="text text_type_digits-default mr-2">2 x {item.price}</p>
               <CurrencyIcon type="primary" />
             </div>
           </div>
