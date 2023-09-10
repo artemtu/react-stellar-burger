@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Header from "../../app-header/app-header";
 import styles from "./feed-id.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -9,20 +9,42 @@ import { useParams } from "react-router-dom";
 
 function FeedPage() {
   const { id } = useParams();
-  const [data, setData] = useState([]);
+
 
   const orders = useSelector((state) => state.getFeed.getFeed.orders);
   const thisOrder = orders.find((item) => item._id === id);
+  const AllIngredients = useSelector((state) => state.mainData.data);
 
-  const today = new Date();
-  const yesterday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 1,
-    today.getHours(),
-    today.getMinutes() - 1,
-    0
-  );
+  const imagesFromStore = AllIngredients.reduce((acc, item) => {
+    acc[item._id] = item.image_mobile;
+    return acc;
+  }, {});
+
+  console.log(imagesFromStore);
+
+
+
+  const idsInOrder = thisOrder.ingredients
+
+  const imagesInOrder = idsInOrder.map((id) => imagesFromStore[id]);
+
+
+
+
+
+  // const newData = lel.map((idArray) => {
+  //   return idArray.map((id) => imagesFromStore[id]);
+  // });
+
+  // const newData = lel.map((idArray) => {
+  //   return idArray.map((id) => imagesFromStore[id]);
+  // });
+
+
+
+
+
+
 
   // orderNumber, name, status,  image, name , quantitym price for one, total price
 
@@ -36,10 +58,12 @@ function FeedPage() {
         </p>
         <p className="text text_type_main-medium mt-15">Состав:</p>
         <div className={`${styles.scroll} custom-scroll mt-6`}>
+          {imagesInOrder.map((item, index) => (
           <div className={styles.ingredient}>
             <img
-              src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
+              src={item}
               alt=""
+              className={styles.ingredientPosition}
             />
             <div className={styles.price}>
               <p className="text text_type_main-small mr-30">
@@ -49,6 +73,7 @@ function FeedPage() {
               <CurrencyIcon type="primary" />
             </div>
           </div>
+          ))}
         </div>
 
         <div className={styles.totalContainer}>

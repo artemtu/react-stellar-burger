@@ -24,11 +24,15 @@ function IngredientsLine() {
     return acc;
   }, {});
 
+
+
   const ids = data.map((item) => item.ingredients);
 
   const newData = ids.map((idArray) => {
     return idArray.map((id) => newAllIngredients[id]);
   });
+
+
 
   const priceForIngredient = AllIngredients.reduce((acc, item) => {
     acc[item._id] = item.price;
