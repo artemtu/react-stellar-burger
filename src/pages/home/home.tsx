@@ -17,15 +17,23 @@ function Home() {
     id: 1,
   });
 
-
+  const [isFeedModal, setFeedModal] = useState({
+    open: false,
+    id: 1,
+  });
 
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
+    setFeedModal({ open: false, id: 1 });
   }
 
   function openModal() {
     setOrderModal({ open: true });
+  }
+  //@ts-ignore
+  function openFeedModal(id) {
+    setFeedModal({ open: true, id: 1 });
   }
 
   return (
@@ -35,6 +43,7 @@ function Home() {
         //@ts-ignore
         setIngredientModal={setIngredientModal}
         openModal={openModal}
+        openFeedModal={openFeedModal}
       />
       {isOrderModal.open && (
         <Modal closeModal={closeModal}>
@@ -47,6 +56,11 @@ function Home() {
         </Modal>
       )}
 
+      {isFeedModal.open && (
+        <Modal closeModal={closeModal}>
+          <FeedPage id={isFeedModal.id} />
+        </Modal>
+      )}
     </div>
   );
 }

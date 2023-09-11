@@ -30,6 +30,7 @@ export interface IModalFunctions {
   setIngredientModal: React.Dispatch<
     React.SetStateAction<IngredientModalState>
   >;
+
 }
 
 export interface IingredientFullInfo {
@@ -49,8 +50,8 @@ export interface IingredientFullInfo {
 interface IingredientWithId extends IingredientFullInfo {
   _constId: string;
 }
-
-function Main({ openModal, setIngredientModal }: IModalFunctions) {
+//@ts-ignore
+function Main({ openModal, setIngredientModal, openFeedModal }: IModalFunctions) {
   const dispatch = useAppDispatch();
 
   const selectIngredients = useAppSelector((state) => state.mainData);
