@@ -6,12 +6,33 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import {
+  openFeedModal,
+  closeFeedModal,
+} from "../../../store/actions/feed-modal";
 
 function FeedPage() {
-  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const {id} = useParams();
+  // useEffect(() => {
+  //   const thisOrder = orders.find((item) => item._id === id);
+  // }, [id, orders]);
+
+  // useEffect(() => {
+  //   dispatch(openFeedModal(id));
+  //   return () => {
+  //     dispatch(closeFeedModal(id));
+  //   };
+  // }, [dispatch]);
+
+  // const { id } = useParams();
 
   const orders = useSelector((state) => state.getFeed.getFeed.orders);
   const thisOrder = orders.find((item) => item._id === id);
+  // const thisOrder = orders.find((item) => item._id === feedModalId);
   const AllIngredients = useSelector((state) => state.mainData.data);
 
   const countById = thisOrder.ingredients.reduce((acc, id) => {
@@ -50,7 +71,10 @@ function FeedPage() {
   return (
     <>
       <div className={styles.container}>
-        <p className="text text_type_digits-default"> {'#' + thisOrder.number}</p>
+        <p className="text text_type_digits-default">
+          {" "}
+          {"#" + thisOrder.number}
+        </p>
         <p className="text text_type_main-medium mt-10">{thisOrder.name}</p>
         <p className={`${styles.textColor} text text_type_main-medium mt-3`}>
           {thisOrder.status}
@@ -67,7 +91,9 @@ function FeedPage() {
                     className={styles.ingredientPosition}
                   />
                 </div>
-                <p className="text text_type_main-small mt-8 ml-5">{item.name}</p>
+                <p className="text text_type_main-small mt-8 ml-5">
+                  {item.name}
+                </p>
               </div>
               <div className={styles.price}>
                 <p className="text text_type_digits-default mr-2">

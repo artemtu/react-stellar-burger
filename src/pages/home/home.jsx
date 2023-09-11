@@ -7,8 +7,31 @@ import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
 import FeedPage from "../../components/modal/feed-id/feed-id";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { openFeedModal, closeFeedModal } from "../../store/actions/feed-modal";
+import IngredientsLine from "../../components/ingredient-line/ingredient-line";
+import { useEffect } from "react";
+import Feed from "../feed/feed";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  // const [isFeedModalOpenLocal, setIsFeedModalOpenLocal] = useState(false);
+  // const [feedModalIdLocal, setFeedModalIdLocal] = useState(null);
+
+  // const isFeedModalOpen = useSelector((state) => state.modal?.isFeedModalOpen);
+  // const feedModalId = useSelector((state) => state.modal?.feedModalId);
+
+  // useEffect(() => {
+  //   if (isFeedModalOpen !== null && isFeedModalOpen !== undefined) {
+  //     setIsFeedModalOpenLocal(isFeedModalOpen);
+  //   }
+  //   if (feedModalId !== null && feedModalId !== undefined) {
+  //     setFeedModalIdLocal(feedModalId);
+  //   }
+  // }, [isFeedModalOpen, feedModalId]);
+
   const [isOrderModal, setOrderModal] = useState({
     open: false,
   });
@@ -17,23 +40,25 @@ function Home() {
     id: 1,
   });
 
-  const [isFeedModal, setFeedModal] = useState({
-    open: false,
-    id: 1,
-  });
+  // //@ts-ignore
+  // const handleOpenFeedModal = (id) => {
+  //   //@ts-ignore
+  //   // dispatch(openFeedModal(id));
+  //   setIsFeedModalOpenLocal(true)
+  // };
+
+  // const handleCloseModal = () => {
+  //   //@ts-ignore
+  //   dispatch(closeFeedModal());
+  // };
 
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
-    setFeedModal({ open: false, id: 1 });
   }
 
   function openModal() {
     setOrderModal({ open: true });
-  }
-  //@ts-ignore
-  function openFeedModal(id) {
-    setFeedModal({ open: true, id: 1 });
   }
 
   return (
@@ -43,7 +68,6 @@ function Home() {
         //@ts-ignore
         setIngredientModal={setIngredientModal}
         openModal={openModal}
-        openFeedModal={openFeedModal}
       />
       {isOrderModal.open && (
         <Modal closeModal={closeModal}>
@@ -55,12 +79,11 @@ function Home() {
           <IngredientDetails id={isIngredientModal.id} />
         </Modal>
       )}
-
-      {isFeedModal.open && (
-        <Modal closeModal={closeModal}>
-          <FeedPage id={isFeedModal.id} />
+      {/* {isFeedModalOpenLocal && (
+        <Modal closeModal={handleCloseModal}>
+          <FeedPage id={feedModalId}/>
         </Modal>
-      )}
+      )} */}
     </div>
   );
 }

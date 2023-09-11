@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ImagesIngredients from "../images-line/images-line";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openFeedModal, closeFeedModal } from "../../store/actions/feed-modal";
+import { useParams } from "react-router-dom";
 
 function IngredientsLine() {
   const [data, setData] = useState([]);
@@ -24,15 +27,11 @@ function IngredientsLine() {
     return acc;
   }, {});
 
-
-
   const ids = data.map((item) => item.ingredients);
 
   const newData = ids.map((idArray) => {
     return idArray.map((id) => newAllIngredients[id]);
   });
-
-
 
   const priceForIngredient = AllIngredients.reduce((acc, item) => {
     acc[item._id] = item.price;
@@ -44,8 +43,23 @@ function IngredientsLine() {
   });
 
   const handleOrderClick = (orderId) => {
+    // window.history.pushState({}, "", `/feed/${orderId}`);
+    // dispatch(openFeedModal(orderId));
     navigate(`/feed/${orderId}`);
   };
+
+  const dispatch = useDispatch();
+  
+  // const isFeedModalOpen = useSelector((state) => state.modal.isFeedModalOpen);
+  // const handleOpenModal = () => {
+  //   dispatch(openFeedModal(id));
+  // };
+
+  // const handleCloseModal = () => {
+  //   dispatch(closeFeedModal());
+  // };
+
+  const { id } = useParams();
 
   return (
     <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>
