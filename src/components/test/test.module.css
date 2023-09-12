@@ -1,10 +1,8 @@
-.orderNumber{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.orderNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-
 
 .textColor {
   color: #00cccc;
@@ -16,24 +14,11 @@
   height: 30vh;
   overflow-y: scroll;
   padding-right: 24px;
-  /* width: 500px;
-      height: 500px; */
 }
 
 .ingredient {
   display: flex;
   justify-content: space-between;
-
-  /* position: relative;
-      border-radius: 50%;
-      border: 2px solid rgb(128, 0, 255); 
-      max-width: 100px;
-      max-height: 90px;
-       background-color: black;   */
-}
-
-.kek {
-  display: flex;
 }
 
 .сircle {
