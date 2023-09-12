@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./feed.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { fetchFeed } from "../../store/actions/feed";
+import { fetchFeed } from "../../store/actions/feed-all-orders";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
