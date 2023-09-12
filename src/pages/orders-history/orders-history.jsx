@@ -15,19 +15,21 @@ function OrdersHistory() {
   );
 
   return (
+    
     <div className={`${styles.scroll} custom-scroll mt-20 pr-2`}>
+      <div className={styles.containerStyle}>
       <div className={`${styles.numberDate} mt-6`}>
-        <p className="text text_type_digits-default"> #03402304</p>
+        <p className="text text_type_digits-default mt-5 ml-5"> #03402304</p>
         <FormattedDate
           date={yesterday}
-          className="text text_type_main-default text_color_inactive"
+          className="text text_type_main-default text_color_inactive mr-5 mt-5"
         />
       </div>
-      <p className="text text_type_main-medium mt-6">
+      <p className="text text_type_main-medium mt-6 ml-5">
         Death Star Starship Main Burger
       </p>
-      <p className="text text_type_main-small mt-2">Создан</p>
-      <div className={`${styles.container} mt-6`}>
+      <p className="text text_type_main-small mt-2 ml-5">Создан</p>
+      <div className={`${styles.container} mt-6 ml-5`}>
         <div className={styles.test}>
           <div className={styles.ingredients}>
             <img
@@ -52,11 +54,12 @@ function OrdersHistory() {
           </div>
         </div>
 
-        <div className={`${styles.totalPrice} mt-6`}>
+        <div className={`${styles.totalPrice} mt-6 mr-5`}>
           <p className="text text_type_digits-default mr-2">480440</p>
           <CurrencyIcon type="primary" />
         </div>
       </div>
+    </div>
     </div>
   );
 }
