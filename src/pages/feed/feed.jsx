@@ -23,7 +23,7 @@ function Feed() {
 
   const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
 
-  const { id } = useParams();
+  // const { id } = useParams();
 
   useEffect(() => {
     //@ts-ignore
@@ -87,9 +87,9 @@ function Feed() {
     }
   }, [orderNum]);
 
-  function openModal() {
-    setIsFeedIdModal({ open: true, id: 1 });
-  }
+  // function openModal() {
+  //   setIsFeedIdModal({ open: true, id: 1 });
+  // }
 
   function closeModal() {
     setIsFeedIdModal({ open: false, id: 1 });
@@ -99,13 +99,13 @@ function Feed() {
     <section className={`${styles.content} mt-10 mr-30`}>
       <div className={styles.menuBar}>
         <h1 className="text text_type_main-large">Лента заказов</h1>
-        <IngredientsLine openModal={openModal} />
+        <IngredientsLine setIsFeedIdModal={setIsFeedIdModal} />
       </div>
 
       {/* вторая часть страницы */}
       {isFeedIdModal.open && (
         <Modal closeModal={closeModal}>
-          <TestPage id={isFeedIdModal.id} />
+          <TestPage />
         </Modal>
       )}
 

@@ -11,7 +11,7 @@ import forgotPasswordReducer from "./forgot-password-reducer";
 import resetPasswordReducer from "./reset-password-reducer";
 import logoutReducer from "./logout-reducer";
 import feedReducer from "./feed-reducer";
-import feedModalReducer from "./feed-modal-reducer";
+import { orderIdReducer } from "./order-id-reducer";
 
 const rootReducer = combineReducers({
   mainData: ingredientReducer,
@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
   resetPassword: resetPasswordReducer,
   logout: logoutReducer,
   getFeed: feedReducer,
-  openFeedModal: feedModalReducer,
+  orderReduceer: orderIdReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

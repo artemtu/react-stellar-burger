@@ -9,18 +9,18 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-function TestPage({id}) {
-
-
-  const orders = useSelector((state) => state.getFeed.getFeed);
-
-
-
-  const thisOrder = orders.find((item) => item._id === id);
-
-  // const thisOrder = orders.find((item) => item._id === feedModalId);
-
+function TestPage() {
   const AllIngredients = useSelector((state) => state.mainData.data);
+  const orders = useSelector((state) => state.getFeed.getFeed.orders);
+  const orderId = useSelector((state) => state.orderReduceer.orderId);
+
+  const thisOrder = orders.find((item) => item._id === orderId);
+  
+    // const {id} = useParams();
+
+  // const id = '650030946d2997001caa8349'
+  // console.log(id);
+
 
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
@@ -57,17 +57,19 @@ function TestPage({id}) {
 
   return (
     <>
-      <div className={styles.container}>
-        <p className="text text_type_digits-default">
+    <div className={`${styles.orderNumber}`}>
+        <p className="text text_type_digits-default mt-15">
           {" "}
           {"#" + thisOrder.number}
         </p>
-        <p className="text text_type_main-medium mt-10">{thisOrder.name}</p>
-        <p className={`${styles.textColor} text text_type_main-medium mt-3`}>
+
+    </div>
+        <p className="text text_type_main-medium mt-10 ml-5">{thisOrder.name}</p>
+        <p className={`${styles.textColor} text text_type_main-medium mt-3 ml-5`}>
           {thisOrder.status}
         </p>
-        <p className="text text_type_main-medium mt-15">Состав:</p>
-        <div className={`${styles.scroll} custom-scroll mt-6`}>
+        <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
+        <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
           {test.map((item, index) => (
             <div className={styles.ingredient}>
               <div className={styles.nameContainer}>
@@ -102,7 +104,6 @@ function TestPage({id}) {
             <CurrencyIcon type="primary" />
           </div>
         </div>
-      </div>
     </>
   );
 }

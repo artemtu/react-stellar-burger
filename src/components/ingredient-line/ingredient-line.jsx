@@ -8,8 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openFeedModal, closeFeedModal } from "../../store/actions/feed-modal";
 import { useParams } from "react-router-dom";
+import { setOrderId } from "../../store/actions/feed-modal";
 
-function IngredientsLine({ openModal }) {
+function IngredientsLine({ setIsFeedIdModal }) {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -42,26 +43,13 @@ function IngredientsLine({ openModal }) {
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
-  const handleOrderClick = (orderId) => {
-    window.history.pushState({}, "", `/feed/${orderId}`);
-    openModal(orderId);
-
-    // dispatch(openFeedModal(orderId));
-    // navigate(`/feed/${orderId}`);
-  };
-
   const dispatch = useDispatch();
 
-  // const isFeedModalOpen = useSelector((state) => state.modal.isFeedModalOpen);
-  // const handleOpenModal = () => {
-  //   dispatch(openFeedModal(id));
-  // };
-
-  // const handleCloseModal = () => {
-  //   dispatch(closeFeedModal());
-  // };
-
-  const { id } = useParams();
+  const handleOrderClick = (id) => {
+    window.history.pushState({}, "", `/feed/${id}`);
+    dispatch(setOrderId(id));
+    setIsFeedIdModal({ open: true });
+  };
 
   return (
     <div className={`${styles.scroll} custom-scroll mt-6 pr-2`}>

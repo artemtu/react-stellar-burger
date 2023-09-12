@@ -13,10 +13,10 @@ import {
   closeFeedModal,
 } from "../../../store/actions/feed-modal";
 
-function FeedPage() {
+function FeedPage({id}) {
   const dispatch = useDispatch();
 
-  const { id } = useParams();
+  // const { id } = useParams();
   // useEffect(() => {
   //   const thisOrder = orders.find((item) => item._id === id);
   // }, [id, orders]);
