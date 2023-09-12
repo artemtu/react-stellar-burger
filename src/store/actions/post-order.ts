@@ -10,6 +10,8 @@ export const getOrderNumber = (number: IgetOrderNumber) => {
   };
 };
 
+let accessToken = localStorage.getItem("accessToken");
+
 export interface IOrder {
   ingredients: string[];
 }
@@ -21,8 +23,13 @@ export const postOrder =
    (dispatch) => {
     return fetch(`${config.baseUrl}/orders`, {
       method: "POST",
-      headers: config.headers,
+      headers: {
+        ...config.headers,
+        'Authorization': `${accessToken}`
+      },
       body: JSON.stringify(order),
+      //@ts-ignore
+      Authorization: `${accessToken}`
     })
       .then(checkResponse)
       .then((data) => {
@@ -31,3 +38,4 @@ export const postOrder =
       })
       .catch(console.error);
   };
+

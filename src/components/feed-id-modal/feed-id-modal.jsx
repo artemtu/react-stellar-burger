@@ -42,6 +42,8 @@ function TestPage() {
     return acc;
   }, []);
 
+  console.log(test);
+
   const totalSum = test
     .map((item) => item.count * item.price)
     .reduce((acc, val) => acc + val, 0);
