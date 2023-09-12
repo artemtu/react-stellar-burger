@@ -30,7 +30,6 @@ export interface IModalFunctions {
   setIngredientModal: React.Dispatch<
     React.SetStateAction<IngredientModalState>
   >;
-
 }
 
 export interface IingredientFullInfo {
@@ -51,12 +50,11 @@ interface IingredientWithId extends IingredientFullInfo {
   _constId: string;
 }
 //@ts-ignore
-function Main({ openModal, setIngredientModal, openFeedModal }: IModalFunctions) {
+function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const dispatch = useAppDispatch();
 
   const selectIngredients = useAppSelector((state) => state.mainData);
   // console.log(selectIngredients);
-  
 
   //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
@@ -64,11 +62,11 @@ function Main({ openModal, setIngredientModal, openFeedModal }: IModalFunctions)
   const bunsArray = selectIngredients.data.filter(
     (item: IingredientFullInfo) => item.type === "bun"
   );
-    //@ts-ignore
+  //@ts-ignore
   const fillingsArray = selectIngredients.data.filter(
     (item: IingredientFullInfo) => item.type === "main"
   );
-    //@ts-ignore
+  //@ts-ignore
   const sauceArray = selectIngredients.data.filter(
     (item: IingredientFullInfo) => item.type === "sauce"
   );

@@ -22,6 +22,8 @@ import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
 import FeedPage from "../modal/feed-id/feed-id";
 import FeedIdPage from "../../pages/feed-id-page/feed-id-page";
+import { fetchFeed } from "../../store/actions/feed";
+import TestPage from "../test/test";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -32,6 +34,11 @@ function App() {
     };
 
     fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    //@ts-ignore
+    dispatch(fetchFeed());
   }, [dispatch]);
 
   return (
@@ -59,6 +66,7 @@ function App() {
         <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/feed/:id" element={<FeedIdPage />} />
+        <Route path="/feedOk" element={<TestPage />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
     </>

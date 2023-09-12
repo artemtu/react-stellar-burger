@@ -10,11 +10,13 @@ import FeedPage from "../../components/modal/feed-id/feed-id";
 function FeedIdPage() {
   const { id } = useParams();
 
-//   const ingredient = useSelector((state) =>
-//     state.mainData.data.find((item) => item._id === id)
-//   );
+  //   const ingredient = useSelector((state) =>
+  //     state.mainData.data.find((item) => item._id === id)
+  //   );
 
-  const orders = useSelector((state) => state.getFeed.getFeed.orders.find((item) => item._id === id));
+  const orders = useSelector((state) =>
+    state.getFeed.getFeed.orders.find((item) => item._id === id)
+  );
 
   return (
     <>

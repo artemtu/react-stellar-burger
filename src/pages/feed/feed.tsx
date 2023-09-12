@@ -7,14 +7,20 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
+import { useState } from "react";
+import Modal from "../../components/modal/modal";
+import FeedPage from "../../components/modal/feed-id/feed-id";
+import TestPage from "../../components/test/test";
 
-function Feed() {
+function Feed({ openFeedId }: any) {
   const dispatch = useDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
   const [orderIsReady, setOrderIsReady] = React.useState([]);
   const [orderIsPending, setOrderIsPending] = React.useState([]);
   const [orderNumber, setOrderNumber] = React.useState([]);
+
+  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: true, id: '64ff3b2b6d2997001caa8127' });
 
   useEffect(() => {
     //@ts-ignore
@@ -74,33 +80,31 @@ function Feed() {
   useEffect(() => {
     if (orderNum) {
       //@ts-ignore
-      setOrderNumber(
-        orderNum.orders
-        //@ts-ignore
-        // .map((item) => item.number)
-      );
+      setOrderNumber(orderNum.orders);
     }
   }, [orderNum]);
 
-  //@ts-ignore
-  // const test = orderNum.forEach(item => {
-  //   const name = item.name
-  //   console.log(name);
-  // });
+  function openModal() {
+    setIsFeedIdModal({ open: true, id: '64ff3b2b6d2997001caa8127' });
+  }
 
-  // console.log(test);
-
-
-
+  function closeModal() {
+    setIsFeedIdModal({ open: false, id: '64ff3b2b6d2997001caa8127'});
+  }
 
   return (
     <section className={`${styles.content} mt-10 mr-30`}>
       <div className={styles.menuBar}>
         <h1 className="text text_type_main-large">Лента заказов</h1>
-        <IngredientsLine />
+        <IngredientsLine openModal={openModal} />
       </div>
 
       {/* вторая часть страницы */}
+      {isFeedIdModal.open && (
+        <Modal closeModal={closeModal}>
+          <TestPage />
+        </Modal>
+      )}
 
       <section className={`${styles.testik}`}>
         <div className={styles.readynWork}>

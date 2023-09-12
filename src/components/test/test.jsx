@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import Header from "../../app-header/app-header";
-import styles from "./feed-id.module.css";
+import Header from "../app-header/app-header";
+import styles from "./test.module.css";
+
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -8,33 +9,34 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import {
-  openFeedModal,
-  closeFeedModal,
-} from "../../../store/actions/feed-modal";
 
-function FeedPage() {
-  const dispatch = useDispatch();
 
-  const { id } = useParams();
-  // useEffect(() => {
-  //   const thisOrder = orders.find((item) => item._id === id);
-  // }, [id, orders]);
 
-  // useEffect(() => {
-  //   dispatch(openFeedModal(id));
-  //   return () => {
-  //     dispatch(closeFeedModal(id));
-  //   };
-  // }, [dispatch]);
+function TestPage() {
 
-  // const { id } = useParams();
+  const data = [
+    {
+      _id: "64ff3fee6d2997001caa813b",
+      ingredients: ["643d69a5c3f7b9001cfa093d"],
+      status: "done",
+      name: "Флюоресцентный бургер",
+      createdAt: "2023-09-11T16:27:26.172Z",
+      updatedAt: "2023-09-11T16:27:26.363Z",
+      number: 20237
+    },
+    {
+      _id: "64ff23ca6d2997001caa80ed",
+      ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa093e", "643d69a5c3f7b9001cfa093e"],
+      status: "done",
+      name: "Люминесцентный флюоресцентный бургер",
+      createdAt: "2023-09-11T14:27:22.928Z",
+      updatedAt: "2023-09-11T14:27:23.184Z",
+      number: 20234
+    }
+  ];
 
-  const orders = useSelector((state) => state.getFeed.getFeed.orders);
-  const thisOrder = orders.find((item) => item._id === id);
-  // const thisOrder = orders.find((item) => item._id === feedModalId);
+  const thisOrder = data.find((item) => item._id === '64ff23ca6d2997001caa80ed');
   const AllIngredients = useSelector((state) => state.mainData.data);
-
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
     return acc;
@@ -67,6 +69,7 @@ function FeedPage() {
   const totalSum = test
     .map((item) => item.count * item.price)
     .reduce((acc, val) => acc + val, 0);
+
 
   return (
     <>
@@ -120,4 +123,4 @@ function FeedPage() {
   );
 }
 
-export default FeedPage;
+export default TestPage;

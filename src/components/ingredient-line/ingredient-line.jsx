@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { openFeedModal, closeFeedModal } from "../../store/actions/feed-modal";
 import { useParams } from "react-router-dom";
 
-function IngredientsLine() {
+function IngredientsLine({ openModal }) {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -44,12 +44,14 @@ function IngredientsLine() {
 
   const handleOrderClick = (orderId) => {
     // window.history.pushState({}, "", `/feed/${orderId}`);
+    // openModal();
+
     // dispatch(openFeedModal(orderId));
     navigate(`/feed/${orderId}`);
   };
 
   const dispatch = useDispatch();
-  
+
   // const isFeedModalOpen = useSelector((state) => state.modal.isFeedModalOpen);
   // const handleOpenModal = () => {
   //   dispatch(openFeedModal(id));

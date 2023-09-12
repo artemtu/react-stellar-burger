@@ -13,24 +13,12 @@ import { openFeedModal, closeFeedModal } from "../../store/actions/feed-modal";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 import { useEffect } from "react";
 import Feed from "../feed/feed";
+import SomeComponent from "../../components/test/test";
 
 function Home() {
   const dispatch = useDispatch();
 
-  // const [isFeedModalOpenLocal, setIsFeedModalOpenLocal] = useState(false);
-  // const [feedModalIdLocal, setFeedModalIdLocal] = useState(null);
-
-  // const isFeedModalOpen = useSelector((state) => state.modal?.isFeedModalOpen);
-  // const feedModalId = useSelector((state) => state.modal?.feedModalId);
-
-  // useEffect(() => {
-  //   if (isFeedModalOpen !== null && isFeedModalOpen !== undefined) {
-  //     setIsFeedModalOpenLocal(isFeedModalOpen);
-  //   }
-  //   if (feedModalId !== null && feedModalId !== undefined) {
-  //     setFeedModalIdLocal(feedModalId);
-  //   }
-  // }, [isFeedModalOpen, feedModalId]);
+  const [isFeedIdModal, setIsFeedIdModal] = useState({ false: true, id: 1 });
 
   const [isOrderModal, setOrderModal] = useState({
     open: false,
@@ -40,35 +28,31 @@ function Home() {
     id: 1,
   });
 
-  // //@ts-ignore
-  // const handleOpenFeedModal = (id) => {
-  //   //@ts-ignore
-  //   // dispatch(openFeedModal(id));
-  //   setIsFeedModalOpenLocal(true)
-  // };
-
-  // const handleCloseModal = () => {
-  //   //@ts-ignore
-  //   dispatch(closeFeedModal());
-  // };
-
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
+    setIsFeedIdModal({ open: false, id: 1 });
   }
 
   function openModal() {
     setOrderModal({ open: true });
   }
 
+  function openFeedId() {
+    // console.log('я здест');
+    setIsFeedIdModal({ open: true });
+  }
+
   return (
     <div className={styles.app}>
+      {/* <SomeComponent /> */}
       <Main
         setOrderModal={setOrderModal}
         //@ts-ignore
         setIngredientModal={setIngredientModal}
         openModal={openModal}
       />
+
       {isOrderModal.open && (
         <Modal closeModal={closeModal}>
           <OrderDetails />
@@ -79,9 +63,9 @@ function Home() {
           <IngredientDetails id={isIngredientModal.id} />
         </Modal>
       )}
-      {/* {isFeedModalOpenLocal && (
-        <Modal closeModal={handleCloseModal}>
-          <FeedPage id={feedModalId}/>
+      {/* {isFeedIdModal.open && (
+        <Modal closeModal={closeModal}>
+          <FeedPage id={isFeedIdModal.id} />
         </Modal>
       )} */}
     </div>
