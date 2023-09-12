@@ -15,12 +15,6 @@ function TestPage() {
   const orderId = useSelector((state) => state.orderReduceer.orderId);
 
   const thisOrder = orders.find((item) => item._id === orderId);
-  
-    // const {id} = useParams();
-
-  // const id = '650030946d2997001caa8349'
-  // console.log(id);
-
 
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
@@ -57,53 +51,50 @@ function TestPage() {
 
   return (
     <>
-    <div className={`${styles.orderNumber}`}>
+      <div className={`${styles.orderNumber}`}>
         <p className="text text_type_digits-default mt-15">
           {" "}
           {"#" + thisOrder.number}
         </p>
-
-    </div>
-        <p className="text text_type_main-medium mt-10 ml-5">{thisOrder.name}</p>
-        <p className={`${styles.textColor} text text_type_main-medium mt-3 ml-5`}>
-          {thisOrder.status}
-        </p>
-        <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
-        <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
-          {test.map((item, index) => (
-            <div className={styles.ingredient}>
-              <div className={styles.nameContainer}>
-                <div className={styles.сircle}>
-                  <img
-                    src={item.image}
-                    alt=""
-                    className={styles.ingredientPosition}
-                  />
-                </div>
-                <p className="text text_type_main-small mt-8 ml-5">
-                  {item.name}
-                </p>
+      </div>
+      <p className="text text_type_main-medium mt-10 ml-5">{thisOrder.name}</p>
+      <p className={`${styles.textColor} text text_type_main-medium mt-3 ml-5`}>
+        {thisOrder.status}
+      </p>
+      <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
+      <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
+        {test.map((item, index) => (
+          <div className={styles.ingredient}>
+            <div className={styles.nameContainer}>
+              <div className={styles.сircle}>
+                <img
+                  src={item.image}
+                  alt=""
+                  className={styles.ingredientPosition}
+                />
               </div>
-              <div className={styles.price}>
-                <p className="text text_type_digits-default mr-2">
-                  {item.count} x {item.price}
-                </p>
-                <CurrencyIcon type="primary" />
-              </div>
+              <p className="text text_type_main-small mt-8 ml-5">{item.name}</p>
             </div>
-          ))}
-        </div>
-
-        <div className={styles.totalContainer}>
-          <FormattedDate
-            date={new Date(thisOrder.createdAt)}
-            className="text text_type_main-default text_color_inactive"
-          />
-          <div className={styles.totalPrice}>
-            <p className="text text_type_digits-default mr-2">{totalSum}</p>
-            <CurrencyIcon type="primary" />
+            <div className={styles.price}>
+              <p className="text text_type_digits-default mr-2">
+                {item.count} x {item.price}
+              </p>
+              <CurrencyIcon type="primary" />
+            </div>
           </div>
+        ))}
+      </div>
+
+      <div className={styles.totalContainer}>
+        <FormattedDate
+          date={new Date(thisOrder.createdAt)}
+          className="text text_type_main-default text_color_inactive"
+        />
+        <div className={styles.totalPrice}>
+          <p className="text text_type_digits-default mr-2">{totalSum}</p>
+          <CurrencyIcon type="primary" />
         </div>
+      </div>
     </>
   );
 }
