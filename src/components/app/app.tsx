@@ -65,8 +65,8 @@ function App() {
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path="/feed" element={<Feed />} />
-        <Route path="/feed/:id" element={<FeedIdPage />} />
-        <Route path="/feedOk" element={<TestPage />} />
+        {/* <Route path="/feed/:id" element={<FeedIdPage />} /> */}
+        <Route path="/feed/:id" element={<TestPage />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
     </>

@@ -9,34 +9,19 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
+function TestPage({id}) {
+
+
+  const orders = useSelector((state) => state.getFeed.getFeed);
 
 
 
-function TestPage() {
+  const thisOrder = orders.find((item) => item._id === id);
 
-  const data = [
-    {
-      _id: "64ff3fee6d2997001caa813b",
-      ingredients: ["643d69a5c3f7b9001cfa093d"],
-      status: "done",
-      name: "Флюоресцентный бургер",
-      createdAt: "2023-09-11T16:27:26.172Z",
-      updatedAt: "2023-09-11T16:27:26.363Z",
-      number: 20237
-    },
-    {
-      _id: "64ff23ca6d2997001caa80ed",
-      ingredients: ["643d69a5c3f7b9001cfa093d", "643d69a5c3f7b9001cfa093e", "643d69a5c3f7b9001cfa093e"],
-      status: "done",
-      name: "Люминесцентный флюоресцентный бургер",
-      createdAt: "2023-09-11T14:27:22.928Z",
-      updatedAt: "2023-09-11T14:27:23.184Z",
-      number: 20234
-    }
-  ];
+  // const thisOrder = orders.find((item) => item._id === feedModalId);
 
-  const thisOrder = data.find((item) => item._id === '64ff23ca6d2997001caa80ed');
   const AllIngredients = useSelector((state) => state.mainData.data);
+
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
     return acc;
@@ -69,7 +54,6 @@ function TestPage() {
   const totalSum = test
     .map((item) => item.count * item.price)
     .reduce((acc, val) => acc + val, 0);
-
 
   return (
     <>

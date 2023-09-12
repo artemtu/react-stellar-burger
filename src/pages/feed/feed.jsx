@@ -11,8 +11,9 @@ import { useState } from "react";
 import Modal from "../../components/modal/modal";
 import FeedPage from "../../components/modal/feed-id/feed-id";
 import TestPage from "../../components/test/test";
+import { useParams } from "react-router-dom";
 
-function Feed({ openFeedId }: any) {
+function Feed() {
   const dispatch = useDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
@@ -20,7 +21,9 @@ function Feed({ openFeedId }: any) {
   const [orderIsPending, setOrderIsPending] = React.useState([]);
   const [orderNumber, setOrderNumber] = React.useState([]);
 
-  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: true, id: '64ff3b2b6d2997001caa8127' });
+  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
+
+  const { id } = useParams();
 
   useEffect(() => {
     //@ts-ignore
@@ -85,11 +88,11 @@ function Feed({ openFeedId }: any) {
   }, [orderNum]);
 
   function openModal() {
-    setIsFeedIdModal({ open: true, id: '64ff3b2b6d2997001caa8127' });
+    setIsFeedIdModal({ open: true, id: 1 });
   }
 
   function closeModal() {
-    setIsFeedIdModal({ open: false, id: '64ff3b2b6d2997001caa8127'});
+    setIsFeedIdModal({ open: false, id: 1 });
   }
 
   return (
@@ -102,7 +105,7 @@ function Feed({ openFeedId }: any) {
       {/* вторая часть страницы */}
       {isFeedIdModal.open && (
         <Modal closeModal={closeModal}>
-          <TestPage />
+          <TestPage id={isFeedIdModal.id} />
         </Modal>
       )}
 

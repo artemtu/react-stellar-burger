@@ -43,11 +43,11 @@ function IngredientsLine({ openModal }) {
   });
 
   const handleOrderClick = (orderId) => {
-    // window.history.pushState({}, "", `/feed/${orderId}`);
-    // openModal();
+    window.history.pushState({}, "", `/feed/${orderId}`);
+    openModal(orderId);
 
     // dispatch(openFeedModal(orderId));
-    navigate(`/feed/${orderId}`);
+    // navigate(`/feed/${orderId}`);
   };
 
   const dispatch = useDispatch();

@@ -18,7 +18,7 @@ import SomeComponent from "../../components/test/test";
 function Home() {
   const dispatch = useDispatch();
 
-  const [isFeedIdModal, setIsFeedIdModal] = useState({ false: true, id: 1 });
+  // const [isFeedIdModal, setIsFeedIdModal] = useState({ false: true, id: 1 });
 
   const [isOrderModal, setOrderModal] = useState({
     open: false,
@@ -31,17 +31,17 @@ function Home() {
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
-    setIsFeedIdModal({ open: false, id: 1 });
+    // setIsFeedIdModal({ open: false, id: 1 });
   }
 
   function openModal() {
     setOrderModal({ open: true });
   }
 
-  function openFeedId() {
-    // console.log('я здест');
-    setIsFeedIdModal({ open: true });
-  }
+  // function openFeedId() {
+  //   // console.log('я здест');
+  //   setIsFeedIdModal({ open: true });
+  // }
 
   return (
     <div className={styles.app}>
