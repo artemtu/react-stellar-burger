@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./orders-history.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useSelector } from "react-redux";
 
 function OrdersHistory() {
+
+  const myOrders = useSelector((state) => state.myOrders.getMyFeed.orders);
+  console.log(myOrders);
+
+
   const today = new Date();
   const yesterday = new Date(
     today.getFullYear(),
@@ -17,13 +23,13 @@ function OrdersHistory() {
   return (
     
     <div className={`${styles.scroll} custom-scroll mt-20 pr-2`}>
+      {myOrders.map((item) =>
       <div className={styles.containerStyle}>
       <div className={`${styles.numberDate} mt-6`}>
-        <p className="text text_type_digits-default mt-5 ml-5"> #03402304</p>
-        <FormattedDate
-          date={yesterday}
-          className="text text_type_main-default text_color_inactive mr-5 mt-5"
-        />
+        <p className="text text_type_digits-default mt-5 ml-5">{item.number}</p>
+        <div className="text text_type_main-default text_color_inactive mt-5 mr-3">
+              <FormattedDate date={new Date(item.createdAt)} />
+            </div>
       </div>
       <p className="text text_type_main-medium mt-6 ml-5">
         Death Star Starship Main Burger
@@ -36,21 +42,21 @@ function OrdersHistory() {
               src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
               alt=""
               className={styles.ingredientPosition}
-            />
+              />
           </div>
           <div className={`${styles.orderWrap} `}>
             <img
               src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
               alt=""
               className={styles.ingredientPosition}
-            />
+              />
           </div>
           <div className={styles.orderWrap}>
             <img
               src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
               alt=""
               className={styles.ingredientPosition}
-            />
+              />
           </div>
         </div>
 
@@ -60,6 +66,7 @@ function OrdersHistory() {
         </div>
       </div>
     </div>
+    )}
     </div>
   );
 }
