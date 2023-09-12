@@ -6,14 +6,7 @@ import IngredientDetails from "../../components/modal/ingredient-details/ingredi
 import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
-import FeedPage from "../../components/modal/feed-id/feed-id";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { openFeedModal, closeFeedModal } from "../../store/actions/feed-modal";
-import IngredientsLine from "../../components/ingredient-line/ingredient-line";
-import { useEffect } from "react";
-import Feed from "../feed/feed";
-import SomeComponent from "../../components/test/test";
 
 function Home() {
   const dispatch = useDispatch();
