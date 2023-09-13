@@ -58,6 +58,7 @@ function OrdersHistory({setIsOrderIddModal}) {
         <div
           className={styles.containerStyle}
           onClick={() => handleOrderClick(item._id)}
+          key={index}
         >
           <div className={`${styles.numberDate} mt-6`}>
             <p className="text text_type_digits-default mt-5 ml-5">

@@ -69,7 +69,8 @@ function MyOrderIdModal() {
       <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
       <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
         {test.map((item, index) => (
-          <div className={styles.ingredient}>
+          <div className={styles.ingredient}  key={index}>
+           
             <div className={styles.nameContainer}>
               <div className={styles.сircle}>
                 <img
