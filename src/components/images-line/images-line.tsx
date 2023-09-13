@@ -5,8 +5,10 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useMemo } from "react";
 
-function ImagesIngredients({images}) {
+function ImagesIngredients({images}:any) {
+  //@ts-ignore
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
+    //@ts-ignore
   const AllIngredients = useSelector((state) => state.mainData.data);
 
   const displayedImages = images ? images.slice(0, 5) : [];
@@ -14,7 +16,7 @@ function ImagesIngredients({images}) {
 
   return (
     <div className={styles.test}>
-      {displayedImages.map((item, index) => (
+      {displayedImages.map((item:any, index:number) => (
         <div key={index} className={styles.ingredients}>
           <img src={item} alt="" className={styles.ingredientPosition} />
         </div>
