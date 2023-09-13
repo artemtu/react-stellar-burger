@@ -6,7 +6,7 @@ import {useLocation} from "react-router-dom";
 import OrdersHistory from '../orders-history/orders-history';
 import { useState } from 'react';
 import Modal from '../../components/modal/modal';
-import MyOrderIdModal from '../../components/feed-id-modal copy/feed-id-modal';
+import MyOrderIdModal from '../../components/my-order-id-modal/my-order-id-modal';
 
 function ProfileOrders() {
     const location = useLocation();

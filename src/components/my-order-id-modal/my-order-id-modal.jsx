@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import Header from "../app-header/app-header";
-import styles from "./feed-id-modal.module.css";
+import styles from "./my-order-id-modal.module.css";
 
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
