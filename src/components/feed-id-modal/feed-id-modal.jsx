@@ -31,18 +31,24 @@ function TestPage() {
     const foundIngredient = ingredientsData.find((item) => item.id === id);
 
     const existingIngredient = acc.find((item) => item.id === id);
+
+    let incrementValue = countById[id];
+    
+    if (id === '643d69a5c3f7b9001cfa093d' || id === '643d69a5c3f7b9001cfa093d') {
+      incrementValue *= 2;
+    }
+    
     if (existingIngredient) {
-      existingIngredient.count += 1;
+      existingIngredient.count += incrementValue;
     } else {
       acc.push({
         ...foundIngredient,
-        count: countById[id],
+        count: incrementValue,
       });
     }
+    
     return acc;
   }, []);
-
-  console.log(test);
 
   const totalSum = test
     .map((item) => item.count * item.price)
