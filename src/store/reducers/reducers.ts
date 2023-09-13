@@ -13,6 +13,7 @@ import logoutReducer from "./logout-reducer";
 import feedReducer from "./feed-reducer";
 import { orderIdReducer } from "./order-id-reducer";
 import feedMyReducer from "./feed-user-reducer";
+import { myOrderIdReducer } from "./my-order-id-reducer";
 
 const rootReducer = combineReducers({
   mainData: ingredientReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   getFeed: feedReducer,
   orderReduceer: orderIdReducer,
   myOrders: feedMyReducer,
+  myOrderId: myOrderIdReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

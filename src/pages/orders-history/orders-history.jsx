@@ -4,8 +4,11 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import ImagesIngredients from "../../components/images-line/images-line";
+import { setMyOrderId } from "../../store/actions/my-order-id-modal";
+import { useDispatch } from "react-redux";
 
 function OrdersHistory() {
+  const dispatch = useDispatch();
   const myOrders = useSelector((state) => state.myOrders.getMyFeed.orders);
   const AllIngredients = useSelector((state) => state.mainData.data);
 
@@ -43,10 +46,19 @@ function OrdersHistory() {
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
+  const handleOrderClick = (id) => {
+    window.history.pushState({}, "", `orders/${id}`);
+    dispatch(setMyOrderId(id));
+    // setIsFeedIdModal({ open: true });
+  };
+
   return (
     <div className={`${styles.scroll} custom-scroll mt-20 pr-2`}>
       {myOrders.map((item, index) => (
-        <div className={styles.containerStyle}>
+        <div
+          className={styles.containerStyle}
+          onClick={() => handleOrderClick(item._id)}
+        >
           <div className={`${styles.numberDate} mt-6`}>
             <p className="text text_type_digits-default mt-5 ml-5">
               {item.number}
@@ -55,9 +67,7 @@ function OrdersHistory() {
               <FormattedDate date={new Date(item.createdAt)} />
             </div>
           </div>
-          <p className="text text_type_main-medium mt-6 ml-5">
-            Death Star Starship Main Burger
-          </p>
+          <p className="text text_type_main-medium mt-6 ml-5">{item.name}</p>
           <p className={`text text_type_main-small mt-2 ml-5`}>{item.status}</p>
           <div className={`${styles.container} mt-6 ml-5`}>
             <div className={styles.test}>
