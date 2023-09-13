@@ -6,10 +6,11 @@ import {useLocation} from "react-router-dom";
 import OrdersHistory from '../orders-history/orders-history';
 import { useState } from 'react';
 import Modal from '../../components/modal/modal';
+import MyOrderIdModal from '../../components/feed-id-modal copy/feed-id-modal';
 
 function ProfileOrders() {
     const location = useLocation();
-    const [isOrderIddModal, setIsOrderIddModal] = useState({ open: true, id: 1 });
+    const [isOrderIddModal, setIsOrderIddModal] = useState({ open: false, id: 1 });
 
     function closeModal() {
       setIsOrderIddModal({ open: false, id: 1 });
@@ -28,14 +29,14 @@ function ProfileOrders() {
         <Link className={`text text_type_main-medium ${location.pathname === '/orders' ? '' : 'text_color_inactive'}`} style={{ textDecoration: 'none' }} to='/logout'>Выход</Link>
         <p className='text text_type_main-small'>В этом разделе вы можете изменить свои персональные данные</p>
       </div>
+      <div>
+        <OrdersHistory setIsOrderIddModal={setIsOrderIddModal}/>
+      </div>
       {isOrderIddModal.open && (
         <Modal closeModal={closeModal}>
-          {/* <TestPage /> */}
+          <MyOrderIdModal />
         </Modal>
-      )}
-      <div>
-        <OrdersHistory/>
-      </div>
+          )}
     </>
   )
 }

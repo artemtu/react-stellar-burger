@@ -7,7 +7,7 @@ import ImagesIngredients from "../../components/images-line/images-line";
 import { setMyOrderId } from "../../store/actions/my-order-id-modal";
 import { useDispatch } from "react-redux";
 
-function OrdersHistory() {
+function OrdersHistory({setIsOrderIddModal}) {
   const dispatch = useDispatch();
   const myOrders = useSelector((state) => state.myOrders.getMyFeed.orders);
   const AllIngredients = useSelector((state) => state.mainData.data);
@@ -49,7 +49,7 @@ function OrdersHistory() {
   const handleOrderClick = (id) => {
     window.history.pushState({}, "", `orders/${id}`);
     dispatch(setMyOrderId(id));
-    // setIsFeedIdModal({ open: true });
+    setIsOrderIddModal({ open: true });
   };
 
   return (
