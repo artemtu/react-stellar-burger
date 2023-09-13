@@ -6,7 +6,7 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 
-function TestPage() {
+function FeedPage() {
   const AllIngredients = useSelector((state) => state.mainData.data);
   const orders = useSelector((state) => state.getFeed.getFeed.orders);
   const orderId = useSelector((state) => state.orderReduceer.orderId);
@@ -104,4 +104,4 @@ function TestPage() {
   );
 }
 
-export default TestPage;
+export default FeedPage;

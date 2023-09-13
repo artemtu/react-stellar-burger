@@ -20,9 +20,8 @@ import IngredientPage from "../../pages/ingredients/ingredients";
 import { useAppDispatch } from "../../store/types";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
-import FeedIdPage from "../../pages/feed-id-page (not use)/feed-id-page";
 import { fetchFeed } from "../../store/actions/feed-all-orders";
-import TestPage from "../feed-id-modal/feed-id-modal";
+import FeedPage from "../feed-id-modal/feed-id-modal";
 import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 
 function App() {
@@ -69,7 +68,7 @@ function App() {
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path="/feed" element={<Feed />} />
-        <Route path="/feed/:id" element={<TestPage />} />
+        <Route path="/feed/:id" element={<FeedPage />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
     </>

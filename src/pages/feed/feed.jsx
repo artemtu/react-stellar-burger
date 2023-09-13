@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 import { useState } from "react";
 import Modal from "../../components/modal/modal";
-import TestPage from "../../components/feed-id-modal/feed-id-modal";
+import FeedPage from "../../components/feed-id-modal/feed-id-modal";
 import { useParams } from "react-router-dom";
 
 function Feed() {
@@ -104,7 +104,7 @@ function Feed() {
       {/* вторая часть страницы */}
       {isFeedIdModal.open && (
         <Modal closeModal={closeModal}>
-          <TestPage />
+          <FeedPage />
         </Modal>
       )}
 
