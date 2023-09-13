@@ -4,7 +4,18 @@ import { checkResponse } from "../../components/api/api";
 import { IgetIngredients } from "../types";
 import { IData } from "../types";
 
-export const getFeed = (data) => {
+export interface IFeedData {
+  success: boolean;
+  _id: string;
+  ingredients: string[];
+  status: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  number: number;
+}
+
+export const getFeed = (data: IFeedData) => {
   return {
     type: GET_FEED,
     //@ts-ignore

@@ -15,6 +15,8 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
 
   //@ts-ignore
   const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
+
+  
   //@ts-ignore
   const AllIngredients = useSelector((state) => state.mainData.data);
 
