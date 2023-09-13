@@ -6,13 +6,11 @@ import {
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredient-list/ingredient-list.module.css";
-import PropTypes, { number } from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { IbunConstructorProps } from "../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
+
 import { IngredientModalState } from "./ingredient-list/ingredient-list";
 
 interface Iingredients {
-  id: string;
+  id?: string;
   type: string;
   image: string;
   name: string;

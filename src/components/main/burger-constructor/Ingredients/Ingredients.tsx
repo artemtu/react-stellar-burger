@@ -6,15 +6,19 @@ import { useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
 import PropTypes from "prop-types";
+import { IingredientFullInfo } from "../../main";
 
 import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredients.module.css";
-import { IbunConstructorProps } from "../bun-bottom-constructor/bun-bottom-constructor";
 
-function Ingredients({ data }: IbunConstructorProps) {
+type Props = {
+  data: IingredientFullInfo[];
+};
+
+function Ingredients({ data }: Props) {
   const dispatch = useDispatch();
 
   //@ts-ignore
@@ -37,13 +41,7 @@ function Ingredients({ data }: IbunConstructorProps) {
 }
 
 interface IDraggableIngredientProps {
-  data: {
-    _id: string;
-    name: string;
-    price: number;
-    image: string;
-    _constId: string;
-  };
+  data: IingredientFullInfo;
   index: number;
   onRemove: (id: string, index?: number) => void;
 }
@@ -97,14 +95,17 @@ function DraggableIngredient({
   });
 
   return (
-    <div ref={(node) => dragRef(dropRef(node))} className={styles.constructorBurger}>
+    <div
+      ref={(node) => dragRef(dropRef(node))}
+      className={styles.constructorBurger}
+    >
       <DragIcon type="primary" />
       <ConstructorElement
         // className="items"
         text={data.name}
         price={data.price}
         thumbnail={data.image}
-        handleClose={() => onRemove(data._constId)}
+        handleClose={() => onRemove(data._constId as string)}
       />
     </div>
   );

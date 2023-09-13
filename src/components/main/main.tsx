@@ -25,7 +25,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import Extraction from "./burger-constructor/extraction/extraction";
 
-export interface IModalFunctions {
+interface IModalFunctions {
   openModal: openModalFunction;
   setIngredientModal: React.Dispatch<
     React.SetStateAction<IngredientModalState>
@@ -34,6 +34,7 @@ export interface IModalFunctions {
 
 export interface IingredientFullInfo {
   _id: string;
+  id: string;
   name: string;
   type: string;
   proteins: number;
@@ -44,37 +45,37 @@ export interface IingredientFullInfo {
   image_large: string;
   image_mobile: string;
   __v: number;
+  price: number;
+  _constId?: string;
 }
 
-interface IingredientWithId extends IingredientFullInfo {
-  _constId: string;
-}
-//@ts-ignore
 function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const dispatch = useAppDispatch();
 
-  const selectIngredients = useAppSelector((state) => state.mainData);
-  // console.log(selectIngredients);
+  const selectIngredients = useAppSelector<{ data: IingredientFullInfo[] }>(
+    (state) => state.mainData
+  );
+
 
   //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
-  //@ts-ignore
+
   const bunsArray = selectIngredients.data.filter(
-    (item: IingredientFullInfo) => item.type === "bun"
+    (item) => item.type === "bun"
   );
-  //@ts-ignore
+
   const fillingsArray = selectIngredients.data.filter(
-    (item: IingredientFullInfo) => item.type === "main"
+    (item) => item.type === "main"
   );
-  //@ts-ignore
+
   const sauceArray = selectIngredients.data.filter(
-    (item: IingredientFullInfo) => item.type === "sauce"
+    (item) => item.type === "sauce"
   );
 
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
     drop: (data: object) => {
-      const newElement: IingredientWithId = {
+      const newElement: IingredientFullInfo = {
         ...(data as IingredientFullInfo),
         _constId: uuidv4(),
       };
@@ -93,6 +94,8 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
       dispatch({ type: ADD_INGREDIENT, payload: item });
     }
   };
+
+  console.log(bunsArray);
 
   const bunRef = useRef(null);
   const mainRef = useRef(null);
@@ -157,7 +160,6 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
         </div>
       </section>
 
-      {/* вторая часть страницы */}
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={data.bun} />
@@ -169,10 +171,5 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
     </main>
   );
 }
-
-// Main.propTypes = {
-//   openModal: PropTypes.func.isRequired,
-//   setIngredientModal: PropTypes.func.isRequired,
-// };
 
 export default Main;

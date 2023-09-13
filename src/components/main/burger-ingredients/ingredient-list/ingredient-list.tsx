@@ -1,15 +1,13 @@
 import React from "react";
 import { Ingridients } from "../burger-ingredients";
-import { useSelector } from "react-redux";
-import { useDrag } from "react-dnd";
 import styles from "./ingredient-list.module.css";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { IbunConstructorProps } from "../../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
-import { IopenModal } from "../../burger-constructor/extraction/extraction";
+import { IingredientFullInfo } from "../../main";
 
- type IngredientListProps = IbunConstructorProps & {
-  setIngredientModal: React.Dispatch<React.SetStateAction<IngredientModalState>>;
+type Props = {
+  setIngredientModal: React.Dispatch<
+    React.SetStateAction<IngredientModalState>
+  >;
+  data: IingredientFullInfo[];
 };
 
 export type IngredientModalState = {
@@ -17,15 +15,7 @@ export type IngredientModalState = {
   id?: number | null;
 };
 
-
-export function IngredientList({ setIngredientModal, data } : IngredientListProps) {
-  const navigate = useNavigate();
-
-  // const handleIngredientClick = (id) => {
-  //   navigate(`/ingredients/${id}`);
-  //   setIngredientModal(true);
-  // };
-
+export function IngredientList({ setIngredientModal, data }: Props) {
   return (
     <div className={styles.ingridientContainer}>
       {data.map((item) => (
@@ -37,15 +27,10 @@ export function IngredientList({ setIngredientModal, data } : IngredientListProp
           price={item.price}
           type={item.type}
           setIngredientModal={setIngredientModal}
-          // onClick={() => handleIngredientClick(item._id)}
         />
       ))}
     </div>
   );
 }
 
-// IngredientList.propTypes = {
-//   data: PropTypes.array.isRequired,
-//   setIngredientModal: PropTypes.func.isRequired,
-// };
 export default IngredientList;

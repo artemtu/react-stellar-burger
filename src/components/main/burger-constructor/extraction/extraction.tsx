@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postOrder } from "../../../../store/actions/post-order";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { IbunConstructor } from "../bun-bottom-constructor/bun-bottom-constructor";
+import { IingredientFullInfo } from "../../main";
 
 export interface IopenModal {
   openModal: openModalFunction;
@@ -34,11 +34,11 @@ function Extraction({ openModal }: IopenModal) {
 
   const totalPrice = React.useMemo(() => {
     const bunPrice = buns.reduce(
-      (acc: number, item: IbunConstructor) => acc + (item.price * 2 || 0),
+      (acc: number, item: IingredientFullInfo) => acc + (item.price * 2 || 0),
       0
     );
     const ingredientsPrice = ingredients.reduce(
-      (acc: number, item: IbunConstructor) => acc + (item.price || 0),
+      (acc: number, item: IingredientFullInfo) => acc + (item.price || 0),
       0
     );
     return bunPrice + ingredientsPrice;
@@ -49,9 +49,9 @@ function Extraction({ openModal }: IopenModal) {
     ingredientsForPrice.ingredients.length === 0;
 
   const onClick = () => {
-    const bunsIds = data.bun.map((item: IbunConstructor) => item.id);
+    const bunsIds = data.bun.map((item: IingredientFullInfo) => item.id);
     const ingredientsIds = data.ingredients.map(
-      (item: IbunConstructor) => item.id
+      (item: IingredientFullInfo) => item.id
     );
     const allIngredientIds = {
       ingredients: [...bunsIds, ...ingredientsIds],
