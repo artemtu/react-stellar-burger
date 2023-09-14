@@ -17,6 +17,8 @@ import {
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
   GET_INGREDIENTS,
   GET_FEED,
+  GET_MY_FEED,
+  SET_MY_ORDER_ID
 } from "./actions/actions";
 import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
@@ -45,6 +47,27 @@ export interface IData {
   image_mobile: string;
   image_large: string;
   isLoading: boolean;
+}
+
+interface Iorders {
+  _id: string;
+  ingredients: string;
+  status: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  number: string;
+}
+
+interface IfeedState {
+  success: boolean;
+  orders: Iorders[];
+  total: number;
+  totalToday: number;
+}
+
+interface Iid{
+  id:string
 }
 
 export interface IgetIngredients {
@@ -170,8 +193,20 @@ export interface IburgerIngredients {
 
 export interface IfeedData {
     type: typeof GET_FEED,
-    payload: IFeedData,
+    payload: IfeedState,
   };
+
+  export interface IgetMyFeed {
+      type: typeof GET_MY_FEED,
+      payload: IfeedState,
+    };
+
+
+    export interface IsetMyOrderId {
+      type: typeof SET_MY_ORDER_ID,
+      payload: Iid,
+    };
+    
 
 
 
@@ -201,5 +236,7 @@ export type ActionTypes =
   | IburgerIngredients
   | IaddBun
   | IfeedData
+  | IgetMyFeed
+  | IsetMyOrderId
   
   // | BurgerConstructorPayload;

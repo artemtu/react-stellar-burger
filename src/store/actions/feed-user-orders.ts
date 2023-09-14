@@ -7,7 +7,6 @@ import { IData } from "../types";
 export const getMyFeed = (data) => {
   return {
     type: GET_MY_FEED,
-    //@ts-ignore
     payload: data,
   };
 };
@@ -17,7 +16,7 @@ if (accessToken && accessToken.startsWith("Bearer ")) {
   accessToken = accessToken.slice(7);
 }
 
-//@ts-ignore
+
 export const fetchMyFeed = () => (dispatch) => {
   const socket = new WebSocket(
     `wss://norma.nomoreparties.space/orders?token=${accessToken}`
