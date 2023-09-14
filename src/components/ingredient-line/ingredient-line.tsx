@@ -8,17 +8,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setOrderId } from "../../store/actions/feed-modal";
+import { useAppSelector } from "../../store/types";
 
 function IngredientsLine({ setIsFeedIdModal }: any) {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   //@ts-ignore
-  const ingredients = useSelector((state) => state.getFeed?.getFeed?.orders);
+  const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
 
-  
-  //@ts-ignore
-  const AllIngredients = useSelector((state) => state.mainData.data);
+  const AllIngredients = useAppSelector((state) => state.mainData.data);
 
   useEffect(() => {
     if (ingredients) {
@@ -30,7 +29,7 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
     acc[item._id] = item.image_mobile;
     return acc;
   }, {});
-  //@ts-ignore
+
   const ids = data.map((item) => item.ingredients);
 
   const newData = ids.map((idArray) => {
@@ -66,15 +65,13 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
         >
           <div className={`${styles.numberDate} mt-6`}>
             <p className="text text_type_digits-default mt-3 ml-3">
-              {/* @ts-ignore */}
               {item.number}
             </p>
             <div className="text text_type_main-default text_color_inactive mt-3 mr-3">
-              {/* @ts-ignore */}
               <FormattedDate date={new Date(item.createdAt)} />
             </div>
           </div>
-          {/* @ts-ignore */}
+
           <p className="text text_type_main-medium mt-6 ml-3">{item.name}</p>
           <div className={`${styles.container} mt-6`}>
             <ImagesIngredients images={newData[index]} />
