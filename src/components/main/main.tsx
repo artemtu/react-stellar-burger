@@ -27,6 +27,7 @@ interface IModalFunctions {
   setIngredientModal: React.Dispatch<
     React.SetStateAction<IngredientModalState>
   >;
+  setOrderModal: React.Dispatch<React.SetStateAction<IngredientModalState>>;
 }
 
 export interface IingredientFullInfo {

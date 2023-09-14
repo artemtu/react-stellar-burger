@@ -7,9 +7,10 @@ import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
 import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../store/types";
 
 function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // const [isFeedIdModal, setIsFeedIdModal] = useState({ false: true, id: 1 });
 
