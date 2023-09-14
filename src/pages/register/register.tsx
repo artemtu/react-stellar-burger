@@ -9,9 +9,10 @@ import { Link } from "react-router-dom";
 import { postUser } from "../../store/actions/register-user";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/types";
 
 function Register() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [name, setName] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -24,11 +25,9 @@ function Register() {
       password: password,
       name: name,
     };
-    dispatch(postUser(registation))
-      //@ts-ignore
-      .then((registation) => {
-        navigate("/login");
-      });
+    dispatch(postUser(registation)).then((registation) => {
+      navigate("/login");
+    });
   };
 
   return (
