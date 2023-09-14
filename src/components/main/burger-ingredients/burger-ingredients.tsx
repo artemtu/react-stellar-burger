@@ -8,6 +8,7 @@ import {
 import styles from "./ingredient-list/ingredient-list.module.css";
 
 import { IngredientModalState } from "./ingredient-list/ingredient-list";
+import { useAppSelector } from "../../../store/types";
 
 interface Iingredients {
   id?: string;
@@ -36,8 +37,7 @@ export function Ingridients({
     }),
   });
 
-  const bunsIngredientsFromStore = useSelector(
-    //@ts-ignore
+  const bunsIngredientsFromStore = useAppSelector(
     (state) => state.constructorBurger
   );
 
