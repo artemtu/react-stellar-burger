@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import styles from "./ingredients.module.css";
+import { useAppSelector } from "../../store/types";
 
 function IngredientPage() {
   const { id } = useParams();
 
-  const ingredient = useSelector((state) =>
+  const ingredient = useAppSelector((state) =>
     state.mainData.data.find((item) => item._id === id)
   );
 

@@ -41,7 +41,6 @@ function Home() {
       {/* <SomeComponent /> */}
       <Main
         setOrderModal={setOrderModal}
-        //@ts-ignore
         setIngredientModal={setIngredientModal}
         openModal={openModal}
       />
