@@ -17,12 +17,12 @@ import Profile from "../../pages/profile/profile";
 import ProfileOrders from "../../pages/orders/orders";
 import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
 import IngredientPage from "../../pages/ingredients/ingredients";
-import { useAppDispatch } from "../../store/types";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
 import { fetchFeed } from "../../store/actions/feed-all-orders";
 import FeedPage from "../feed-id-modal/feed-id-modal";
 import { fetchMyFeed } from "../../store/actions/feed-user-orders";
+import { useAppDispatch } from "../../store/types";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -36,12 +36,10 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    //@ts-ignore
     dispatch(fetchFeed());
   }, [dispatch]);
 
   useEffect(() => {
-    //@ts-ignore
     dispatch(fetchMyFeed());
   }, [dispatch]);
 
