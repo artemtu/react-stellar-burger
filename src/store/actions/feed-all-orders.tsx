@@ -18,12 +18,10 @@ export interface IFeedData {
 export const getFeed = (data: IFeedData) => {
   return {
     type: GET_FEED,
-    //@ts-ignore
     payload: data,
   };
 };
 
-//@ts-ignore
 export const fetchFeed = () => (dispatch) => {
   const socket = new WebSocket("wss://norma.nomoreparties.space/orders/all");
 

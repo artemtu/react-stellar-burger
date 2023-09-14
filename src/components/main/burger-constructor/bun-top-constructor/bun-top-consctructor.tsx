@@ -10,7 +10,6 @@ type Props = {
   data: IingredientFullInfo[];
 };
 
-
 function BunUpConstructor({ data }: Props) {
   return (
     <div className="pl-6">

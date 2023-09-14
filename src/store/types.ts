@@ -16,20 +16,19 @@ import {
   GET_INFO_OPEN_INGREDIENT_MODAL,
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
   GET_INGREDIENTS,
+  GET_FEED,
 } from "./actions/actions";
+import { store } from "../index";
+import { IingredientFullInfo } from "../components/main/main";
+import { IFeedData } from "./actions/feed-all-orders";
 
-import { RootState } from "./reducers/reducers";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-import { BurgerConstructorPayload } from "./actions/constructor-actions";
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
-import { ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
-
-export type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>;
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-
-
+// Используйте во всем приложении вместо обычных useDispatch и useSelector
+export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export interface IData {
@@ -50,13 +49,26 @@ export interface IData {
 
 export interface IgetIngredients {
   type: typeof GET_INGREDIENTS;
-  payload: IData;
+  payload: IingredientFullInfo[];
 }
 
 export interface IaddIngredient {
   type: typeof ADD_INGREDIENT;
   payload: IData;
 }
+
+export interface IaddBun {
+  type: typeof ADD_BUN;
+  payload: IData;
+}
+
+
+// export interface BurgerConstructorPayload {
+//   bun: Ingredient[];
+//   ingredients: Ingredient[];
+// }
+
+
 
 export interface IremoveIngredient {
   type: typeof REMOVE_INGREDIENT;
@@ -155,6 +167,22 @@ export interface IburgerIngredients {
   payload: IData;
 }
 
+
+export interface IfeedData {
+    type: typeof GET_FEED,
+    payload: IFeedData,
+  };
+
+
+
+
+
+
+
+
+
+
+
 export type ActionTypes =
   | IgetIngredients
   | IaddIngredient
@@ -170,5 +198,8 @@ export type ActionTypes =
   | IgetUserRegistration
   | IresetPassword
   | IsetAuthChecked
-  // | IburgerIngredients
-  | BurgerConstructorPayload;
+  | IburgerIngredients
+  | IaddBun
+  | IfeedData
+  
+  // | BurgerConstructorPayload;

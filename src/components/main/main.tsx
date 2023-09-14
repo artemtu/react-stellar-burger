@@ -10,12 +10,10 @@ import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
-import PropTypes from "prop-types";
 import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
 import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
 import { useAppDispatch, useAppSelector } from "../../store/types";
-import { RootState } from "../../store/reducers/reducers";
 import { useSelector } from "react-redux";
 
 import {
@@ -32,7 +30,7 @@ interface IModalFunctions {
 }
 
 export interface IingredientFullInfo {
-  _id: string;
+  _id?: string;
   id: string;
   name: string;
   type: string;
@@ -43,7 +41,7 @@ export interface IingredientFullInfo {
   image: string;
   image_large: string;
   image_mobile: string;
-  __v: number;
+  __v?: number;
   price: number;
   _constId?: string;
 }
@@ -51,23 +49,23 @@ export interface IingredientFullInfo {
 function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const dispatch = useAppDispatch();
 
-  const selectIngredients = useAppSelector<{ data: IingredientFullInfo[] }>(
-    (state) => state.mainData
+  const selectIngredients = useAppSelector((state) => state.mainData);
+
+  const data = useAppSelector((state) => state.constructorBurger);
+
+  //@ts-ignore
+  const bunsArray = selectIngredients.data.filter(
+    (item: any) => item.type === "bun"
   );
 
   //@ts-ignore
-  const data = useSelector((state) => state.constructorBurger);
-
-  const bunsArray = selectIngredients.data.filter(
-    (item) => item.type === "bun"
-  );
-
   const fillingsArray = selectIngredients.data.filter(
-    (item) => item.type === "main"
+    (item: any) => item.type === "main"
   );
 
+  //@ts-ignore
   const sauceArray = selectIngredients.data.filter(
-    (item) => item.type === "sauce"
+    (item: any) => item.type === "sauce"
   );
 
   const [{ isOver }, dropRef] = useDrop({
@@ -92,8 +90,6 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
       dispatch({ type: ADD_INGREDIENT, payload: item });
     }
   };
-
-  console.log(bunsArray);
 
   const bunRef = useRef(null);
   const mainRef = useRef(null);

@@ -29,9 +29,7 @@ const rootReducer = combineReducers({
   getFeed: feedReducer,
   orderReduceer: orderIdReducer,
   myOrders: feedMyReducer,
-  myOrderId: myOrderIdReducer
+  myOrderId: myOrderIdReducer,
 });
-
-export type RootState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;

@@ -18,10 +18,7 @@ export interface Ingredient {
   isBunDragged: boolean;
 }
 
-export interface BurgerConstructorPayload {
-  bun: Ingredient[];
-  ingredients: Ingredient[];
-}
+
 
 export const getIngredients = (
   bun: Ingredient[],

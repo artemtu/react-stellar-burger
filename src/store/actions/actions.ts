@@ -20,9 +20,7 @@ export const SET_AUTH_CHEKCED:'SET_AUTH_CHEKCED' = 'SET_AUTH_CHEKCED'
 
 
 export const GET_FEED : 'GET_FEED' = 'GET_FEED'
-
 export const SET_ORDER_ID : 'SET_ORDER_ID' = 'SET_ORDER_ID'
-
 export const GET_MY_FEED : 'GET_MY_FEED'= 'GET_MY_FEED'
 export const SET_MY_ORDER_ID : 'SET_MY_ORDER_ID' = 'SET_MY_ORDER_ID'
 
