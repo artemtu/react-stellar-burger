@@ -11,12 +11,14 @@ function IngredientPage() {
   const { id } = useParams();
 
   const ingredient = useAppSelector((state) =>
+    //@ts-ignore
     state.mainData.data.find((item) => item._id === id)
   );
 
   return (
     <>
       <div className={styles.page}>
+        {/* @ts-ignore */}
         {ingredient ? <IngredientDetails id={id} /> : <p>Loading...</p>}
       </div>
     </>
