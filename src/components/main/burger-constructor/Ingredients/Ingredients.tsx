@@ -7,6 +7,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
 import PropTypes from "prop-types";
 import { IingredientFullInfo } from "../../main";
+import { useAppDispatch, useAppSelector } from "../../../../store/types";
 
 import {
   ConstructorElement,
@@ -19,7 +20,7 @@ type Props = {
 };
 
 function Ingredients({ data }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   //@ts-ignore
   const handleRemoveIngredient = (_constId) => {
@@ -58,9 +59,9 @@ function DraggableIngredient({
   onRemove,
   index,
 }: IDraggableIngredientProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const ingredientsArray = useSelector(
+  const ingredientsArray = useAppSelector(
     //@ts-ignore
     (store) => store.constructorBurger.ingredients
   );
