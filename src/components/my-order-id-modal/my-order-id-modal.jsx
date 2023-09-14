@@ -5,11 +5,12 @@ import styles from "./my-order-id-modal.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/types";
 
 function MyOrderIdModal() {
-  const AllIngredients = useSelector((state) => state.mainData.data);
-  const orders = useSelector((state) => state.myOrders.getMyFeed.orders);
-  const orderId = useSelector((state) => state.myOrderId.myOrderId);
+  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  const orders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
+  const orderId = useAppSelector((state) => state.myOrderId.myOrderId);
 
   const thisOrder = orders.find((item) => item._id === orderId);
 
@@ -33,11 +34,14 @@ function MyOrderIdModal() {
     const existingIngredient = acc.find((item) => item.id === id);
 
     let incrementValue = countById[id];
-    
-    if (id === '643d69a5c3f7b9001cfa093d' || id === '643d69a5c3f7b9001cfa093d') {
+
+    if (
+      id === "643d69a5c3f7b9001cfa093d" ||
+      id === "643d69a5c3f7b9001cfa093d"
+    ) {
       incrementValue *= 2;
     }
-    
+
     if (existingIngredient) {
       existingIngredient.count += incrementValue;
     } else {
@@ -46,7 +50,7 @@ function MyOrderIdModal() {
         count: incrementValue,
       });
     }
-    
+
     return acc;
   }, []);
 
@@ -69,8 +73,7 @@ function MyOrderIdModal() {
       <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
       <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
         {test.map((item, index) => (
-          <div className={styles.ingredient}  key={index}>
-           
+          <div className={styles.ingredient} key={index}>
             <div className={styles.nameContainer}>
               <div className={styles.сircle}>
                 <img
