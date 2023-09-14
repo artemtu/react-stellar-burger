@@ -4,25 +4,23 @@ import styles from "./feed-id-modal.module.css";
 
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector } from "react-redux";
+
+import { useAppSelector } from "../../store/types";
 
 function FeedPage() {
+  const AllIngredients = useAppSelector((state) => state.mainData.data);
   //@ts-ignore
-  const AllIngredients = useSelector((state) => state.mainData.data);
-    //@ts-ignore
-  const orders = useSelector((state) => state.getFeed.getFeed.orders);
-    //@ts-ignore
-  const orderId = useSelector((state) => state.orderReduceer.orderId);
+  const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
+  const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
-  const thisOrder = orders.find((item:any) => item._id === orderId);
+  const thisOrder = orders.find((item: any) => item._id === orderId);
 
-    //@ts-ignore
+  //@ts-ignore
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
     return acc;
   }, {});
 
-    //@ts-ignore
   const ingredientsData = AllIngredients.map((item) => ({
     id: item._id,
     image: item.image_mobile,
@@ -32,21 +30,20 @@ function FeedPage() {
 
   const idsInOrder = thisOrder.ingredients;
 
-
-  //@ts-ignore
   const test = idsInOrder.reduce((acc, id) => {
-      //@ts-ignore
     const foundIngredient = ingredientsData.find((item) => item.id === id);
 
-      //@ts-ignore
     const existingIngredient = acc.find((item) => item.id === id);
 
     let incrementValue = countById[id];
-    
-    if (id === '643d69a5c3f7b9001cfa093d' || id === '643d69a5c3f7b9001cfa093d') {
+
+    if (
+      id === "643d69a5c3f7b9001cfa093d" ||
+      id === "643d69a5c3f7b9001cfa093d"
+    ) {
       incrementValue *= 2;
     }
-    
+
     if (existingIngredient) {
       existingIngredient.count += incrementValue;
     } else {
@@ -55,15 +52,14 @@ function FeedPage() {
         count: incrementValue,
       });
     }
-    
+
     return acc;
   }, []);
 
-  
   const totalSum = test
-    //@ts-ignore
+
     .map((item) => item.count * item.price)
-      //@ts-ignore
+
     .reduce((acc, val) => acc + val, 0);
 
   return (
@@ -80,7 +76,7 @@ function FeedPage() {
       </p>
       <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
       <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
-        {test.map((item:any, index:number) => (
+        {test.map((item: any, index: number) => (
           <div className={styles.ingredient}>
             <div className={styles.nameContainer}>
               <div className={styles.сircle}>
