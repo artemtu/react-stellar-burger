@@ -10,13 +10,11 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { IingredientFullInfo } from "../../main";
 
-export interface IopenModal {
-  openModal: openModalFunction;
-}
+type Props = {
+  openModal: () => void;
+};
 
-export type openModalFunction = () => void;
-
-function Extraction({ openModal }: IopenModal) {
+function Extraction({ openModal }: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

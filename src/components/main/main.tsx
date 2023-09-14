@@ -13,7 +13,6 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
-import { openModalFunction } from "./burger-constructor/extraction/extraction";
 import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 import { RootState } from "../../store/reducers/reducers";
@@ -26,7 +25,7 @@ import {
 import Extraction from "./burger-constructor/extraction/extraction";
 
 interface IModalFunctions {
-  openModal: openModalFunction;
+  openModal: () => void;
   setIngredientModal: React.Dispatch<
     React.SetStateAction<IngredientModalState>
   >;
@@ -55,7 +54,6 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const selectIngredients = useAppSelector<{ data: IingredientFullInfo[] }>(
     (state) => state.mainData
   );
-
 
   //@ts-ignore
   const data = useSelector((state) => state.constructorBurger);
