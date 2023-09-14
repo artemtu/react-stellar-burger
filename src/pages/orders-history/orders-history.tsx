@@ -6,12 +6,14 @@ import { useSelector } from "react-redux";
 import ImagesIngredients from "../../components/images-line/images-line";
 import { setMyOrderId } from "../../store/actions/my-order-id-modal";
 import { useDispatch } from "react-redux";
+import { useAppDispatch,useAppSelector } from "../../store/types";
 
 function OrdersHistory({setIsOrderIddModal}) {
-  const dispatch = useDispatch();
-  const myOrders = useSelector((state) => state.myOrders.getMyFeed.orders);
-  const AllIngredients = useSelector((state) => state.mainData.data);
-
+  const dispatch = useAppDispatch();
+  //@ts-ignore
+  const myOrders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
+  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  //@ts-ignore
   const newAllIngredients = AllIngredients.reduce((acc, item) => {
     acc[item._id] = item.image_mobile;
     return acc;
@@ -27,7 +29,7 @@ function OrdersHistory({setIsOrderIddModal}) {
   //   acc[item._id] = item.price;
   //   return acc;
   // }, {});
-
+  //@ts-ignore
   const priceForIngredient = AllIngredients.reduce((acc, item) => {
     let price = item.price;
 
