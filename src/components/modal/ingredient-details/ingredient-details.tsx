@@ -8,20 +8,19 @@ import {
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { useAppSelector, useAppDispatch } from "../../../store/types";
 
 export interface IingredientDeatails {
   id?: number;
   _id?: number;
-
 }
 
 function IngredientDetails({ id }: IingredientDeatails) {
-  
+  const data = useAppSelector((state) => state.mainData.data);
   //@ts-ignore
-  const data = useSelector((state) => state.mainData.data);
-  const ingredient = data.find((item:IingredientDeatails) => item._id === id);
+  const ingredient = data.find((item: IingredientDeatails) => item._id === id);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (ingredient) {
