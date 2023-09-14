@@ -11,9 +11,10 @@ import { useState } from "react";
 import Modal from "../../components/modal/modal";
 import FeedPage from "../../components/feed-id-modal/feed-id-modal";
 import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/types";
 
 function Feed() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
   const [orderIsReady, setOrderIsReady] = React.useState([]);
@@ -25,42 +26,37 @@ function Feed() {
   // const { id } = useParams();
 
   useEffect(() => {
-    //@ts-ignore
     dispatch(fetchFeed());
   }, []);
 
   //@ts-ignore
-  const totalOrders = useSelector((state) => state.getFeed.getFeed);
+  const totalOrders = useAppSelector((state) => state.getFeed.getFeed);
 
   useEffect(() => {
     if (totalOrders) {
-      //@ts-ignore
       setTotalOrders(totalOrders.total);
-      //@ts-ignore
+
       setTotalOrdersToday(totalOrders.totalToday);
     }
   }, [totalOrders]);
 
   //@ts-ignore
-  const isReady = useSelector((state) => state.getFeed.getFeed);
+  const isReady = useAppSelector((state) => state.getFeed.getFeed);
   // .filter((item) => item.status === "done")
   // .map((item) => item.number);
 
   // pending
 
   //@ts-ignore
-  const isPending = useSelector((state) => state.getFeed.getFeed);
+  const isPending = useAppSelector((state) => state.getFeed.getFeed);
   //@ts-ignore
-  const orderNum = useSelector((state) => state.getFeed.getFeed);
+  const orderNum = useAppSelector((state) => state.getFeed.getFeed);
 
   useEffect(() => {
     if (isPending) {
-      //@ts-ignore
       setOrderIsPending(
         isPending.orders
-          //@ts-ignore
           .filter((item) => item.status === "pending")
-          //@ts-ignore
           .map((item) => item.number)
       );
     }
@@ -68,12 +64,9 @@ function Feed() {
 
   useEffect(() => {
     if (isReady) {
-      //@ts-ignore
       setOrderIsReady(
         isReady.orders
-          //@ts-ignore
           .filter((item) => item.status === "done")
-          //@ts-ignore
           .map((item) => item.number)
       );
     }
@@ -81,7 +74,6 @@ function Feed() {
 
   useEffect(() => {
     if (orderNum) {
-      //@ts-ignore
       setOrderNumber(orderNum.orders);
     }
   }, [orderNum]);
