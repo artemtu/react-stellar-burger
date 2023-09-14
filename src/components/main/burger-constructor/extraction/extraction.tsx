@@ -9,20 +9,22 @@ import { postOrder } from "../../../../store/actions/post-order";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { IingredientFullInfo } from "../../main";
+import { useAppDispatch, useAppSelector } from "../../../../store/types";
 
 type Props = {
   openModal: () => void;
 };
 
 function Extraction({ openModal }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  //@ts-ignore
-  const data = useSelector((state) => state.constructorBurger);
+  const data = useAppSelector((state) => state.constructorBurger);
 
   //@ts-ignore
-  const ingredientsForPrice = useSelector((state) => state.constructorBurger);
+  const ingredientsForPrice = useAppSelector(
+    (state) => state.constructorBurger
+  );
   const buns = ingredientsForPrice.bun || [];
   const ingredients = ingredientsForPrice.ingredients || [];
 
