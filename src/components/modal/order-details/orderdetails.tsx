@@ -3,9 +3,10 @@ import orderImg from "../../../images/doneorder-done.png";
 import propTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useAppSelector } from "../../../store/types";
 
 function OrderDetails() {
-  const orderNumber = useSelector(
+  const orderNumber = useAppSelector(
     //@ts-ignore
     (state) => state.orderDetails.orderDetails.order.number
   );
