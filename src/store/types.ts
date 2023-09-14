@@ -18,7 +18,8 @@ import {
   GET_INGREDIENTS,
   GET_FEED,
   GET_MY_FEED,
-  SET_MY_ORDER_ID
+  SET_MY_ORDER_ID,
+  SET_ORDER_ID,
 } from "./actions/actions";
 import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
@@ -66,8 +67,8 @@ interface IfeedState {
   totalToday: number;
 }
 
-interface Iid{
-  id:string
+interface Iid {
+  id: string;
 }
 
 export interface IgetIngredients {
@@ -85,13 +86,10 @@ export interface IaddBun {
   payload: IData;
 }
 
-
 // export interface BurgerConstructorPayload {
 //   bun: Ingredient[];
 //   ingredients: Ingredient[];
 // }
-
-
 
 export interface IremoveIngredient {
   type: typeof REMOVE_INGREDIENT;
@@ -190,33 +188,25 @@ export interface IburgerIngredients {
   payload: IData;
 }
 
-
 export interface IfeedData {
-    type: typeof GET_FEED,
-    payload: IfeedState,
-  };
+  type: typeof GET_FEED;
+  payload: IfeedState;
+}
 
-  export interface IgetMyFeed {
-      type: typeof GET_MY_FEED,
-      payload: IfeedState,
-    };
+export interface IgetMyFeed {
+  type: typeof GET_MY_FEED;
+  payload: IfeedState;
+}
 
+export interface IsetMyOrderId {
+  type: typeof SET_MY_ORDER_ID;
+  payload: Iid;
+}
 
-    export interface IsetMyOrderId {
-      type: typeof SET_MY_ORDER_ID,
-      payload: Iid,
-    };
-    
-
-
-
-
-
-
-
-
-
-
+export interface IsetOrderId {
+  type: typeof SET_ORDER_ID;
+  payload: Iid;
+}
 
 export type ActionTypes =
   | IgetIngredients
@@ -238,5 +228,6 @@ export type ActionTypes =
   | IfeedData
   | IgetMyFeed
   | IsetMyOrderId
-  
-  // | BurgerConstructorPayload;
+  | IsetOrderId;
+
+// | BurgerConstructorPayload;
