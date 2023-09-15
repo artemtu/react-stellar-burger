@@ -16,16 +16,15 @@ if (accessToken && accessToken.startsWith("Bearer ")) {
   accessToken = accessToken.slice(7);
 }
 
-
 export const fetchMyFeed = () => (dispatch) => {
   const socket = new WebSocket(
     `wss://norma.nomoreparties.space/orders?token=${accessToken}`
   );
-//   console.log(accessToken);
+  //   console.log(accessToken);
 
   // Открываем соединение
   socket.addEventListener("open", function (event) {
-    // console.log("Соединение открыто", event);
+    // console.log("Соединение открыто личные заказы", event);
   });
 
   // Ловим сообщения с сервера
@@ -38,4 +37,10 @@ export const fetchMyFeed = () => (dispatch) => {
   socket.addEventListener("error", function (error) {
     console.error("Ошибка в соединении", error);
   });
+  socket.addEventListener("close", function (event) {
+    // console.log("Соединение закрыто  личные заказы", event);
+  });
+  return () => {
+    socket.close();
+  };
 };

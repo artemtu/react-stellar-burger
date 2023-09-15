@@ -11,7 +11,7 @@ function MyOrderPage() {
   const { id } = useParams();
   const feedData = useAppSelector((state) => state.myOrders.getMyFeed);
 
-  console.log(feedData);
+  // console.log(feedData);
 
   if (!feedData) {
     return <p>Loading...</p>;

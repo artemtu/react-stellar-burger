@@ -23,7 +23,11 @@ function ProfileOrders() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchMyFeed());
+    const closeSocket = dispatch(fetchMyFeed());
+
+    return () => {
+      closeSocket();
+    };
   }, [dispatch]);
 
   if (!myFeedData) {

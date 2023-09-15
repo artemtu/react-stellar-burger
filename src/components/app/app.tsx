@@ -36,10 +36,6 @@ function App() {
     fetchData();
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchMyFeed());
-  }, [dispatch]);
-
   return (
     <>
       <Header />
