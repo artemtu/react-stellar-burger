@@ -7,6 +7,9 @@ import OrdersHistory from "../orders-history/orders-history";
 import { useState } from "react";
 import Modal from "../../components/modal/modal";
 import MyOrderIdModal from "../../components/my-order-id-modal/my-order-id-modal";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/types";
+import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 
 function ProfileOrders() {
   const location = useLocation();
@@ -14,6 +17,18 @@ function ProfileOrders() {
     open: false,
     id: 1,
   });
+
+  //@ts-ignore
+  const myFeedData = useAppSelector((state) => state.myOrders.getMyFeed);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMyFeed());
+  }, [dispatch]);
+
+  if (!myFeedData) {
+    return <p>Loading...</p>;
+  }
 
   function closeModal() {
     setIsOrderIddModal({ open: false, id: 1 });
