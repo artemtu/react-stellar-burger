@@ -49,7 +49,7 @@ function OrdersHistory({setIsOrderIddModal}) {
   });
 
   const handleOrderClick = (id) => {
-    window.history.pushState({}, "", `orders/${id}`);
+    window.history.pushState({}, "", `/profile/orders/${id}`);
     dispatch(setMyOrderId(id));
     setIsOrderIddModal({ open: true });
   };

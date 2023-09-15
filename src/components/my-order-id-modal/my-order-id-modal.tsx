@@ -7,12 +7,21 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../../store/types";
 
-function MyOrderIdModal() {
+function MyOrderIdModal({ id }) {
   const AllIngredients = useAppSelector((state) => state.mainData.data);
+  //@ts-ignore
   const orders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
   const orderId = useAppSelector((state) => state.myOrderId.myOrderId);
 
-  const thisOrder = orders.find((item) => item._id === orderId);
+  let thisOrder;
+
+  if (id) {
+    thisOrder = orders.find((item: any) => item._id === id);
+  } else if (orderId) {
+    thisOrder = orders.find((item: any) => item._id === orderId);
+  }
+
+  // const thisOrder = orders.find((item) => item._id === orderId);
 
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;

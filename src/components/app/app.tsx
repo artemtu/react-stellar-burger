@@ -24,6 +24,7 @@ import FeedPage from "../feed-id-modal/feed-id-modal";
 import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 import { useAppDispatch } from "../../store/types";
 import FeedPageGeneral from "../../pages/feed-id-page/feed-id-page";
+import MyOrderPage from "../../pages/my-order-page/my-order-page";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -63,6 +64,10 @@ function App() {
         <Route
           path="/profile/orders"
           element={<OnlyAuth component={<ProfileOrders />} />}
+        />
+        <Route
+          path="/profile/orders/:id"
+          element={<OnlyAuth component={<MyOrderPage />} />}
         />
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />

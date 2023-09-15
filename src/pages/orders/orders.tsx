@@ -71,7 +71,7 @@ function ProfileOrders() {
       </div>
       {isOrderIddModal.open && (
         <Modal closeModal={closeModal}>
-          <MyOrderIdModal />
+          <MyOrderIdModal id={isOrderIddModal.id} />
         </Modal>
       )}
     </>
