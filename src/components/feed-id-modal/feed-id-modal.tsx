@@ -17,7 +17,13 @@ function FeedPage({ id }) {
   const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
-  const thisOrder = orders.find((item: any) => item._id === orderId || id);
+  let thisOrder;
+
+  if (id) {
+    thisOrder = orders.find((item: any) => item._id === id);
+  } else if (orderId) {
+    thisOrder = orders.find((item: any) => item._id === orderId);
+  }
 
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
