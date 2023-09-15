@@ -64,4 +64,5 @@
   display: flex;
   flex-direction: row;
   padding-right: 34px;
+  margin-left: 100px;
 }

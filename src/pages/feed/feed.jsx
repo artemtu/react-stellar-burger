@@ -25,9 +25,9 @@ function Feed() {
 
   // const { id } = useParams();
 
-  useEffect(() => {
-    dispatch(fetchFeed());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchFeed());
+  // }, [dispatch]);
 
   //@ts-ignore
   const totalOrders = useAppSelector((state) => state.getFeed.getFeed);

@@ -5,17 +5,20 @@ import styles from "./feed-id-modal.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import { useAppSelector } from "../../store/types";
+import { useAppSelector, useAppDispatch } from "../../store/types";
+import {
+  ingredientOpen,
+  clearIngredientOpen,
+} from "../../store/actions/info-open-ingredient";
 
-function FeedPage() {
+function FeedPage({ id }) {
   const AllIngredients = useAppSelector((state) => state.mainData.data);
   //@ts-ignore
   const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
-  const thisOrder = orders.find((item: any) => item._id === orderId);
+  const thisOrder = orders.find((item: any) => item._id === orderId || id);
 
-  //@ts-ignore
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;
     return acc;

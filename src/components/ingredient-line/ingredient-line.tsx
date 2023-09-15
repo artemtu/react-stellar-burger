@@ -51,7 +51,7 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
   const handleOrderClick = (id: string) => {
     window.history.pushState({}, "", `/feed/${id}`);
     dispatch(setOrderId(id));
-    setIsFeedIdModal({ open: true });
+    setIsFeedIdModal({ open: true, id });
   };
 
   return (
