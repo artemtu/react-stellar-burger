@@ -36,6 +36,14 @@ function App() {
     fetchData();
   }, [dispatch]);
 
+  useEffect(() => {
+    const closeSocket = dispatch(fetchMyFeed());
+
+    return () => {
+      closeSocket();
+    };
+  }, [dispatch]);
+
   return (
     <>
       <Header />
