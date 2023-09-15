@@ -27,7 +27,7 @@ export const fetchFeed = () => (dispatch) => {
 
   // Открываем соединение
   socket.addEventListener("open", function (event) {
-    // console.log("Соединение открыто", event);
+    console.log("Соединение открыто", event);
   });
 
   // Ловим сообщения с сервера
@@ -40,4 +40,10 @@ export const fetchFeed = () => (dispatch) => {
   socket.addEventListener("error", function (error) {
     console.error("Ошибка в соединении", error);
   });
+  socket.addEventListener("close", function (event) {
+    console.log("Соединение закрыто", event);
+  });
+  return () => {
+    socket.close();
+  };
 };

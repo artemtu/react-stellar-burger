@@ -11,7 +11,11 @@ function FeedPageTest() {
   const feedData = useAppSelector((state) => state.getFeed.getFeed);
 
   useEffect(() => {
-    dispatch(fetchFeed());
+    const closeSocket = dispatch(fetchFeed());
+
+    return () => {
+      closeSocket();
+    };
   }, [dispatch]);
 
   if (!feedData) {

@@ -21,6 +21,14 @@ function Feed() {
   const [orderIsPending, setOrderIsPending] = React.useState([]);
   const [orderNumber, setOrderNumber] = React.useState([]);
 
+  useEffect(() => {
+    const closeSocket = dispatch(fetchFeed());
+
+    return () => {
+      closeSocket();
+    };
+  }, [dispatch]);
+
   const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
 
   // const { id } = useParams();

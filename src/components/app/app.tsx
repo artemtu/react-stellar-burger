@@ -19,7 +19,6 @@ import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
 import IngredientPage from "../../pages/ingredients/ingredients";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
-import { fetchFeed } from "../../store/actions/feed-all-orders";
 import FeedPage from "../feed-id-modal/feed-id-modal";
 import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 import { useAppDispatch } from "../../store/types";
@@ -35,10 +34,6 @@ function App() {
     };
 
     fetchData();
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchFeed());
   }, [dispatch]);
 
   useEffect(() => {
