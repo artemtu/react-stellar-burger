@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styles from "./app.module.css";
+import React, { useEffect } from "react";
 import Header from "../app-header/app-header";
-import Main from "../main/main";
-import Modal from "../modal/modal";
-import IngredientDetails from "../modal/ingredient-details/ingredient-details";
-import OrderDetails from "../modal/order-details/orderdetails";
-import PropTypes from "prop-types";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/home/home";
 import Login from "../../pages/login/login";
@@ -19,7 +13,6 @@ import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
 import IngredientPage from "../../pages/ingredients/ingredients";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
-import FeedPage from "../feed-id-modal/feed-id-modal";
 import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 import { useAppDispatch } from "../../store/types";
 import FeedPageGeneral from "../../pages/feed-id-page/feed-id-page";
@@ -71,7 +64,6 @@ function App() {
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
         <Route path="/feed" element={<Feed />} />
-        {/* <Route path="/feed/:id" element={<FeedPage />} /> */}
         <Route path="/feed/:id" element={<FeedPageGeneral />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
