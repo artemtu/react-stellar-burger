@@ -5,8 +5,8 @@ import { useAppSelector } from "../../store/types";
 
 function FeedPage({ id }) {
   const AllIngredients = useAppSelector((state) => state.mainData.data);
-  //@ts-ignore
-  const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
+
+  const orders = useAppSelector((state) => state.getFeed.orders);
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
   let thisOrder;

@@ -14,8 +14,7 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
-  //@ts-ignore
-  const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
+  const ingredients = useAppSelector((state) => state.getFeed?.orders);
 
   const AllIngredients = useAppSelector((state) => state.mainData.data);
 
@@ -60,7 +59,6 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
         <div
           key={index}
           className={styles.containerStyle}
-          //@ts-ignore
           onClick={() => handleOrderClick(item._id)}
         >
           <div className={`${styles.numberDate} mt-6`}>

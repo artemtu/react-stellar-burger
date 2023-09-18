@@ -14,15 +14,15 @@ interface Iorders {
 interface IfeedState {
   success: boolean;
   orders: Iorders[];
-  total: number;
-  totalToday: number;
+  total: string;
+  totalToday: string;
 }
 
 const initialState = {
   success: false,
   orders: [],
-  total: 0,
-  totalToday: 0,
+  total: "",
+  totalToday: "",
 };
 
 const feedMyReducer = (

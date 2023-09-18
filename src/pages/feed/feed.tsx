@@ -1,16 +1,11 @@
 import React from "react";
 import styles from "./feed.module.css";
-import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
-import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { fetchFeed } from "../../store/actions/feed-all-orders";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 import { useState } from "react";
 import Modal from "../../components/modal/modal";
 import FeedPage from "../../components/feed-id-modal/feed-id-modal";
-import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 
 function Feed() {
@@ -31,14 +26,7 @@ function Feed() {
 
   const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
 
-  // const { id } = useParams();
-
-  // useEffect(() => {
-  //   dispatch(fetchFeed());
-  // }, [dispatch]);
-
-  //@ts-ignore
-  const totalOrders = useAppSelector((state) => state.getFeed.getFeed);
+  const totalOrders = useAppSelector((state) => state.getFeed);
 
   useEffect(() => {
     if (totalOrders) {
@@ -48,17 +36,11 @@ function Feed() {
     }
   }, [totalOrders]);
 
-  //@ts-ignore
-  const isReady = useAppSelector((state) => state.getFeed.getFeed);
-  // .filter((item) => item.status === "done")
-  // .map((item) => item.number);
+  const isReady = useAppSelector((state) => state.getFeed);
 
-  // pending
+  const isPending = useAppSelector((state) => state.getFeed);
 
-  //@ts-ignore
-  const isPending = useAppSelector((state) => state.getFeed.getFeed);
-  //@ts-ignore
-  const orderNum = useAppSelector((state) => state.getFeed.getFeed);
+  const orderNum = useAppSelector((state) => state.getFeed);
 
   useEffect(() => {
     if (isPending) {
@@ -86,10 +68,6 @@ function Feed() {
     }
   }, [orderNum]);
 
-  // function openModal() {
-  //   setIsFeedIdModal({ open: true, id: 1 });
-  // }
-
   function closeModal() {
     setIsFeedIdModal({ open: false, id: 1 });
   }
@@ -104,7 +82,7 @@ function Feed() {
       {/* вторая часть страницы */}
       {isFeedIdModal.open && (
         <Modal closeModal={closeModal}>
-          <FeedPage />
+          <FeedPage id={isFeedIdModal.id} />
         </Modal>
       )}
 

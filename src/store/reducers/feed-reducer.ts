@@ -14,15 +14,15 @@ interface Iorders {
 interface IfeedState {
   success: boolean;
   orders: Iorders[];
-  total: number;
-  totalToday: number;
+  total: string;
+  totalToday: string;
 }
 
 const initialState = {
   success: false,
   orders: [],
-  total: 0,
-  totalToday: 0,
+  total: "",
+  totalToday: "",
 };
 
 const feedReducer = (state: IfeedState = initialState, action: ActionTypes) => {
@@ -30,7 +30,7 @@ const feedReducer = (state: IfeedState = initialState, action: ActionTypes) => {
     case GET_FEED:
       return {
         ...state,
-        getFeed: action.payload,
+        ...action.payload,
       };
 
     default:

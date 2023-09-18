@@ -8,7 +8,7 @@ import { fetchFeed } from "../../store/actions/feed-all-orders";
 function FeedPageTest() {
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  const feedData = useAppSelector((state) => state.getFeed.getFeed);
+  const feedData = useAppSelector((state) => state.getFeed);
 
   useEffect(() => {
     const closeSocket = dispatch(fetchFeed());

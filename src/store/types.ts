@@ -11,7 +11,6 @@ import {
   GET_ORDER_NUMBER,
   REMOVE_INGREDIENT,
   ADD_INGREDIENT,
-  GET_ID_INGREDIENTS_FOR_ORDER,
   CLEAR_INGREDIENT_OPEN,
   GET_INFO_OPEN_INGREDIENT_MODAL,
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
@@ -23,7 +22,6 @@ import {
 } from "./actions/actions";
 import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
-import { IFeedData } from "./actions/feed-all-orders";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
@@ -63,8 +61,8 @@ interface Iorders {
 interface IfeedState {
   success: boolean;
   orders: Iorders[];
-  total: number;
-  totalToday: number;
+  total: string;
+  totalToday: string;
 }
 
 interface Iid {
