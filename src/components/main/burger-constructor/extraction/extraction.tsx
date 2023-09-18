@@ -21,16 +21,13 @@ function Extraction({ openModal }: Props) {
 
   const data = useAppSelector((state) => state.constructorBurger);
 
-  //@ts-ignore
   const ingredientsForPrice = useAppSelector(
     (state) => state.constructorBurger
   );
   const buns = ingredientsForPrice.bun || [];
   const ingredients = ingredientsForPrice.ingredients || [];
 
-  //@ts-ignore
-  const isLoggedIn = useSelector((state) => state.loginUser.isAuthChecked);
-  // console.log(isLoggedIn);
+  const isLoggedIn = useAppSelector((state) => state.loginUser.isAuthChecked);
 
   const totalPrice = React.useMemo(() => {
     const bunPrice = buns.reduce(
