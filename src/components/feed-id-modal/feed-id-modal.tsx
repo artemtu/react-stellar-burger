@@ -1,15 +1,7 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import Header from "../app-header/app-header";
 import styles from "./feed-id-modal.module.css";
-
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-
-import { useAppSelector, useAppDispatch } from "../../store/types";
-import {
-  ingredientOpen,
-  clearIngredientOpen,
-} from "../../store/actions/info-open-ingredient";
+import { useAppSelector } from "../../store/types";
 
 function FeedPage({ id }) {
   const AllIngredients = useAppSelector((state) => state.mainData.data);
