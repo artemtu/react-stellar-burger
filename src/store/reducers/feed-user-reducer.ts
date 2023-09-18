@@ -11,24 +11,25 @@ interface Iorders {
   number: string;
 }
 
-interface IfeedState {
-  success: boolean;
-  orders: Iorders[];
-  total: string;
-  totalToday: string;
+export interface IfeedState {
+  getMyFeed: {
+    success: boolean;
+    orders: Iorders[];
+    total: string;
+    totalToday: string;
+  };
 }
 
-const initialState = {
-  success: false,
-  orders: [],
-  total: "",
-  totalToday: "",
+const initialState: IfeedState = {
+  getMyFeed: {
+    success: false,
+    orders: [],
+    total: "",
+    totalToday: "",
+  },
 };
 
-const feedMyReducer = (
-  state: IfeedState = initialState,
-  action: ActionTypes
-) => {
+const feedMyReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case GET_MY_FEED:
       return {

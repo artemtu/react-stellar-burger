@@ -6,10 +6,11 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../../store/types";
+import { IfeedState } from "../../store/reducers/feed-user-reducer";
 
 function MyOrderIdModal({ id }) {
   const AllIngredients = useAppSelector((state) => state.mainData.data);
-  //@ts-ignore
+
   const orders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
   const orderId = useAppSelector((state) => state.myOrderId.myOrderId);
 
