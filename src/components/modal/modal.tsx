@@ -43,14 +43,8 @@ function Modal({ children, closeModal }: Imodal) {
         {children}
       </div>
     </Overlay>,
-    //@ts-ignore
     modalRoot
   );
 }
-
-// Modal.propTypes = {
-//   closeModal: PropTypes.func.isRequired,
-//   children: PropTypes.element.isRequired,
-// }
 
 export default Modal;
