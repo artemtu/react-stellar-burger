@@ -1,14 +1,12 @@
 import styles from "./orderdetails.module.css";
 import orderImg from "../../../images/doneorder-done.png";
-import propTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+
 import { useAppSelector } from "../../../store/types";
+import { IorderTrueState } from "../../../store/reducers/order-details-reducer";
 
 function OrderDetails() {
   const orderNumber = useAppSelector(
-    //@ts-ignore
-    (state) => state.orderDetails.orderDetails.order.number
+    (state) => (state.orderDetails as IorderTrueState).orderDetails.order.number
   );
 
   return (
@@ -25,9 +23,5 @@ function OrderDetails() {
     </div>
   );
 }
-
-// OrderDetails.propTypes = {
-//   orderNumber: propTypes.number
-// }
 
 export default OrderDetails;

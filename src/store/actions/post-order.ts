@@ -3,10 +3,10 @@ import { checkResponse } from "../../components/api/api";
 import { GET_ORDER_NUMBER } from "./actions";
 import { IgetOrderNumber } from "../types";
 
-export const getOrderNumber = (number: IgetOrderNumber) => {
+export const getOrderNumber = (orderDetails: IgetOrderNumber) => {
   return {
     type: GET_ORDER_NUMBER,
-    payload: number,
+    payload: orderDetails,
   };
 };
 
@@ -19,17 +19,20 @@ export interface IOrder {
 export type OpenModalFunction = (arg: { open: boolean }) => void;
 
 export const postOrder =
-  (order: IOrder, openModal: OpenModalFunction) => //@ts-ignore
-   (dispatch) => {
+  (
+    order: IOrder,
+    openModal: OpenModalFunction 
+  ) =>
+  (dispatch) => {
     return fetch(`${config.baseUrl}/orders`, {
       method: "POST",
       headers: {
         ...config.headers,
-        'Authorization': `${accessToken}`
+        Authorization: `${accessToken}`,
       },
       body: JSON.stringify(order),
       //@ts-ignore
-      Authorization: `${accessToken}`
+      Authorization: `${accessToken}`,
     })
       .then(checkResponse)
       .then((data) => {
@@ -38,4 +41,3 @@ export const postOrder =
       })
       .catch(console.error);
   };
-

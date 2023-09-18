@@ -24,6 +24,7 @@ import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { IorderState } from "./reducers/order-details-reducer";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
@@ -83,11 +84,6 @@ export interface IaddBun {
   type: typeof ADD_BUN;
   payload: IData;
 }
-
-// export interface BurgerConstructorPayload {
-//   bun: Ingredient[];
-//   ingredients: Ingredient[];
-// }
 
 export interface IremoveIngredient {
   type: typeof REMOVE_INGREDIENT;
@@ -149,7 +145,7 @@ export interface IpostUserLogout {
 export interface IgetOrderNumber {
   type: typeof GET_ORDER_NUMBER;
   payload: {
-    number: string;
+    orderDetails: IorderState;
   };
 }
 
