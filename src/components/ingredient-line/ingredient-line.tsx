@@ -41,7 +41,6 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
   }, {});
 
   const priceForOrder = ids.map((idArray) => {
-    //@ts-ignore
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
