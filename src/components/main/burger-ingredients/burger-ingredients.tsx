@@ -1,6 +1,5 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { useSelector } from "react-redux";
 import {
   CurrencyIcon,
   Counter,
@@ -74,19 +73,5 @@ export function Ingridients({
     </div>
   );
 }
-
-// Ingridients.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   type: PropTypes.string.isRequired,
-//   image: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   price: PropTypes.number.isRequired,
-//   setIngredientModal: PropTypes.func.isRequired,
-// };
-
-// type IngredientsProps = {
-//   id: string
-
-// }
 
 export default Ingridients;
