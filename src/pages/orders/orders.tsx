@@ -18,7 +18,7 @@ function ProfileOrders() {
     id: 1,
   });
 
-  //@ts-ignore
+
   const myFeedData = useAppSelector((state) => state.myOrders.getMyFeed);
   const dispatch = useAppDispatch();
 
