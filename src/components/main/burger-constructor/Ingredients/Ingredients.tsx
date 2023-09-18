@@ -1,11 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
-import { useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
-import PropTypes from "prop-types";
 import { IingredientFullInfo } from "../../main";
 import { useAppDispatch, useAppSelector } from "../../../../store/types";
 
@@ -22,7 +17,6 @@ type Props = {
 function Ingredients({ data }: Props) {
   const dispatch = useAppDispatch();
 
-  //@ts-ignore
   const handleRemoveIngredient = (_constId) => {
     dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
   };
@@ -62,7 +56,6 @@ function DraggableIngredient({
   const dispatch = useAppDispatch();
 
   const ingredientsArray = useAppSelector(
-    //@ts-ignore
     (store) => store.constructorBurger.ingredients
   );
 
@@ -111,9 +104,5 @@ function DraggableIngredient({
     </div>
   );
 }
-
-// Ingredients.propTypes = {
-//   data: PropTypes.array.isRequired,
-// };
 
 export default Ingredients;
