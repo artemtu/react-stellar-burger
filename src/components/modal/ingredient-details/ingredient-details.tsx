@@ -17,8 +17,8 @@ export interface IingredientDeatails {
 
 function IngredientDetails({ id }: IingredientDeatails) {
   const data = useAppSelector((state) => state.mainData.data);
-  //@ts-ignore
-  const ingredient = data.find((item: IingredientDeatails) => item._id === id);
+
+  const ingredient = (data as any).find((item: IingredientDeatails) => item._id === id);
 
   const dispatch = useAppDispatch();
 
@@ -65,9 +65,5 @@ function IngredientDetails({ id }: IingredientDeatails) {
     </div>
   );
 }
-
-// IngredientDetails.propTypes = {
-//   id: PropTypes.string.isRequired,
-// };
 
 export default IngredientDetails;
