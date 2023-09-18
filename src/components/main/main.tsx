@@ -53,18 +53,18 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
 
   const data = useAppSelector((state) => state.constructorBurger);
 
-  //@ts-ignore
-  const bunsArray = selectIngredients.data.filter(
+
+  const bunsArray = (selectIngredients as any).data.filter(
     (item: any) => item.type === "bun"
   );
 
-  //@ts-ignore
-  const fillingsArray = selectIngredients.data.filter(
+
+  const fillingsArray = (selectIngredients as any).data.filter(
     (item: any) => item.type === "main"
   );
 
-  //@ts-ignore
-  const sauceArray = selectIngredients.data.filter(
+
+  const sauceArray = (selectIngredients as any).data.filter(
     (item: any) => item.type === "sauce"
   );
 

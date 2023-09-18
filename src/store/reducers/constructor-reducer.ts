@@ -32,7 +32,7 @@ const initialState = {
 
 
 const constructorReducer = (state:IConstructorState = initialState, action:ActionTypes) => {
-  //@ts-ignore
+
   switch (action.type) {
     case GET_BURGER_CONSTRUCTOR_INGREDIENTS:
       return {
@@ -46,7 +46,6 @@ const constructorReducer = (state:IConstructorState = initialState, action:Actio
     case ADD_BUN:
       return {
         ...state,
-        //@ts-ignore
         bun: [action.payload],
       };
     case ADD_INGREDIENT:

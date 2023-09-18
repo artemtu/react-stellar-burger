@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const forgotPasswordReducer = (state = initialState, action: ActionTypes) => {
-  //@ts-ignore
   switch (action.type) {
     case FORGOT_PASSWORD:
       return {

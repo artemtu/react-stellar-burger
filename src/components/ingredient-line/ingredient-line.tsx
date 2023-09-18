@@ -23,8 +23,8 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
       setData(ingredients);
     }
   }, [ingredients]);
-  //@ts-ignore
-  const newAllIngredients = AllIngredients.reduce((acc, item) => {
+  
+  const newAllIngredients = (AllIngredients as any).reduce((acc, item) => {
     acc[item._id] = item.image_mobile;
     return acc;
   }, {});
@@ -34,8 +34,8 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
   const newData = ids.map((idArray) => {
     return idArray.map((id: string) => newAllIngredients[id]);
   });
-  //@ts-ignore
-  const priceForIngredient = AllIngredients.reduce((acc, item) => {
+
+  const priceForIngredient = (AllIngredients as any).reduce((acc, item) => {
     acc[item._id] = item.price;
     return acc;
   }, {});

@@ -10,11 +10,11 @@ import { useAppDispatch, useAppSelector } from "../../store/types";
 
 function OrdersHistory({ setIsOrderIddModal }) {
   const dispatch = useAppDispatch();
-  //@ts-ignore
+
   const myOrders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
   const AllIngredients = useAppSelector((state) => state.mainData.data);
-  //@ts-ignore
-  const newAllIngredients = AllIngredients.reduce((acc, item) => {
+
+  const newAllIngredients = (AllIngredients as any).reduce((acc, item) => {
     acc[item._id] = item.image_mobile;
     return acc;
   }, {});
@@ -25,12 +25,8 @@ function OrdersHistory({ setIsOrderIddModal }) {
     return (idArray as any).map((id) => newAllIngredients[id]);
   });
 
-  // const priceForIngredient = AllIngredients.reduce((acc, item) => {
-  //   acc[item._id] = item.price;
-  //   return acc;
-  // }, {});
-  //@ts-ignore
-  const priceForIngredient = AllIngredients.reduce((acc, item) => {
+
+  const priceForIngredient = (AllIngredients as any).reduce((acc, item) => {
     let price = item.price;
 
     if (

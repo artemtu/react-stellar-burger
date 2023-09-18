@@ -12,7 +12,6 @@ export const getUserData = (userInfo: IgetUserData) => {
 };
 
 export const getUser = () => {
-  //@ts-ignore
   return (dispatch) => {
     return fetchWithRefresh(`${config.baseUrl}/auth/user`, {
       method: "GET",

@@ -4,7 +4,6 @@ import { ActionTypes } from "../types";
 const initialState = {};
 
 const logoutReducer = (state = initialState, action: ActionTypes) => {
-  //@ts-ignore
   switch (action.type) {
     case LOGOUT:
       return {

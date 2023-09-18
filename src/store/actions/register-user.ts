@@ -18,7 +18,6 @@ export const getUserRegistration = (profileData: IgetUserRegistration) => {
 
 export const postUser =
   (registration: IRegistration) =>
-  //@ts-ignore
   (dispatch) => {
     return fetch(`${config.baseUrl}/auth/register`, {
       method: "POST",

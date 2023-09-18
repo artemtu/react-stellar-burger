@@ -12,7 +12,7 @@ export const getIngredients = (data: IgetIngredients) => {
   };
 };
 
-//@ts-ignore
+
 export const fetchIngredients = () => (dispatch) => {
   // Запрос к серверу для получения данных
   return fetch(`${config.baseUrl}/ingredients`, {

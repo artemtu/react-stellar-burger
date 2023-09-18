@@ -11,7 +11,7 @@ export const postUserLogout = (logoutData: IpostUserLogout) => {
   };
 };
 
-//@ts-ignore
+
 export const postLogout = (logout) => (dispatch) => {
   return fetch(`${config.baseUrl}/auth/logout`, {
     method: "POST",

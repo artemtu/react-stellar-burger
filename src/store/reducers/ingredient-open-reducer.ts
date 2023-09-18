@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const ingredientOpenReducer = (state = initialState, action: ActionTypes) => {
-  //@ts-ignore
   switch (action.type) {
     case GET_INFO_OPEN_INGREDIENT_MODAL:
       return {
