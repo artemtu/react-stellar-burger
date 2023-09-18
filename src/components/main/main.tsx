@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import styles from "./main.module.css";
 import BunUpConstructor from "./burger-constructor/bun-top-constructor/bun-top-consctructor";
 import BunBottomConstructor from "./burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 import IngredientList from "./burger-ingredients/ingredient-list/ingredient-list";
-import { fetchIngredients } from "../../store/actions/fetch-data";
 import { useDrag, useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -14,7 +13,7 @@ import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
 import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
 import { useAppDispatch, useAppSelector } from "../../store/types";
-import { useSelector } from "react-redux";
+
 
 import {
   ConstructorElement,
