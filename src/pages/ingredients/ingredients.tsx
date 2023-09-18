@@ -11,8 +11,7 @@ function IngredientPage() {
   const { id } = useParams();
 
   const ingredient = useAppSelector((state) =>
-    //@ts-ignore
-    state.mainData.data.find((item) => item._id === id)
+    (state.mainData as any).data.find((item) => item._id === id)
   );
 
   return (
