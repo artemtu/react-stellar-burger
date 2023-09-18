@@ -33,7 +33,7 @@ export const fetchFeed = () => (dispatch) => {
   // Ловим сообщения с сервера
   socket.addEventListener("message", function (event) {
     const data = JSON.parse(event.data);
-    // console.log("Получены данные", data);
+
     dispatch(getFeed(data));
   });
 

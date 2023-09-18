@@ -14,7 +14,7 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
-  const ingredients = useAppSelector((state) => state.getFeed?.orders);
+  const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
 
   const AllIngredients = useAppSelector((state) => state.mainData.data);
 

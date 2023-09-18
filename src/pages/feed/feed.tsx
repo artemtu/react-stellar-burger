@@ -26,7 +26,9 @@ function Feed() {
 
   const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
 
-  const totalOrders = useAppSelector((state) => state.getFeed);
+  const totalOrders = useAppSelector((state) => state.getFeed.getFeed);
+  console.log(totalOrders);
+  
 
   useEffect(() => {
     if (totalOrders) {
@@ -36,11 +38,11 @@ function Feed() {
     }
   }, [totalOrders]);
 
-  const isReady = useAppSelector((state) => state.getFeed);
+  const isReady = useAppSelector((state) => state.getFeed.getFeed);
 
-  const isPending = useAppSelector((state) => state.getFeed);
+  const isPending = useAppSelector((state) => state.getFeed.getFeed);
 
-  const orderNum = useAppSelector((state) => state.getFeed);
+  const orderNum = useAppSelector((state) => state.getFeed.getFeed);
 
   useEffect(() => {
     if (isPending) {

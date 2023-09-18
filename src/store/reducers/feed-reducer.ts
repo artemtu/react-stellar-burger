@@ -1,4 +1,5 @@
 import { GET_FEED } from "../actions/actions";
+import { getFeed } from "../actions/feed-all-orders";
 import { ActionTypes } from "../types";
 
 interface Iorders {
@@ -18,19 +19,25 @@ interface IfeedState {
   totalToday: string;
 }
 
-const initialState = {
-  success: false,
-  orders: [],
-  total: "",
-  totalToday: "",
+interface IfeedTrueState {
+  getFeed: IfeedState;
+}
+
+const initialState: IfeedTrueState = {
+  getFeed: {
+    success: false,
+    orders: [],
+    total: "",
+    totalToday: "",
+  },
 };
 
-const feedReducer = (state: IfeedState = initialState, action: ActionTypes) => {
+const feedReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case GET_FEED:
       return {
         ...state,
-        ...action.payload,
+        getFeed: action.payload,
       };
 
     default:
