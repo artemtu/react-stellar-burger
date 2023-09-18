@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { useAppSelector } from "../../store/types";
 
 function ImagesIngredients({ images }: any) {
-  //@ts-ignore
+
   const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
 
   const AllIngredients = useAppSelector((state) => state.mainData.data);
