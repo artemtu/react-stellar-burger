@@ -1,5 +1,5 @@
 import { GET_FEED } from "../actions/actions";
-import { getFeed } from "../actions/feed-all-orders";
+// import { getFeed } from "../actions/feed-all-orders";
 import { ActionTypes } from "../types";
 
 interface Iorders {

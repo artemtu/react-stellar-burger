@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./feed.module.css";
-import { fetchFeed } from "../../store/actions/feed-all-orders";
+// import { fetchFeed } from "../../store/actions/feed-all-orders";
 import { useEffect } from "react";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 import { useState } from "react";
@@ -16,11 +16,19 @@ function Feed() {
   const [orderIsPending, setOrderIsPending] = React.useState([]);
   const [orderNumber, setOrderNumber] = React.useState([]);
 
+  // useEffect(() => {
+  //   const closeSocket = dispatch(fetchFeed());
+
+  //   return () => {
+  //     closeSocket();
+  //   };
+  // }, [dispatch]);
+
   useEffect(() => {
-    const closeSocket = dispatch(fetchFeed());
+    dispatch({ type: "WS_FEED_INIT" });
 
     return () => {
-      closeSocket();
+      dispatch({ type: "WS_FEED_CLOSE" });
     };
   }, [dispatch]);
 
@@ -28,7 +36,6 @@ function Feed() {
 
   const totalOrders = useAppSelector((state) => state.getFeed.getFeed);
   console.log(totalOrders);
-  
 
   useEffect(() => {
     if (totalOrders) {
