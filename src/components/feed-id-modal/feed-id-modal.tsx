@@ -9,6 +9,8 @@ function FeedPage({ id }) {
   const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
+  if (orders.length === 0) return null;
+
   let thisOrder;
 
   if (id) {
