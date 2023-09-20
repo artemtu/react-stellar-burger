@@ -4,7 +4,6 @@ import {
   ADD_INGREDIENT,
   REMOVE_INGREDIENT,
   CHANGE_INGREDIENT,
-  GET_BURGER_CONSTRUCTOR_INGREDIENTS,
 } from "../actions/actions";
 
 describe("constructor-reducer", () => {
