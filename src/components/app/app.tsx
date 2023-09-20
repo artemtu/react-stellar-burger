@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styles from "./app.module.css";
+import React, { useEffect } from "react";
 import Header from "../app-header/app-header";
-import Main from "../main/main";
-import Modal from "../modal/modal";
-import IngredientDetails from "../modal/ingredient-details/ingredient-details";
-import OrderDetails from "../modal/order-details/orderdetails";
-import PropTypes from "prop-types";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/home/home";
 import Login from "../../pages/login/login";
@@ -16,13 +10,16 @@ import NotFound404 from "../../pages/not-found-404/not-found-404";
 import Profile from "../../pages/profile/profile";
 import ProfileOrders from "../../pages/orders/orders";
 import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
-import { useSelector } from "react-redux";
 import IngredientPage from "../../pages/ingredients/ingredients";
-import { useDispatch } from "react-redux";
 import { fetchIngredients } from "../../store/actions/fetch-data";
+import Feed from "../../pages/feed/feed";
+// import { fetchMyFeed } from "../../store/actions/feed-user-orders";
+import { useAppDispatch } from "../../store/types";
+import FeedPageGeneral from "../../pages/feed-id-page/feed-id-page";
+import MyOrderPage from "../../pages/my-order-page/my-order-page";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +27,24 @@ function App() {
     };
 
     fetchData();
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   const closeSocket = dispatch(fetchMyFeed());
+
+  //   return () => {
+  //     closeSocket();
+  //   };
+  // }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({ type: 'WS_MY_FEED_INIT' });
+
+    return () => {
+      console.log('okry');
+      
+      // dispatch({ type: 'WS_MY_FEED_CLOSE' });
+    };
   }, [dispatch]);
 
   return (
@@ -47,14 +62,19 @@ function App() {
           path="/reset-password"
           element={<UnAuth component={<ResetPassword />} />}
         />
-        {/* <Route path="/reset-password"  element={<ResetPassword/>} /> */}
         <Route path="/profile" element={<OnlyAuth component={<Profile />} />} />
         <Route
           path="/profile/orders"
           element={<OnlyAuth component={<ProfileOrders />} />}
         />
+        <Route
+          path="/profile/orders/:id"
+          element={<OnlyAuth component={<MyOrderPage />} />}
+        />
         <Route path="/logout" element={<OnlyAuth component={<Profile />} />} />
         <Route path="/ingredients/:id" element={<IngredientPage />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/feed/:id" element={<FeedPageGeneral />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
     </>

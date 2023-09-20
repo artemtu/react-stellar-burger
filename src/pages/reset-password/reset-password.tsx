@@ -10,42 +10,38 @@ import { useNavigate } from "react-router-dom";
 import { postRefreshPassword } from "../../store/actions/reset-password";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/types";
 
 function ResetPassword() {
   const [value, setValue] = React.useState();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [password, setPassword] = React.useState('');
-  const [token, setToken] = React.useState('');
-
+  const [password, setPassword] = React.useState("");
+  const [token, setToken] = React.useState("");
 
   const onClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const setPassword = ({
-      'password': password,
-      'token': token
-    });
+    const setPassword = {
+      password: password,
+      token: token,
+    };
     // console.log(resetPassword);
-    dispatch(postRefreshPassword(setPassword))
-    //@ts-ignore
-    .then((path)=>{
+    dispatch(postRefreshPassword(setPassword)).then((path) => {
       navigate(path);
-    })
+    });
   };
 
-  //@ts-ignore
-  const statePasswordForgotten = useSelector(state => state.forgotPassword.isSuccess);
+  const statePasswordForgotten = useAppSelector(
+    (state) => state.forgotPassword.isSuccess
+  );
   // console.log(statePasswordForgotten);
 
   useEffect(() => {
     if (!statePasswordForgotten) {
-      navigate('/forgot-password');
-    };
+      navigate("/forgot-password");
+    }
   }, [statePasswordForgotten]);
-
-
-
 
   return (
     <>
@@ -53,7 +49,12 @@ function ResetPassword() {
         <h3 className={`${styles.textEnter} text text_type_main-medium`}>
           Восстановление пароля
         </h3>
-        <PasswordInput value={password} name={"password"} extraClass="mt-6"  onChange={(e) => setPassword(e.target.value)} />
+        <PasswordInput
+          value={password}
+          name={"password"}
+          extraClass="mt-6"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <Input
           type={"text"}
           placeholder={"Введите код из письма"}
@@ -70,7 +71,6 @@ function ResetPassword() {
           type="primary"
           size="large"
           extraClass={`${styles.button} mt-6`}
-         
         >
           Сохранить
         </Button>
@@ -78,7 +78,6 @@ function ResetPassword() {
           {" "}
           Вспомнили пароль? <Link to="#">Войти </Link>{" "}
         </p>
- 
       </form>
     </>
   );

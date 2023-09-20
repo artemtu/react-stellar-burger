@@ -6,8 +6,14 @@ import IngredientDetails from "../../components/modal/ingredient-details/ingredi
 import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
+import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../store/types";
 
 function Home() {
+  const dispatch = useAppDispatch();
+
+  // const [isFeedIdModal, setIsFeedIdModal] = useState({ false: true, id: 1 });
+
   const [isOrderModal, setOrderModal] = useState({
     open: false,
   });
@@ -19,21 +25,27 @@ function Home() {
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: 1 });
+    // setIsFeedIdModal({ open: false, id: 1 });
   }
 
   function openModal() {
     setOrderModal({ open: true });
   }
 
+  // function openFeedId() {
+  //   // console.log('я здест');
+  //   setIsFeedIdModal({ open: true });
+  // }
+
   return (
     <div className={styles.app}>
-
+      {/* <SomeComponent /> */}
       <Main
         setOrderModal={setOrderModal}
-        //@ts-ignore
         setIngredientModal={setIngredientModal}
         openModal={openModal}
       />
+
       {isOrderModal.open && (
         <Modal closeModal={closeModal}>
           <OrderDetails />
@@ -44,6 +56,11 @@ function Home() {
           <IngredientDetails id={isIngredientModal.id} />
         </Modal>
       )}
+      {/* {isFeedIdModal.open && (
+        <Modal closeModal={closeModal}>
+          <FeedPage id={isFeedIdModal.id} />
+        </Modal>
+      )} */}
     </div>
   );
 }

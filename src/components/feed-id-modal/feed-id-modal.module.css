@@ -1,0 +1,68 @@
+.orderNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textColor {
+  color: #00cccc;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  overflow-y: scroll;
+  padding-right: 24px;
+}
+
+.ingredient {
+  display: flex;
+  justify-content: space-between;
+}
+
+.сircle {
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid rgb(128, 0, 255);
+  max-width: 80px;
+  max-height: 90px;
+  background-color: black;
+}
+
+.nameContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.ingredientPosition {
+  position: relative;
+  left: -30px;
+  top: 3px;
+}
+
+.price {
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 16px;
+  justify-content: flex-end;
+  margin-left: 20px;
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.totalPrice {
+  display: flex;
+  flex-direction: row;
+  padding-right: 34px;
+  margin-left: 100px;
+}

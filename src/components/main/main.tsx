@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import styles from "./main.module.css";
 import BunUpConstructor from "./burger-constructor/bun-top-constructor/bun-top-consctructor";
 import BunBottomConstructor from "./burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
 import Ingredients from "./burger-constructor/Ingredients/Ingredients";
 import IngredientList from "./burger-ingredients/ingredient-list/ingredient-list";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchIngredients } from "../../store/actions/fetch-data";
 import { useDrag, useDrop } from "react-dnd";
 import { v4 as uuidv4 } from "uuid";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
-import PropTypes from "prop-types";
 import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
-import { openModalFunction } from "./burger-constructor/extraction/extraction";
 import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
+import { useAppDispatch, useAppSelector } from "../../store/types";
+
 
 import {
   ConstructorElement,
@@ -23,15 +21,17 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import Extraction from "./burger-constructor/extraction/extraction";
 
-export interface IModalFunctions {
-  openModal: openModalFunction;
+interface IModalFunctions {
+  openModal: () => void;
   setIngredientModal: React.Dispatch<
     React.SetStateAction<IngredientModalState>
   >;
+  setOrderModal: React.Dispatch<React.SetStateAction<IngredientModalState>>;
 }
 
 export interface IingredientFullInfo {
-  _id: string;
+  _id?: string;
+  id: string;
   name: string;
   type: string;
   proteins: number;
@@ -41,36 +41,40 @@ export interface IingredientFullInfo {
   image: string;
   image_large: string;
   image_mobile: string;
-  __v: number;
-}
-
-interface IingredientWithId extends IingredientFullInfo {
-  _constId: string;
+  __v?: number;
+  price: number;
+  _constId?: string;
 }
 
 function Main({ openModal, setIngredientModal }: IModalFunctions) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  //@ts-ignore
-  const selectIngredients = useSelector((state) => state.mainData);
+  const selectIngredients = useAppSelector((state) => state.mainData);
 
-  //@ts-ignore
-  const data = useSelector((state) => state.constructorBurger);
+  const data = useAppSelector((state) => state.constructorBurger);
 
-  const bunsArray = selectIngredients.data.filter(
-    (item: IingredientFullInfo) => item.type === "bun"
+
+  const bunsArray = (selectIngredients as any).data.filter(
+    (item: any) => item.type === "bun"
   );
-  const fillingsArray = selectIngredients.data.filter(
-    (item: IingredientFullInfo) => item.type === "main"
+
+
+  const fillingsArray = (selectIngredients as any).data.filter(
+    (item: any) => item.type === "main"
   );
-  const sauceArray = selectIngredients.data.filter(
-    (item: IingredientFullInfo) => item.type === "sauce"
+
+
+  const sauceArray = (selectIngredients as any).data.filter(
+    (item: any) => item.type === "sauce"
   );
 
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
     drop: (data: object) => {
-      const newElement: IingredientWithId = { ...data as IingredientFullInfo, _constId: uuidv4() };
+      const newElement: IingredientFullInfo = {
+        ...(data as IingredientFullInfo),
+        _constId: uuidv4(),
+      };
       addIngredientsToConstructor(newElement);
     },
     collect: (monitor) => ({
@@ -147,10 +151,9 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
               />
             </div>
           </div>
-         </div>
+        </div>
       </section>
 
-      {/* вторая часть страницы */}
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
           <BunUpConstructor data={data.bun} />
@@ -162,10 +165,5 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
     </main>
   );
 }
-
-// Main.propTypes = {
-//   openModal: PropTypes.func.isRequired,
-//   setIngredientModal: PropTypes.func.isRequired,
-// };
 
 export default Main;

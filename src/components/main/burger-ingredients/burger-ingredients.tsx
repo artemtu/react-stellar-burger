@@ -1,18 +1,16 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { useSelector } from "react-redux";
 import {
   CurrencyIcon,
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredient-list/ingredient-list.module.css";
-import PropTypes, { number } from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { IbunConstructorProps } from "../burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
+
 import { IngredientModalState } from "./ingredient-list/ingredient-list";
+import { useAppSelector } from "../../../store/types";
 
 interface Iingredients {
-  id: string;
+  id?: string;
   type: string;
   image: string;
   name: string;
@@ -38,8 +36,7 @@ export function Ingridients({
     }),
   });
 
-  const bunsIngredientsFromStore = useSelector(
-    //@ts-ignore
+  const bunsIngredientsFromStore = useAppSelector(
     (state) => state.constructorBurger
   );
 
@@ -76,19 +73,5 @@ export function Ingridients({
     </div>
   );
 }
-
-// Ingridients.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   type: PropTypes.string.isRequired,
-//   image: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   price: PropTypes.number.isRequired,
-//   setIngredientModal: PropTypes.func.isRequired,
-// };
-
-// type IngredientsProps = {
-//   id: string
-
-// }
 
 export default Ingridients;

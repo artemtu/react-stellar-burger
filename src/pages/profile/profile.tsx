@@ -13,23 +13,23 @@ import { Navigate } from "react-router-dom";
 import { patchAuthUser } from "../../components/api/patch-profile";
 import { postLogout } from "../../store/actions/logout";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/types";
 
 import { useLocation } from "react-router-dom";
 
 function Profile() {
   const location = useLocation();
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const dispatch = useDispatch();
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
-  
-  const profileInfo = useSelector(
+
+  const profileInfo = useAppSelector(
     //@ts-ignore
     (state) => state.profileInfo.profileInfo.user
   );
@@ -62,7 +62,6 @@ function Profile() {
 
   return (
     <>
-  
       <div className={styles.profile}>
         <Input
           type={"text"}
@@ -109,7 +108,7 @@ function Profile() {
             location.pathname === "/profile" ? "" : "text_color_inactive"
           }`}
           style={{ textDecoration: "none" }}
-          to='/profile'
+          to="/profile"
         >
           Профиль
         </Link>
@@ -124,7 +123,7 @@ function Profile() {
           className="text text_type_main-medium text_color_inactive"
           style={{ textDecoration: "none" }}
           onClick={logOut}
-          to='/logout'
+          to="/logout"
         >
           Выход
         </Link>

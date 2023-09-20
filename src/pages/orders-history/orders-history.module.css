@@ -1,0 +1,64 @@
+.numberDate {
+  display: flex;
+  justify-content: space-between;
+  /* outline: 1px solid red; */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  margin-left: 20px;
+}
+
+
+.ingredients {
+  display: flex;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid rgb(128, 0, 255);
+  max-width: 80px;
+  max-height: 90px;
+  background-color: black;
+}
+
+.ingredientPosition {
+  position: relative;
+  left: -30px;
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.orderWrap {
+  display: flex;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid rgb(128, 0, 255);
+  max-width: 80px;
+  max-height: 90px;
+  margin-left: -18px;
+  background-color: black;
+}
+
+.test {
+  display: flex;
+}
+
+.scroll {
+  margin-left: 900px;
+  height: 70vh;
+  overflow-y: scroll;
+  width: 720px;
+}
+
+.containerStyle {
+  background-color: #1c1c21;
+  border-radius: 40px;
+}
+
+.textReady {
+  color: #00cccc;
+}

@@ -4,9 +4,13 @@ import {
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
-import {IbunConstructorProps} from "../bun-bottom-constructor/bun-bottom-constructor";
+import { IingredientFullInfo } from "../../main";
 
-function BunUpConstructor({ data }: IbunConstructorProps) {
+type Props = {
+  data: IingredientFullInfo[];
+};
+
+function BunUpConstructor({ data }: Props) {
   return (
     <div className="pl-6">
       {data.map((item) => (

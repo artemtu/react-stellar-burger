@@ -8,19 +8,19 @@ import {
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { useAppSelector, useAppDispatch } from "../../../store/types";
 
 export interface IingredientDeatails {
   id?: number;
   _id?: number;
-
 }
 
 function IngredientDetails({ id }: IingredientDeatails) {
-  //@ts-ignore
-  const data = useSelector((state) => state.mainData.data);
-  const ingredient = data.find((item:IingredientDeatails) => item._id === id);
+  const data = useAppSelector((state) => state.mainData.data);
 
-  const dispatch = useDispatch();
+  const ingredient = (data as any).find((item: IingredientDeatails) => item._id === id);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (ingredient) {
@@ -65,9 +65,5 @@ function IngredientDetails({ id }: IingredientDeatails) {
     </div>
   );
 }
-
-// IngredientDetails.propTypes = {
-//   id: PropTypes.string.isRequired,
-// };
 
 export default IngredientDetails;

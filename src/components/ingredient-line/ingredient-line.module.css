@@ -1,0 +1,105 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* outline: 1px solid red; */
+  }
+  
+  .menuBar {
+    display: flex;
+    flex-direction: column;
+    /* width: 300px; */
+    /* outline: 1px solid red; */
+  }
+  
+  .numberDate {
+    display: flex;
+    justify-content: space-between;
+    /* outline: 1px solid red; */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    margin-left: 20px;
+  }
+  
+  .ingredients {
+    display: flex;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid rgb(128, 0, 255);
+    max-width: 80px;
+    max-height: 90px;
+    background-color: black;
+    margin-left: -18px;
+  }
+  
+  .ingredientPosition {
+    position: relative;
+    left: -30px;
+  }
+  
+  .totalPrice {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .orderWrap {
+    display: flex;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid rgb(128, 0, 255);
+    max-width: 80px;
+    max-height: 90px;
+    margin-left: -18px;
+    background-color: black;
+  
+  }
+  
+  .test {
+    display: flex;
+  }
+  
+  .scroll {
+    height: 70vh;
+    overflow-y: scroll;
+    width: 700px;
+  }
+  
+  .containerReady{
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    overflow-y: scroll;
+    width:120px
+  
+  }
+  
+  .orderIsReady{
+      color: #00CCCC;
+  }
+  
+  
+  .readynWork {
+      display: flex;
+      justify-content: space-between;
+      width: 400px;
+  }
+  
+
+  .additionalIngredients {
+    position: relative;
+    left: -50px;
+    top:30px;
+    color: white;
+    font-weight: bold;
+  }
+  
+
+  .containerStyle{
+    background-color: #1c1c21;
+    border-radius: 40px;
+
+  }

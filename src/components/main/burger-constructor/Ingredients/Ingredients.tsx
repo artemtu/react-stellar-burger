@@ -1,23 +1,22 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
-import { useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
-import PropTypes from "prop-types";
+import { IingredientFullInfo } from "../../main";
+import { useAppDispatch, useAppSelector } from "../../../../store/types";
 
 import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredients.module.css";
-import { IbunConstructorProps } from "../bun-bottom-constructor/bun-bottom-constructor";
 
-function Ingredients({ data }: IbunConstructorProps) {
-  const dispatch = useDispatch();
+type Props = {
+  data: IingredientFullInfo[];
+};
 
-  //@ts-ignore
+function Ingredients({ data }: Props) {
+  const dispatch = useAppDispatch();
+
   const handleRemoveIngredient = (_constId) => {
     dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
   };
@@ -37,13 +36,7 @@ function Ingredients({ data }: IbunConstructorProps) {
 }
 
 interface IDraggableIngredientProps {
-  data: {
-    _id: string;
-    name: string;
-    price: number;
-    image: string;
-    _constId: string;
-  };
+  data: IingredientFullInfo;
   index: number;
   onRemove: (id: string, index?: number) => void;
 }
@@ -60,10 +53,9 @@ function DraggableIngredient({
   onRemove,
   index,
 }: IDraggableIngredientProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const ingredientsArray = useSelector(
-    //@ts-ignore
+  const ingredientsArray = useAppSelector(
     (store) => store.constructorBurger.ingredients
   );
 
@@ -97,21 +89,20 @@ function DraggableIngredient({
   });
 
   return (
-    <div ref={(node) => dragRef(dropRef(node))} className={styles.constructorBurger}>
+    <div
+      ref={(node) => dragRef(dropRef(node))}
+      className={styles.constructorBurger}
+    >
       <DragIcon type="primary" />
       <ConstructorElement
         // className="items"
         text={data.name}
         price={data.price}
         thumbnail={data.image}
-        handleClose={() => onRemove(data._constId)}
+        handleClose={() => onRemove(data._constId as string)}
       />
     </div>
   );
 }
-
-// Ingredients.propTypes = {
-//   data: PropTypes.array.isRequired,
-// };
 
 export default Ingredients;
