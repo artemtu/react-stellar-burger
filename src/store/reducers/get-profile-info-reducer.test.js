@@ -10,7 +10,6 @@ const initialState = {
   },
 };
 
-// Тест
 describe("get-profile-info-reducer", () => {
   it("should return the initial state of get-profile-info-reducer", () => {
     expect(profileInfoReducer(undefined, {})).toEqual(initialState);
