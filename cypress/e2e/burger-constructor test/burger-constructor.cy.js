@@ -30,6 +30,7 @@ describe("burger constructor test", () => {
               .get(0)
               .parentNode.insertBefore($elem.get(0), $firstElem.get(0));
           });
+        cy.get('div[draggable="true"]').eq(1).drag(".main_burgerBar__sOxnh");
       });
   });
 });
