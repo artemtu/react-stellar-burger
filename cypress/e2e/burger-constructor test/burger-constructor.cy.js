@@ -33,5 +33,9 @@ describe("burger constructor test", () => {
         cy.get('div[draggable="true"]').eq(1).drag(".main_burgerBar__sOxnh");
       });
     cy.get("#extractionButton").click();
+    cy.get('input[type="email"]').type("nibs770538@yandex.ru");
+    cy.get('input[name="password"]').type("kreker");
+    cy.get("#loginButton").click();
+    cy.get("#extractionButton").click();
   });
 });
