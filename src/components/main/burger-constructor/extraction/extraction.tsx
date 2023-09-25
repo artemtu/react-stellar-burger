@@ -73,6 +73,7 @@ function Extraction({ openModal }: Props) {
           extraClass="ml-2"
           onClick={onClick}
           disabled={isButtonDisabled}
+          id="extractionButton"
         >
           Оформить заказ
         </Button>

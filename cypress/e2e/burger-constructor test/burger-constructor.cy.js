@@ -32,5 +32,6 @@ describe("burger constructor test", () => {
           });
         cy.get('div[draggable="true"]').eq(1).drag(".main_burgerBar__sOxnh");
       });
+    cy.get("#extractionButton").click();
   });
 });
