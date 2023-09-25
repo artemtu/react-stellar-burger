@@ -19,11 +19,13 @@ export interface IOrder {
 export type OpenModalFunction = (arg: { open: boolean }) => void;
 
 export const postOrder =
-  (
-    order: IOrder,
-    openModal: OpenModalFunction 
-  ) =>
-  (dispatch) => {
+  (order: IOrder, openModal: OpenModalFunction) => (dispatch) => {
+    
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      console.error("Token is missing");
+      return;
+    }
     return fetch(`${config.baseUrl}/orders`, {
       method: "POST",
       headers: {

@@ -25,6 +25,8 @@ function Profile() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+
+
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
