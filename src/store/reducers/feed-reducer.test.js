@@ -1,20 +1,15 @@
 import { GET_FEED } from "../actions/actions";
-import feedReducer from "./feed-reducer";
+import {feedReducer, initialState } from "./feed-reducer";
+
 
 describe("feed-reducer", () => {
   it("should return the initial state of feed-reducer", () => {
-    expect(feedReducer(undefined, {})).toEqual({
-      getFeed: {
-        success: false,
-        orders: [],
-        total: "",
-        totalToday: "",
-      },
-    });
+    expect(feedReducer(undefined, {})).toEqual(initialState);
   });
 
   it("should GET_FEED", () => {
-    const initialState = {
+    const state = {
+      ...initialState,
       getFeed: {
         success: false,
         orders: [],

@@ -1,5 +1,4 @@
 import { GET_FEED } from "../actions/actions";
-// import { getFeed } from "../actions/feed-all-orders";
 import { ActionTypes } from "../types";
 
 interface Iorders {
@@ -23,7 +22,7 @@ interface IfeedTrueState {
   getFeed: IfeedState;
 }
 
-const initialState: IfeedTrueState = {
+export const initialState: IfeedTrueState = {
   getFeed: {
     success: false,
     orders: [],
@@ -32,7 +31,7 @@ const initialState: IfeedTrueState = {
   },
 };
 
-const feedReducer = (state = initialState, action: ActionTypes) => {
+export const feedReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case GET_FEED:
       return {
