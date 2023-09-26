@@ -3,10 +3,10 @@ import styles from "./overlay.module.css";
 import PropTypes from "prop-types";
 import { Imodal } from "../modal/modal";
 
-function Overlay({ children, closeModal }: Imodal) {
-  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const target = event.currentTarget as HTMLDivElement;
-    if (target.classList.contains(styles.overlay)) {
+function Overlay({ children, closeModal }) {
+  const handleOverlayClick = (event) => {
+    if (event.target.classList.contains(styles.overlay)) {
+      // console.log('я в оверлее');
       closeModal();
     }
   };
@@ -21,6 +21,6 @@ function Overlay({ children, closeModal }: Imodal) {
 Overlay.propTypes = {
   closeModal: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
-}
+};
 
 export default Overlay;
