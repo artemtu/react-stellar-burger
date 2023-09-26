@@ -1,10 +1,9 @@
 import { LOGIN_USER } from "../actions/actions";
 import { SET_AUTH_CHEKCED } from "../actions/actions";
 import loginUserReducer from "./login-user-reducer";
+import { initialState } from "./login-user-reducer";
 
-const initialState = {
-  isAuthChecked: false,
-};
+
 
 describe("loginUserReducer", () => {
   it("should return the initial state of loginUserReducer ", () => {
