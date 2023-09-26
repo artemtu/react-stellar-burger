@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./feed.module.css";
-// import { fetchFeed } from "../../store/actions/feed-all-orders";
 import { useEffect } from "react";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 import { useState } from "react";
