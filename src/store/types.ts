@@ -22,12 +22,15 @@ import {
 } from "./actions/actions";
 import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
+import { Action } from "redux";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { IorderState } from "./reducers/order-details-reducer";
+import { ThunkDispatch } from 'redux-thunk';
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+// export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = ThunkDispatch<RootState, undefined, Action>;
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
