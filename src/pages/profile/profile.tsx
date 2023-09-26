@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import { getUser } from "../../store/actions/get-profile-info";
 import { patchAuthUser } from "../../components/api/patch-profile";
 import { postLogout } from "../../store/actions/logout";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 
 import { useLocation } from "react-router-dom";
@@ -21,7 +20,6 @@ function Profile() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
 
 
