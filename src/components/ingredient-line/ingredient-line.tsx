@@ -1,14 +1,11 @@
 import styles from "./ingredient-line.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ImagesIngredients from "../images-line/images-line";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import { setOrderId } from "../../store/actions/feed-modal";
-import { useAppSelector } from "../../store/types";
+import { useAppSelector, useAppDispatch } from "../../store/types";
 
 function IngredientsLine({ setIsFeedIdModal }: any) {
   const [data, setData] = useState([]);
@@ -44,7 +41,7 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleOrderClick = (id: string) => {
     window.history.pushState({}, "", `/feed/${id}`);

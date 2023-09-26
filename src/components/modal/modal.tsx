@@ -5,7 +5,6 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Overlay from "../overlay/overlay";
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 
 const modalRoot = document.getElementById("react-modal");
 
