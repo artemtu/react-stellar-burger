@@ -1,12 +1,7 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import Header from "../app-header/app-header";
 import styles from "./my-order-id-modal.module.css";
-
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "../../store/types";
-import { IfeedState } from "../../store/reducers/feed-user-reducer";
 
 function MyOrderIdModal({ id }) {
   const AllIngredients = useAppSelector((state) => state.mainData.data);
@@ -21,8 +16,6 @@ function MyOrderIdModal({ id }) {
   } else if (orderId) {
     thisOrder = orders.find((item: any) => item._id === orderId);
   }
-
-  // const thisOrder = orders.find((item) => item._id === orderId);
 
   const countById = thisOrder.ingredients.reduce((acc, id) => {
     acc[id] = (acc[id] || 0) + 1;

@@ -1,11 +1,8 @@
-import React, { useState } from "react";
 import styles from "./orders-history.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector } from "react-redux";
 import ImagesIngredients from "../../components/images-line/images-line";
 import { setMyOrderId } from "../../store/actions/my-order-id-modal";
-import { useDispatch } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 
 function OrdersHistory({ setIsOrderIddModal }) {
@@ -24,7 +21,6 @@ function OrdersHistory({ setIsOrderIddModal }) {
   const newData = ids.map((idArray) => {
     return (idArray as any).map((id) => newAllIngredients[id]);
   });
-
 
   const priceForIngredient = (AllIngredients as any).reduce((acc, item) => {
     let price = item.price;

@@ -5,10 +5,8 @@ import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-component
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postRefreshPassword } from "../../store/actions/reset-password";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 

@@ -1,20 +1,17 @@
 import React from "react";
-import Header from "../../components/app-header/app-header";
 import styles from "./forgot-password.module.css";
-import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { postResetPassword } from "../../store/actions/forgot-password";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../store/types";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 function ForgotPassword() {
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [email, setEmail] = React.useState("");
 
   const onClick = (e: React.FormEvent<HTMLFormElement>) => {

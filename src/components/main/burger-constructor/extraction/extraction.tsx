@@ -4,9 +4,7 @@ import {
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./extraction.module.css";
-import { useDispatch, useSelector } from "react-redux";
 import { postOrder } from "../../../../store/actions/post-order";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { IingredientFullInfo } from "../../main";
 import { useAppDispatch, useAppSelector } from "../../../../store/types";
@@ -82,8 +80,5 @@ function Extraction({ openModal }: Props) {
   );
 }
 
-Extraction.propTypes = {
-  openModal: PropTypes.func.isRequired,
-};
 
 export default Extraction;

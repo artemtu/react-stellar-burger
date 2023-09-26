@@ -1,17 +1,15 @@
 import React from "react";
-import Header from "../../components/app-header/app-header";
 import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./login.module.css";
-import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postUserLogin } from "../../store/actions/login-user";
+import { useAppDispatch } from "../../store/types";
 
 function Login() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
