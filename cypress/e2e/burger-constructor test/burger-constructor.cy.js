@@ -1,36 +1,40 @@
+import { testUrl } from "../../test-constants";
+import { draggableDivSelector, classBurgerBar,classConstructorBurger } from "../../test-constants";
+
 describe("burger constructor test", () => {
   it("open main page", () => {
-    cy.visit("http://localhost:3001");
+    cy.visit(testUrl);
   });
   it("dnd for ingredients", () => {
-    cy.visit("http://localhost:3001");
-    cy.get('div[draggable="true"]').first().drag(".main_burgerBar__sOxnh");
-    cy.get('div[draggable="true"]')
+    cy.visit(testUrl);
+    cy.get(draggableDivSelector).drag(classBurgerBar);
+
+    cy.get(draggableDivSelector)
       .eq(5)
       .then(($elem) => {
-        cy.wrap($elem).drag(".main_burgerBar__sOxnh");
+        cy.wrap($elem).drag(classBurgerBar);
       });
-    cy.get('div[draggable="true"]')
+    cy.get(draggableDivSelector)
       .eq(10)
       .then(($elem) => {
-        cy.wrap($elem).drag(".main_burgerBar__sOxnh");
+        cy.wrap($elem).drag(classBurgerBar); 
       });
-    cy.get('div[draggable="true"]')
+    cy.get(draggableDivSelector)
       .eq(11)
       .then(($elem) => {
-        cy.wrap($elem).drag(".main_burgerBar__sOxnh");
+        cy.wrap($elem).drag(classBurgerBar);// здесь всё 
       });
-    cy.get(".ingredients_constructorBurger__St8Eo")
+      cy.get(classConstructorBurger)
       .eq(1)
       .then(($elem) => {
-        cy.get(".ingredients_constructorBurger__St8Eo")
+        cy.get(classConstructorBurger)
           .eq(0)
           .then(($firstElem) => {
             $elem
               .get(0)
               .parentNode.insertBefore($elem.get(0), $firstElem.get(0));
           });
-        cy.get('div[draggable="true"]').eq(1).drag(".main_burgerBar__sOxnh");
+        cy.get(draggableDivSelector).eq(1).drag(classBurgerBar);
       });
     cy.get("#extractionButton").click();
     cy.get('input[type="email"]').type("nibs770538@yandex.ru");
