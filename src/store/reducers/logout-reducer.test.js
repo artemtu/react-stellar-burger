@@ -1,7 +1,8 @@
 import { LOGOUT } from "../actions/actions";
 import logoutReducer from "./logout-reducer";
+import { initialState } from "./logout-reducer";
 
-const initialState = {};
+
 
 describe("logoutReducer", () => {
   it("should return the initial state of logoutReducer ", () => {

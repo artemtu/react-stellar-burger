@@ -1,9 +1,9 @@
 import { LOGOUT } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-const initialState = {};
+export const initialState = {};
 
-const logoutReducer = (state = initialState, action: ActionTypes) => {
+export const logoutReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case LOGOUT:
       return {
