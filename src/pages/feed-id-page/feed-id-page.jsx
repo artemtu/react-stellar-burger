@@ -10,13 +10,7 @@ function FeedPageTest() {
   const { id } = useParams();
   const feedData = useAppSelector((state) => state.getFeed.getFeed);
 
-  // useEffect(() => {
-  //   const closeSocket = dispatch(fetchFeed());
-
-  //   return () => {
-  //     closeSocket();
-  //   };
-  // }, [dispatch]);
+ 
 
   useEffect(() => {
     dispatch({ type: "WS_FEED_INIT" });
