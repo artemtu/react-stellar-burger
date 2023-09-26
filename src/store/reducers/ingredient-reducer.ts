@@ -25,12 +25,12 @@ interface IngredientState {
   isLoading: boolean;
 }
 // Начальное состояние редьюсера
-const initialState: IngredientState = {
+export const initialState: IngredientState = {
   data: [],
   isLoading: true,
 };
 
-const ingredientReducer = (state = initialState, action: IgetIngredients) => {
+export const ingredientReducer = (state = initialState, action: IgetIngredients) => {
   switch (action.type) {
     case GET_INGREDIENTS:
       return {

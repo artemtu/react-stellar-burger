@@ -1,10 +1,7 @@
 import { GET_INGREDIENTS } from "../actions/actions";
 import ingredientReducer from "./ingredient-reducer";
+import { initialState } from "./ingredient-reducer";
 
-const initialState = {
-  data: [],
-  isLoading: true,
-};
 
 describe("ingredientReducer", () => {
   it("should return the initial state of ingredientOpenReducer ", () => {
