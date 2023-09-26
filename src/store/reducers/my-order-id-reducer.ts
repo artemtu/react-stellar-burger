@@ -1,7 +1,7 @@
 import { SET_MY_ORDER_ID } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-const initialState = {
+export const initialState = {
   myOrderId: null,
 };
 

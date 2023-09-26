@@ -1,8 +1,7 @@
 import { SET_MY_ORDER_ID } from "../actions/actions";
 import { myOrderIdReducer } from "./my-order-id-reducer";
-const initialState = {
-  myOrderId: null,
-};
+import { initialState } from "./my-order-id-reducer";
+
 
 describe("myOrderIdReducer", () => {
   it("should return the initial state of myOrderIdReducer ", () => {
