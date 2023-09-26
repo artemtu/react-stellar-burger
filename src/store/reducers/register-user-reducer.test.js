@@ -1,9 +1,10 @@
 import { REGISTER_USER } from "../actions/actions";
 import registerUserReducer from "./register-user-reducer";
+import { initialState } from "./register-user-reducer";
 
 describe("registerUserReducer", () => {
   it("should return the initial state", () => {
-    expect(registerUserReducer(undefined, {})).toEqual({});
+    expect(registerUserReducer(undefined, {})).toEqual(initialState);
   });
 
   // Тестирование обработки действия REGISTER_USER
