@@ -1,14 +1,6 @@
 import { GET_PROFILE_INFO } from "../actions/actions";
 import profileInfoReducer from "./get-profile-info-reducer";
-
-const initialState = {
-  profileInfo: {
-    user: {
-      name: "",
-      email: "",
-    },
-  },
-};
+import { initialState } from "./get-profile-info-reducer";
 
 describe("get-profile-info-reducer", () => {
   it("should return the initial state of get-profile-info-reducer", () => {

@@ -1,7 +1,7 @@
 import { GET_PROFILE_INFO } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-const initialState = {
+export const initialState = {
   profileInfo: {
     user: {
       name: "",
@@ -10,7 +10,7 @@ const initialState = {
   },
 };
 
-const profileInfoReducer = (state = initialState, action: ActionTypes) => {
+export const profileInfoReducer = (state = initialState, action: ActionTypes) => {
   //@ts-ignore
   switch (action.type) {
     case GET_PROFILE_INFO:
