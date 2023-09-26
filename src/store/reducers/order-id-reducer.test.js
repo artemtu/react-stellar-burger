@@ -1,9 +1,10 @@
 import { SET_ORDER_ID } from "../actions/actions";
 import { orderIdReducer } from "./order-id-reducer";
+import { initialState } from "./order-id-reducer";
 
 describe("orderIdReducer", () => {
   it("should return the initial state", () => {
-    expect(orderIdReducer(undefined, {})).toEqual({ orderId: null });
+    expect(orderIdReducer(undefined, {})).toEqual(initialState);
   });
 
   // Тестирование обработки действия SET_ORDER_ID
