@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./overlay.module.css";
-import PropTypes from "prop-types";
-import { Imodal } from "../modal/modal";
 
 function Overlay({ children, closeModal }) {
   const handleOverlayClick = (event) => {
@@ -18,9 +16,5 @@ function Overlay({ children, closeModal }) {
   );
 }
 
-Overlay.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
-};
 
 export default Overlay;
