@@ -1,9 +1,10 @@
 import { RESET_PASSWORD } from "../actions/actions";
 import resetPasswordReducer from "./reset-password-reducer";
+import { initialState } from "./reset-password-reducer";
 
 describe("resetPasswordReducer", () => {
   it("should return the initial state", () => {
-    expect(resetPasswordReducer(undefined, {})).toEqual({});
+    expect(resetPasswordReducer(undefined, {})).toEqual(initialState);
   });
 
   it("should handle RESET_PASSWORD action", () => {
