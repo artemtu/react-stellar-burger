@@ -1,11 +1,10 @@
 import { FORGOT_PASSWORD } from "../actions/actions";
 import forgotPasswordReducer from "./forgot-password-reducer";
+import { initialState } from "./forgot-password-reducer";
 
 describe("forgot-password-reducer", () => {
   it("should return the initial state of forgotPasswordReducer", () => {
-    expect(forgotPasswordReducer(undefined, {})).toEqual({
-      isSuccess: false,
-    });
+    expect(forgotPasswordReducer(undefined, {})).toEqual(initialState);
   });
   it("should handle FORGOT_PASSWORD action", () => {
     const action = {
