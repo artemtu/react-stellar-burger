@@ -4,11 +4,11 @@ import {
 } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-const initialState = {
+export const initialState = {
   ingredient: [],
 };
 
-const ingredientOpenReducer = (state = initialState, action: ActionTypes) => {
+export const ingredientOpenReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case GET_INFO_OPEN_INGREDIENT_MODAL:
       return {

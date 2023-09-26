@@ -4,10 +4,9 @@ import {
 } from "../actions/actions";
 
 import ingredientOpenReducer from "./ingredient-open-reducer";
+import { initialState } from "./ingredient-open-reducer";
 
-const initialState = {
-  ingredient: [],
-};
+
 
 describe("ingredientOpenReducer", () => {
   it("should return the initial state of ingredientOpenReducer ", () => {
