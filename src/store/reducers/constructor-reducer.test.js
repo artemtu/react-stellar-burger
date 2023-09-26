@@ -1,4 +1,4 @@
-import constructorReducer from "./constructor-reducer";
+import { constructorReducer, initialState } from "./constructor-reducer";
 import {
   ADD_BUN,
   ADD_INGREDIENT,
@@ -8,18 +8,10 @@ import {
 
 describe("constructor-reducer", () => {
   it("should return the initial state of constructor-reducer", () => {
-    expect(constructorReducer(undefined, {})).toEqual({
-      bun: [],
-      ingredients: [],
-      isBunDragged: false,
-    });
+    expect(constructorReducer(undefined, {})).toEqual(initialState);
   });
   it("should ADD_BUN", () => {
-    const initialState = {
-      bun: [],
-      ingredients: [],
-      isBunDragged: false,
-    };
+    const state = { ...initialState };
     const action = {
       type: ADD_BUN,
       payload: {
@@ -36,11 +28,6 @@ describe("constructor-reducer", () => {
   });
 
   it("should ADD_INGREDIENT", () => {
-    const initialState = {
-      bun: [],
-      ingredients: [],
-      isBunDragged: false,
-    };
     const action = {
       type: ADD_INGREDIENT,
       payload: {
@@ -57,7 +44,8 @@ describe("constructor-reducer", () => {
   });
 
   it("should REMOVE_INGREDIENT", () => {
-    const initialState = {
+    const state = {
+      ...initialState,
       bun: [],
       ingredients: [
         {
@@ -76,7 +64,7 @@ describe("constructor-reducer", () => {
       payload: "9e6b9d16-bd1e-4032-9741-d5da2",
     };
 
-    const newState = constructorReducer(initialState, action);
+    const newState = constructorReducer(state, action);
 
     expect(newState).toEqual({
       bun: [],
@@ -86,7 +74,8 @@ describe("constructor-reducer", () => {
   });
 
   it("should CHANGE_INGREDIENT", () => {
-    const initialState = {
+    const state = {
+      ...initialState,
       bun: [],
       ingredients: [
         {
@@ -127,7 +116,7 @@ describe("constructor-reducer", () => {
       },
     };
 
-    const newState = constructorReducer(initialState, action);
+    const newState = constructorReducer(state, action);
 
     expect(newState).toEqual({
       bun: [],

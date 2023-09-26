@@ -24,14 +24,14 @@ interface IConstructorState {
 
 
 // Начальное состояние  редьюсера
-const initialState = {
+export const initialState = {
   bun: [],
   ingredients: [],
   isBunDragged: false,
 };
 
 
-const constructorReducer = (state:IConstructorState = initialState, action:ActionTypes) => {
+export const constructorReducer = (state:IConstructorState = initialState, action:ActionTypes) => {
 
   switch (action.type) {
     case GET_BURGER_CONSTRUCTOR_INGREDIENTS:
