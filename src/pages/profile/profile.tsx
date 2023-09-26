@@ -21,8 +21,6 @@ function Profile() {
   const [password, setPassword] = React.useState("");
   const dispatch = useAppDispatch();
 
-
-
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
