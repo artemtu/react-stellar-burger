@@ -23,10 +23,11 @@ import {
 import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
 import { Action } from "redux";
+import { IloginUser } from "./reducers/login-user-reducer";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { IorderState } from "./reducers/order-details-reducer";
-import { ThunkDispatch } from 'redux-thunk';
+import { ThunkDispatch } from "redux-thunk";
 
 export type RootState = ReturnType<typeof store.getState>;
 // export type AppDispatch = typeof store.dispatch;
@@ -125,15 +126,7 @@ export interface IclearIngredientOpen {
 
 export interface IgetUserLogin {
   type: typeof LOGIN_USER;
-  payload: {
-    success: boolean;
-    accessToken: string;
-    refreshToken: string;
-    user: Array<{
-      email: string;
-      name: string;
-    }>;
-  };
+  payload: IloginUser;
 }
 
 export interface IpostUserLogout {

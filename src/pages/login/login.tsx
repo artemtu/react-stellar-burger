@@ -45,7 +45,13 @@ function Login() {
           name={"password"}
           extraClass="mt-6"
         />
-        <Button type="primary" size="large" extraClass="mt-6" htmlType="submit" id="loginButton">
+        <Button
+          type="primary"
+          size="large"
+          extraClass="mt-6"
+          htmlType="submit"
+          id="loginButton"
+        >
           Войти
         </Button>
         <p className="text text_type_main-small text_color_inactive mt-20">
