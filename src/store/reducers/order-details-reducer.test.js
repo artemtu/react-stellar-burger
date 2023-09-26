@@ -1,28 +1,7 @@
 import { GET_ORDER_NUMBER } from "../actions/actions";
 import orderDetailReducer from "./order-details-reducer";
+import { initialState } from "./order-details-reducer";
 
-const initialState = {
-  orderDetails: {
-    success: false,
-    name: "",
-    order: {
-      ingredients: [],
-      _id: "",
-      owner: {
-        name: "",
-        email: "",
-        createdAt: "",
-        updatedAt: "",
-      },
-      status: "",
-      name: "",
-      createdAt: "",
-      updatedAt: "",
-      number: null,
-      price: null,
-    },
-  },
-};
 
 describe("orderDetailReducer", () => {
   it("should return the initial state of orderDetailReducer ", () => {

@@ -43,7 +43,7 @@ export interface IorderTrueState {
   orderDetails: IorderState;
 }
 
-const initialState: IorderTrueState = {
+export const initialState: IorderTrueState = {
   orderDetails: {
     success: false,
     name: "",
@@ -66,7 +66,7 @@ const initialState: IorderTrueState = {
   },
 };
 
-const orderDetailReducer = (state = initialState, action: ActionTypes) => {
+export const orderDetailReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case GET_ORDER_NUMBER:
       return {
