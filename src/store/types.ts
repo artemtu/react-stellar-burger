@@ -55,7 +55,6 @@ export interface IData {
   isLoading?: boolean;
 }
 
-
 export interface Iorders {
   _id: string;
   ingredients: string;
@@ -76,7 +75,6 @@ interface IfeedState {
 interface Iid {
   id: string;
 }
-
 interface IdataState {
   data: IingredientFullInfo[];
   success: boolean;
@@ -202,7 +200,9 @@ export interface IgetMyFeed {
 
 export interface IsetMyOrderId {
   type: typeof SET_MY_ORDER_ID;
-  payload: Iid;
+  payload: {
+    myOrderId: Iid;
+  };
 }
 
 export interface IsetOrderId {

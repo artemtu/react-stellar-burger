@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
   getFeed: feedReducer,
   orderReduceer: orderIdReducer,
   myOrders: feedMyReducer,
-  myOrderId: myOrderIdReducer,
+  myOrderIdRed: myOrderIdReducer,
 });
 
 export default rootReducer;
