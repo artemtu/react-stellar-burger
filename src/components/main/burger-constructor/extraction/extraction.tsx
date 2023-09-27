@@ -6,11 +6,14 @@ import {
 import styles from "./extraction.module.css";
 import { postOrder } from "../../../../store/actions/post-order";
 import { useNavigate } from "react-router-dom";
-import { IingredientFullInfo } from "../../main";
 import { useAppDispatch, useAppSelector } from "../../../../store/types";
 
 type Props = {
   openModal: () => void;
+};
+
+type AllIngredientsIds = {
+  ingredients: string[];
 };
 
 function Extraction({ openModal }: Props) {
@@ -23,34 +26,36 @@ function Extraction({ openModal }: Props) {
     (state) => state.constructorBurger
   );
 
-  const buns = ingredientsForPrice.bun || [];
-  const ingredients = ingredientsForPrice.ingredients || [];
+  const buns = ingredientsForPrice.constructorBurger.bun || [];
+
+  const ingredients = ingredientsForPrice.constructorBurger.ingredients || [];
 
   const isLoggedIn = useAppSelector((state) => state.loginUser.isAuthChecked);
 
   const totalPrice = React.useMemo(() => {
     const bunPrice = buns.reduce(
-      (acc: number, item: IingredientFullInfo) => acc + (item.price * 2 || 0),
+      (acc: any, item) => acc + (item.price * 2 || 0),
       0
     );
     const ingredientsPrice = ingredients.reduce(
-      (acc: number, item: IingredientFullInfo) => acc + (item.price || 0),
+      (acc: any, item) => acc + (item.price || 0),
       0
     );
     return bunPrice + ingredientsPrice;
   }, [buns, ingredients]);
 
   const isButtonDisabled =
-    ingredientsForPrice.bun.length === 0 &&
-    ingredientsForPrice.ingredients.length === 0;
+    ingredientsForPrice.constructorBurger.bun.length === 0 &&
+    ingredientsForPrice.constructorBurger.ingredients.length === 0;
 
   const onClick = () => {
-    const bunsIds = data.bun.map((item: IingredientFullInfo) => item.id);
-    const ingredientsIds = data.ingredients.map(
-      (item: IingredientFullInfo) => item.id
+    const bunsIds = data.constructorBurger.bun.map((item) => item.id);
+
+    const ingredientsIds = data.constructorBurger.ingredients.map(
+      (item) => item.id
     );
-    const allIngredientIds = {
-      ingredients: [...bunsIds, ...ingredientsIds],
+    const allIngredientIds: AllIngredientsIds = {
+      ingredients: [...bunsIds, ...ingredientsIds].filter(Boolean as any),
     };
 
     if (isLoggedIn) {

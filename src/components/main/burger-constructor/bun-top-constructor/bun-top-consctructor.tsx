@@ -4,9 +4,10 @@ import {
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { IingredientFullInfo } from "../../main";
+import { IIngredient } from "../../../../store/reducers/constructor-reducer";
 
 type Props = {
-  data: IingredientFullInfo[];
+  data: IIngredient[];
 };
 
 function BunUpConstructor({ data }: Props) {

@@ -150,9 +150,9 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
 
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
-          <BunUpConstructor data={data.bun} />
-          <Ingredients data={data.ingredients} />
-          <BunBottomConstructor data={data.bun} />
+          <BunUpConstructor data={data.constructorBurger.bun} />
+          <Ingredients data={data.constructorBurger.ingredients} />
+          <BunBottomConstructor data={data.constructorBurger.bun} />
         </div>
         <Extraction openModal={openModal} />
       </section>

@@ -11,27 +11,38 @@ export interface IIngredient {
   id?: string;
   image: string;
   name: string;
-  price: string;
+  price: number;
   type: string;
   _constId?: string;
+  proteins?: number;
+  fat?: number;
+  carbohydrates?: number;
+  calories: number;
+  image_mobile: string;
+  image_large: string;
 }
 
-// Тип для начального состояния
 interface IConstructorState {
   bun: IIngredient[];
   ingredients: IIngredient[];
   isBunDragged: boolean;
 }
 
+interface IConstructorTrueState {
+  constructorBurger: IConstructorState;
+}
+
 // Начальное состояние  редьюсера
-export const initialState = {
-  bun: [],
-  ingredients: [],
-  isBunDragged: false,
+export const initialState: IConstructorTrueState = {
+  constructorBurger: {
+    bun: [],
+    ingredients: [],
+    isBunDragged: false,
+  },
 };
 
 export const constructorReducer = (
-  state: IConstructorState = initialState,
+  state = initialState,
   action: ActionTypes
 ) => {
   switch (action.type) {
@@ -40,32 +51,37 @@ export const constructorReducer = (
         ...state,
         bun: action.payload,
         ingredients: action.payload,
-        isLoading: false,
       };
     case ADD_BUN:
       return {
         ...state,
-        bun: [action.payload],
+        constructorBurger: {
+          ...state.constructorBurger,
+          bun: [action.payload],
+        },
       };
     case ADD_INGREDIENT:
       return {
         ...state,
-        ingredients: [...state.ingredients, action.payload],
+        constructorBurger: {
+          ...state.constructorBurger,
+          ingredients: [...state.constructorBurger.ingredients, action.payload],
+        },
       };
     case REMOVE_INGREDIENT:
-      const ingredientSelected = state.ingredients.find(
+      const ingredientSelected = state.constructorBurger.ingredients.find(
         (ingredient) => ingredient._constId === action.payload.ingredientId
       );
       return {
         ...state,
-        ingredients: state.ingredients.filter(
+        ingredients: state.constructorBurger.ingredients.filter(
           (ingredient) => ingredient !== ingredientSelected
         ),
       };
     case CHANGE_INGREDIENT:
       const { indexFrom, indexTo, ingredient } = action.payload;
-      state.ingredients.splice(indexFrom, 1);
-      state.ingredients.splice(indexTo, 0, ingredient);
+      state.constructorBurger.ingredients.splice(indexFrom, 1);
+      state.constructorBurger.ingredients.splice(indexTo, 0, ingredient);
       return {
         ...state,
       };

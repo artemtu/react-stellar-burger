@@ -52,8 +52,9 @@ export interface IData {
   image: string;
   image_mobile: string;
   image_large: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
+
 
 export interface Iorders {
   _id: string;
@@ -88,12 +89,12 @@ export interface IgetIngredients {
 
 export interface IaddIngredient {
   type: typeof ADD_INGREDIENT;
-  payload: IData;
+  payload: IIngredient;
 }
 
 export interface IaddBun {
   type: typeof ADD_BUN;
-  payload: IData;
+  payload: IIngredient;
 }
 
 export interface IremoveIngredient {

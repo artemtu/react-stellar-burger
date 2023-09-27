@@ -9,15 +9,16 @@ import {
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredients.module.css";
+import { IIngredient } from "../../../../store/reducers/constructor-reducer";
 
 type Props = {
-  data: IingredientFullInfo[];
+  data: IIngredient[];
 };
 
 function Ingredients({ data }: Props) {
   const dispatch = useAppDispatch();
 
-  const handleRemoveIngredient = (_constId) => {
+  const handleRemoveIngredient = (_constId: string) => {
     dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
   };
 
@@ -36,7 +37,7 @@ function Ingredients({ data }: Props) {
 }
 
 interface IDraggableIngredientProps {
-  data: IingredientFullInfo;
+  data: IIngredient;
   index: number;
   onRemove: (id: string, index?: number) => void;
 }
@@ -56,14 +57,14 @@ function DraggableIngredient({
   const dispatch = useAppDispatch();
 
   const ingredientsArray = useAppSelector(
-    (store) => store.constructorBurger.ingredients
+    (store) => store.constructorBurger.constructorBurger.ingredients
   );
 
   interface Styles {
     constructor: string;
   }
 
-  const findIndex = (item: string) => ingredientsArray.indexOf(item);
+  const findIndex = (item: string) => ingredientsArray.indexOf(item as any);
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "sort",
