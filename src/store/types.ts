@@ -199,7 +199,9 @@ export interface IsetMyOrderId {
 
 export interface IsetOrderId {
   type: typeof SET_ORDER_ID;
-  payload: Iid;
+  payload: {
+    orderId: Iid;
+  };
 }
 
 export type ActionTypes =
