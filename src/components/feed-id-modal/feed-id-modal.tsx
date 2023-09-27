@@ -4,7 +4,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useAppSelector } from "../../store/types";
 
 type Props = {
-  id: string;
+  id?: string;
 };
 
 function FeedPage({ id }: Props) {
