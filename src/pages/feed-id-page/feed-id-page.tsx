@@ -6,6 +6,7 @@ import FeedPage from "../../components/feed-id-modal/feed-id-modal";
 
 function FeedPageTest() {
   const dispatch = useAppDispatch();
+
   const { id } = useParams();
   const feedData = useAppSelector((state) => state.getFeed.getFeed);
 

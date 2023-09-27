@@ -3,7 +3,11 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useAppSelector } from "../../store/types";
 
-function FeedPage({ id }) {
+type Props = {
+  id: string;
+};
+
+function FeedPage({ id }: Props) {
   const AllIngredients = useAppSelector(
     (state) => state.mainData.mainData.data
   );
