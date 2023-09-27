@@ -1,4 +1,3 @@
-
 import {
   CHANGE_INGREDIENT,
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
@@ -6,12 +5,15 @@ import {
 import { REMOVE_INGREDIENT } from "../actions/actions";
 import { ADD_BUN } from "../actions/actions";
 import { ADD_INGREDIENT } from "../actions/actions";
- import { ActionTypes } from "../types";
+import { ActionTypes } from "../types";
 
-
-
-interface IIngredient {
-  _constId: string;
+export interface IIngredient {
+  id?: string;
+  image: string;
+  name: string;
+  price: string;
+  type: string;
+  _constId?: string;
 }
 
 // Тип для начального состояния
@@ -21,8 +23,6 @@ interface IConstructorState {
   isBunDragged: boolean;
 }
 
-
-
 // Начальное состояние  редьюсера
 export const initialState = {
   bun: [],
@@ -30,17 +30,16 @@ export const initialState = {
   isBunDragged: false,
 };
 
-
-export const constructorReducer = (state:IConstructorState = initialState, action:ActionTypes) => {
-
+export const constructorReducer = (
+  state: IConstructorState = initialState,
+  action: ActionTypes
+) => {
   switch (action.type) {
     case GET_BURGER_CONSTRUCTOR_INGREDIENTS:
       return {
         ...state,
-        //@ts-ignore
-        bun: action.payload.bun,
-        //@ts-ignore
-        ingredients: action.payload.ingredients,
+        bun: action.payload,
+        ingredients: action.payload,
         isLoading: false,
       };
     case ADD_BUN:
@@ -55,8 +54,7 @@ export const constructorReducer = (state:IConstructorState = initialState, actio
       };
     case REMOVE_INGREDIENT:
       const ingredientSelected = state.ingredients.find(
-        //@ts-ignore
-        (ingredient) => ingredient._constId === action.payload
+        (ingredient) => ingredient._constId === action.payload.ingredientId
       );
       return {
         ...state,
@@ -65,10 +63,8 @@ export const constructorReducer = (state:IConstructorState = initialState, actio
         ),
       };
     case CHANGE_INGREDIENT:
-      //@ts-ignore
       const { indexFrom, indexTo, ingredient } = action.payload;
       state.ingredients.splice(indexFrom, 1);
-      //@ts-ignore
       state.ingredients.splice(indexTo, 0, ingredient);
       return {
         ...state,

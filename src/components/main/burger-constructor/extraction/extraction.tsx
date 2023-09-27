@@ -22,6 +22,7 @@ function Extraction({ openModal }: Props) {
   const ingredientsForPrice = useAppSelector(
     (state) => state.constructorBurger
   );
+
   const buns = ingredientsForPrice.bun || [];
   const ingredients = ingredientsForPrice.ingredients || [];
 
@@ -79,6 +80,5 @@ function Extraction({ openModal }: Props) {
     </div>
   );
 }
-
 
 export default Extraction;

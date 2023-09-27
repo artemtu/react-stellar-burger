@@ -28,6 +28,7 @@ import { IloginUser } from "./reducers/login-user-reducer";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { IorderState } from "./reducers/order-details-reducer";
 import { ThunkDispatch } from "redux-thunk";
+import { IIngredient } from "./reducers/constructor-reducer";
 
 export type RootState = ReturnType<typeof store.getState>;
 // export type AppDispatch = typeof store.dispatch;
@@ -37,6 +38,8 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export interface IData {
+  id?: string;
+  _constId?: string;
   success: boolean;
   _id: string;
   name: string;
@@ -102,7 +105,11 @@ export interface IremoveIngredient {
 
 export interface IchangeIngredient {
   type: typeof CHANGE_INGREDIENT;
-  payload: IData;
+  payload: {
+    indexFrom: number;
+    indexTo: number;
+    ingredient: IIngredient;
+  };
 }
 
 export interface IgetNewPassword {
