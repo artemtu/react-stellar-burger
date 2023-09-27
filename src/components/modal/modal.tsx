@@ -31,6 +31,8 @@ function Modal({ children, closeModal }: Imodal) {
     };
   });
 
+  if (modalRoot === null) return null;
+
   return ReactDOM.createPortal(
     <Overlay closeModal={closeModal}>
       <div className={styles.modal}>
