@@ -10,7 +10,9 @@ function OrdersHistory({ setIsOrderIddModal }) {
 
   const myOrders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
 
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  const AllIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   const newAllIngredients = (AllIngredients as any).reduce((acc, item) => {
     acc[item._id] = item.image_mobile;

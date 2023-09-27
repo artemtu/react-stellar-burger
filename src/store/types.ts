@@ -73,9 +73,14 @@ interface Iid {
   id: string;
 }
 
+interface IdataState {
+  data: IingredientFullInfo[];
+  success: boolean;
+}
+
 export interface IgetIngredients {
   type: typeof GET_INGREDIENTS;
-  payload: IingredientFullInfo[];
+  payload: IdataState;
 }
 
 export interface IaddIngredient {

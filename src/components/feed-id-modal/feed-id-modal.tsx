@@ -4,7 +4,9 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useAppSelector } from "../../store/types";
 
 function FeedPage({ id }) {
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  const AllIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);

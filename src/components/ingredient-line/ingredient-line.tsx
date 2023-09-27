@@ -13,7 +13,7 @@ function IngredientsLine({ setIsFeedIdModal }: any) {
 
   const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
 
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  const AllIngredients = useAppSelector((state) => state.mainData.mainData.data);
 
   useEffect(() => {
     if (ingredients) {

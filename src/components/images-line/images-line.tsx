@@ -5,7 +5,9 @@ import { useAppSelector } from "../../store/types";
 function ImagesIngredients({ images }: any) {
   const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
 
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  const AllIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   const displayedImages = images ? images.slice(0, 5) : [];
   const hiddenCount = images ? images.length - 5 : 0;

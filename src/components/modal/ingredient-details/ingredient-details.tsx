@@ -12,9 +12,9 @@ export interface IingredientDeatails {
 }
 
 function IngredientDetails({ id }: IingredientDeatails) {
-  const data = useAppSelector((state) => state.mainData.data);
+  const data = useAppSelector((state) => state.mainData.mainData.data);
 
-  const ingredient = (data as any).find((item: IingredientDeatails) => item._id === id);
+  const ingredient = data.find((item) => item._id === id);
 
   const dispatch = useAppDispatch();
 
