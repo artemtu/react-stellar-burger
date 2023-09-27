@@ -40,7 +40,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export interface IData {
   id?: string;
   _constId?: string;
-  success: boolean;
+  success?: boolean;
   _id: string;
   name: string;
   type: string;
@@ -130,7 +130,7 @@ export interface IgetUserData {
 
 export interface IingredientOpen {
   type: typeof GET_INFO_OPEN_INGREDIENT_MODAL;
-  payload: IData;
+  payload: IingredientFullInfo;
 }
 
 export interface IclearIngredientOpen {

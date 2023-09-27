@@ -3,7 +3,7 @@ import { ActionTypes } from "../types";
 
 export interface IingredientFullInfo {
   _id?: string;
-  id: string;
+  id?: string;
   name: string;
   type: string;
   proteins: number;
@@ -60,13 +60,16 @@ export const initialState: IorderTrueState = {
       name: "",
       createdAt: "",
       updatedAt: "",
-      number: null,
-      price: null,
+      number: 0,
+      price: 0,
     },
   },
 };
 
-export const orderDetailReducer = (state = initialState, action: ActionTypes) => {
+export const orderDetailReducer = (
+  state = initialState,
+  action: ActionTypes
+) => {
   switch (action.type) {
     case GET_ORDER_NUMBER:
       return {

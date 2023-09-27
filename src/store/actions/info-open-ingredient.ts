@@ -3,9 +3,10 @@ import {
   CLEAR_INGREDIENT_OPEN,
 } from "./actions";
 
-import { IingredientOpen, IclearIngredientOpen } from "../types";
+import { IingredientOpen } from "../types";
+import { IingredientFullInfo } from "../reducers/order-details-reducer";
 
-export const ingredientOpen = (ingredient: IingredientOpen) => {
+export const ingredientOpen = (ingredient: IingredientFullInfo) => {
   return {
     type: GET_INFO_OPEN_INGREDIENT_MODAL,
     payload: ingredient,
