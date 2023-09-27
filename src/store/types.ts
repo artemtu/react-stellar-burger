@@ -52,7 +52,7 @@ export interface IData {
   isLoading: boolean;
 }
 
-interface Iorders {
+export interface Iorders {
   _id: string;
   ingredients: string;
   status: string;
