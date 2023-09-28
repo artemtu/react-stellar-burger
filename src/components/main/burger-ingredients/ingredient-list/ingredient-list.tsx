@@ -12,7 +12,7 @@ type Props = {
 
 export type IngredientModalState = {
   open: boolean;
-  id?: number | null;
+  id?: string ;
 };
 
 export function IngredientList({ setIngredientModal, data }: Props) {

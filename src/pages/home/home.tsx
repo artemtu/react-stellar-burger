@@ -5,18 +5,24 @@ import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
 
+export type IngredientModalState = {
+  open: boolean;
+  id?: string;
+};
+
 function Home() {
   const [isOrderModal, setOrderModal] = useState({
     open: false,
   });
-  const [isIngredientModal, setIngredientModal] = useState({
-    open: false,
-    id: 1,
-  });
+  const [isIngredientModal, setIngredientModal] =
+    useState<IngredientModalState>({
+      open: false,
+      id: "1",
+    });
 
   function closeModal() {
     setOrderModal({ open: false });
-    setIngredientModal({ open: false, id: 1 });
+    setIngredientModal({ open: false, id: "1" });
   }
 
   function openModal() {
