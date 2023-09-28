@@ -18,10 +18,10 @@ function ForgotPassword() {
     e.preventDefault();
 
     const resetPassword = {
-      email: email,
+      email: email as string,
     };
-    //@ts-ignore
-    dispatch(postResetPassword(resetPassword)).then(() => {
+
+    dispatch(postResetPassword(resetPassword.email)).then(() => {
       navigate("/reset-password", { replace: true });
     });
   };
