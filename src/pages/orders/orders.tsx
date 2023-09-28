@@ -31,8 +31,6 @@ function ProfileOrders() {
   }
   const socketUrlPrivate = `wss://norma.nomoreparties.space/orders?token=${accessToken}`;
 
-  console.log(accessToken);
-
   useEffect(() => {
     if (!accessToken) {
       console.error("No access token is available");
