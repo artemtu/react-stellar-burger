@@ -14,7 +14,7 @@ export const patchAuthUser = (updateData: IupdateData) => {
     method: "PATCH",
     headers: {
       ...config.headers,
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `${accessToken}`,
     },
     body: JSON.stringify(updateData),
   })
