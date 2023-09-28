@@ -9,6 +9,9 @@ import Modal from "../../components/modal/modal";
 import MyOrderIdModal from "../../components/my-order-id-modal/my-order-id-modal";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/types";
+import { WSS_OPEN, WSS_CLOSE } from "../../store/actions/actions";
+import { GET_MY_FEED } from "../../store/actions/actions";
+import { socketUrl } from "../../store/socketMiddleware";
 // import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 
 function ProfileOrders() {
@@ -21,13 +24,44 @@ function ProfileOrders() {
   const myFeedData = useAppSelector((state) => state.myOrders.getMyFeed);
   const dispatch = useAppDispatch();
 
+  let accessToken = localStorage.getItem("accessToken");
+
+  if (accessToken && accessToken.startsWith("Bearer ")) {
+    accessToken = accessToken.slice(7);
+  }
+  const socketUrlPrivate = `wss://norma.nomoreparties.space/orders?token=${accessToken}`;
+
+  console.log(accessToken);
+
   useEffect(() => {
-    dispatch({ type: "WS_MY_FEED_INIT" });
+    if (!accessToken) {
+      console.error("No access token is available");
+      return;
+    }
+
+    dispatch({
+      type: WSS_OPEN,
+      meta: {
+        socket: {
+          event: "INIT",
+          uri: socketUrlPrivate,
+          actionTypes: { message: GET_MY_FEED },
+        },
+      },
+    });
 
     return () => {
-      dispatch({ type: "WS_MY_FEED_CLOSE" });
+      dispatch({
+        type: WSS_CLOSE,
+        meta: {
+          socket: {
+            event: "CLOSE",
+            uri: socketUrlPrivate,
+          },
+        },
+      });
     };
-  }, [dispatch]);
+  }, [dispatch, accessToken, socketUrlPrivate]);
 
   if (!myFeedData) {
     return <p>Loading...</p>;
