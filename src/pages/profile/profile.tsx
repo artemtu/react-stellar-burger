@@ -29,8 +29,6 @@ function Profile() {
     (state) => state.profileInfoRed.profileInfo.user
   );
 
-  console.log(profileInfo);
-
   useEffect(() => {
     if (profileInfo) {
       setName(profileInfo.name);
