@@ -32,8 +32,8 @@ export const postOrder =
         Authorization: `${accessToken}`,
       },
       body: JSON.stringify(order),
-      //@ts-ignore
-      Authorization: `${accessToken}`,
+
+      // Authorization: `${accessToken}`,
     })
       .then(checkResponse)
       .then((data) => {

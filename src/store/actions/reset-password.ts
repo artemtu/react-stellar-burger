@@ -1,7 +1,7 @@
 import { RESET_PASSWORD } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
-import { IresetPassword } from "../types";
+import { AppDispatch, IresetPassword } from "../types";
 
 interface IResetOpt {
   password: string;
@@ -16,9 +16,7 @@ export const resetPassword = (serverAnswer: IresetPassword) => {
 };
 
 export const postRefreshPassword =
-  (resetOpt: IResetOpt) =>
-  //@ts-ignore
-  (dispatch) => {
+  (resetOpt: IResetOpt) => (dispatch: AppDispatch) => {
     return fetch(`${config.baseUrl}/password-reset/reset`, {
       method: "POST",
       headers: config.headers,

@@ -13,7 +13,7 @@ const Protected = ({
   component,
 }: TProtectedRoute): JSX.Element => {
   const dispatch = useAppDispatch();
-  //@ts-ignore
+
   const isAuthChecked = useAppSelector(
     (state) => state.loginUser.isAuthChecked
   );

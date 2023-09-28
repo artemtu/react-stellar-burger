@@ -1,7 +1,7 @@
 import { LOGIN_USER } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
-import { IgetUserLogin } from "../types";
+import { AppDispatch, IgetUserLogin } from "../types";
 
 export const getUserLogin = (loginData: IgetUserLogin) => {
   return {
@@ -10,8 +10,7 @@ export const getUserLogin = (loginData: IgetUserLogin) => {
   };
 };
 
-//@ts-ignore
-export const postUserLogin = (login) => (dispatch) => {
+export const postUserLogin = (login: any) => (dispatch: AppDispatch) => {
   return fetch(`${config.baseUrl}/auth/login`, {
     method: "POST",
     headers: config.headers,
