@@ -15,19 +15,11 @@ function ProfileOrders() {
   const location = useLocation();
   const [isOrderIddModal, setIsOrderIddModal] = useState({
     open: false,
-    id: 1,
+    id: "1",
   });
 
   const myFeedData = useAppSelector((state) => state.myOrders.getMyFeed);
   const dispatch = useAppDispatch();
-
-  // useEffect(() => {
-  //   const closeSocket = dispatch(fetchMyFeed());
-
-  //   return () => {
-  //     closeSocket();
-  //   };
-  // }, [dispatch]);
 
   useEffect(() => {
     dispatch({ type: "WS_MY_FEED_INIT" });
@@ -42,7 +34,7 @@ function ProfileOrders() {
   }
 
   function closeModal() {
-    setIsOrderIddModal({ open: false, id: 1 });
+    setIsOrderIddModal({ open: false, id: "1" });
   }
 
   return (
@@ -90,5 +82,3 @@ function ProfileOrders() {
 }
 
 export default ProfileOrders;
-
-// ${location.pathname === '/' ? '' : 'text_color_inactive'}
