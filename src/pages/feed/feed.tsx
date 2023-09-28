@@ -6,14 +6,15 @@ import { useState } from "react";
 import Modal from "../../components/modal/modal";
 import FeedPage from "../../components/feed-id-modal/feed-id-modal";
 import { useAppDispatch, useAppSelector } from "../../store/types";
+import { IfeedState, Iorders } from "../../store/types";
 
 function Feed() {
   const dispatch = useAppDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
-  const [orderIsReady, setOrderIsReady] = React.useState([]);
-  const [orderIsPending, setOrderIsPending] = React.useState([]);
-  const [orderNumber, setOrderNumber] = React.useState([]);
+  const [orderIsReady, setOrderIsReady] = React.useState<string[]>([]);
+  const [orderIsPending, setOrderIsPending] = React.useState<string[]>([]);
+  const [orderNumber, setOrderNumber] = React.useState<Iorders[]>([]);
 
   useEffect(() => {
     dispatch({ type: "WS_FEED_INIT" });
@@ -81,7 +82,7 @@ function Feed() {
       {/* вторая часть страницы */}
       {isFeedIdModal.open && (
         <Modal closeModal={closeModal}>
-          <FeedPage id={isFeedIdModal.id} />
+          <FeedPage id={isFeedIdModal.id.toString()} />
         </Modal>
       )}
 

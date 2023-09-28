@@ -65,7 +65,7 @@ export interface Iorders {
   number: string;
 }
 
-interface IfeedState {
+export interface IfeedState {
   success: boolean;
   orders: Iorders[];
   total: string;
