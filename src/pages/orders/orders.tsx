@@ -29,7 +29,9 @@ function ProfileOrders() {
   if (accessToken && accessToken.startsWith("Bearer ")) {
     accessToken = accessToken.slice(7);
   }
-  const socketUrlPrivate = `wss://norma.nomoreparties.space/orders?token=${accessToken}`;
+  const socketUrlPrivate = accessToken
+    ? `${socketUrl}?token=${accessToken}`
+    : socketUrl;
 
   useEffect(() => {
     if (!accessToken) {
