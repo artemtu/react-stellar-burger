@@ -179,7 +179,7 @@ export interface IresetPassword {
 export interface IsetAuthChecked {
   type: typeof SET_AUTH_CHEKCED;
   payload: {
-    value: boolean;
+    isAuthChecked: boolean;
   };
 }
 

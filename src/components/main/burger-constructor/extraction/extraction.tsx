@@ -30,9 +30,7 @@ function Extraction({ openModal }: Props) {
 
   const ingredients = ingredientsForPrice.constructorBurger.ingredients || [];
 
-  const isLoggedIn = useAppSelector(
-    (state) => state.loginUser.loginUser.isAuthChecked
-  );
+  const isLoggedIn = useAppSelector((state) => state.loginUser.isAuthChecked);
 
   const totalPrice = React.useMemo(() => {
     const bunPrice = buns.reduce(

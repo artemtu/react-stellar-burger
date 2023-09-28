@@ -15,8 +15,9 @@ const Protected = ({
   const dispatch = useAppDispatch();
 
   const isAuthChecked = useAppSelector(
-    (state) => state.loginUser.loginUser.isAuthChecked
+    (state) => state.loginUser.isAuthChecked
   );
+
   const location = useLocation();
   const from = location.state?.from || "/";
 
