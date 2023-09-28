@@ -26,7 +26,9 @@ function ResetPassword() {
     };
     // console.log(resetPassword);
     dispatch(postRefreshPassword(setPassword)).then((path) => {
+      if (path) {
       navigate(path);
+      }
     });
   };
 
