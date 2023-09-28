@@ -1,4 +1,7 @@
-import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
+import {
+  CHANGE_INGREDIENT,
+  REMOVE_INGREDIENT,
+} from "../../../../store/actions/actions";
 import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
 import { IingredientFullInfo } from "../../main";
@@ -43,10 +46,7 @@ interface IDraggableIngredientProps {
 }
 
 interface IHoverProps {
-  ingredient: {
-    _id: string;
-    _constId: string;
-  };
+  ingredient: IIngredient;
 }
 
 function DraggableIngredient({
@@ -64,7 +64,9 @@ function DraggableIngredient({
     constructor: string;
   }
 
-  const findIndex = (item: string) => ingredientsArray.indexOf(item as any);
+  const findIndex = (item: IIngredient) => {
+    return ingredientsArray.indexOf(item);
+  };
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "sort",
@@ -78,14 +80,14 @@ function DraggableIngredient({
     accept: "sort",
     hover({ ingredient }: IHoverProps) {
       if (ingredient._constId === data._constId) return;
-      dispatch(
-        changeIngredient({
-          //@ts-ignore
+      dispatch({
+        type: CHANGE_INGREDIENT,
+        payload: {
           indexFrom: findIndex(ingredient),
           indexTo: index,
           ingredient: ingredient,
-        })
-      );
+        },
+      });
     },
   });
 
