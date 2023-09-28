@@ -5,7 +5,15 @@ import ImagesIngredients from "../../components/images-line/images-line";
 import { setMyOrderId } from "../../store/actions/my-order-id-modal";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 
-function OrdersHistory({ setIsOrderIddModal }) {
+interface Props {
+  setIsOrderIddModal: React.Dispatch<React.SetStateAction<OrderIdModalState>>;
+}
+type OrderIdModalState = {
+  open: boolean;
+  id: string;
+};
+
+function OrdersHistory({ setIsOrderIddModal }: Props) {
   const dispatch = useAppDispatch();
 
   const myOrders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
@@ -14,42 +22,48 @@ function OrdersHistory({ setIsOrderIddModal }) {
     (state) => state.mainData.mainData.data
   );
 
-  const newAllIngredients = (AllIngredients as any).reduce((acc, item) => {
-    acc[item._id] = item.image_mobile;
-    return acc;
-  }, {});
+  const newAllIngredients = (AllIngredients as any).reduce(
+    (acc: any, item: any) => {
+      acc[item._id] = item.image_mobile;
+      return acc;
+    },
+    {}
+  );
 
   const ids = myOrders.map((item) => item.ingredients);
 
   const newData = ids.map((idArray) => {
-    return (idArray as any).map((id) => newAllIngredients[id]);
+    return (idArray as any).map((id: string) => newAllIngredients[id]);
   });
 
-  const priceForIngredient = (AllIngredients as any).reduce((acc, item) => {
-    let price = item.price;
+  const priceForIngredient = (AllIngredients as any).reduce(
+    (acc: any, item: any) => {
+      let price = item.price;
 
-    if (
-      item._id === "643d69a5c3f7b9001cfa093d" ||
-      item._id === "643d69a5c3f7b9001cfa093d"
-    ) {
-      price *= 2;
-    }
+      if (
+        item._id === "643d69a5c3f7b9001cfa093d" ||
+        item._id === "643d69a5c3f7b9001cfa093d"
+      ) {
+        price *= 2;
+      }
 
-    acc[item._id] = price;
-    return acc;
-  }, {});
+      acc[item._id] = price;
+      return acc;
+    },
+    {}
+  );
 
   const priceForOrder = ids.map((idArray) => {
     return (idArray as any).reduce(
-      (acc, id) => acc + priceForIngredient[id],
+      (acc: any, id: string) => acc + priceForIngredient[id],
       0
     );
   });
 
-  const handleOrderClick = (id) => {
+  const handleOrderClick = (id: string) => {
     window.history.pushState({}, "", `/profile/orders/${id}`);
     dispatch(setMyOrderId(id));
-    setIsOrderIddModal({ open: true });
+    setIsOrderIddModal({ open: true, id:'' });
   };
 
   return (
