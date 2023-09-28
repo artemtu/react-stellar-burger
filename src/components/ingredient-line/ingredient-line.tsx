@@ -8,7 +8,13 @@ import { setOrderId } from "../../store/actions/feed-modal";
 import { useAppSelector, useAppDispatch } from "../../store/types";
 import { Iorders } from "../../store/types";
 
-function IngredientsLine({ setIsFeedIdModal }: any) {
+interface IngredientsLineProps {
+  setIsFeedIdModal: React.Dispatch<
+    React.SetStateAction<{ open: boolean; id: string }>
+  >;
+}
+
+function IngredientsLine({ setIsFeedIdModal }: IngredientsLineProps) {
   const [data, setData] = useState<Iorders[]>([]);
   const navigate = useNavigate();
 

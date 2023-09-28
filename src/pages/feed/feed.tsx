@@ -43,7 +43,7 @@ function Feed() {
     };
   }, [dispatch]);
 
-  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
+  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: "1" });
 
   const totalOrders = useAppSelector((state) => state.getFeed.getFeed);
 
@@ -88,7 +88,7 @@ function Feed() {
   }, [orderNum]);
 
   function closeModal() {
-    setIsFeedIdModal({ open: false, id: 1 });
+    setIsFeedIdModal({ open: false, id: "1" });
   }
 
   return (
