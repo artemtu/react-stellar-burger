@@ -29,6 +29,10 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { IorderState } from "./reducers/order-details-reducer";
 import { ThunkDispatch } from "redux-thunk";
 import { IIngredient } from "./reducers/constructor-reducer";
+import {
+  IprofileInfo,
+  IprofileInfoTrueState,
+} from "./reducers/get-profile-info-reducer";
 
 export type RootState = ReturnType<typeof store.getState>;
 // export type AppDispatch = typeof store.dispatch;
@@ -120,10 +124,7 @@ export interface IgetNewPassword {
 
 export interface IgetUserData {
   type: typeof GET_PROFILE_INFO;
-  payload: {
-    email: string;
-    name: string;
-  };
+  payload: IprofileInfo;
 }
 
 export interface IingredientOpen {

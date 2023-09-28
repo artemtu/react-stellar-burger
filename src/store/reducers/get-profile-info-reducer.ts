@@ -1,14 +1,14 @@
 import { GET_PROFILE_INFO } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-interface IprofileInfo {
+export interface IprofileInfo {
   user: {
     name: string;
     email: string;
   };
 }
 
-interface IprofileInfoTrueState {
+export interface IprofileInfoTrueState {
   profileInfo: IprofileInfo;
 }
 
@@ -29,7 +29,7 @@ export const profileInfoReducer = (
     case GET_PROFILE_INFO:
       return {
         ...state,
-        profileInfoRed: action.payload,
+        profileInfo: action.payload,
       };
     default:
       return state;
