@@ -7,6 +7,8 @@ import Modal from "../../components/modal/modal";
 import FeedPage from "../../components/feed-id-modal/feed-id-modal";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 import { IfeedState, Iorders } from "../../store/types";
+import { GET_FEED, WSS_CLOSE, WSS_OPEN } from "../../store/actions/actions";
+import { socketUrl } from "../../store/socketMiddleware";
 
 function Feed() {
   const dispatch = useAppDispatch();
@@ -17,10 +19,27 @@ function Feed() {
   const [orderNumber, setOrderNumber] = React.useState<Iorders[]>([]);
 
   useEffect(() => {
-    dispatch({ type: "WS_FEED_INIT" });
+    dispatch({
+      type: WSS_OPEN,
+      meta: {
+        socket: {
+          event: "INIT",
+          uri: socketUrl + "/all",
+          actionTypes: { message: GET_FEED },
+        },
+      },
+    });
 
     return () => {
-      dispatch({ type: "WS_FEED_CLOSE" });
+      dispatch({
+        type: WSS_CLOSE,
+        meta: {
+          socket: {
+            event: "CLOSE",
+            uri: socketUrl + "/all",
+          },
+        },
+      });
     };
   }, [dispatch]);
 
