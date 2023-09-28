@@ -1,10 +1,14 @@
-import React from "react";
+import { ReactNode } from "react";
 import styles from "./overlay.module.css";
 
-function Overlay({ children, closeModal }) {
-  const handleOverlayClick = (event) => {
+type TModalOverlay = {
+  closeModal: () => void | undefined;
+  children: ReactNode;
+};
+
+function Overlay({ children, closeModal }: TModalOverlay) {
+  const handleOverlayClick = (event: any) => {
     if (event.target.classList.contains(styles.overlay)) {
-      // console.log('я в оверлее');
       closeModal();
     }
   };
@@ -15,6 +19,5 @@ function Overlay({ children, closeModal }) {
     </div>
   );
 }
-
 
 export default Overlay;
