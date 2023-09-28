@@ -11,7 +11,7 @@ import { RootState, useAppSelector } from "../../store/types";
 function Header() {
   const location = useLocation();
   const isAuthChecked = useAppSelector(
-    (state) => state.loginUser.isAuthChecked
+    (state) => state.loginUser.loginUser.isAuthChecked
   );
   const profileOrLogin = isAuthChecked ? "/profile" : "/login";
 

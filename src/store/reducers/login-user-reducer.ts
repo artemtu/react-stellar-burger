@@ -10,11 +10,11 @@ export interface IloginUser {
     email: string;
     name: string;
   };
+  isAuthChecked: boolean;
 }
 
 interface IloginUserFull {
   loginUser: IloginUser;
-  isAuthChecked: boolean;
 }
 
 export const initialState: IloginUserFull = {
@@ -26,8 +26,8 @@ export const initialState: IloginUserFull = {
       email: "",
       name: "",
     },
+    isAuthChecked: false,
   },
-  isAuthChecked: false,
 };
 
 export const loginUserReducer = (state = initialState, action: ActionTypes) => {
@@ -41,7 +41,7 @@ export const loginUserReducer = (state = initialState, action: ActionTypes) => {
     case SET_AUTH_CHEKCED:
       return {
         ...state,
-        isAuthChecked: true,
+        isAuthChecked: action.payload,
       };
     default:
       return state;
