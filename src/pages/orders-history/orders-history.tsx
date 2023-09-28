@@ -63,7 +63,7 @@ function OrdersHistory({ setIsOrderIddModal }: Props) {
   const handleOrderClick = (id: string) => {
     window.history.pushState({}, "", `/profile/orders/${id}`);
     dispatch(setMyOrderId(id));
-    setIsOrderIddModal({ open: true, id:'' });
+    setIsOrderIddModal({ open: true, id });
   };
 
   return (
