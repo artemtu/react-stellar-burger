@@ -4,8 +4,8 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useAppSelector } from "../../store/types";
 
 type Props = {
-  id: string;
-  _id: string;
+  id?: string;
+  _id?: string;
 };
 
 function MyOrderIdModal({ id }: Props) {
