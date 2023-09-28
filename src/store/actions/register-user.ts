@@ -1,7 +1,7 @@
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { REGISTER_USER } from "./actions";
-import { IgetUserRegistration } from "../types";
+import { AppDispatch, IgetUserRegistration } from "../types";
 
 interface IRegistration {
   email: string;
@@ -17,8 +17,7 @@ export const getUserRegistration = (profileData: IgetUserRegistration) => {
 };
 
 export const postUser =
-  (registration: IRegistration) =>
-  (dispatch) => {
+  (registration: IRegistration) => (dispatch: AppDispatch) => {
     return fetch(`${config.baseUrl}/auth/register`, {
       method: "POST",
       headers: config.headers,

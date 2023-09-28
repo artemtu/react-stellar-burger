@@ -3,6 +3,7 @@ import { checkResponse } from "../../components/api/api";
 import { GET_PROFILE_INFO } from "./actions";
 import { fetchWithRefresh } from "./refreshToken";
 import { IgetUserData } from "../types";
+import { AppDispatch } from "../types";
 
 export const getUserData = (userInfo: IgetUserData) => {
   return {
@@ -12,7 +13,7 @@ export const getUserData = (userInfo: IgetUserData) => {
 };
 
 export const getUser = () => {
-  return (dispatch) => {
+  return (dispatch: AppDispatch) => {
     return fetchWithRefresh(`${config.baseUrl}/auth/user`, {
       method: "GET",
       headers: {
