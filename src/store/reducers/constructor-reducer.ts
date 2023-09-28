@@ -74,9 +74,14 @@ export const constructorReducer = (
       );
       return {
         ...state,
-        ingredients: state.constructorBurger.ingredients.filter(
-          (ingredient) => ingredient !== ingredientSelected
-        ),
+        constructorBurger: {
+          ...state.constructorBurger,
+          ingredients: [
+            ...state.constructorBurger.ingredients.filter(
+              (ingredient) => ingredient !== ingredientSelected
+            ),
+          ],
+        },
       };
     case CHANGE_INGREDIENT:
       const { indexFrom, indexTo, ingredient } = action.payload;

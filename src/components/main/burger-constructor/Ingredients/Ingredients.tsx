@@ -19,7 +19,7 @@ function Ingredients({ data }: Props) {
   const dispatch = useAppDispatch();
 
   const handleRemoveIngredient = (_constId: string) => {
-    dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
+    dispatch({ type: REMOVE_INGREDIENT, payload: { ingredientId: _constId } });
   };
 
   return (
