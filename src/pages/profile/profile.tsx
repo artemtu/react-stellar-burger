@@ -26,8 +26,7 @@ function Profile() {
   }, [dispatch]);
 
   const profileInfo = useAppSelector(
-    //@ts-ignore
-    (state) => state.profileInfo.profileInfo.user
+    (state) => state.profileInfoRed.profileInfo.user
   );
 
   useEffect(() => {

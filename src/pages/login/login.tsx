@@ -20,11 +20,9 @@ function Login() {
       email: email,
       password: password,
     };
-    dispatch(postUserLogin(login))
-      //@ts-ignore
-      .then((login) => {
-        navigate("/profile");
-      });
+    dispatch(postUserLogin(login)).then((login) => {
+      navigate("/profile");
+    });
   };
 
   return (
