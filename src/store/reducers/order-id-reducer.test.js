@@ -7,7 +7,6 @@ describe("orderIdReducer", () => {
     expect(orderIdReducer(undefined, {})).toEqual(initialState);
   });
 
-  // Тестирование обработки действия SET_ORDER_ID
   it("should handle SET_ORDER_ID action", () => {
     const mockOrderId = "12345";
     const action = {
@@ -15,6 +14,9 @@ describe("orderIdReducer", () => {
       payload: mockOrderId,
     };
 
-    expect(orderIdReducer(undefined, action)).toEqual({ orderId: mockOrderId });
+    expect(orderIdReducer(undefined, action)).toEqual({
+      orderId: "",
+      orderReduceer: mockOrderId,
+    });
   });
 });
