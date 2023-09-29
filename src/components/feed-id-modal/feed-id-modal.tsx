@@ -16,7 +16,6 @@ function FeedPage({ id }: Props) {
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
   if (orders.length === 0) return null;
-  if (orderId.length === 0) return null;
 
   let thisOrder: any;
 
@@ -87,7 +86,7 @@ function FeedPage({ id }: Props) {
       <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
       <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
         {test.map((item: any, index: number) => (
-          <div className={styles.ingredient}>
+          <div className={styles.ingredient} key={item.id || index}>
             <div className={styles.nameContainer}>
               <div className={styles.сircle}>
                 <img
