@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import styles from "./main.module.css";
 import BunUpConstructor from "./burger-constructor/bun-top-constructor/bun-top-consctructor";
 import BunBottomConstructor from "./burger-constructor/bun-bottom-constructor/bun-bottom-constructor";
@@ -13,7 +13,6 @@ import { ADD_BUN } from "../../store/actions/actions";
 import { ADD_INGREDIENT } from "../../store/actions/actions";
 import { IngredientModalState } from "./burger-ingredients/ingredient-list/ingredient-list";
 import { useAppDispatch, useAppSelector } from "../../store/types";
-
 
 import {
   ConstructorElement,
@@ -31,7 +30,7 @@ interface IModalFunctions {
 
 export interface IingredientFullInfo {
   _id?: string;
-  id: string;
+  id?: string;
   name: string;
   type: string;
   proteins: number;
@@ -49,24 +48,19 @@ export interface IingredientFullInfo {
 function Main({ openModal, setIngredientModal }: IModalFunctions) {
   const dispatch = useAppDispatch();
 
-  const selectIngredients = useAppSelector((state) => state.mainData);
+  const selectIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   const data = useAppSelector((state) => state.constructorBurger);
 
+  const bunsArray = selectIngredients.filter((item) => item.type === "bun");
 
-  const bunsArray = (selectIngredients as any).data.filter(
-    (item: any) => item.type === "bun"
+  const fillingsArray = selectIngredients.filter(
+    (item) => item.type === "main"
   );
 
-
-  const fillingsArray = (selectIngredients as any).data.filter(
-    (item: any) => item.type === "main"
-  );
-
-
-  const sauceArray = (selectIngredients as any).data.filter(
-    (item: any) => item.type === "sauce"
-  );
+  const sauceArray = selectIngredients.filter((item) => item.type === "sauce");
 
   const [{ isOver }, dropRef] = useDrop({
     accept: "ingredients",
@@ -122,7 +116,7 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
             Начинки
           </Tab>
         </div>
-        <div className={`${styles.scroll} custom-scroll`}>
+        <div className={`${styles.scroll} custom-scroll`} id={'mainScroll'}>
           <div ref={bunRef}>
             <div ref={inViewBunRef}>
               <h2 className="text text_type_main-medium mt-10">Булки</h2>
@@ -156,9 +150,9 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
 
       <section className={`${styles.burgerBar} mt-25 ml-10`} ref={dropRef}>
         <div className={`${styles.burgerBarContainer} ml-4 mr-4`}>
-          <BunUpConstructor data={data.bun} />
-          <Ingredients data={data.ingredients} />
-          <BunBottomConstructor data={data.bun} />
+          <BunUpConstructor data={data.constructorBurger.bun} />
+          <Ingredients data={data.constructorBurger.ingredients} />
+          <BunBottomConstructor data={data.constructorBurger.bun} />
         </div>
         <Extraction openModal={openModal} />
       </section>

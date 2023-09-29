@@ -21,29 +21,3 @@ export const getFeed = (data: IFeedData) => {
     payload: data,
   };
 };
-
-// export const fetchFeed = () => (dispatch) => {
-//   const socket = new WebSocket("wss://norma.nomoreparties.space/orders/all");
-
-//   // Открываем соединение
-//   socket.addEventListener("open", function (event) {
-//     console.log("Соединение открыто", event);
-//   });
-
-//   // Ловим сообщения с сервера
-//   socket.addEventListener("message", function (event) {
-//     const data = JSON.parse(event.data);
-
-//     dispatch(getFeed(data));
-//   });
-
-//   socket.addEventListener("error", function (error) {
-//     console.error("Ошибка в соединении", error);
-//   });
-//   socket.addEventListener("close", function (event) {
-//     console.log("Соединение закрыто", event);
-//   });
-//   return () => {
-//     socket.close();
-//   };
-// };

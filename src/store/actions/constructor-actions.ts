@@ -1,7 +1,4 @@
-import { LogoutIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { GET_BURGER_CONSTRUCTOR_INGREDIENTS } from "./actions";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 export interface Ingredient {
   _id: string;
@@ -17,8 +14,6 @@ export interface Ingredient {
   image_large: string;
   isBunDragged: boolean;
 }
-
-
 
 export const getIngredients = (
   bun: Ingredient[],

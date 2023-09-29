@@ -1,4 +1,3 @@
-
 import {
   CHANGE_INGREDIENT,
   GET_BURGER_CONSTRUCTOR_INGREDIENTS,
@@ -6,70 +5,88 @@ import {
 import { REMOVE_INGREDIENT } from "../actions/actions";
 import { ADD_BUN } from "../actions/actions";
 import { ADD_INGREDIENT } from "../actions/actions";
- import { ActionTypes } from "../types";
+import { ActionTypes } from "../types";
 
-
-
-interface IIngredient {
-  _constId: string;
+export interface IIngredient {
+  id?: string;
+  image: string;
+  name: string;
+  price: number;
+  type: string;
+  _constId?: string;
+  proteins?: number;
+  fat?: number;
+  carbohydrates?: number;
+  calories: number;
+  image_mobile: string;
+  image_large: string;
 }
 
-// Тип для начального состояния
 interface IConstructorState {
   bun: IIngredient[];
   ingredients: IIngredient[];
   isBunDragged: boolean;
 }
 
-
+interface IConstructorTrueState {
+  constructorBurger: IConstructorState;
+}
 
 // Начальное состояние  редьюсера
-const initialState = {
-  bun: [],
-  ingredients: [],
-  isBunDragged: false,
+export const initialState: IConstructorTrueState = {
+  constructorBurger: {
+    bun: [],
+    ingredients: [],
+    isBunDragged: false,
+  },
 };
 
-
-const constructorReducer = (state:IConstructorState = initialState, action:ActionTypes) => {
-
+export const constructorReducer = (
+  state = initialState,
+  action: ActionTypes
+) => {
   switch (action.type) {
     case GET_BURGER_CONSTRUCTOR_INGREDIENTS:
       return {
         ...state,
-        //@ts-ignore
-        bun: action.payload.bun,
-        //@ts-ignore
-        ingredients: action.payload.ingredients,
-        isLoading: false,
+        bun: action.payload,
+        ingredients: action.payload,
       };
     case ADD_BUN:
       return {
         ...state,
-        bun: [action.payload],
+        constructorBurger: {
+          ...state.constructorBurger,
+          bun: [action.payload],
+        },
       };
     case ADD_INGREDIENT:
       return {
         ...state,
-        ingredients: [...state.ingredients, action.payload],
+        constructorBurger: {
+          ...state.constructorBurger,
+          ingredients: [...state.constructorBurger.ingredients, action.payload],
+        },
       };
     case REMOVE_INGREDIENT:
-      const ingredientSelected = state.ingredients.find(
-        //@ts-ignore
-        (ingredient) => ingredient._constId === action.payload
+      const ingredientSelected = state.constructorBurger.ingredients.find(
+        (ingredient) => ingredient._constId === action.payload.ingredientId
       );
       return {
         ...state,
-        ingredients: state.ingredients.filter(
-          (ingredient) => ingredient !== ingredientSelected
-        ),
+        constructorBurger: {
+          ...state.constructorBurger,
+          ingredients: [
+            ...state.constructorBurger.ingredients.filter(
+              (ingredient) => ingredient !== ingredientSelected
+            ),
+          ],
+        },
       };
     case CHANGE_INGREDIENT:
-      //@ts-ignore
       const { indexFrom, indexTo, ingredient } = action.payload;
-      state.ingredients.splice(indexFrom, 1);
-      //@ts-ignore
-      state.ingredients.splice(indexTo, 0, ingredient);
+      state.constructorBurger.ingredients.splice(indexFrom, 1);
+      state.constructorBurger.ingredients.splice(indexTo, 0, ingredient);
       return {
         ...state,
       };

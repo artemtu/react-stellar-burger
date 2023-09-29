@@ -6,7 +6,7 @@ import { ListIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useAppSelector } from "../../store/types";
+import { RootState, useAppSelector } from "../../store/types";
 
 function Header() {
   const location = useLocation();

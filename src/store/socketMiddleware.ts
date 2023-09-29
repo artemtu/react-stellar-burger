@@ -1,46 +1,70 @@
+import { Middleware } from "redux";
 import { GET_FEED, GET_MY_FEED } from "./actions/actions";
-let feedSocket;
-let myFeedSocket;
-let accessToken = localStorage.getItem("accessToken");
+export const socketUrl = "wss://norma.nomoreparties.space/orders";
 
-if (accessToken && accessToken.startsWith("Bearer ")) {
-  accessToken = accessToken.slice(7);
+export type SocketEvent = "INIT" | "CLOSE";
+
+interface SocketActionTypes {
+  message: typeof GET_FEED | typeof GET_MY_FEED;
 }
 
-export const socketMiddleware = (store) => (next) => (action) => {
-  switch (action.type) {
-    case "WS_FEED_INIT":
-      feedSocket = new WebSocket("wss://norma.nomoreparties.space/orders/all");
-      feedSocket.addEventListener("message", (event) => {
-        const data = JSON.parse(event.data);
-        store.dispatch({ type: GET_FEED, payload: data });
-      });
-      break;
+interface SocketMeta {
+  socket: {
+    event: SocketEvent;
+    uri: string;
+    actionTypes: SocketActionTypes;
+    token?: string;
+  };
+}
 
-    case "WS_MY_FEED_INIT":
-    //   const accessToken = localStorage.getItem("accessToken");
-      myFeedSocket = new WebSocket(
-        `wss://norma.nomoreparties.space/orders?token=${accessToken}`
-      );
-      myFeedSocket.addEventListener("message", (event) => {
-        const data = JSON.parse(event.data);
-        store.dispatch({ type: GET_MY_FEED, payload: data });
-        console.log('приватное соединение включено');
-        
-      });
-      break;
+interface SocketAction {
+  type: string;
+  meta?: SocketMeta;
+}
 
-    case "WS_FEED_CLOSE":
-      if (feedSocket) feedSocket.close();
-      break;
+let sockets: { [key: string]: WebSocket } = {};
 
-    case "WS_MY_FEED_CLOSE":
-      if (myFeedSocket) myFeedSocket.close();
-      console.log('приватное соединение ВЫКЛ');
-      break;
+export const socketMiddleware: Middleware<{}, any, any> =
+  (store) => (next) => (action: SocketAction) => {
+    if (!action.meta || !action.meta.socket) {
+      return next(action);
+    }
 
-    default:
-      next(action);
-      break;
-  }
-};
+    const { type, meta } = action;
+    const {
+      socket: { event, uri, actionTypes, token },
+    } = meta;
+
+    switch (event) {
+      case "INIT":
+        if (sockets[uri]) sockets[uri].close();
+        let url = uri;
+        if (token) {
+          const accessToken = localStorage.getItem(token);
+          if (!accessToken || !accessToken.startsWith("Bearer ")) {
+            console.error("Token is missing");
+            return;
+          }
+          url += `?token=${accessToken.slice(7)}`;
+        }
+
+        const socket = new WebSocket(url);
+        socket.addEventListener("message", (event) => {
+          const data = JSON.parse(event.data);
+          store.dispatch({ type: actionTypes.message, payload: data });
+        });
+        sockets[uri] = socket;
+        break;
+
+      case "CLOSE":
+        if (sockets[uri]) {
+          sockets[uri].close();
+          delete sockets[uri];
+        }
+        break;
+
+      default:
+        next(action);
+        break;
+    }
+  };

@@ -20,7 +20,7 @@ export interface IfeedState {
   };
 }
 
-const initialState: IfeedState = {
+export const initialState: IfeedState = {
   getMyFeed: {
     success: false,
     orders: [],
@@ -29,7 +29,7 @@ const initialState: IfeedState = {
   },
 };
 
-const feedMyReducer = (state = initialState, action: ActionTypes) => {
+export const feedMyReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case GET_MY_FEED:
       return {

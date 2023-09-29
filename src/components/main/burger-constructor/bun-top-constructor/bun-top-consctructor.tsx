@@ -3,11 +3,11 @@ import {
   ConstructorElement,
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import PropTypes from "prop-types";
 import { IingredientFullInfo } from "../../main";
+import { IIngredient } from "../../../../store/reducers/constructor-reducer";
 
 type Props = {
-  data: IingredientFullInfo[];
+  data: IIngredient[];
 };
 
 function BunUpConstructor({ data }: Props) {
@@ -27,8 +27,6 @@ function BunUpConstructor({ data }: Props) {
     </div>
   );
 }
-// BunUpConstructor.propTypes = {
-//   data: PropTypes.array.isRequired,
-// };
+
 
 export default BunUpConstructor;

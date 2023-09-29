@@ -2,7 +2,7 @@ import { FORGOT_PASSWORD } from "./actions";
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { useNavigate } from "react-router-dom";
-import { IgetNewPassword } from "../types";
+import { AppDispatch, IgetNewPassword } from "../types";
 
 export const getNewPassword = (passwordData: IgetNewPassword) => {
   return {
@@ -11,9 +11,7 @@ export const getNewPassword = (passwordData: IgetNewPassword) => {
   };
 };
 
-//@ts-ignore
-export const postResetPassword = (email) => (dispatch) => {
-  // const navigate = useNavigate();
+export const postResetPassword = (email: string) => (dispatch: AppDispatch) => {
   return fetch(`${config.baseUrl}/password-reset`, {
     method: "POST",
     headers: config.headers,

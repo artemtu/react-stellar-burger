@@ -3,6 +3,7 @@ import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { setAuthChecked } from "./set-auth-checked";
 import { IpostUserLogout } from "../types";
+import { AppDispatch } from "../types";
 
 export const postUserLogout = (logoutData: IpostUserLogout) => {
   return {
@@ -11,8 +12,7 @@ export const postUserLogout = (logoutData: IpostUserLogout) => {
   };
 };
 
-
-export const postLogout = (logout) => (dispatch) => {
+export const postLogout = (logout: any) => (dispatch: AppDispatch) => {
   return fetch(`${config.baseUrl}/auth/logout`, {
     method: "POST",
     headers: {
@@ -25,7 +25,6 @@ export const postLogout = (logout) => (dispatch) => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       dispatch(postUserLogout(data));
-      // console.log(data);
       dispatch(setAuthChecked(false));
     })
     .catch(console.error);

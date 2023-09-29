@@ -15,8 +15,6 @@ export const ingredientPropType = PropTypes.shape({
   __v: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
   index:PropTypes.number.isRequired,
   closeModal: PropTypes.func.isRequired,
   children: PropTypes.array.isRequired

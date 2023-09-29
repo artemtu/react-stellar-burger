@@ -1,41 +1,54 @@
 import React from "react";
 import styles from "./feed.module.css";
-// import { fetchFeed } from "../../store/actions/feed-all-orders";
 import { useEffect } from "react";
 import IngredientsLine from "../../components/ingredient-line/ingredient-line";
 import { useState } from "react";
 import Modal from "../../components/modal/modal";
 import FeedPage from "../../components/feed-id-modal/feed-id-modal";
 import { useAppDispatch, useAppSelector } from "../../store/types";
+import { IfeedState, Iorders } from "../../store/types";
+import { GET_FEED, WSS_CLOSE, WSS_OPEN } from "../../store/actions/actions";
+import { socketUrl } from "../../store/socketMiddleware";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Feed() {
   const dispatch = useAppDispatch();
   const [totalOrdersAll, setTotalOrders] = React.useState("");
   const [totalOrdersToday, setTotalOrdersToday] = React.useState("");
-  const [orderIsReady, setOrderIsReady] = React.useState([]);
-  const [orderIsPending, setOrderIsPending] = React.useState([]);
-  const [orderNumber, setOrderNumber] = React.useState([]);
-
-  // useEffect(() => {
-  //   const closeSocket = dispatch(fetchFeed());
-
-  //   return () => {
-  //     closeSocket();
-  //   };
-  // }, [dispatch]);
+  const [orderIsReady, setOrderIsReady] = React.useState<string[]>([]);
+  const [orderIsPending, setOrderIsPending] = React.useState<string[]>([]);
+  const [orderNumber, setOrderNumber] = React.useState<Iorders[]>([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    dispatch({ type: "WS_FEED_INIT" });
+    dispatch({
+      type: WSS_OPEN,
+      meta: {
+        socket: {
+          event: "INIT",
+          uri: socketUrl + "/all",
+          actionTypes: { message: GET_FEED },
+        },
+      },
+    });
 
     return () => {
-      dispatch({ type: "WS_FEED_CLOSE" });
+      dispatch({
+        type: WSS_CLOSE,
+        meta: {
+          socket: {
+            event: "CLOSE",
+            uri: socketUrl + "/all",
+          },
+        },
+      });
     };
   }, [dispatch]);
 
-  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: 1 });
+  const [isFeedIdModal, setIsFeedIdModal] = useState({ open: false, id: "1" });
 
   const totalOrders = useAppSelector((state) => state.getFeed.getFeed);
-  console.log(totalOrders);
 
   useEffect(() => {
     if (totalOrders) {
@@ -78,7 +91,9 @@ function Feed() {
   }, [orderNum]);
 
   function closeModal() {
-    setIsFeedIdModal({ open: false, id: 1 });
+    setIsFeedIdModal({ open: false, id: "1" });
+    const currentPath = location.pathname;
+    navigate(currentPath);
   }
 
   return (
@@ -91,7 +106,7 @@ function Feed() {
       {/* вторая часть страницы */}
       {isFeedIdModal.open && (
         <Modal closeModal={closeModal}>
-          <FeedPage id={isFeedIdModal.id} />
+          <FeedPage id={isFeedIdModal.id.toString()} />
         </Modal>
       )}
 

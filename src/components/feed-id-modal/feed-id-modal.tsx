@@ -3,23 +3,29 @@ import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-component
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useAppSelector } from "../../store/types";
 
-function FeedPage({ id }) {
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+type Props = {
+  id?: string;
+};
+
+function FeedPage({ id }: Props) {
+  const AllIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   const orders = useAppSelector((state) => state.getFeed.getFeed.orders);
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
   if (orders.length === 0) return null;
 
-  let thisOrder;
+  let thisOrder: any;
 
   if (id) {
-    thisOrder = orders.find((item: any) => item._id === id);
+    thisOrder = orders.find((item) => item._id === id);
   } else if (orderId) {
-    thisOrder = orders.find((item: any) => item._id === orderId);
+    thisOrder = orders.find((item) => item._id === orderId);
   }
 
-  const countById = thisOrder.ingredients.reduce((acc, id) => {
+  const countById = thisOrder.ingredients.reduce((acc: any, id: string) => {
     acc[id] = (acc[id] || 0) + 1;
     return acc;
   }, {});
@@ -33,10 +39,10 @@ function FeedPage({ id }) {
 
   const idsInOrder = thisOrder.ingredients;
 
-  const test = idsInOrder.reduce((acc, id) => {
+  const test = idsInOrder.reduce((acc: any, id: string) => {
     const foundIngredient = ingredientsData.find((item) => item.id === id);
 
-    const existingIngredient = acc.find((item) => item.id === id);
+    const existingIngredient = acc.find((item: any) => item.id === id);
 
     let incrementValue = countById[id];
 
@@ -61,9 +67,9 @@ function FeedPage({ id }) {
 
   const totalSum = test
 
-    .map((item) => item.count * item.price)
+    .map((item: any) => item.count * item.price)
 
-    .reduce((acc, val) => acc + val, 0);
+    .reduce((acc: any, val: number) => acc + val, 0);
 
   return (
     <>
@@ -80,7 +86,7 @@ function FeedPage({ id }) {
       <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
       <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
         {test.map((item: any, index: number) => (
-          <div className={styles.ingredient}>
+          <div className={styles.ingredient} key={item.id || index}>
             <div className={styles.nameContainer}>
               <div className={styles.сircle}>
                 <img

@@ -1,42 +1,32 @@
 import { GET_INGREDIENTS } from "../actions/actions";
-import { IgetIngredients } from "../types";
-import { IData } from "../types";
+import { ActionTypes } from "../types";
+import { IingredientFullInfo } from "../../components/main/main";
 
-// type IngredientType = IData;
-
-interface IingredientFullInfo {
-  _id: string;
-  name: string;
-  type: string;
-  proteins: number;
-  fat: number;
-  calories: number;
-  carbohydrates: number;
-  image: string;
-  image_large: string;
-  image_mobile: string;
-  __v: number;
-  _constId?: string;
-}
-
-
-interface IngredientState {
+interface IdataState {
   data: IingredientFullInfo[];
-  isLoading: boolean;
+  success: boolean;
 }
-// Начальное состояние редьюсера
-const initialState: IngredientState = {
-  data: [],
-  isLoading: true,
+
+interface IdataTrueState {
+  mainData: IdataState;
+}
+
+export const initialState: IdataTrueState = {
+  mainData: {
+    data: [],
+    success: false,
+  },
 };
 
-const ingredientReducer = (state = initialState, action: IgetIngredients) => {
+export const ingredientReducer = (
+  state = initialState,
+  action: ActionTypes
+) => {
   switch (action.type) {
     case GET_INGREDIENTS:
       return {
         ...state,
-        data: action.payload,
-        isLoading: false,
+        mainData: action.payload,
       };
 
     default:

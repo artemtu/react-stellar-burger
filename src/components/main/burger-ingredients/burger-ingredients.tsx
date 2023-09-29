@@ -41,12 +41,14 @@ export function Ingridients({
   );
 
   const bunCount =
-    bunsIngredientsFromStore.bun.filter((item: Iingredients) => item.id === id)
-      .length * 2;
+    bunsIngredientsFromStore.constructorBurger.bun.filter(
+      (item) => item.id === id
+    ).length * 2;
 
-  const ingredientCount = bunsIngredientsFromStore.ingredients.filter(
-    (item: Iingredients) => item.id === id
-  ).length;
+  const ingredientCount =
+    bunsIngredientsFromStore.constructorBurger.ingredients.filter(
+      (item) => item.id === id
+    ).length;
 
   const totalCount = bunCount + ingredientCount;
 

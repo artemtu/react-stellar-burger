@@ -3,12 +3,35 @@ import {
   CLEAR_INGREDIENT_OPEN,
 } from "../actions/actions";
 import { ActionTypes } from "../types";
+import { IingredientFullInfo } from "./order-details-reducer";
 
-const initialState = {
-  ingredient: [],
+interface IingredientOpenTrueState {
+  ingredient: IingredientFullInfo;
+}
+
+export const initialState: IingredientOpenTrueState = {
+  ingredient: {
+    _id: "",
+    id: "",
+    name: "",
+    type: "",
+    proteins: 0,
+    fat: 0,
+    calories: 0,
+    carbohydrates: 0,
+    image: "",
+    image_large: "",
+    image_mobile: "",
+    __v: 0,
+    price: 0,
+    _constId: "",
+  },
 };
 
-const ingredientOpenReducer = (state = initialState, action: ActionTypes) => {
+export const ingredientOpenReducer = (
+  state = initialState,
+  action: ActionTypes
+) => {
   switch (action.type) {
     case GET_INFO_OPEN_INGREDIENT_MODAL:
       return {

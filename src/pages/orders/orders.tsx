@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/app-header/app-header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./orders.module.css";
 import { useLocation } from "react-router-dom";
 import OrdersHistory from "../orders-history/orders-history";
@@ -9,40 +9,69 @@ import Modal from "../../components/modal/modal";
 import MyOrderIdModal from "../../components/my-order-id-modal/my-order-id-modal";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/types";
+import { WSS_OPEN, WSS_CLOSE } from "../../store/actions/actions";
+import { GET_MY_FEED } from "../../store/actions/actions";
+import { socketUrl } from "../../store/socketMiddleware";
 // import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 
 function ProfileOrders() {
   const location = useLocation();
   const [isOrderIddModal, setIsOrderIddModal] = useState({
     open: false,
-    id: 1,
+    id: "1",
   });
 
   const myFeedData = useAppSelector((state) => state.myOrders.getMyFeed);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const closeSocket = dispatch(fetchMyFeed());
+  let accessToken = localStorage.getItem("accessToken");
 
-  //   return () => {
-  //     closeSocket();
-  //   };
-  // }, [dispatch]);
+  if (accessToken && accessToken.startsWith("Bearer ")) {
+    accessToken = accessToken.slice(7);
+  }
+  const socketUrlPrivate = accessToken
+    ? `${socketUrl}?token=${accessToken}`
+    : socketUrl;
 
   useEffect(() => {
-    dispatch({ type: "WS_MY_FEED_INIT" });
+    if (!accessToken) {
+      console.error("No access token is available");
+      return;
+    }
+
+    dispatch({
+      type: WSS_OPEN,
+      meta: {
+        socket: {
+          event: "INIT",
+          uri: socketUrlPrivate,
+          actionTypes: { message: GET_MY_FEED },
+        },
+      },
+    });
 
     return () => {
-      dispatch({ type: "WS_MY_FEED_CLOSE" });
+      dispatch({
+        type: WSS_CLOSE,
+        meta: {
+          socket: {
+            event: "CLOSE",
+            uri: socketUrlPrivate,
+          },
+        },
+      });
     };
-  }, [dispatch]);
+  }, [dispatch, accessToken, socketUrlPrivate]);
 
   if (!myFeedData) {
     return <p>Loading...</p>;
   }
 
   function closeModal() {
-    setIsOrderIddModal({ open: false, id: 1 });
+    setIsOrderIddModal({ open: false, id: "1" });
+    const currentPath = location.pathname;
+    navigate(currentPath);
   }
 
   return (
@@ -90,5 +119,3 @@ function ProfileOrders() {
 }
 
 export default ProfileOrders;
-
-// ${location.pathname === '/' ? '' : 'text_color_inactive'}

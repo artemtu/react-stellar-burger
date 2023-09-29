@@ -1,7 +1,7 @@
 import { config } from "../../components/api/api";
 import { checkResponse } from "../../components/api/api";
 import { GET_ORDER_NUMBER } from "./actions";
-import { IgetOrderNumber } from "../types";
+import { AppDispatch, IgetOrderNumber } from "../types";
 
 export const getOrderNumber = (orderDetails: IgetOrderNumber) => {
   return {
@@ -19,11 +19,12 @@ export interface IOrder {
 export type OpenModalFunction = (arg: { open: boolean }) => void;
 
 export const postOrder =
-  (
-    order: IOrder,
-    openModal: OpenModalFunction 
-  ) =>
-  (dispatch) => {
+  (order: IOrder, openModal: OpenModalFunction) => (dispatch: AppDispatch) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      console.error("Token is missing");
+      return;
+    }
     return fetch(`${config.baseUrl}/orders`, {
       method: "POST",
       headers: {
@@ -31,8 +32,8 @@ export const postOrder =
         Authorization: `${accessToken}`,
       },
       body: JSON.stringify(order),
-      //@ts-ignore
-      Authorization: `${accessToken}`,
+
+      // Authorization: `${accessToken}`,
     })
       .then(checkResponse)
       .then((data) => {

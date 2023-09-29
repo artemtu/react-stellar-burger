@@ -1,4 +1,7 @@
-import { REMOVE_INGREDIENT } from "../../../../store/actions/actions";
+import {
+  CHANGE_INGREDIENT,
+  REMOVE_INGREDIENT,
+} from "../../../../store/actions/actions";
 import { useDrag, useDrop } from "react-dnd";
 import { changeIngredient } from "../../../../store/actions/add-remove";
 import { IingredientFullInfo } from "../../main";
@@ -9,16 +12,17 @@ import {
   DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./ingredients.module.css";
+import { IIngredient } from "../../../../store/reducers/constructor-reducer";
 
 type Props = {
-  data: IingredientFullInfo[];
+  data: IIngredient[];
 };
 
 function Ingredients({ data }: Props) {
   const dispatch = useAppDispatch();
 
-  const handleRemoveIngredient = (_constId) => {
-    dispatch({ type: REMOVE_INGREDIENT, payload: _constId });
+  const handleRemoveIngredient = (_constId: string) => {
+    dispatch({ type: REMOVE_INGREDIENT, payload: { ingredientId: _constId } });
   };
 
   return (
@@ -36,16 +40,13 @@ function Ingredients({ data }: Props) {
 }
 
 interface IDraggableIngredientProps {
-  data: IingredientFullInfo;
+  data: IIngredient;
   index: number;
   onRemove: (id: string, index?: number) => void;
 }
 
 interface IHoverProps {
-  ingredient: {
-    _id: string;
-    _constId: string;
-  };
+  ingredient: IIngredient;
 }
 
 function DraggableIngredient({
@@ -56,14 +57,16 @@ function DraggableIngredient({
   const dispatch = useAppDispatch();
 
   const ingredientsArray = useAppSelector(
-    (store) => store.constructorBurger.ingredients
+    (store) => store.constructorBurger.constructorBurger.ingredients
   );
 
   interface Styles {
     constructor: string;
   }
 
-  const findIndex = (item: string) => ingredientsArray.indexOf(item);
+  const findIndex = (item: IIngredient) => {
+    return ingredientsArray.indexOf(item);
+  };
 
   const [{ isDragging }, dragRef] = useDrag({
     type: "sort",
@@ -77,14 +80,14 @@ function DraggableIngredient({
     accept: "sort",
     hover({ ingredient }: IHoverProps) {
       if (ingredient._constId === data._constId) return;
-      dispatch(
-        changeIngredient({
-          //@ts-ignore
+      dispatch({
+        type: CHANGE_INGREDIENT,
+        payload: {
           indexFrom: findIndex(ingredient),
           indexTo: index,
           ingredient: ingredient,
-        })
-      );
+        },
+      });
     },
   });
 

@@ -1,7 +1,18 @@
 import { GET_PROFILE_INFO } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-const initialState = {
+export interface IprofileInfo {
+  user: {
+    name: string;
+    email: string;
+  };
+}
+
+export interface IprofileInfoTrueState {
+  profileInfo: IprofileInfo;
+}
+
+export const initialState: IprofileInfoTrueState = {
   profileInfo: {
     user: {
       name: "",
@@ -10,8 +21,10 @@ const initialState = {
   },
 };
 
-const profileInfoReducer = (state = initialState, action: ActionTypes) => {
-  //@ts-ignore
+export const profileInfoReducer = (
+  state = initialState,
+  action: ActionTypes
+) => {
   switch (action.type) {
     case GET_PROFILE_INFO:
       return {

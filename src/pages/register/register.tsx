@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/app-header/app-header";
 import styles from "./register.module.css";
 import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -7,7 +6,6 @@ import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link } from "react-router-dom";
 import { postUser } from "../../store/actions/register-user";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/types";
 

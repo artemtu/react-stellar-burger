@@ -1,45 +1,42 @@
-import React from "react";
-import Header from "../../components/app-header/app-header";
 import Main from "../../components/main/main";
 import Modal from "../../components/modal/modal";
 import IngredientDetails from "../../components/modal/ingredient-details/ingredient-details";
 import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
-import { useDispatch } from "react-redux";
-import { useAppDispatch } from "../../store/types";
+import { useLocation, useNavigate } from "react-router-dom";
+
+export type IngredientModalState = {
+  open: boolean;
+  id?: string;
+};
 
 function Home() {
-  const dispatch = useAppDispatch();
-
-  // const [isFeedIdModal, setIsFeedIdModal] = useState({ false: true, id: 1 });
-
   const [isOrderModal, setOrderModal] = useState({
     open: false,
   });
-  const [isIngredientModal, setIngredientModal] = useState({
-    open: false,
-    id: 1,
-  });
+  const [isIngredientModal, setIngredientModal] =
+    useState<IngredientModalState>({
+      open: false,
+      id: "1",
+    });
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function closeModal() {
     setOrderModal({ open: false });
-    setIngredientModal({ open: false, id: 1 });
-    // setIsFeedIdModal({ open: false, id: 1 });
+    setIngredientModal({ open: false, id: "1" });
+    const currentPath = location.pathname;
+    navigate(currentPath);
   }
 
   function openModal() {
     setOrderModal({ open: true });
   }
 
-  // function openFeedId() {
-  //   // console.log('я здест');
-  //   setIsFeedIdModal({ open: true });
-  // }
-
   return (
     <div className={styles.app}>
-      {/* <SomeComponent /> */}
       <Main
         setOrderModal={setOrderModal}
         setIngredientModal={setIngredientModal}
@@ -56,11 +53,6 @@ function Home() {
           <IngredientDetails id={isIngredientModal.id} />
         </Modal>
       )}
-      {/* {isFeedIdModal.open && (
-        <Modal closeModal={closeModal}>
-          <FeedPage id={isFeedIdModal.id} />
-        </Modal>
-      )} */}
     </div>
   );
 }

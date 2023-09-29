@@ -5,7 +5,6 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Overlay from "../overlay/overlay";
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 
 const modalRoot = document.getElementById("react-modal");
 
@@ -32,11 +31,17 @@ function Modal({ children, closeModal }: Imodal) {
     };
   });
 
+  if (modalRoot === null) return null;
+
   return ReactDOM.createPortal(
     <Overlay closeModal={closeModal}>
       <div className={styles.modal}>
         <div className={`${styles.close}`}>
-          <button className={`${styles.close__button}`} onClick={closeModal}>
+          <button
+            className={`${styles.close__button}`}
+            onClick={closeModal}
+            id="modalClose"
+          >
             <CloseIcon type="primary" />
           </button>
         </div>

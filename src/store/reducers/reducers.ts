@@ -22,14 +22,14 @@ const rootReducer = combineReducers({
   orderDetails: orderDetailReducer,
   registerUser: registerUserReducer,
   loginUser: loginUserReducer,
-  profileInfo: profileInfoReducer,
+  profileInfoRed: profileInfoReducer,
   forgotPassword: forgotPasswordReducer,
   resetPassword: resetPasswordReducer,
   logout: logoutReducer,
   getFeed: feedReducer,
   orderReduceer: orderIdReducer,
   myOrders: feedMyReducer,
-  myOrderId: myOrderIdReducer,
+  myOrderIdRed: myOrderIdReducer,
 });
 
 export default rootReducer;

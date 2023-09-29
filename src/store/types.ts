@@ -22,19 +22,29 @@ import {
 } from "./actions/actions";
 import { store } from "../index";
 import { IingredientFullInfo } from "../components/main/main";
+import { Action } from "redux";
+import { IloginUser } from "./reducers/login-user-reducer";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { IorderState } from "./reducers/order-details-reducer";
+import { ThunkDispatch } from "redux-thunk";
+import { IIngredient } from "./reducers/constructor-reducer";
+import {
+  IprofileInfo,
+  IprofileInfoTrueState,
+} from "./reducers/get-profile-info-reducer";
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+// export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = ThunkDispatch<RootState, undefined, Action>;
 
-// Используйте во всем приложении вместо обычных useDispatch и useSelector
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export interface IData {
-  success: boolean;
+  id?: string;
+  _constId?: string;
+  success?: boolean;
   _id: string;
   name: string;
   type: string;
@@ -46,10 +56,10 @@ export interface IData {
   image: string;
   image_mobile: string;
   image_large: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
-interface Iorders {
+export interface Iorders {
   _id: string;
   ingredients: string;
   status: string;
@@ -59,7 +69,7 @@ interface Iorders {
   number: string;
 }
 
-interface IfeedState {
+export interface IfeedState {
   success: boolean;
   orders: Iorders[];
   total: string;
@@ -69,20 +79,24 @@ interface IfeedState {
 interface Iid {
   id: string;
 }
+interface IdataState {
+  data: IingredientFullInfo[];
+  success: boolean;
+}
 
 export interface IgetIngredients {
   type: typeof GET_INGREDIENTS;
-  payload: IingredientFullInfo[];
+  payload: IdataState;
 }
 
 export interface IaddIngredient {
   type: typeof ADD_INGREDIENT;
-  payload: IData;
+  payload: IIngredient;
 }
 
 export interface IaddBun {
   type: typeof ADD_BUN;
-  payload: IData;
+  payload: IIngredient;
 }
 
 export interface IremoveIngredient {
@@ -94,7 +108,11 @@ export interface IremoveIngredient {
 
 export interface IchangeIngredient {
   type: typeof CHANGE_INGREDIENT;
-  payload: IData;
+  payload: {
+    indexFrom: number;
+    indexTo: number;
+    ingredient: IIngredient;
+  };
 }
 
 export interface IgetNewPassword {
@@ -106,15 +124,12 @@ export interface IgetNewPassword {
 
 export interface IgetUserData {
   type: typeof GET_PROFILE_INFO;
-  payload: {
-    email: string;
-    name: string;
-  };
+  payload: IprofileInfo;
 }
 
 export interface IingredientOpen {
   type: typeof GET_INFO_OPEN_INGREDIENT_MODAL;
-  payload: IData;
+  payload: IingredientFullInfo;
 }
 
 export interface IclearIngredientOpen {
@@ -123,15 +138,7 @@ export interface IclearIngredientOpen {
 
 export interface IgetUserLogin {
   type: typeof LOGIN_USER;
-  payload: {
-    success: boolean;
-    accessToken: string;
-    refreshToken: string;
-    user: Array<{
-      email: string;
-      name: string;
-    }>;
-  };
+  payload: IloginUser;
 }
 
 export interface IpostUserLogout {
@@ -173,7 +180,7 @@ export interface IresetPassword {
 export interface IsetAuthChecked {
   type: typeof SET_AUTH_CHEKCED;
   payload: {
-    value: boolean;
+    isAuthChecked: boolean;
   };
 }
 
@@ -194,12 +201,16 @@ export interface IgetMyFeed {
 
 export interface IsetMyOrderId {
   type: typeof SET_MY_ORDER_ID;
-  payload: Iid;
+  payload: {
+    myOrderId: Iid;
+  };
 }
 
 export interface IsetOrderId {
   type: typeof SET_ORDER_ID;
-  payload: Iid;
+  payload: {
+    orderId: Iid;
+  };
 }
 
 export type ActionTypes =

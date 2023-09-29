@@ -1,9 +1,10 @@
 import React from "react";
 import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
 import { IingredientFullInfo } from "../../main";
+import { IIngredient } from "../../../../store/reducers/constructor-reducer";
 
 type Props = {
-  data: IingredientFullInfo[];
+  data: IIngredient[];
 };
 function BunBottomConstructor({ data }: Props) {
   return (

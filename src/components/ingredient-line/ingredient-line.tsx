@@ -1,50 +1,68 @@
 import styles from "./ingredient-line.module.css";
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import ImagesIngredients from "../images-line/images-line";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import { setOrderId } from "../../store/actions/feed-modal";
-import { useAppSelector } from "../../store/types";
+import { useAppSelector, useAppDispatch } from "../../store/types";
+import { Iorders } from "../../store/types";
 
-function IngredientsLine({ setIsFeedIdModal }: any) {
-  const [data, setData] = useState([]);
+interface IngredientsLineProps {
+  setIsFeedIdModal: React.Dispatch<
+    React.SetStateAction<{ open: boolean; id: string }>
+  >;
+}
+
+function IngredientsLine({ setIsFeedIdModal }: IngredientsLineProps) {
+  const [data, setData] = useState<Iorders[]>([]);
   const navigate = useNavigate();
 
   const ingredients = useAppSelector((state) => state.getFeed?.getFeed?.orders);
 
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+  const AllIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   useEffect(() => {
     if (ingredients) {
       setData(ingredients);
     }
   }, [ingredients]);
-  
-  const newAllIngredients = (AllIngredients as any).reduce((acc, item) => {
-    acc[item._id] = item.image_mobile;
-    return acc;
-  }, {});
+
+  const newAllIngredients = AllIngredients.reduce<Record<string, string>>(
+    (acc, item) => {
+      if (item._id && item.image_mobile) {
+        acc[item._id] = item.image_mobile;
+      }
+      return acc;
+    },
+    {}
+  );
 
   const ids = data.map((item) => item.ingredients);
 
   const newData = ids.map((idArray) => {
+    if (!Array.isArray(idArray)) return null;
     return idArray.map((id: string) => newAllIngredients[id]);
   });
 
-  const priceForIngredient = (AllIngredients as any).reduce((acc, item) => {
-    acc[item._id] = item.price;
-    return acc;
-  }, {});
+  const priceForIngredient = AllIngredients.reduce<Record<string, number>>(
+    (acc, item) => {
+      if (item._id && item.price) {
+        acc[item._id] = item.price;
+      }
+      return acc;
+    },
+    {}
+  );
 
   const priceForOrder = ids.map((idArray) => {
+    if (!Array.isArray(idArray)) return null;
     return idArray.reduce((acc, id) => acc + priceForIngredient[id], 0);
   });
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleOrderClick = (id: string) => {
     window.history.pushState({}, "", `/feed/${id}`);

@@ -2,12 +2,35 @@ import { LOGIN_USER } from "../actions/actions";
 import { SET_AUTH_CHEKCED } from "../actions/actions";
 import { ActionTypes } from "../types";
 
-const initialState = {
+export interface IloginUser {
+  success: boolean;
+  accessToken: string;
+  refreshToken: string;
+  user: {
+    email: string;
+    name: string;
+  };
+}
+
+interface IloginUserFull {
+  loginUser: IloginUser;
+  isAuthChecked: boolean;
+}
+
+export const initialState: IloginUserFull = {
+  loginUser: {
+    success: false,
+    accessToken: "",
+    refreshToken: "",
+    user: {
+      email: "",
+      name: "",
+    },
+  },
   isAuthChecked: false,
 };
 
-const loginUserReducer = (state = initialState, action: ActionTypes) => {
-  //@ts-ignore
+export const loginUserReducer = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case LOGIN_USER:
       return {
@@ -18,7 +41,7 @@ const loginUserReducer = (state = initialState, action: ActionTypes) => {
     case SET_AUTH_CHEKCED:
       return {
         ...state,
-        isAuthChecked: action.payload,
+        isAuthChecked: action.payload.isAuthChecked,
       };
     default:
       return state;

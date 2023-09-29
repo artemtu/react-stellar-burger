@@ -1,20 +1,22 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import Header from "../app-header/app-header";
 import styles from "./my-order-id-modal.module.css";
-
 import { FormattedDate } from "@ya.praktikum/react-developer-burger-ui-components";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "../../store/types";
-import { IfeedState } from "../../store/reducers/feed-user-reducer";
 
-function MyOrderIdModal({ id }) {
-  const AllIngredients = useAppSelector((state) => state.mainData.data);
+type Props = {
+  id?: string;
+  _id?: string;
+};
+
+function MyOrderIdModal({ id }: Props) {
+  const AllIngredients = useAppSelector(
+    (state) => state.mainData.mainData.data
+  );
 
   const orders = useAppSelector((state) => state.myOrders.getMyFeed.orders);
-  const orderId = useAppSelector((state) => state.myOrderId.myOrderId);
+  const orderId = useAppSelector((state) => state.myOrderIdRed.myOrderId);
 
-  let thisOrder;
+  let thisOrder: any;
 
   if (id) {
     thisOrder = orders.find((item: any) => item._id === id);
@@ -22,9 +24,7 @@ function MyOrderIdModal({ id }) {
     thisOrder = orders.find((item: any) => item._id === orderId);
   }
 
-  // const thisOrder = orders.find((item) => item._id === orderId);
-
-  const countById = thisOrder.ingredients.reduce((acc, id) => {
+  const countById = thisOrder.ingredients.reduce((acc: any, id: string) => {
     acc[id] = (acc[id] || 0) + 1;
     return acc;
   }, {});
@@ -38,10 +38,10 @@ function MyOrderIdModal({ id }) {
 
   const idsInOrder = thisOrder.ingredients;
 
-  const test = idsInOrder.reduce((acc, id) => {
+  const test = idsInOrder.reduce((acc: any, id: string) => {
     const foundIngredient = ingredientsData.find((item) => item.id === id);
 
-    const existingIngredient = acc.find((item) => item.id === id);
+    const existingIngredient = acc.find((item: any) => item.id === id);
 
     let incrementValue = countById[id];
 
@@ -65,8 +65,8 @@ function MyOrderIdModal({ id }) {
   }, []);
 
   const totalSum = test
-    .map((item) => item.count * item.price)
-    .reduce((acc, val) => acc + val, 0);
+    .map((item: any) => item.count * item.price)
+    .reduce((acc: any, val: number) => acc + val, 0);
 
   return (
     <>
@@ -82,7 +82,7 @@ function MyOrderIdModal({ id }) {
       </p>
       <p className="text text_type_main-medium mt-15 ml-5">Состав:</p>
       <div className={`${styles.scroll} custom-scroll mt-6 ml-5`}>
-        {test.map((item, index) => (
+        {test.map((item: any, index: number) => (
           <div className={styles.ingredient} key={index}>
             <div className={styles.nameContainer}>
               <div className={styles.сircle}>

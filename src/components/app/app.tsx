@@ -13,7 +13,6 @@ import { OnlyAuth, UnAuth } from "../../protected-route/protected-route";
 import IngredientPage from "../../pages/ingredients/ingredients";
 import { fetchIngredients } from "../../store/actions/fetch-data";
 import Feed from "../../pages/feed/feed";
-// import { fetchMyFeed } from "../../store/actions/feed-user-orders";
 import { useAppDispatch } from "../../store/types";
 import FeedPageGeneral from "../../pages/feed-id-page/feed-id-page";
 import MyOrderPage from "../../pages/my-order-page/my-order-page";
@@ -27,24 +26,6 @@ function App() {
     };
 
     fetchData();
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   const closeSocket = dispatch(fetchMyFeed());
-
-  //   return () => {
-  //     closeSocket();
-  //   };
-  // }, [dispatch]);
-
-  useEffect(() => {
-    dispatch({ type: 'WS_MY_FEED_INIT' });
-
-    return () => {
-      console.log('okry');
-      
-      // dispatch({ type: 'WS_MY_FEED_CLOSE' });
-    };
   }, [dispatch]);
 
   return (
