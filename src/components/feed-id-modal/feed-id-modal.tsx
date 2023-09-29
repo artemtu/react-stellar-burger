@@ -16,6 +16,7 @@ function FeedPage({ id }: Props) {
   const orderId = useAppSelector((state) => state.orderReduceer.orderId);
 
   if (orders.length === 0) return null;
+  if (orderId.length === 0) return null;
 
   let thisOrder: any;
 
