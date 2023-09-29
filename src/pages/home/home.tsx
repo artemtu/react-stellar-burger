@@ -4,6 +4,7 @@ import IngredientDetails from "../../components/modal/ingredient-details/ingredi
 import OrderDetails from "../../components/modal/order-details/orderdetails";
 import { useState } from "react";
 import styles from "./home.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export type IngredientModalState = {
   open: boolean;
@@ -20,9 +21,14 @@ function Home() {
       id: "1",
     });
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   function closeModal() {
     setOrderModal({ open: false });
     setIngredientModal({ open: false, id: "1" });
+    const currentPath = location.pathname;
+    navigate(currentPath);
   }
 
   function openModal() {

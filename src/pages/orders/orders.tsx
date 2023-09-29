@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/app-header/app-header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./orders.module.css";
 import { useLocation } from "react-router-dom";
 import OrdersHistory from "../orders-history/orders-history";
@@ -23,6 +23,7 @@ function ProfileOrders() {
 
   const myFeedData = useAppSelector((state) => state.myOrders.getMyFeed);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   let accessToken = localStorage.getItem("accessToken");
 
@@ -69,6 +70,8 @@ function ProfileOrders() {
 
   function closeModal() {
     setIsOrderIddModal({ open: false, id: "1" });
+    const currentPath = location.pathname;
+    navigate(currentPath);
   }
 
   return (

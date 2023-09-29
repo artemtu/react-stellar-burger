@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../store/types";
 import { IfeedState, Iorders } from "../../store/types";
 import { GET_FEED, WSS_CLOSE, WSS_OPEN } from "../../store/actions/actions";
 import { socketUrl } from "../../store/socketMiddleware";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Feed() {
   const dispatch = useAppDispatch();
@@ -17,6 +18,8 @@ function Feed() {
   const [orderIsReady, setOrderIsReady] = React.useState<string[]>([]);
   const [orderIsPending, setOrderIsPending] = React.useState<string[]>([]);
   const [orderNumber, setOrderNumber] = React.useState<Iorders[]>([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch({
@@ -89,6 +92,8 @@ function Feed() {
 
   function closeModal() {
     setIsFeedIdModal({ open: false, id: "1" });
+    const currentPath = location.pathname;
+    navigate(currentPath);
   }
 
   return (
