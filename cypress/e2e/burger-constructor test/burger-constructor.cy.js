@@ -1,5 +1,9 @@
 import { testUrl } from "../../test-constants";
-import { draggableDivSelector, classBurgerBar,classConstructorBurger } from "../../test-constants";
+import {
+  draggableDivSelector,
+  classBurgerBar,
+  classConstructorBurger,
+} from "../../test-constants";
 
 describe("burger constructor test", () => {
   it("open main page", () => {
@@ -7,24 +11,17 @@ describe("burger constructor test", () => {
   });
   it("dnd for ingredients", () => {
     cy.visit(testUrl);
-    cy.get(draggableDivSelector).drag(classBurgerBar);
+    cy.get(draggableDivSelector).eq(0).trigger("dragstart");
+    cy.get(classBurgerBar).eq(0).trigger("drop");
 
-    cy.get(draggableDivSelector)
-      .eq(5)
-      .then(($elem) => {
-        cy.wrap($elem).drag(classBurgerBar);
-      });
-    cy.get(draggableDivSelector)
-      .eq(10)
-      .then(($elem) => {
-        cy.wrap($elem).drag(classBurgerBar); 
-      });
-    cy.get(draggableDivSelector)
-      .eq(11)
-      .then(($elem) => {
-        cy.wrap($elem).drag(classBurgerBar);// здесь всё 
-      });
-      cy.get(classConstructorBurger)
+    cy.get(draggableDivSelector).eq(5).trigger("dragstart");
+    cy.get(classBurgerBar).first().trigger("drop");
+
+    cy.get(draggableDivSelector).eq(10).trigger("dragstart");
+    cy.get(classBurgerBar).first().trigger("drop");
+    cy.get(draggableDivSelector).eq(11).trigger("dragstart");
+    cy.get(classBurgerBar).first().trigger("drop"); // перестаем добавлять ингредиенты
+    cy.get(classConstructorBurger)
       .eq(1)
       .then(($elem) => {
         cy.get(classConstructorBurger)
@@ -42,8 +39,6 @@ describe("burger constructor test", () => {
     cy.get("#loginButton").click();
     cy.get("#extractionButton").click();
     cy.wait(20000);
-    cy.get('.modal_close__button__7Qy2s').click();
-
-
+    cy.get(".modal_close__button__7Qy2s").click();
   });
 });

@@ -116,7 +116,7 @@ function Main({ openModal, setIngredientModal }: IModalFunctions) {
             Начинки
           </Tab>
         </div>
-        <div className={`${styles.scroll} custom-scroll`}>
+        <div className={`${styles.scroll} custom-scroll`} id={'mainScroll'}>
           <div ref={bunRef}>
             <div ref={inViewBunRef}>
               <h2 className="text text_type_main-medium mt-10">Булки</h2>
