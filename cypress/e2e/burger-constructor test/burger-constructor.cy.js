@@ -39,6 +39,6 @@ describe("burger constructor test", () => {
     cy.get("#loginButton").click();
     cy.get("#extractionButton").click();
     cy.wait(20000);
-    cy.get(".modal_close__button__7Qy2s").click();
+    cy.get("#modalClose").click();
   });
 });

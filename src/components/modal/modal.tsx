@@ -37,7 +37,11 @@ function Modal({ children, closeModal }: Imodal) {
     <Overlay closeModal={closeModal}>
       <div className={styles.modal}>
         <div className={`${styles.close}`}>
-          <button className={`${styles.close__button}`} onClick={closeModal}>
+          <button
+            className={`${styles.close__button}`}
+            onClick={closeModal}
+            id="modalClose"
+          >
             <CloseIcon type="primary" />
           </button>
         </div>
