@@ -45,66 +45,64 @@ describe("constructor-reducer", () => {
 
   it("should REMOVE_INGREDIENT", () => {
     const state = {
-      ...initialState,
-      bun: [],
-      ingredients: [
-        {
-          id: "dsfsdf43fesdfs5",
-          image: "https://code.s3.yandex.net/react/code/bun-01.png",
-          name: "Какой-то соус",
-          price: 51158,
-          type: "ingredient",
-          _constId: "9e6b9d16-bd1e-4032-9741-d5da2",
-        },
-      ],
+      constructorBurger: {
+        bun: [],
+        ingredients: [
+          {
+            id: "dsfsdf43fesdfs5",
+            image: "https://code.s3.yandex.net/react/code/bun-01.png",
+            name: "Какой-то соус",
+            price: 51158,
+            type: "ingredient",
+            _constId: "9e6b9d16-bd1e-4032-9741-d5da2",
+          },
+        ],
+      },
       isBunDragged: false,
     };
+
     const action = {
       type: REMOVE_INGREDIENT,
-      payload: "9e6b9d16-bd1e-4032-9741-d5da2",
+      payload: {
+        ingredientId: "9e6b9d16-bd1e-4032-9741-d5da2",
+      },
     };
 
     const newState = constructorReducer(state, action);
 
     expect(newState).toEqual({
-      bun: [],
-      ingredients: [],
+      constructorBurger: {
+        bun: [],
+        ingredients: [],
+      },
       isBunDragged: false,
     });
   });
 
   it("should CHANGE_INGREDIENT", () => {
     const state = {
-      ...initialState,
-      bun: [],
-      ingredients: [
-        {
-          id: "2",
-          image: "https://code.s3.yandex.net/react/code/bun-01.png",
-          name: "Какой-то соус",
-          price: 58,
-          type: "ingredient",
-          _constId: "2a",
-        },
-        {
-          id: "1",
-          image: "https://code.s3.yandex.net/react/code/bun-01.png",
-          name: "Какая-то котлета",
-          price: 999,
-          type: "ingredient",
-          _constId: "1a",
-        },
-      ],
+      constructorBurger: {
+        bun: [],
+        ingredients: [
+          {
+            id: "2",
+            image: "https://code.s3.yandex.net/react/code/bun-01.png",
+            name: "Какой-то соус",
+            price: 58,
+            type: "ingredient",
+            _constId: "2a",
+          },
+          {
+            id: "1",
+            image: "https://code.s3.yandex.net/react/code/bun-01.png",
+            name: "Какая-то котлета",
+            price: 999,
+            type: "ingredient",
+            _constId: "1a",
+          },
+        ],
+      },
       isBunDragged: false,
-    };
-
-    const ingredientToMove = {
-      id: "2",
-      image: "https://code.s3.yandex.net/react/code/bun-01.png",
-      name: "Какой-то соус",
-      price: 58,
-      type: "ingredient",
-      _constId: "2a",
     };
 
     const action = {
@@ -112,32 +110,34 @@ describe("constructor-reducer", () => {
       payload: {
         indexFrom: 0,
         indexTo: 1,
-        ingredient: ingredientToMove,
+        ingredient: state.constructorBurger.ingredients[0],
       },
     };
 
     const newState = constructorReducer(state, action);
 
     expect(newState).toEqual({
-      bun: [],
-      ingredients: [
-        {
-          id: "1",
-          image: "https://code.s3.yandex.net/react/code/bun-01.png",
-          name: "Какая-то котлета",
-          price: 999,
-          type: "ingredient",
-          _constId: "1a",
-        },
-        {
-          id: "2",
-          image: "https://code.s3.yandex.net/react/code/bun-01.png",
-          name: "Какой-то соус",
-          price: 58,
-          type: "ingredient",
-          _constId: "2a",
-        },
-      ],
+      constructorBurger: {
+        bun: [],
+        ingredients: [
+          {
+            id: "1",
+            image: "https://code.s3.yandex.net/react/code/bun-01.png",
+            name: "Какая-то котлета",
+            price: 999,
+            type: "ingredient",
+            _constId: "1a",
+          },
+          {
+            id: "2",
+            image: "https://code.s3.yandex.net/react/code/bun-01.png",
+            name: "Какой-то соус",
+            price: 58,
+            type: "ingredient",
+            _constId: "2a",
+          },
+        ],
+      },
       isBunDragged: false,
     });
   });
